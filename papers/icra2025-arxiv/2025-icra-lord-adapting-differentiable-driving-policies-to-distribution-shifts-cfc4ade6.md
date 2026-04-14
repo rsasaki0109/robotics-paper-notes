@@ -61,12 +61,6 @@
 
 ★★★（abstract 初見ベース）
 
-## Autoware視点
-
-* 使えるか: 一部は使える。特に classical backbone が強ければ実装の参考になる。
-* どのモジュールに効くか: planning, control, planning / control / perception
-* 実用性: 実機または実環境評価があり、実用性は比較的高そう。
-
 ## 自分の理解/感想
 
 * 初見では、学習と古典手法の分担がどこで効いているかを見極めたい。

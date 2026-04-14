@@ -61,12 +61,6 @@
 
 ★★（abstract 初見ベース）
 
-## Autoware視点
-
-* 使えるか: そのまま導入するより、比較対象や将来候補として見るのが良さそう。
-* どのモジュールに効くか: localization, perception, limited direct use; integration pattern reference
-* 実用性: 実機または実環境評価があり、実用性は比較的高そう。
-
 ## 自分の理解/感想
 
 * 初見では、比較対象として保持しつつ、非学習部分の設計だけでも回収したい。
