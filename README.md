@@ -46,6 +46,7 @@
 
 ```text
 .
+├── index.html
 ├── index.md
 ├── papers/
 │   ├── .gitkeep
@@ -62,13 +63,15 @@
 - `papers/icra2025-arxiv/`: ICRA 2025 の arXiv 公開済み論文の自動下書き
 - `templates/paper.md`: 論文メモの共通テンプレート
 - `README.md`: このリポジトリの目的と運用ルール
-- `index.md`: GitHub Pages 用のトップページ
+- `index.html`: GitHub Pages 用の縦スクロール feed
+- `index.md`: GitHub 上で読むための案内ページ
 
 ## 現在の入口
 
 - `papers/icra2025-arxiv/index.md`: ICRA 2025 arXiv 下書き 159本の一覧
 - `papers/icra2025-arxiv/non-ai.md`: Non-AI 判定 60本の優先読みリスト
 - `papers/icra2025-arxiv/non-ai-top.md`: 最初に読むべき Top 12
+- `index.html`: GitHub Pages のトップで開く 1スライド feed
 
 ## 使い方
 

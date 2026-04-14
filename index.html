@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>robotics-paper-notes | ICRA 2025 Non-AI Top 12</title>
+    <meta name="description" content="ICRA 2025 Non-AI Top 12 を1スライドずつ縦スクロールで見る GitHub Pages feed">
+    <style>
+      :root {
+        --bg: #08111f;
+        --panel: rgba(10, 18, 35, 0.78);
+        --panel-strong: rgba(7, 13, 27, 0.9);
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #f6f8ff;
+        --muted: #b5bfd8;
+        --accent: #7dd3fc;
+        --accent-2: #c4b5fd;
+        --accent-3: #f9a8d4;
+        --accent-4: #86efac;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(125, 211, 252, 0.18), transparent 22rem),
+          radial-gradient(circle at top right, rgba(196, 181, 253, 0.16), transparent 24rem),
+          linear-gradient(180deg, #07101d, #020611 62%, #040914);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.9rem 1rem;
+        background: rgba(3, 7, 15, 0.62);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .toplinks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: flex-end;
+      }
+
+      .toplinks a {
+        padding: 0.55rem 0.85rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .progress {
+        position: fixed;
+        right: 0.9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 15;
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      .progress a {
+        width: 0.85rem;
+        height: 0.85rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .feed {
+        height: 100vh;
+        overflow-y: auto;
+        scroll-snap-type: y mandatory;
+      }
+
+      .slide {
+        min-height: 100vh;
+        scroll-snap-align: start;
+        display: grid;
+        align-items: center;
+        padding: 5.4rem 1rem 2rem;
+      }
+
+      .card {
+        width: min(100%, 900px);
+        margin: 0 auto;
+        padding: clamp(1.35rem, 3vw, 2.5rem);
+        border-radius: 2rem;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+      }
+
+      .cover .card {
+        background:
+          radial-gradient(circle at top right, rgba(125, 211, 252, 0.14), transparent 18rem),
+          radial-gradient(circle at bottom left, rgba(196, 181, 253, 0.14), transparent 20rem),
+          var(--panel-strong);
+      }
+
+      .eyebrow,
+      .counter {
+        font-size: 0.86rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .hero-title,
+      .paper-title {
+        margin: 0.6rem 0 0;
+        line-height: 1.04;
+      }
+
+      .hero-title {
+        font-size: clamp(2.4rem, 7vw, 5.2rem);
+      }
+
+      .paper-title {
+        font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      }
+
+      .lead,
+      .hook,
+      .body-copy {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .lead {
+        max-width: 54rem;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        align-items: center;
+      }
+
+      .rank {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 3.3rem;
+        padding: 0.4rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-weight: 700;
+      }
+
+      .chip {
+        padding: 0.38rem 0.72rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .hook {
+        margin: 1rem 0 1.25rem;
+        font-size: clamp(1rem, 2vw, 1.16rem);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.15rem;
+      }
+
+      .panel {
+        padding: 1rem 1rem 1.05rem;
+        border-radius: 1.2rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .panel h2 {
+        margin: 0 0 0.5rem;
+        font-size: 0.95rem;
+      }
+
+      .panel p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1.35rem;
+      }
+
+      .actions a {
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 600;
+      }
+
+      .actions a.primary {
+        background: linear-gradient(135deg, rgba(125, 211, 252, 0.2), rgba(196, 181, 253, 0.22));
+      }
+
+      .swipe {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 1.2rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .swipe::before {
+        content: "";
+        width: 2.8rem;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .theme-a .rank { background: rgba(125, 211, 252, 0.16); }
+      .theme-b .rank { background: rgba(196, 181, 253, 0.16); }
+      .theme-c .rank { background: rgba(249, 168, 212, 0.16); }
+      .theme-d .rank { background: rgba(134, 239, 172, 0.16); }
+
+      @media (max-width: 900px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 740px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .progress {
+          right: 0.55rem;
+        }
+
+        .progress a {
+          width: 0.7rem;
+          height: 0.7rem;
+        }
+
+        .slide {
+          padding-top: 7rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">robotics-paper-notes / ICRA 2025 Non-AI Top 12</div>
+      <nav class="toplinks" aria-label="Primary links">
+        <a href="./papers/icra2025-arxiv/non-ai-top.md">Top 12 list</a>
+        <a href="./papers/icra2025-arxiv/non-ai.md">Non-AI 60</a>
+        <a href="./papers/icra2025-arxiv/index.md">All 159</a>
+        <a href="https://github.com/rsasaki0109/robotics-paper-notes">GitHub</a>
+      </nav>
+    </header>
+
+    <nav class="progress" aria-label="Slide navigation">
+      <a href="#cover" title="Cover"></a>
+      <a href="#p1" title="1"></a>
+      <a href="#p2" title="2"></a>
+      <a href="#p3" title="3"></a>
+      <a href="#p4" title="4"></a>
+      <a href="#p5" title="5"></a>
+      <a href="#p6" title="6"></a>
+      <a href="#p7" title="7"></a>
+      <a href="#p8" title="8"></a>
+      <a href="#p9" title="9"></a>
+      <a href="#p10" title="10"></a>
+      <a href="#p11" title="11"></a>
+      <a href="#p12" title="12"></a>
+    </nav>
+
+    <main class="feed">
+      <section class="slide cover" id="cover">
+        <article class="card">
+          <div class="eyebrow">Vertical feed</div>
+          <h1 class="hero-title">1 paper = 1 slide</h1>
+          <p class="lead">
+            GitHub Pages のトップを、ICRA 2025 Non-AI Top 12 の縦スクロール feed にしました。
+            まずは 1 本ずつざっと見て、気になったものだけ詳細ノートや arXiv へ飛ぶ前提です。
+          </p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>What you get</h2>
+              <p>Localization / SLAM / GNSS / LiDAR を厚めにした Top 12 を、1スライド1論文で一気に流し見できます。</p>
+            </div>
+            <div class="panel">
+              <h2>How to use</h2>
+              <p>下にスクロールして順に見るだけです。気になったら <strong>Detail note</strong>、元論文は <strong>arXiv</strong> へ飛べます。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="#p1">Start feed</a>
+            <a href="./papers/icra2025-arxiv/non-ai-top.md">Open markdown list</a>
+          </div>
+          <div class="swipe">scroll down</div>
+        </article>
+      </section>
+
+      <section class="slide theme-a" id="p1">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#1</span>
+            <span class="chip">Localization</span>
+            <span class="chip">GNSS</span>
+            <span class="chip">Factor Graph</span>
+          </div>
+          <h1 class="paper-title">GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization</h1>
+          <p class="hook">GNSS + LiDAR + factor graph で、都市部ローカライゼーションに直結。最初に読むならこれ。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>dense urban で classic fusion が破綻しやすい問題に、オンライン連続時間 FGO で正面から答えている。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>GNSS raw observation の扱い方、tight coupling の設計、実運用寄り localization の発想。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2309.11134">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-b" id="p2">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#2</span>
+            <span class="chip">LiDAR-IMU</span>
+            <span class="chip">EqF</span>
+            <span class="chip">State Estimation</span>
+          </div>
+          <h1 class="paper-title">Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry</h1>
+          <p class="hook">LiDAR-IMU の tightly coupled 推定を、EqF でどう安定化するかを短距離で学べる一本。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>EKF 系で苦しみやすい非線形性と線形化誤差に対して、対称性ベースの設計がどう効くかが見える。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>IMU bias, navigation state, LiDAR extrinsic をまとめて扱う推定器設計と、幾何寄りの安定化の考え方。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2409.06948">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-c" id="p3">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#3</span>
+            <span class="chip">LiDAR Odometry</span>
+            <span class="chip">ICP</span>
+            <span class="chip">Degeneracy</span>
+          </div>
+          <h1 class="paper-title">GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting</h1>
+          <p class="hook">corridor 退化や ill-posed optimization に強い ICP。現場で困る問題にちゃんと刺さる。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>LiDAR odometry の破綻ケースは実運用で避けにくい。そこを adaptive weighting で抑える方向は実装価値が高い。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>degeneracy を意識した weighting 設計、ロバストな ICP への現実的な拡張、評価の見方。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2411.06766">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-d" id="p4">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#4</span>
+            <span class="chip">VINS</span>
+            <span class="chip">Dynamic Scene</span>
+            <span class="chip">Robust Estimation</span>
+          </div>
+          <h1 class="paper-title">DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery</h1>
+          <p class="hook">動的物体に壊される VINS を、学習ではなくロバスト推定と bias recovery で立て直す。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>dynamic environment への対策は AI に寄りがちだが、これは classical な推定器改善として読めるのが良い。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>adaptive truncated least squares、bias consistency check、突然動く物体に対する VINS 保護策。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2410.15373">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-a" id="p5">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#5</span>
+            <span class="chip">Calibration</span>
+            <span class="chip">VIO</span>
+            <span class="chip">Online</span>
+          </div>
+          <h1 class="paper-title">Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems</h1>
+          <p class="hook">時間ずれ補正は地味だけど効く。online temporal calibration を最初に押さえるならここ。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>実機では sensor time offset が安定性を壊しやすい。しかも気づきにくい。だから先に読む価値が高い。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>optimization-based VINS に temporal calibration をどう入れるか、収束とノイズ耐性の見方。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2501.01788">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-b" id="p6">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#6</span>
+            <span class="chip">IMU</span>
+            <span class="chip">Preintegration</span>
+            <span class="chip">Galilean Group</span>
+          </div>
+          <h1 class="paper-title">Equivariant IMU Preintegration with Biases: A Galilean Group Approach</h1>
+          <p class="hook">IMU preintegration は localization 系の基礎ブロック。bias を含めた幾何的整理がきれい。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>派手さはないが、VIO / INS / factor graph 系を読むときの共通言語として効く。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>bias を独立に扱わない preintegration、consistency 向上、Lie group ベースの見方。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2411.05548">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-c" id="p7">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#7</span>
+            <span class="chip">Optimization</span>
+            <span class="chip">Gaussian Mixture</span>
+            <span class="chip">NLS</span>
+          </div>
+          <h1 class="paper-title">A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares</h1>
+          <p class="hook">SLAM の表面ではなく、推定と最適化の地力を上げるタイプの一本。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>Gaussian mixture likelihood を NLS に落とす時の Hessian 近似は、精度よりもまず理解コストに対するリターンが大きい。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>収束性、uncertainty characterization、推定器の内部をどう改善するかという視点。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2404.05452">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-d" id="p8">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#8</span>
+            <span class="chip">LiDAR</span>
+            <span class="chip">Place Recognition</span>
+            <span class="chip">Narrow FOV</span>
+          </div>
+          <h1 class="paper-title">Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition</h1>
+          <p class="hook">狭視野 LiDAR の place recognition。loop closure や再局在化の勘所を軽量に学びやすい。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>実機では FOV 制約が普通にある。だから“理想センサ前提ではない” place recognition は見ておく価値がある。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>rotational change への対処、vertical information を使った reweighting、軽量 global descriptor の作り方。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2408.07330">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-a" id="p9">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#9</span>
+            <span class="chip">Dense SLAM</span>
+            <span class="chip">GPU</span>
+            <span class="chip">Mapping</span>
+          </div>
+          <h1 class="paper-title">CoVoxSLAM: GPU Accelerated Globally Consistent Dense SLAM</h1>
+          <p class="hook">dense SLAM を GPU で現実的に回す話。精度だけでなく実行性能に意識があるのが良い。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>“動くかどうか” まで含めて dense SLAM を考えたいときに、GPU 活用の設計観点をつかみやすい。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>globally consistent volumetric SLAM、platform 差、discrete GPU と embedded GPU の見方。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-covoxslam-gpu-accelerated-globally-consistent-dense-slam-6599ffd4.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2410.21149">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-b" id="p10">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#10</span>
+            <span class="chip">Path Planning</span>
+            <span class="chip">Geometry</span>
+            <span class="chip">Global Optimality</span>
+          </div>
+          <h1 class="paper-title">Exact Wavefront Propagation for Globally Optimal One-To-All Path Planning on 2D Cartesian Grids</h1>
+          <p class="hook">幾何ベースで global optimality を出す planning。基礎体力を上げるのに向いている。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>近似で済ませがちな path planning を、exact wavefront propagation でどう解くかが明快で、整理しやすい。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>Eikonal 系との差、visibility ベースの解析的距離関数、one-to-all 計画の旨味。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-exact-wavefront-propagation-for-globally-optimal-one-to-all-path-plannin-50b72344.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2409.11545">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-c" id="p11">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#11</span>
+            <span class="chip">MPC</span>
+            <span class="chip">Planning</span>
+            <span class="chip">Control</span>
+          </div>
+          <h1 class="paper-title">Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets</h1>
+          <p class="hook">可変 time-step と horizon の設計が面白い。MPC をもう一歩実用に寄せる発想が取れる。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>MPC は使えるけれど重い。その制約を variable time-step でどうほぐすかは planning/control 共通の学びになる。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>prediction horizon と sampling density のトレードオフ、長区間と急機動を両立させる設計。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2503.14184">arXiv</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="slide theme-d" id="p12">
+        <article class="card">
+          <div class="meta">
+            <span class="rank">#12</span>
+            <span class="chip">Distributed SLAM</span>
+            <span class="chip">Certifiable</span>
+            <span class="chip">Range-Aided</span>
+          </div>
+          <h1 class="paper-title">Distributed Certifiably Correct Range-Aided SLAM</h1>
+          <p class="hook">すぐ現場投入するタイプではないが、distributed / certifiable SLAM の頭を整理するには強い。</p>
+          <div class="two-col">
+            <div class="panel">
+              <h2>Why now</h2>
+              <p>range sensor + multi-agent + communication constraint という条件で、global optimum をどう扱うかの見取り図になる。</p>
+            </div>
+            <div class="panel">
+              <h2>What to learn</h2>
+              <p>Riemannian Staircase、distributed pose graph optimization から RA-SLAM への拡張、certifiable design の意味。</p>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="primary" href="./papers/icra2025-arxiv/2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.md">Detail note</a>
+            <a href="http://arxiv.org/abs/2503.03192">arXiv</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
