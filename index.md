@@ -5,9 +5,15 @@
 ## Focus
 
 - SLAM
+- Localization
 - GNSS
 - LiDAR
 - Intelligent Vehicles
+- Perception
+- Mapping
+- Sensor Fusion
+- Motion Planning
+- Control
 
 ## Rules
 
