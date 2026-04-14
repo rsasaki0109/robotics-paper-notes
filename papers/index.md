@@ -25,3 +25,4 @@
 
 - [ICRA 2025 arXiv drafts](./icra2025-arxiv/index.md): arXiv 公開済み 159本の自動下書き
 - [ICRA 2025 Non-AI first](./icra2025-arxiv/non-ai.md): Non-AI 判定 60本の優先読みリスト
+- [ICRA 2025 Non-AI Top 12](./icra2025-arxiv/non-ai-top.md): 最初に読むべき curated reading list
