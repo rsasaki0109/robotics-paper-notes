@@ -60,12 +60,6 @@
 
 ★★★（abstract 初見ベース）
 
-## Autoware視点
-
-* 使えるか: 一部は使える。特に classical backbone が強ければ実装の参考になる。
-* どのモジュールに効くか: control, limited direct use; integration pattern reference
-* 実用性: 少なくともシミュレーション評価はあるが、実運用への外挿は追加確認が必要。
-
 ## 自分の理解/感想
 
 * 初見では、学習と古典手法の分担がどこで効いているかを見極めたい。

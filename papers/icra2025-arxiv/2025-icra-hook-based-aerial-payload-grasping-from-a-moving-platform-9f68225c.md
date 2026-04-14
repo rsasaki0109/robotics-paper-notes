@@ -61,12 +61,6 @@
 
 ★★★★★（abstract 初見ベース）
 
-## Autoware視点
-
-* 使えるか: 比較的使える可能性が高い。モデル化された推定・最適化・制御の知見として転用しやすい。
-* どのモジュールに効くか: planning, out of direct Autoware scope, but architecture reference, limited direct use; integration pattern reference
-* 実用性: 実用性はありそうだが、評価環境の詳細を本文で確認したい。
-
 ## 自分の理解/感想
 
 * 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
