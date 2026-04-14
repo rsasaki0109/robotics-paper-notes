@@ -5,7 +5,7 @@
 まずは **AI偏重ではない論文**、つまり幾何・最適化・推定・制御・システム設計など、古典的かつ実装に近い知見を含む論文を優先して整理します。
 
 現在、**ICRA 2025 の arXiv 公開済み 159本** について abstract ベースの自動下書きを作成済みです。うち **Non-AI 判定は 60本** です。
-さらに、**まず読むべき Non-AI Top 12** の curated page も追加しています。
+さらに、**まず読むべき Non-AI Top 12** の curated feed と、**Non-AI 60 全体** を figure 付きで眺める縦スクロール feed も追加しています。
 
 ## 対象分野
 
@@ -48,7 +48,10 @@
 .
 ├── assets/
 │   └── figures/
+│       ├── icra2025-non-ai/
 │       └── icra2025-top12/
+├── build_non_ai_feed.py
+├── extract_paper_figures.py
 ├── extract_top12_figures.py
 ├── index.html
 ├── index.md
@@ -56,6 +59,7 @@
 │   ├── .gitkeep
 │   ├── icra2025-arxiv/
 │   │   ├── index.md
+│   │   ├── non-ai-feed.html
 │   │   └── non-ai.md
 │   └── index.md
 ├── templates/
@@ -63,10 +67,14 @@
 └── README.md
 ```
 
+- `assets/figures/icra2025-non-ai/`: Non-AI 60 用に arXiv source から自動抽出した図
 - `assets/figures/icra2025-top12/`: Top 12 用に arXiv source から自動抽出した図
-- `extract_top12_figures.py`: Top 12 の図を自動抽出して PNG 化するスクリプト
+- `build_non_ai_feed.py`: Non-AI 60 の note と manifest から feed HTML を生成するスクリプト
+- `extract_paper_figures.py`: 任意の論文セットから代表図を自動抽出して PNG 化するスクリプト
+- `extract_top12_figures.py`: Top 12 向けの互換ラッパー
 - `papers/`: 論文ごとのまとめを1ファイルずつ追加する場所
 - `papers/icra2025-arxiv/`: ICRA 2025 の arXiv 公開済み論文の自動下書き
+- `papers/icra2025-arxiv/non-ai-feed.html`: Non-AI 60 を figure 付き縦 feed で眺めるページ
 - `templates/paper.md`: 論文メモの共通テンプレート
 - `README.md`: このリポジトリの目的と運用ルール
 - `index.html`: GitHub Pages 用の縦スクロール richer feed（自動抽出図つき）
@@ -77,6 +85,7 @@
 - `papers/icra2025-arxiv/index.md`: ICRA 2025 arXiv 下書き 159本の一覧
 - `papers/icra2025-arxiv/non-ai.md`: Non-AI 判定 60本の優先読みリスト
 - `papers/icra2025-arxiv/non-ai-top.md`: 最初に読むべき Top 12
+- `papers/icra2025-arxiv/non-ai-feed.html`: Non-AI 60 全体を figure 付きで眺める feed
 - `index.html`: GitHub Pages のトップで開く 1スライド richer feed（自動抽出図つき）
 
 ## 使い方

@@ -4,6 +4,7 @@ ICRA 2025 の arXiv 公開済み論文のうち、**Non-AI と判定した 60本
 
 - Heuristic: title / keywords / abstract に強い学習語が見えないものを Non-AI と分類
 - Note: 誤分類の可能性はあるので、読む前に 1 分だけ abstract を見直す前提
+- figure 付きで流し見したい場合は [Non-AI 60 feed](./non-ai-feed.html) を開く
 - まず読む順番が欲しい場合は [Non-AI Top 12](./non-ai-top.md) から入る
 
 ## Aerial Manipulation 1

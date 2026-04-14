@@ -7,6 +7,7 @@
 現在は **ICRA 2025 の arXiv 公開済み 159本** の自動下書きを公開中です。**Non-AI 判定 60本** の入口も別ページで用意しています。
 さらに、**Non-AI Top 12** の curated reading list を追加しました。
 GitHub Pages のトップは、**Top 12 を縦スクロールで見る richer feed (`index.html`)** に切り替えました。各スライドに TL;DR、focus、visual summary に加えて、**arXiv source から自動抽出した図** も入れています。
+さらに、**Non-AI 60 全体** を figure 付きで眺める feed も追加しました。
 
 ## Focus
 
@@ -33,6 +34,7 @@ GitHub Pages のトップは、**Top 12 を縦スクロールで見る richer fe
 
 - [README](./README.md)
 - [Top 12 slide feed](./index.html)
+- [Non-AI 60 feed](./papers/icra2025-arxiv/non-ai-feed.html)
 - [Paper template](./templates/paper.md)
 - [Papers](./papers/index.md)
 - [ICRA 2025 arXiv drafts](./papers/icra2025-arxiv/index.md)

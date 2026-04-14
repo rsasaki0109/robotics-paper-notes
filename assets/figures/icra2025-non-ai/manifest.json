@@ -1,0 +1,602 @@
+[
+  {
+    "id": "2025-icra-hook-based-aerial-payload-grasping-from-a-moving-platform-9f68225c",
+    "title": "Hook-Based Aerial Payload Grasping from a Moving Platform",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-hook-based-aerial-payload-grasping-from-a-moving-platform-9f68225c.md",
+    "arxiv_id": "2409.11788",
+    "arxiv_url": "http://arxiv.org/abs/2409.11788",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-hook-based-aerial-payload-grasping-from-a-moving-platform-9f68225c.png",
+    "method": "source",
+    "extracted_from": "Fig/meas_smaller.pdf"
+  },
+  {
+    "id": "2025-icra-human-aware-physical-human-robot-collaborative-transportation-and-manipu-b5e5f8c6",
+    "title": "Human-Aware Physical Human-Robot Collaborative Transportation and Manipulation with Multiple Aerial Robots",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-human-aware-physical-human-robot-collaborative-transportation-and-manipu-b5e5f8c6.md",
+    "arxiv_id": "2210.05894",
+    "arxiv_url": "http://arxiv.org/abs/2210.05894",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-human-aware-physical-human-robot-collaborative-transportation-and-manipu-b5e5f8c6.png",
+    "method": "source",
+    "extracted_from": "figs/system_convention.png"
+  },
+  {
+    "id": "2025-icra-survey-of-simulators-for-aerial-robots-an-overview-and-in-depth-systemat-d36640cb",
+    "title": "Survey of Simulators for Aerial Robots: An Overview and In-Depth Systematic Comparisons",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-survey-of-simulators-for-aerial-robots-an-overview-and-in-depth-systemat-d36640cb.md",
+    "arxiv_id": "2311.02296",
+    "arxiv_url": "http://arxiv.org/abs/2311.02296",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-survey-of-simulators-for-aerial-robots-an-overview-and-in-depth-systemat-d36640cb.png",
+    "method": "source",
+    "extracted_from": "figures/flightmare.png"
+  },
+  {
+    "id": "2025-icra-a-generalized-thrust-estimation-and-control-approach-for-multirotors-mic-071f780b",
+    "title": "A Generalized Thrust Estimation and Control Approach for Multirotors Micro Aerial Vehicles",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-generalized-thrust-estimation-and-control-approach-for-multirotors-mic-071f780b.md",
+    "arxiv_id": "2412.02874",
+    "arxiv_url": "http://arxiv.org/abs/2412.02874",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-a-generalized-thrust-estimation-and-control-approach-for-multirotors-mic-071f780b.png",
+    "method": "source",
+    "extracted_from": "images/control_pipeline_2.pdf"
+  },
+  {
+    "id": "2025-icra-design-contact-modeling-and-collision-inclusive-planning-of-a-dual-stiff-bf11f006",
+    "title": "Design, Contact Modeling, and Collision-Inclusive Planning of a Dual-Stiffness Aerial RoboT (DART)",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-design-contact-modeling-and-collision-inclusive-planning-of-a-dual-stiff-bf11f006.md",
+    "arxiv_id": "2504.18780",
+    "arxiv_url": "http://arxiv.org/abs/2504.18780",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-design-contact-modeling-and-collision-inclusive-planning-of-a-dual-stiff-bf11f006.png",
+    "method": "source",
+    "extracted_from": "Figures/mode_selection.eps"
+  },
+  {
+    "id": "2025-icra-real-time-planning-of-minimum-time-trajectories-for-agile-uav-flight-5c4195e2",
+    "title": "Real-Time Planning of Minimum-Time Trajectories for Agile UAV Flight",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-real-time-planning-of-minimum-time-trajectories-for-agile-uav-flight-5c4195e2.md",
+    "arxiv_id": "2409.16074",
+    "arxiv_url": "http://arxiv.org/abs/2409.16074",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-real-time-planning-of-minimum-time-trajectories-for-agile-uav-flight-5c4195e2.png",
+    "method": "source",
+    "extracted_from": "fig/method_scheme_v5.png"
+  },
+  {
+    "id": "2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef",
+    "title": "Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md",
+    "arxiv_id": "2503.14184",
+    "arxiv_url": "http://arxiv.org/abs/2503.14184",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.png",
+    "method": "source",
+    "extracted_from": "fig/moving_targets_expt.eps"
+  },
+  {
+    "id": "2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914",
+    "title": "Decentralized Vehicle Coordination: The Berkeley DeepDrive Drone Dataset and Consensus-Based Models",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914.md",
+    "arxiv_id": "2209.08763",
+    "arxiv_url": "http://arxiv.org/abs/2209.08763",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914.png",
+    "method": "source",
+    "extracted_from": "figures/vision_pipeline.png"
+  },
+  {
+    "id": "2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112",
+    "title": "Low-Rank Adaptation-Based All-Weather Removal for Autonomous Navigation",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112.md",
+    "arxiv_id": "2411.17814",
+    "arxiv_url": "http://arxiv.org/abs/2411.17814",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112.png",
+    "method": "source",
+    "extracted_from": "figs/main_comp/proc_paper_seg_fog/selected/degraded/lindau_000030_000019_leftImg8bit_foggy_beta_leftImg8bit.jpg"
+  },
+  {
+    "id": "2025-icra-ptz-calib-robust-pan-tilt-zoom-camera-calibration-b24578c8",
+    "title": "PTZ-Calib: Robust Pan-Tilt-Zoom Camera Calibration",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-ptz-calib-robust-pan-tilt-zoom-camera-calibration-b24578c8.md",
+    "arxiv_id": "2502.09075",
+    "arxiv_url": "http://arxiv.org/abs/2502.09075",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-ptz-calib-robust-pan-tilt-zoom-camera-calibration-b24578c8.png",
+    "method": "source",
+    "extracted_from": "figures/teaser_v1.pdf"
+  },
+  {
+    "id": "2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf",
+    "title": "Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md",
+    "arxiv_id": "2501.01788",
+    "arxiv_url": "http://arxiv.org/abs/2501.01788",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.png",
+    "method": "source",
+    "extracted_from": "figures/timeoffset1_icra2025.pdf"
+  },
+  {
+    "id": "2025-icra-near-time-optimal-hybrid-motion-planning-for-timber-cranes-40eedebc",
+    "title": "Near Time-Optimal Hybrid Motion Planning for Timber Cranes",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-near-time-optimal-hybrid-motion-planning-for-timber-cranes-40eedebc.md",
+    "arxiv_id": "2506.20314",
+    "arxiv_url": "http://arxiv.org/abs/2506.20314",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-near-time-optimal-hybrid-motion-planning-for-timber-cranes-40eedebc.png",
+    "method": "source",
+    "extracted_from": "graphics/Crane.jpeg"
+  },
+  {
+    "id": "2025-icra-ugotme-an-embodied-system-for-affective-human-robot-interaction-0b020b79",
+    "title": "UGotMe: An Embodied System for Affective Human-Robot Interaction",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-ugotme-an-embodied-system-for-affective-human-robot-interaction-0b020b79.md",
+    "arxiv_id": "2410.18373",
+    "arxiv_url": "http://arxiv.org/abs/2410.18373",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-ugotme-an-embodied-system-for-affective-human-robot-interaction-0b020b79.png",
+    "method": "source",
+    "extracted_from": "UGotMe.pdf"
+  },
+  {
+    "id": "2025-icra-simultaneous-collision-detection-and-force-estimation-for-dynamic-quadru-8299b641",
+    "title": "Simultaneous Collision Detection and Force Estimation for Dynamic Quadrupedal Locomotion",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-simultaneous-collision-detection-and-force-estimation-for-dynamic-quadru-8299b641.md",
+    "arxiv_id": "2504.17201",
+    "arxiv_url": "http://arxiv.org/abs/2504.17201",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-simultaneous-collision-detection-and-force-estimation-for-dynamic-quadru-8299b641.png",
+    "method": "source",
+    "extracted_from": "likelihood.pdf"
+  },
+  {
+    "id": "2025-icra-multi-agent-path-planning-in-complex-environments-using-gaussian-belief-a110f6c4",
+    "title": "Multi-Agent Path Planning in Complex Environments Using Gaussian Belief Propagation with Global Path Finding",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-multi-agent-path-planning-in-complex-environments-using-gaussian-belief-a110f6c4.md",
+    "arxiv_id": "2502.20369",
+    "arxiv_url": "http://arxiv.org/abs/2502.20369",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-multi-agent-path-planning-in-complex-environments-using-gaussian-belief-a110f6c4.png",
+    "method": "source",
+    "extracted_from": "img/front-page-image.pdf"
+  },
+  {
+    "id": "2025-icra-angular-divergent-component-of-motion-a-step-towards-planning-spatial-dc-94b0a68e",
+    "title": "Angular Divergent Component of Motion: A Step towards Planning Spatial DCM Objectives for Legged Robots",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-angular-divergent-component-of-motion-a-step-towards-planning-spatial-dc-94b0a68e.md",
+    "arxiv_id": "2409.12796",
+    "arxiv_url": "http://arxiv.org/abs/2409.12796",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-angular-divergent-component-of-motion-a-step-towards-planning-spatial-dc-94b0a68e.png",
+    "method": "source",
+    "extracted_from": "Figures/toro_srb_lin_ang_framework_square.PNG"
+  },
+  {
+    "id": "2025-icra-addition-of-a-peristaltic-wave-improves-multi-legged-locomotion-performa-ec25931c",
+    "title": "Addition of a Peristaltic Wave Improves Multi-Legged Locomotion Performance on Complex Terrains",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-addition-of-a-peristaltic-wave-improves-multi-legged-locomotion-performa-ec25931c.md",
+    "arxiv_id": "2410.01046",
+    "arxiv_url": "http://arxiv.org/abs/2410.01046",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-addition-of-a-peristaltic-wave-improves-multi-legged-locomotion-performa-ec25931c.png",
+    "method": "source",
+    "extracted_from": "Figures/fig1.jpg"
+  },
+  {
+    "id": "2025-icra-effective-self-righting-strategies-for-elongate-multi-legged-robots-cd04b2a6",
+    "title": "Effective Self-Righting Strategies for Elongate Multi-Legged Robots",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-effective-self-righting-strategies-for-elongate-multi-legged-robots-cd04b2a6.md",
+    "arxiv_id": "2410.01056",
+    "arxiv_url": "http://arxiv.org/abs/2410.01056",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-effective-self-righting-strategies-for-elongate-multi-legged-robots-cd04b2a6.png",
+    "method": "source",
+    "extracted_from": "Figures/fig1intro4a.png"
+  },
+  {
+    "id": "2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464",
+    "title": "Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md",
+    "arxiv_id": "2409.06948",
+    "arxiv_url": "http://arxiv.org/abs/2409.06948",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.png",
+    "method": "source",
+    "extracted_from": "figures/flow/flow.pdf"
+  },
+  {
+    "id": "2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82",
+    "title": "GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md",
+    "arxiv_id": "2309.11134",
+    "arxiv_url": "http://arxiv.org/abs/2309.11134",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.png",
+    "method": "source",
+    "extracted_from": "figures/system_overview.pdf"
+  },
+  {
+    "id": "2025-icra-from-instantaneous-to-predictive-control-a-more-intuitive-and-tunable-mp-10d09420",
+    "title": "From Instantaneous to Predictive Control: A More Intuitive and Tunable MPC Formulation for Robot Manipulators",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-from-instantaneous-to-predictive-control-a-more-intuitive-and-tunable-mp-10d09420.md",
+    "arxiv_id": "2412.01597",
+    "arxiv_url": "http://arxiv.org/abs/2412.01597",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-from-instantaneous-to-predictive-control-a-more-intuitive-and-tunable-mp-10d09420.png",
+    "method": "source",
+    "extracted_from": "figures/setup.png"
+  },
+  {
+    "id": "2025-icra-robotic-sim-to-real-transfer-for-long-horizon-pick-and-place-tasks-in-th-2b794f59",
+    "title": "Robotic Sim-To-Real Transfer for Long-Horizon Pick-And-Place Tasks in the Robotic Sim2Real Competition",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-robotic-sim-to-real-transfer-for-long-horizon-pick-and-place-tasks-in-th-2b794f59.md",
+    "arxiv_id": "2503.11012",
+    "arxiv_url": "http://arxiv.org/abs/2503.11012",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-robotic-sim-to-real-transfer-for-long-horizon-pick-and-place-tasks-in-th-2b794f59.png",
+    "method": "source",
+    "extracted_from": "Figure/visual-perception-pipeline.png"
+  },
+  {
+    "id": "2025-icra-foresee-and-act-ahead-task-prediction-and-pre-scheduling-enabled-efficie-72689ad8",
+    "title": "Foresee and Act Ahead: Task Prediction and Pre-Scheduling Enabled Efficient Robotic Warehousing",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-foresee-and-act-ahead-task-prediction-and-pre-scheduling-enabled-efficie-72689ad8.md",
+    "arxiv_id": "2412.06425",
+    "arxiv_url": "http://arxiv.org/abs/2412.06425",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-foresee-and-act-ahead-task-prediction-and-pre-scheduling-enabled-efficie-72689ad8.png",
+    "method": "source",
+    "extracted_from": "framework.png"
+  },
+  {
+    "id": "2025-icra-a-novel-twisted-winching-string-actuator-for-robotic-applications-design-cebb7ad7",
+    "title": "A Novel Twisted-Winching String Actuator for Robotic Applications: Design and Validation",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-novel-twisted-winching-string-actuator-for-robotic-applications-design-cebb7ad7.md",
+    "arxiv_id": "2410.12097",
+    "arxiv_url": "http://arxiv.org/abs/2410.12097",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-a-novel-twisted-winching-string-actuator-for-robotic-applications-design-cebb7ad7.png",
+    "method": "source",
+    "extracted_from": "Figures/ExperimentalSetupStepperCompressed.jpg"
+  },
+  {
+    "id": "2025-icra-pinto-a-latched-spring-actuated-robot-for-jumping-and-perching-bfd6e8df",
+    "title": "Pinto: A Latched Spring Actuated Robot for Jumping and Perching",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-pinto-a-latched-spring-actuated-robot-for-jumping-and-perching-bfd6e8df.md",
+    "arxiv_id": "2409.09203",
+    "arxiv_url": "http://arxiv.org/abs/2409.09203",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-pinto-a-latched-spring-actuated-robot-for-jumping-and-perching-bfd6e8df.png",
+    "method": "source",
+    "extracted_from": "Figures/labeledpinto2.pdf"
+  },
+  {
+    "id": "2025-icra-efficient-optimization-of-a-permanent-magnet-array-for-a-stable-2d-trap-7cc83215",
+    "title": "Efficient Optimization of a Permanent Magnet Array for a Stable 2D Trap",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-efficient-optimization-of-a-permanent-magnet-array-for-a-stable-2d-trap-7cc83215.md",
+    "arxiv_id": "2511.19201",
+    "arxiv_url": "http://arxiv.org/abs/2511.19201",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-efficient-optimization-of-a-permanent-magnet-array-for-a-stable-2d-trap-7cc83215.png",
+    "method": "source",
+    "extracted_from": "img/Figure1.png"
+  },
+  {
+    "id": "2025-icra-pushing-through-clutter-with-movability-awareness-of-blocking-obstacles-0b040a9c",
+    "title": "Pushing through Clutter with Movability Awareness of Blocking Obstacles",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-pushing-through-clutter-with-movability-awareness-of-blocking-obstacles-0b040a9c.md",
+    "arxiv_id": "2502.20106",
+    "arxiv_url": "http://arxiv.org/abs/2502.20106",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-pushing-through-clutter-with-movability-awareness-of-blocking-obstacles-0b040a9c.png",
+    "method": "source",
+    "extracted_from": "figures/3-method/img_simplified_svg_mppi_overview.jpg"
+  },
+  {
+    "id": "2025-icra-asymptotically-optimal-multi-query-path-planning-for-a-polygonal-robot-a521594f",
+    "title": "Asymptotically-Optimal Multi-Query Path Planning for a Polygonal Robot",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-asymptotically-optimal-multi-query-path-planning-for-a-polygonal-robot-a521594f.md",
+    "arxiv_id": "2409.03920",
+    "arxiv_url": "http://arxiv.org/abs/2409.03920",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-asymptotically-optimal-multi-query-path-planning-for-a-polygonal-robot-a521594f.png",
+    "method": "source",
+    "extracted_from": "figures/Narrow_passage72.pdf"
+  },
+  {
+    "id": "2025-icra-non-conservative-obstacle-avoidance-for-multi-body-systems-leveraging-co-32788149",
+    "title": "Non-Conservative Obstacle Avoidance for Multi-Body Systems Leveraging Convex Hulls and Predicted Closest Points",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-non-conservative-obstacle-avoidance-for-multi-body-systems-leveraging-co-32788149.md",
+    "arxiv_id": "2410.12659",
+    "arxiv_url": "http://arxiv.org/abs/2410.12659",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-non-conservative-obstacle-avoidance-for-multi-body-systems-leveraging-co-32788149.png",
+    "method": "source",
+    "extracted_from": "IC1_FC1.PNG"
+  },
+  {
+    "id": "2025-icra-making-a-complete-mess-and-getting-away-with-it-traveling-salesperson-pr-c137f604",
+    "title": "Making a Complete Mess and Getting Away with It: Traveling Salesperson Problems with Circle Placement Variants",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-making-a-complete-mess-and-getting-away-with-it-traveling-salesperson-pr-c137f604.md",
+    "arxiv_id": "2410.08627",
+    "arxiv_url": "http://arxiv.org/abs/2410.08627",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-making-a-complete-mess-and-getting-away-with-it-traveling-salesperson-pr-c137f604.png",
+    "method": "source",
+    "extracted_from": "figures/drill_rig.jpg"
+  },
+  {
+    "id": "2025-icra-topo-geometrically-distinct-path-computation-using-neighborhood-augmente-e05a5465",
+    "title": "Topo-Geometrically Distinct Path Computation Using Neighborhood-Augmented Graph, and Its Application to Path Planning for a Tethered Robot in 3D",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-topo-geometrically-distinct-path-computation-using-neighborhood-augmente-e05a5465.md",
+    "arxiv_id": "2306.01203",
+    "arxiv_url": "http://arxiv.org/abs/2306.01203",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-topo-geometrically-distinct-path-computation-using-neighborhood-augmente-e05a5465.png",
+    "method": "source",
+    "extracted_from": "pdf_images/rr_exp_main.pdf"
+  },
+  {
+    "id": "2025-icra-exact-wavefront-propagation-for-globally-optimal-one-to-all-path-plannin-50b72344",
+    "title": "Exact Wavefront Propagation for Globally Optimal One-To-All Path Planning on 2D Cartesian Grids",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-exact-wavefront-propagation-for-globally-optimal-one-to-all-path-plannin-50b72344.md",
+    "arxiv_id": "2409.11545",
+    "arxiv_url": "http://arxiv.org/abs/2409.11545",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-exact-wavefront-propagation-for-globally-optimal-one-to-all-path-plannin-50b72344.png",
+    "method": "source",
+    "extracted_from": "images/new_comparison.png"
+  },
+  {
+    "id": "2025-icra-impossibility-of-self-organized-aggregation-without-computation-20a5fd6c",
+    "title": "Impossibility of Self-Organized Aggregation without Computation",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-impossibility-of-self-organized-aggregation-without-computation-20a5fd6c.md",
+    "arxiv_id": "2501.00390",
+    "arxiv_url": "http://arxiv.org/abs/2501.00390",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-impossibility-of-self-organized-aggregation-without-computation-20a5fd6c.png",
+    "method": "source",
+    "extracted_from": "images/simulations/Aggregation_Percentage.pdf"
+  },
+  {
+    "id": "2025-icra-training-human-robot-teams-by-improving-transparency-through-a-virtual-s-358b28fd",
+    "title": "Training Human-Robot Teams by Improving Transparency through a Virtual Spectator Interface",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-training-human-robot-teams-by-improving-transparency-through-a-virtual-s-358b28fd.md",
+    "arxiv_id": "2503.09849",
+    "arxiv_url": "http://arxiv.org/abs/2503.09849",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-training-human-robot-teams-by-improving-transparency-through-a-virtual-s-358b28fd.png",
+    "method": "source",
+    "extracted_from": "Figures/vsi_3.png"
+  },
+  {
+    "id": "2025-icra-enhancing-robotic-system-robustness-via-lyapunov-exponent-based-optimiza-5f808c03",
+    "title": "Enhancing Robotic System Robustness Via Lyapunov Exponent-Based Optimization",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-enhancing-robotic-system-robustness-via-lyapunov-exponent-based-optimiza-5f808c03.md",
+    "arxiv_id": "2412.06776",
+    "arxiv_url": "http://arxiv.org/abs/2412.06776",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-enhancing-robotic-system-robustness-via-lyapunov-exponent-based-optimiza-5f808c03.png",
+    "method": "source",
+    "extracted_from": "images/workflow.pdf"
+  },
+  {
+    "id": "2025-icra-second-order-stein-variational-dynamic-optimization-2eea0b0d",
+    "title": "Second-Order Stein Variational Dynamic Optimization",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-second-order-stein-variational-dynamic-optimization-2eea0b0d.md",
+    "arxiv_id": "2409.04644",
+    "arxiv_url": "http://arxiv.org/abs/2409.04644",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-second-order-stein-variational-dynamic-optimization-2eea0b0d.png",
+    "method": "source",
+    "extracted_from": "fig/MPC/quad/Paper/Quad_MPPI_Clutter4_3D.pdf"
+  },
+  {
+    "id": "2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c",
+    "title": "Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md",
+    "arxiv_id": "2408.07330",
+    "arxiv_url": "http://arxiv.org/abs/2408.07330",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.png",
+    "method": "source",
+    "extracted_from": "Figure/main_figure/main_figure5.pdf"
+  },
+  {
+    "id": "2025-icra-codyntrust-robust-asynchronous-collaborative-perception-via-dynamic-feat-6fd028fb",
+    "title": "CoDynTrust: Robust Asynchronous Collaborative Perception Via Dynamic Feature Trust Modulus",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-codyntrust-robust-asynchronous-collaborative-perception-via-dynamic-feat-6fd028fb.md",
+    "arxiv_id": "2502.08169",
+    "arxiv_url": "http://arxiv.org/abs/2502.08169",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-codyntrust-robust-asynchronous-collaborative-perception-via-dynamic-feat-6fd028fb.png",
+    "method": "source",
+    "extracted_from": "overview.pdf"
+  },
+  {
+    "id": "2025-icra-bipedal-walking-with-continuously-compliant-robotic-legs-159269a1",
+    "title": "Bipedal Walking with Continuously Compliant Robotic Legs",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-bipedal-walking-with-continuously-compliant-robotic-legs-159269a1.md",
+    "arxiv_id": "2411.06948",
+    "arxiv_url": "http://arxiv.org/abs/2411.06948",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-bipedal-walking-with-continuously-compliant-robotic-legs-159269a1.png",
+    "method": "source",
+    "extracted_from": "figures/model-single-leg.pdf"
+  },
+  {
+    "id": "2025-icra-a-human-in-the-loop-simulation-framework-for-evaluating-control-strategi-b92b1e24",
+    "title": "A Human-In-The-Loop Simulation Framework for Evaluating Control Strategies in Gait Assistive Robots",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-human-in-the-loop-simulation-framework-for-evaluating-control-strategi-b92b1e24.md",
+    "arxiv_id": "2503.05825",
+    "arxiv_url": "http://arxiv.org/abs/2503.05825",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-a-human-in-the-loop-simulation-framework-for-evaluating-control-strategi-b92b1e24.png",
+    "method": "source",
+    "extracted_from": "imgs/HITL_framework_new.eps"
+  },
+  {
+    "id": "2025-icra-optimizing-robot-programming-mixed-reality-gripper-control-de85554e",
+    "title": "Optimizing Robot Programming: Mixed Reality Gripper Control",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-optimizing-robot-programming-mixed-reality-gripper-control-de85554e.md",
+    "arxiv_id": "2503.02042",
+    "arxiv_url": "http://arxiv.org/abs/2503.02042",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-optimizing-robot-programming-mixed-reality-gripper-control-de85554e.png",
+    "method": "source",
+    "extracted_from": "figures/teaser-fix-height.jpg"
+  },
+  {
+    "id": "2025-icra-equivariant-filter-design-for-range-only-slam-89523508",
+    "title": "Equivariant Filter Design for Range-Only SLAM",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-equivariant-filter-design-for-range-only-slam-89523508.md",
+    "arxiv_id": "2503.03973",
+    "arxiv_url": "http://arxiv.org/abs/2503.03973",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-equivariant-filter-design-for-range-only-slam-89523508.png",
+    "method": "source",
+    "extracted_from": "Image/ground_aligned.pdf"
+  },
+  {
+    "id": "2025-icra-covoxslam-gpu-accelerated-globally-consistent-dense-slam-6599ffd4",
+    "title": "CoVoxSLAM: GPU Accelerated Globally Consistent Dense SLAM",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-covoxslam-gpu-accelerated-globally-consistent-dense-slam-6599ffd4.md",
+    "arxiv_id": "2410.21149",
+    "arxiv_url": "http://arxiv.org/abs/2410.21149",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-covoxslam-gpu-accelerated-globally-consistent-dense-slam-6599ffd4.png",
+    "method": "source",
+    "extracted_from": "pipeline.system.pdf"
+  },
+  {
+    "id": "2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae",
+    "title": "Distributed Certifiably Correct Range-Aided SLAM",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.md",
+    "arxiv_id": "2503.03192",
+    "arxiv_url": "http://arxiv.org/abs/2503.03192",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.png",
+    "method": "source",
+    "extracted_from": "img/dcora_graphical_representation.pdf"
+  },
+  {
+    "id": "2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1",
+    "title": "GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md",
+    "arxiv_id": "2411.06766",
+    "arxiv_url": "http://arxiv.org/abs/2411.06766",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.png",
+    "method": "source",
+    "extracted_from": "pics/GenZ-ICP_flowchart.pdf"
+  },
+  {
+    "id": "2025-icra-range-based-6-dof-monte-carlo-slam-with-gradient-guided-particle-filter-240dc6c2",
+    "title": "Range-Based 6-DoF Monte Carlo SLAM with Gradient-Guided Particle Filter on GPU",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-range-based-6-dof-monte-carlo-slam-with-gradient-guided-particle-filter-240dc6c2.md",
+    "arxiv_id": "2504.18056",
+    "arxiv_url": "http://arxiv.org/abs/2504.18056",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-range-based-6-dof-monte-carlo-slam-with-gradient-guided-particle-filter-240dc6c2.png",
+    "method": "source",
+    "extracted_from": "figs/figure1.pdf"
+  },
+  {
+    "id": "2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0",
+    "title": "A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md",
+    "arxiv_id": "2404.05452",
+    "arxiv_url": "http://arxiv.org/abs/2404.05452",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.png",
+    "method": "source",
+    "extracted_from": "figs/2d_psr_setup.pdf"
+  },
+  {
+    "id": "2025-icra-a-survey-on-small-scale-testbeds-for-connected-and-automated-vehicles-an-ea5354fc",
+    "title": "A Survey on Small-Scale Testbeds for Connected and Automated Vehicles and Robot Swarms",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-survey-on-small-scale-testbeds-for-connected-and-automated-vehicles-an-ea5354fc.md",
+    "arxiv_id": "2408.14199",
+    "arxiv_url": "http://arxiv.org/abs/2408.14199",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-a-survey-on-small-scale-testbeds-for-connected-and-automated-vehicles-an-ea5354fc.png",
+    "method": "source",
+    "extracted_from": "ids3c.jpeg"
+  },
+  {
+    "id": "2025-icra-motion-comparator-visual-comparison-of-robot-motions-91267c68",
+    "title": "Motion Comparator: Visual Comparison of Robot Motions",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-motion-comparator-visual-comparison-of-robot-motions-91267c68.md",
+    "arxiv_id": "2407.02746",
+    "arxiv_url": "http://arxiv.org/abs/2407.02746",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-motion-comparator-visual-comparison-of-robot-motions-91267c68.png",
+    "method": "source",
+    "extracted_from": "figures/teaser.png"
+  },
+  {
+    "id": "2025-icra-text2robot-evolutionary-robot-design-from-text-descriptions-a010a123",
+    "title": "Text2Robot: Evolutionary Robot Design from Text Descriptions",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-text2robot-evolutionary-robot-design-from-text-descriptions-a010a123.md",
+    "arxiv_id": "2406.19963",
+    "arxiv_url": "http://arxiv.org/abs/2406.19963",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-text2robot-evolutionary-robot-design-from-text-descriptions-a010a123.png",
+    "method": "source",
+    "extracted_from": "figures/Fig_Pipeline.png"
+  },
+  {
+    "id": "2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227",
+    "title": "Equivariant IMU Preintegration with Biases: A Galilean Group Approach",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.md",
+    "arxiv_id": "2411.05548",
+    "arxiv_url": "http://arxiv.org/abs/2411.05548",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.png",
+    "method": "source",
+    "extracted_from": "images/linearization_error.pdf"
+  },
+  {
+    "id": "2025-icra-state-estimation-for-continuum-multi-robot-systems-on-se-3-516e64ee",
+    "title": "State Estimation for Continuum Multi-Robot Systems on SE(3)",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-state-estimation-for-continuum-multi-robot-systems-on-se-3-516e64ee.md",
+    "arxiv_id": "2401.13540",
+    "arxiv_url": "http://arxiv.org/abs/2401.13540",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-state-estimation-for-continuum-multi-robot-systems-on-se-3-516e64ee.png",
+    "method": "source",
+    "extracted_from": "figs/figure1_example.pdf"
+  },
+  {
+    "id": "2025-icra-etsm-automating-dissection-trajectory-suggestion-and-confidence-map-base-e49748a4",
+    "title": "ETSM: Automating Dissection Trajectory Suggestion and Confidence Map-Based Safety Margin Prediction for Robot-Assisted Endoscopic Submucosal Dissection",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-etsm-automating-dissection-trajectory-suggestion-and-confidence-map-base-e49748a4.md",
+    "arxiv_id": "2411.18884",
+    "arxiv_url": "http://arxiv.org/abs/2411.18884",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-etsm-automating-dissection-trajectory-suggestion-and-confidence-map-base-e49748a4.png",
+    "method": "source",
+    "extracted_from": "figures/out_of_domain_evaluation_finalversion.pdf"
+  },
+  {
+    "id": "2025-icra-sampling-based-model-predictive-control-for-volumetric-ablation-in-robot-23ba27ef",
+    "title": "Sampling-Based Model Predictive Control for Volumetric Ablation in Robotic Laser Surgery",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-sampling-based-model-predictive-control-for-volumetric-ablation-in-robot-23ba27ef.md",
+    "arxiv_id": "2410.03152",
+    "arxiv_url": "http://arxiv.org/abs/2410.03152",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-sampling-based-model-predictive-control-for-volumetric-ablation-in-robot-23ba27ef.png",
+    "method": "source",
+    "extracted_from": "images/3dfinal.png"
+  },
+  {
+    "id": "2025-icra-asynchronous-multi-object-tracking-with-an-event-camera-0c268a02",
+    "title": "Asynchronous Multi-Object Tracking with an Event Camera",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-asynchronous-multi-object-tracking-with-an-event-camera-0c268a02.md",
+    "arxiv_id": "2505.08126",
+    "arxiv_url": "http://arxiv.org/abs/2505.08126",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-asynchronous-multi-object-tracking-with-an-event-camera-0c268a02.png",
+    "method": "source",
+    "extracted_from": "Figures/AEMOT_sample_085.png"
+  },
+  {
+    "id": "2025-icra-bitrack-bidirectional-offline-3d-multi-object-tracking-using-camera-lida-41bfb5b4",
+    "title": "BiTrack: Bidirectional Offline 3D Multi-Object Tracking Using Camera-LiDAR Data",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-bitrack-bidirectional-offline-3d-multi-object-tracking-using-camera-lida-41bfb5b4.md",
+    "arxiv_id": "2406.18414",
+    "arxiv_url": "http://arxiv.org/abs/2406.18414",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-bitrack-bidirectional-offline-3d-multi-object-tracking-using-camera-lida-41bfb5b4.png",
+    "method": "source",
+    "extracted_from": "figures/offline_tracking_system.pdf"
+  },
+  {
+    "id": "2025-icra-tracking-everything-in-robotic-assisted-surgery-9ac64c25",
+    "title": "Tracking Everything in Robotic-Assisted Surgery",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-tracking-everything-in-robotic-assisted-surgery-9ac64c25.md",
+    "arxiv_id": "2409.19821",
+    "arxiv_url": "http://arxiv.org/abs/2409.19821",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-tracking-everything-in-robotic-assisted-surgery-9ac64c25.png",
+    "method": "source",
+    "extracted_from": "figures/method.png"
+  },
+  {
+    "id": "2025-icra-normalflow-fast-robust-and-accurate-contact-based-object-6dof-pose-track-fb8683bf",
+    "title": "NormalFlow: Fast, Robust, and Accurate Contact-Based Object 6DoF Pose Tracking with Vision-Based Tactile Sensors",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-normalflow-fast-robust-and-accurate-contact-based-object-6dof-pose-track-fb8683bf.md",
+    "arxiv_id": "2412.09617",
+    "arxiv_url": "http://arxiv.org/abs/2412.09617",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-normalflow-fast-robust-and-accurate-contact-based-object-6dof-pose-track-fb8683bf.png",
+    "method": "source",
+    "extracted_from": "Figures/teaser.jpg"
+  },
+  {
+    "id": "2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a",
+    "title": "DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md",
+    "arxiv_id": "2410.15373",
+    "arxiv_url": "http://arxiv.org/abs/2410.15373",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.png",
+    "method": "source",
+    "extracted_from": "figs/fig1/fig1.pdf"
+  },
+  {
+    "id": "2025-icra-design-characterization-and-validation-of-a-variable-stiffness-prostheti-b5c9e39d",
+    "title": "Design, Characterization, and Validation of a Variable Stiffness Prosthetic Elbow",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-design-characterization-and-validation-of-a-variable-stiffness-prostheti-b5c9e39d.md",
+    "arxiv_id": "2412.03985",
+    "arxiv_url": "http://arxiv.org/abs/2412.03985",
+    "asset": "assets/figures/icra2025-non-ai/2025-icra-design-characterization-and-validation-of-a-variable-stiffness-prostheti-b5c9e39d.png",
+    "method": "source",
+    "extracted_from": "Figures/Introduction/Fig1b.pdf"
+  }
+]

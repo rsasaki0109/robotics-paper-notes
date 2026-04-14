@@ -5,6 +5,7 @@ ICRA 2025 の論文一覧から arXiv 公開済みと判定できた **159本** 
 - Source: ICRA 2025 paper list + abstract CSV
 - Matching: title match via OpenAlex, then arXiv URL presence check
 - Note: すべて abstract ベースの初稿であり、精読前のメモです。
+- Browse: [Non-AI 60 feed](./non-ai-feed.html) / [Non-AI first](./non-ai.md) / [Non-AI Top 12](./non-ai-top.md)
 
 ## AI dependency overview
 
