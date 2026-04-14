@@ -5,6 +5,7 @@
 まずは **AI偏重ではない論文**、つまり幾何・最適化・推定・制御・システム設計など、古典的かつ実装に近い知見を含む論文を優先して整理します。
 
 現在、**ICRA 2025 の arXiv 公開済み 159本** について abstract ベースの自動下書きを作成済みです。うち **Non-AI 判定は 60本** です。
+さらに、**まず読むべき Non-AI Top 12** の curated page も追加しています。
 
 ## 対象分野
 
@@ -67,6 +68,7 @@
 
 - `papers/icra2025-arxiv/index.md`: ICRA 2025 arXiv 下書き 159本の一覧
 - `papers/icra2025-arxiv/non-ai.md`: Non-AI 判定 60本の優先読みリスト
+- `papers/icra2025-arxiv/non-ai-top.md`: 最初に読むべき Top 12
 
 ## 使い方
 

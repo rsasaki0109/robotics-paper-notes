@@ -5,6 +5,7 @@
 まずは **non-AI 論文優先** で、幾何・最適化・推定・制御・システム設計に寄った論文から蓄積します。
 
 現在は **ICRA 2025 の arXiv 公開済み 159本** の自動下書きを公開中です。**Non-AI 判定 60本** の入口も別ページで用意しています。
+さらに、**Non-AI Top 12** の curated reading list を追加しました。
 
 ## Focus
 
@@ -34,3 +35,4 @@
 - [Papers](./papers/index.md)
 - [ICRA 2025 arXiv drafts](./papers/icra2025-arxiv/index.md)
 - [ICRA 2025 Non-AI first](./papers/icra2025-arxiv/non-ai.md)
+- [ICRA 2025 Non-AI Top 12](./papers/icra2025-arxiv/non-ai-top.md)
