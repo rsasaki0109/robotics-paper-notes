@@ -4,6 +4,8 @@
 
 まずは **AI偏重ではない論文**、つまり幾何・最適化・推定・制御・システム設計など、古典的かつ実装に近い知見を含む論文を優先して整理します。
 
+現在、**ICRA 2025 の arXiv 公開済み 159本** について abstract ベースの自動下書きを作成済みです。うち **Non-AI 判定は 60本** です。
+
 ## 対象分野
 
 中心テーマ:
@@ -46,6 +48,9 @@
 ├── index.md
 ├── papers/
 │   ├── .gitkeep
+│   ├── icra2025-arxiv/
+│   │   ├── index.md
+│   │   └── non-ai.md
 │   └── index.md
 ├── templates/
 │   └── paper.md
@@ -53,9 +58,15 @@
 ```
 
 - `papers/`: 論文ごとのまとめを1ファイルずつ追加する場所
+- `papers/icra2025-arxiv/`: ICRA 2025 の arXiv 公開済み論文の自動下書き
 - `templates/paper.md`: 論文メモの共通テンプレート
 - `README.md`: このリポジトリの目的と運用ルール
 - `index.md`: GitHub Pages 用のトップページ
+
+## 現在の入口
+
+- `papers/icra2025-arxiv/index.md`: ICRA 2025 arXiv 下書き 159本の一覧
+- `papers/icra2025-arxiv/non-ai.md`: Non-AI 判定 60本の優先読みリスト
 
 ## 使い方
 
@@ -65,4 +76,4 @@
 
 ## 今後
 
-今後 `papers/` に論文まとめを追加し、まずは non-AI な SLAM / Localization / GNSS / LiDAR / Planning / Control の論文から整理し、その後必要に応じて AI 系の論文も比較対象として扱います。
+今後 `papers/` に論文まとめを追加し、まずは non-AI な SLAM / Localization / GNSS / LiDAR / Planning / Control の論文から整理し、その後必要に応じて AI 系の論文も比較対象として扱います。ICRA 2025 については、まず arXiv 公開済み論文の下書きから順に精読版へ育てていきます。
