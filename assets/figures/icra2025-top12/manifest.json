@@ -1,0 +1,98 @@
+[
+  {
+    "id": "p1",
+    "title": "GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization",
+    "arxiv_id": "2309.11134",
+    "asset": "assets/figures/icra2025-top12/p1.png",
+    "method": "source",
+    "extracted_from": "figures/system_overview.pdf"
+  },
+  {
+    "id": "p2",
+    "title": "Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry",
+    "arxiv_id": "2409.06948",
+    "asset": "assets/figures/icra2025-top12/p2.png",
+    "method": "source",
+    "extracted_from": "figures/flow/flow.pdf"
+  },
+  {
+    "id": "p3",
+    "title": "GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting",
+    "arxiv_id": "2411.06766",
+    "asset": "assets/figures/icra2025-top12/p3.png",
+    "method": "source",
+    "extracted_from": "pics/GenZ-ICP_flowchart.pdf"
+  },
+  {
+    "id": "p4",
+    "title": "DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery",
+    "arxiv_id": "2410.15373",
+    "asset": "assets/figures/icra2025-top12/p4.png",
+    "method": "source",
+    "extracted_from": "figs/fig1/fig1.pdf"
+  },
+  {
+    "id": "p5",
+    "title": "Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems",
+    "arxiv_id": "2501.01788",
+    "asset": "assets/figures/icra2025-top12/p5.png",
+    "method": "source",
+    "extracted_from": "figures/timeoffset1_icra2025.pdf"
+  },
+  {
+    "id": "p6",
+    "title": "Equivariant IMU Preintegration with Biases: A Galilean Group Approach",
+    "arxiv_id": "2411.05548",
+    "asset": "assets/figures/icra2025-top12/p6.png",
+    "method": "source",
+    "extracted_from": "images/linearization_error.pdf"
+  },
+  {
+    "id": "p7",
+    "title": "A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares",
+    "arxiv_id": "2404.05452",
+    "asset": "assets/figures/icra2025-top12/p7.png",
+    "method": "source",
+    "extracted_from": "figs/2d_psr_setup.pdf"
+  },
+  {
+    "id": "p8",
+    "title": "Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition",
+    "arxiv_id": "2408.07330",
+    "asset": "assets/figures/icra2025-top12/p8.png",
+    "method": "source",
+    "extracted_from": "Figure/main_figure/main_figure5.pdf"
+  },
+  {
+    "id": "p9",
+    "title": "CoVoxSLAM: GPU Accelerated Globally Consistent Dense SLAM",
+    "arxiv_id": "2410.21149",
+    "asset": "assets/figures/icra2025-top12/p9.png",
+    "method": "source",
+    "extracted_from": "pipeline.system.pdf"
+  },
+  {
+    "id": "p10",
+    "title": "Exact Wavefront Propagation for Globally Optimal One-To-All Path Planning on 2D Cartesian Grids",
+    "arxiv_id": "2409.11545",
+    "asset": "assets/figures/icra2025-top12/p10.png",
+    "method": "source",
+    "extracted_from": "images/new_comparison.png"
+  },
+  {
+    "id": "p11",
+    "title": "Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets",
+    "arxiv_id": "2503.14184",
+    "asset": "assets/figures/icra2025-top12/p11.png",
+    "method": "source",
+    "extracted_from": "fig/moving_targets_expt.eps"
+  },
+  {
+    "id": "p12",
+    "title": "Distributed Certifiably Correct Range-Aided SLAM",
+    "arxiv_id": "2503.03192",
+    "asset": "assets/figures/icra2025-top12/p12.png",
+    "method": "source",
+    "extracted_from": "img/dcora_graphical_representation.pdf"
+  }
+]
