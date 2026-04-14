@@ -12,6 +12,10 @@
 
 * (例: Loop Closure / BEV / Camera-LiDAR Fusion / HD Map / MPC)
 
+## AI依存度
+
+* Non-AI / Hybrid / AI-heavy
+
 ## 何を解決？
 
 *
@@ -35,6 +39,10 @@
 ## 関連研究との違い
 
 *
+
+## non-AIとして見る価値
+
+* 幾何 / 最適化 / 推定 / 制御 / 実装容易性の観点で何が学べるか
 
 ## 難易度
 

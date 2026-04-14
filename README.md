@@ -2,6 +2,8 @@
 
 ロボティクス論文（主に2025年）を高速に整理・理解するための、軽量な論文まとめリポジトリです。実験や実装は行わず、読解・要点整理・自分の解釈の言語化に特化します。
 
+まずは **AI偏重ではない論文**、つまり幾何・最適化・推定・制御・システム設計など、古典的かつ実装に近い知見を含む論文を優先して整理します。
+
 ## 対象分野
 
 中心テーマ:
@@ -27,6 +29,15 @@
 - 1論文は60分以内で読める粒度にする
 - 完璧を目指さず、スピードと継続を優先する
 - 要点整理だけで終わらせず、自分の解釈を必ず書く
+- まずは non-AI / classical / model-based な論文を優先する
+
+## 優先して拾う論文
+
+- 幾何ベースのSLAM / Visual Odometry / LiDAR Odometry
+- 状態推定、GNSS統合、カルマンフィルタ、因子グラフ最適化
+- 地図生成、キャリブレーション、センサアライメント
+- Motion Planning / Trajectory Optimization / MPC
+- 制御、システム統合、実運用で効く設計論
 
 ## ディレクトリ構成
 
@@ -54,4 +65,4 @@
 
 ## 今後
 
-今後 `papers/` に論文まとめを追加し、SLAM / Localization / GNSS / LiDAR / Intelligent Vehicles を中心に、Perception / Mapping / Planning / Control まで含めて継続的に整理していきます。
+今後 `papers/` に論文まとめを追加し、まずは non-AI な SLAM / Localization / GNSS / LiDAR / Planning / Control の論文から整理し、その後必要に応じて AI 系の論文も比較対象として扱います。
