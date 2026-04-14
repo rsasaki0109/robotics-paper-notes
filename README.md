@@ -4,10 +4,22 @@
 
 ## 対象分野
 
+中心テーマ:
+
 - SLAM
+- Localization
 - GNSS
 - LiDAR
 - Intelligent Vehicles
+
+関連して扱うテーマ:
+
+- Perception
+- Mapping
+- Sensor Fusion
+- Motion Planning
+- Control
+- Autonomous Driving
 
 ## 運用ルール
 
@@ -42,4 +54,4 @@
 
 ## 今後
 
-今後 `papers/` に論文まとめを追加し、SLAM / GNSS / LiDAR / Intelligent Vehicles を中心に、継続的に整理していきます。
+今後 `papers/` に論文まとめを追加し、SLAM / Localization / GNSS / LiDAR / Intelligent Vehicles を中心に、Perception / Mapping / Planning / Control まで含めて継続的に整理していきます。

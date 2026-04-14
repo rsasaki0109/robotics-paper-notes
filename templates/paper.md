@@ -6,7 +6,11 @@
 
 ## Task
 
-* (例: SLAM / Localization / GNSS Fusion / Intelligent Vehicles)
+* (例: SLAM / Localization / GNSS Fusion / LiDAR Perception / Mapping / Sensor Fusion / Motion Planning / Control / Intelligent Vehicles / Autonomous Driving)
+
+## Keywords
+
+* (例: Loop Closure / BEV / Camera-LiDAR Fusion / HD Map / MPC)
 
 ## 何を解決？
 
