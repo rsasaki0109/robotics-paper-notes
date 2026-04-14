@@ -397,6 +397,23 @@
         padding: 0;
       }
 
+      .figure-box {
+        display: grid;
+        place-items: center;
+        min-height: 14rem;
+        padding: 0.9rem;
+        border-radius: 1.1rem;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .figure-box img {
+        display: block;
+        width: 100%;
+        max-height: 18rem;
+        object-fit: contain;
+      }
+
       .poster-list li {
         padding: 0.78rem 0.85rem;
         border-radius: 1rem;
@@ -504,17 +521,17 @@
           <h1 class="hero-title">1 paper = 1 richer slide</h1>
           <p class="lead">
             ただのリンク集ではなく、1枚だけでも輪郭が掴めるように作り直した feed です。
-            各スライドに <strong>TL;DR / session / focus / difficulty / poster-like visual</strong> を入れて、
+            各スライドに <strong>TL;DR / session / focus / difficulty / 自動抽出した図 / poster-like visual</strong> を入れて、
             スクロールしながら気になる論文だけ詳細ノートや arXiv に飛べるようにしています。
           </p>
           <div class="cover-grid">
             <div class="panel">
               <h2>What changed</h2>
-              <p>各論文に TL;DR 3点、読む理由、見るべき技術ポイント、focus area、difficulty を追加しました。</p>
+              <p>各論文に TL;DR 3点、読む理由、見るべき技術ポイント、focus area、difficulty、実抽出 figure を追加しました。</p>
             </div>
             <div class="panel">
               <h2>Visual layer</h2>
-              <p>右側に poster-like な summary panel を置き、文字だけでなく一目で掴める密度へ寄せています。</p>
+              <p>右側には arXiv source から自動抽出した代表図を表示し、その下に summary panel を重ねています。</p>
             </div>
           </div>
           <div class="actions">
@@ -978,6 +995,9 @@
                               <div class="poster-sub">${escapeHtml(paper.poster.sub)}</div>
                             </div>
                             <div class="poster-rank">#${paper.rank}</div>
+                          </div>
+                          <div class="figure-box">
+                            <img src="./assets/figures/icra2025-top12/${paper.id}.png" alt="${escapeHtml(paper.title)} extracted figure" loading="lazy">
                           </div>
                           <ul class="poster-list">
                             ${paper.poster.blocks
