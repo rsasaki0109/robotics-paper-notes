@@ -1,6 +1,6 @@
 # Pushing through Clutter with Movability Awareness of Blocking Obstacles
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,18 +11,20 @@
 
 ## TL;DR
 
-- Navigation Among Movable Obstacles (NAMO) poses a challenge for traditional path-planning methods when obstacles block the path, requiring push actions to reach the goal.
-- We propose a framework that enables movability-aware planning to overcome this challenge without relying on explicit obstacle placement.
-- Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.
+- NAMO を binary movable / immovable でなく、**mass ベースの continuous movability** で扱う論文。
+- global path planning は **Semantic Visibility Graph**, local control は **MPPI + physics engine** でまとめている。
+- 「どの障害物なら押しても得か」を cost に素直に入れていて、interactive navigation としてかなり実用寄り。
 
 ## Task
 
 * Motion Planning
-* Control
+* Interactive Navigation
+* NAMO
+* Model Predictive Control
 
 ## Keywords
 
-* Motion and Path Planning / Collision Avoidance / Integrated Planning and Control
+* Movability / Visibility Graph / MPPI / Contact Force / Physics-Based Planning
 
 ## AI依存度
 
@@ -30,36 +32,51 @@
 
 ## 何を解決？
 
-* Navigation Among Movable Obstacles (NAMO) poses a challenge for traditional path-planning methods when obstacles block the path, requiring push actions to reach the goal.
+* cluttered environment では、押せる障害物を少し動かせば通れる場面が多い。
+* 既存 NAMO は障害物を動かせる/動かせないの binary で見ることが多く、**押しやすさの差**を十分使えていない。
+* その結果、不要に重い物体を押そうとしたり、遠回りしすぎたりする。
 
 ## 何が新しい？
 
-* We propose a framework that enables movability-aware planning to overcome this challenge without relying on explicit obstacle placement.
+* obstacle mass を使って **movability を連続量**として path cost に入れる点。
+* passage node を持つ Semantic Visibility Graph で、どの gap を抜けるかを global に決める点。
+* local control 側は MPPI を physics engine 上で回し、contact force を直接 cost に入れている点。
 
 ## どうやってる？
 
-* Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.
+* global では visibility graph を作り、通れない gap 周辺に passage node を置く。
+* node や edge の cost は、距離だけでなく押す必要がある障害物の mass に応じて重くする。
+* local では MPPI の rollout を simulator 上で評価し、waypoint 追従・progress・rotation に加えて **contact force** も罰する。
+* 実際に押せない/重すぎると分かったときは online replanning で扱いを変える。
 
 ## どこが強い？
 
-* Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.
+* binary で雑に分けず、**押しやすさを cost として使う**のがとても自然。
+* obstacle placement planning を別問題として解かずに済み、NAMO の現実感が上がっている。
+* local control が physics-aware なので、見た目だけでなく interaction effort も抑えられる。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* obstacle mass が既知 or 推定できる前提に依存する。
+* holonomic platform 寄りで、非ホロ台車や humanoid にそのまま行けるかは不明。
+* real-world validation はまだ限定的で、dense clutter 全般での強さはもっと見たい。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* 従来の binary NAMO より、**continuous movability** を導入しているのが本質。
+* RRT ベースより graph planner と MPPI の役割分担が明快。
+* ただ push できる前提でなく、push effort を明示 cost にしている点が良い。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* interactive navigation を学習 policy ではなく、**geometry + cost design + physics** で解いている。
+* clutter 中で「何を動かすと得か」をどう planning に入れるかが分かりやすい。
 
 ## 難易度
 
-★★★（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 発想はシンプルだがかなり効いていて、binary movability の雑さをうまく突いている。
+* 実システムに近い NAMO の入口としてかなり良い論文。

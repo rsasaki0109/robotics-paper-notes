@@ -275,47 +275,47 @@
               <div class="meta-row">
                 <span class="rank-pill">02 / 60</span>
                 <span class="chip group-chip">Aerial Robots: Mechanics and Control 1</span>
-                <span class="chip task-chip">Mapping</span><span class="chip task-chip">Control</span><span class="chip task-chip">Calibration</span><span class="chip task-chip">Intelligent Vehicles</span>
+                <span class="chip task-chip">Aerial Robots</span><span class="chip task-chip">Low-Level Control</span><span class="chip task-chip">Thrust Estimation</span><span class="chip task-chip">Flight Dynamics</span>
               </div>
               <h1 class="paper-title">A Generalized Thrust Estimation and Control Approach for Multirotors Micro Aerial Vehicles</h1>
-              <p class="hook">Here, we propose a novel BEMT-based closed-loop thrust estimator and control to eliminate the laborious calibration step of finding several aerodynamic coefficients.</p>
+              <p class="hook">BEMT をベースにした thrust / power 推定を、ESC telemetry だけで real-time に回している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper addresses the problem of thrust estimation and control for the rotors of small-sized multirotors Uncrewed Aerial Vehicles (UAVs).</li><li>Here, we propose a novel BEMT-based closed-loop thrust estimator and control to eliminate the laborious calibration step of finding several aerodynamic coefficients.</li><li>A feedforward PID thrust control was implemented for each rotor, and the methods were validated by outdoor experiments with two multirotor UAV platforms: 250mm and 500mm.</li></ul>
+                  <ul class="bullet-list"><li>rotor thrust を単純な二次式でなく、**BEMT ベースの一般化 thrust estimator** で推定して制御に入れる論文。</li><li>platform ごとに大量キャリブレーションする代わりに、**1点キャリブレーション + 物理モデル** で済ませようとしているのが実務的。</li><li>省電力性は少し悪化するが、wind gust を含む実環境では tracking robustness が上がっている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper addresses the problem of thrust estimation and control for the rotors of small-sized multirotors Uncrewed Aerial Vehicles (UAVs).</p>
+                  <p>multirotor の下層制御では、推力とロータ速度の関係を単純な二次式で近似することが多い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Here, we propose a novel BEMT-based closed-loop thrust estimator and control to eliminate the laborious calibration step of finding several aerodynamic coefficients.</p>
+                  <p>BEMT をベースにした thrust / power 推定を、ESC telemetry だけで real-time に回している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This paper addresses the problem of thrust estimation and control for the rotors of small-sized multirotors Uncrewed Aerial Vehicles (UAVs).</p>
+                  <p>電流・電圧・回転数から mechanical / aerodynamic power を見積もる。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>A feedforward PID thrust control was implemented for each rotor, and the methods were validated by outdoor experiments with two multirotor UAV platforms: 250mm and 500mm.</p>
+                  <p>モデルベースなのに重すぎず、**autopilot に現実的に入る**。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>drone control の性能は policy だけでなく、**最下層の thrust estimation** でもかなり変わることが分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>派手さはないが、PX4 周辺の実務にはかなり効きそうな改善。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Aerial Robots: Mechanics and Control 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Mechanics and Control / Aerial Systems: Applications / Motion Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>BEMT / Thrust Mapping / PX4 / Feedforward PID / Aerodynamic Modeling</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-a-generalized-thrust-estimation-and-control-approach-for-multirotors-mic-071f780b.md">Detail note</a>
@@ -328,7 +328,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>A feedforward PID thrust control was implemented for each rotor, and the methods were validated by outdoor experiments with two multirotor UAV platforms: 250mm and 500mm.</p>
+                <p>モデルベースなのに重すぎず、**autopilot に現実的に入る**。</p>
               </div>
             </aside>
           </div>
@@ -341,47 +341,47 @@
               <div class="meta-row">
                 <span class="rank-pill">03 / 60</span>
                 <span class="chip group-chip">Aerial Robots: Mechanics and Control 1</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">Control</span><span class="chip task-chip">Aerial Robotics</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Aerial Robots</span><span class="chip task-chip">Minimalist Platforms</span><span class="chip task-chip">Low-Cost Robotics</span><span class="chip task-chip">Motion Control</span>
               </div>
               <h1 class="paper-title">The Spinning Blimp: Design and Control of a Novel Minimalist Aerial Vehicle Leveraging Rotational Dynamics and Locomotion</h1>
-              <p class="hook">We propose a control strategy that takes advantage of the continuous revolving nature of the spinning blimp to control translational motion.</p>
+              <p class="hook">lighter-than-air の浮力と spinning dynamics を組み合わせた platform 設計。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper presents the Spinning Blimp, a novel lighter-than-air (LTA) aerial vehicle designed for low-energy stable flight.</li><li>Using an oblate spheroid helium balloon for buoyancy, the vehicle achieves minimal energy consumption while maintaining prolonged airborne states.</li><li>The unique and low-cost design employs a passively arranged wing coupled with a propeller to induce a spinning behavior, providing inherent pendulum-like stabilization.</li></ul>
+                  <ul class="bullet-list"><li>helium balloon と spinning rotor を組み合わせた、**極小コスト・長時間飛行**寄りの minimalist aerial vehicle。</li><li>pendulum 的な受動安定性と bang-bang control を使い、quadrotor ほど複雑な attitude loop を持たずに飛ばしている。</li><li>高性能機ではないが、**安全・安価・長寿命**という全く別の設計軸が面白い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper presents the Spinning Blimp, a novel lighter-than-air (LTA) aerial vehicle designed for low-energy stable flight.</p>
+                  <p>quadrotor は機動性は高いが、制御も消費電力も重く、屋内や教育用途ではオーバースペックなことがある。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We propose a control strategy that takes advantage of the continuous revolving nature of the spinning blimp to control translational motion.</p>
+                  <p>lighter-than-air の浮力と spinning dynamics を組み合わせた platform 設計。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This paper presents the Spinning Blimp, a novel lighter-than-air (LTA) aerial vehicle designed for low-energy stable flight.</p>
+                  <p>helium balloon がほぼ重量を支え、2 つの DC motor と wing/propeller 系が回転運動を作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>This paper presents the Spinning Blimp, a novel lighter-than-air (LTA) aerial vehicle designed for low-energy stable flight.</p>
+                  <p>とにかく安くて安全で、長時間飛べる。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>ロボット設計では「制御で頑張る」以外に、**機体の自然ダイナミクスで問題を楽にする**道があると分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>めちゃくちゃ強い飛行体ではないが、設計思想がきれいで好き。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Aerial Robots: Mechanics and Control 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★☆☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Mechanics and Control / Aerial Systems: Applications</strong></div>
+                <div class="fact"><span>Keywords</span><strong>LTA / Blimp / Bang-Bang Control / Passive Stability / Long Endurance</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-the-spinning-blimp-design-and-control-of-a-novel-minimalist-aerial-vehicle-leveraging-rotational-dynamics-and-locomotion-dd85cec6.md">Detail note</a>
@@ -394,7 +394,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>This paper presents the Spinning Blimp, a novel lighter-than-air (LTA) aerial vehicle designed for low-energy stable flight.</p>
+                <p>とにかく安くて安全で、長時間飛べる。</p>
               </div>
             </aside>
           </div>
@@ -1265,47 +1265,47 @@
               <div class="meta-row">
                 <span class="rank-pill">17 / 60</span>
                 <span class="chip group-chip">Legged Robots</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Legged Robots</span><span class="chip task-chip">Model Predictive Control</span><span class="chip task-chip">Multibody Dynamics</span><span class="chip task-chip">Embodied Compliance</span>
               </div>
               <h1 class="paper-title">Deformable Multibody Modeling for Model Predictive Control in Legged Locomotion with Embodied Compliance</h1>
-              <p class="hook">The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.</p>
+              <p class="hook">deformable body を複数 sub-body に分けて扱う一般的な multibody 表現。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.</li><li>Our approach introduces a unified description for rigid and compliant bodies to approximate their deformation and a formulation for deformable multibody systems.</li><li>We develop the centroidal composite predictive deformed inertia (CCPDI) tensor of a deformable multibody system and show how to integrate it with the standard-of-practice model predictive controller (MPC).</li></ul>
+                  <ul class="bullet-list"><li>compliant spine を持つ脚ロボを rigid body 近似で済ませず、**deformable multibody model** を MPC に入れようとする論文。</li><li>変形に応じて inertia が変わることを、**predictive deformed inertia / CCPDI** で horizon 内へ持ち込むのが肝。</li><li>locomotion with embodied compliance を真面目にモデル化したい人にはかなり刺さる。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.</p>
+                  <p>標準的な legged MPC は rigid-body 前提が強く、柔らかい spine や compliance を持つ robot では inertia 予測がズレやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.</p>
+                  <p>deformable body を複数 sub-body に分けて扱う一般的な multibody 表現。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.</p>
+                  <p>deformable spine などを、相対運動する rigid sub-body 群として近似する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We develop the centroidal composite predictive deformed inertia (CCPDI) tensor of a deformable multibody system and show how to integrate it with the standard-of-practice model predictive controller (MPC).</p>
+                  <p>compliance を「余計なノイズ」でなく、**モデルに入れるべき構造**として扱っているのが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>embodied compliance を「学習で吸収」せず、**ダイナミクスを増やしてでもモデルで扱う**方向性が明快。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなりまっとうな問題設定で、compliant legged system を rigid MPC の外側に置かないのが良い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Legged Robots</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Dynamics / Legged Robots / Compliant Joints and Mechanisms</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Centroidal Dynamics / Deformable Multibody / Compliance / Inertia Prediction / MPC</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-deformable-multibody-modeling-for-model-predictive-control-in-legged-locomotion-with-embodied-compliance-c5b57a92.md">Detail note</a>
@@ -1318,7 +1318,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We develop the centroidal composite predictive deformed inertia (CCPDI) tensor of a deformable multibody system and show how to integrate it with the standard-of-practice model predictive controller (MPC).</p>
+                <p>compliance を「余計なノイズ」でなく、**モデルに入れるべき構造**として扱っているのが良い。</p>
               </div>
             </aside>
           </div>
@@ -2057,47 +2057,47 @@
               <div class="meta-row">
                 <span class="rank-pill">29 / 60</span>
                 <span class="chip group-chip">Motion Planning 1</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Interactive Navigation</span><span class="chip task-chip">NAMO</span><span class="chip task-chip">Model Predictive Control</span>
               </div>
               <h1 class="paper-title">Pushing through Clutter with Movability Awareness of Blocking Obstacles</h1>
-              <p class="hook">We propose a framework that enables movability-aware planning to overcome this challenge without relying on explicit obstacle placement.</p>
+              <p class="hook">obstacle mass を使って **movability を連続量**として path cost に入れる点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Navigation Among Movable Obstacles (NAMO) poses a challenge for traditional path-planning methods when obstacles block the path, requiring push actions to reach the goal.</li><li>We propose a framework that enables movability-aware planning to overcome this challenge without relying on explicit obstacle placement.</li><li>Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.</li></ul>
+                  <ul class="bullet-list"><li>NAMO を binary movable / immovable でなく、**mass ベースの continuous movability** で扱う論文。</li><li>global path planning は **Semantic Visibility Graph**, local control は **MPPI + physics engine** でまとめている。</li><li>「どの障害物なら押しても得か」を cost に素直に入れていて、interactive navigation としてかなり実用寄り。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Navigation Among Movable Obstacles (NAMO) poses a challenge for traditional path-planning methods when obstacles block the path, requiring push actions to reach the goal.</p>
+                  <p>cluttered environment では、押せる障害物を少し動かせば通れる場面が多い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We propose a framework that enables movability-aware planning to overcome this challenge without relying on explicit obstacle placement.</p>
+                  <p>obstacle mass を使って **movability を連続量**として path cost に入れる点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.</p>
+                  <p>global では visibility graph を作り、通れない gap 周辺に passage node を置く。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.</p>
+                  <p>binary で雑に分けず、**押しやすさを cost として使う**のがとても自然。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>interactive navigation を学習 policy ではなく、**geometry + cost design + physics** で解いている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>発想はシンプルだがかなり効いていて、binary movability の雑さをうまく突いている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Collision Avoidance / Integrated Planning and Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Movability / Visibility Graph / MPPI / Contact Force / Physics-Based Planning</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-pushing-through-clutter-with-movability-awareness-of-blocking-obstacles-0b040a9c.md">Detail note</a>
@@ -2110,7 +2110,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Qualitative and quantitative experiments suggest that SVG-MPPI outperforms existing paradigm that uses only binary movability for planning, achieving higher success rates with reduced cumulative contact forces.</p>
+                <p>binary で雑に分けず、**押しやすさを cost として使う**のがとても自然。</p>
               </div>
             </aside>
           </div>
@@ -2915,47 +2915,47 @@
               <div class="meta-row">
                 <span class="rank-pill">42 / 60</span>
                 <span class="chip group-chip">Perception for Manipulation 1</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Manipulation</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Manipulation Perception</span><span class="chip task-chip">Pose Estimation</span><span class="chip task-chip">Tactile Sensing</span><span class="chip task-chip">Factor Graph Optimization</span>
               </div>
               <h1 class="paper-title">Visuo-Tactile Object Pose Estimation for a Multi-Finger Robot Hand with Low-Resolution In-Hand Tactile Sensing</h1>
-              <p class="hook">Here, we propose that combining visual information and proprioception with binary, low-resolution tactile contact measurements from across the interior surface of an articulated robotic hand can mitigate this issue.</p>
+              <p class="hook">low-resolution binary tactile を multi-finger hand に多数載せ、factor graph に自然に統合している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Accurate 3D pose estimation of grasped objects is an important prerequisite for robots to perform assembly or in-hand manipulation tasks, but object occlusion by the robot&#x27;s own hand greatly increases the difficulty of this perceptual task.</li><li>Here, we propose that combining visual information and proprioception with binary, low-resolution tactile contact measurements from across the interior surface of an articulated robotic hand can mitigate this issue.</li><li>The visuo-tactile object-pose-estimation problem is formulated probabilistically in a factor graph.</li></ul>
+                  <ul class="bullet-list"><li>multi-finger hand の in-hand pose estimation を、**vision + binary tactile + proprioception** の factor graph で解く論文。</li><li>tactile は高解像でなくても、**SDF residual** として幾何的に入れるだけで occlusion 下の pose tracking をかなり助ける。</li><li>vision の初期値には FoundationPose を使っており、全体としては **Hybrid** だが、コアは古典的最適化。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Accurate 3D pose estimation of grasped objects is an important prerequisite for robots to perform assembly or in-hand manipulation tasks, but object occlusion by the robot&#x27;s own hand greatly increases the difficulty of this perceptual task.</p>
+                  <p>multi-finger grasp 中は hand が object を大きく隠すため、vision-only pose estimation が崩れやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Here, we propose that combining visual information and proprioception with binary, low-resolution tactile contact measurements from across the interior surface of an articulated robotic hand can mitigate this issue.</p>
+                  <p>low-resolution binary tactile を multi-finger hand に多数載せ、factor graph に自然に統合している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>The advantages of the proposed approach are first demonstrated in simulation: a custom 15-DoF robot hand with one binary tactile sensor per link grasps 17 YCB objects while observed by an RGB-D camera.</p>
+                  <p>vision 側は FoundationPose から初期 pose を得る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The advantages of the proposed approach are first demonstrated in simulation: a custom 15-DoF robot hand with one binary tactile sensor per link grasps 17 YCB objects while observed by an RGB-D camera.</p>
+                  <p>tactile を高解像画像化せず、**安い binary contact でも効く**ことを示したのが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>Hybrid ではあるが、中核は **SE(3) 最適化・SDF・factor graph** という classical pose estimation。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>tactile を増やしただけでなく、「どう residual に書くか」がきれい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Perception for Manipulation 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
-                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Perception for Grasping and Manipulation / Sensor Fusion / Force and Tactile Sensing</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Visuo-Tactile Fusion / SDF / Factor Graph / In-Hand Manipulation / FoundationPose</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-visuo-tactile-object-pose-estimation-for-a-multi-finger-robot-hand-with-low-resolution-in-hand-tactile-sensing-30e33710.md">Detail note</a>
@@ -2968,7 +2968,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The advantages of the proposed approach are first demonstrated in simulation: a custom 15-DoF robot hand with one binary tactile sensor per link grasps 17 YCB objects while observed by an RGB-D camera.</p>
+                <p>tactile を高解像画像化せず、**安い binary contact でも効く**ことを示したのが良い。</p>
               </div>
             </aside>
           </div>
@@ -3245,47 +3245,47 @@
               <div class="meta-row">
                 <span class="rank-pill">47 / 60</span>
                 <span class="chip group-chip">Robot Mapping 2</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Lifelong Mapping</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Change Detection</span><span class="chip task-chip">Dynamic Object Removal</span>
               </div>
               <h1 class="paper-title">Ephemerality Meets LiDAR-Based Lifelong Mapping</h1>
-              <p class="hook">In this paper, we present ELite, an ephemerality-aided LiDAR-based lifelong mapping framework which can seamlessly align multiple session data, remove dynamic objects, and update maps in an end-to-end fashion.</p>
+              <p class="hook">各点に local / global の **two-stage ephemerality** を持たせる点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Lifelong mapping is crucial for the long-term deployment of robots in dynamic environments.</li><li>In this paper, we present ELite, an ephemerality-aided LiDAR-based lifelong mapping framework which can seamlessly align multiple session data, remove dynamic objects, and update maps in an end-to-end fashion.</li><li>Map elements are typically classified as static or dynamic, but cases like parked cars indicate the need for more detailed categories than binary.</li></ul>
+                  <ul class="bullet-list"><li>lifelong mapping の binary static/dynamic を超えて、**ephemerality = その点が一時的かどうか** を連続値で持つ論文。</li><li>local ephemerality と global ephemerality を分け、alignment / dynamic removal / map update の全段に使っている。</li><li>parked car と新しい壁の違いのような、**長期地図で本当に欲しい区別**をかなり自然に扱える。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Lifelong mapping is crucial for the long-term deployment of robots in dynamic environments.</p>
+                  <p>長期地図では、静的/動的の二値だけでは変化をうまく表せない。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we present ELite, an ephemerality-aided LiDAR-based lifelong mapping framework which can seamlessly align multiple session data, remove dynamic objects, and update maps in an end-to-end fashion.</p>
+                  <p>各点に local / global の **two-stage ephemerality** を持たせる点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Central to our approach is the probabilistic modeling of the world into two-stage ephemerality, which represent the transiency of points in the map within two different time scales.</p>
+                  <p>multi-session alignment では、ephemeral な点の重みを下げて static 寄りの点で位置合わせする。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Extensive real-world experiments on long-term datasets demonstrate the robustness and effectiveness of our system.</p>
+                  <p>binary change detection より表現力が高く、**長期運用の地図らしさ**がかなり増す。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>lifelong mapping で本当に大事なのは「今動いているか」より **どれくらい一時的な存在か** だと分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>とても実務的で、長期運用 map の困りごとにかなり素直に答えている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Robot Mapping 2</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Mapping / SLAM / Range Sensing</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Ephemerality / Multi-Session Alignment / Bayesian Update / Ray Casting / Delta Map</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-ephemerality-meets-lidar-based-lifelong-mapping-4addd7f8.md">Detail note</a>
@@ -3298,7 +3298,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Extensive real-world experiments on long-term datasets demonstrate the robustness and effectiveness of our system.</p>
+                <p>binary change detection より表現力が高く、**長期運用の地図らしさ**がかなり増す。</p>
               </div>
             </aside>
           </div>
@@ -3773,47 +3773,47 @@
               <div class="meta-row">
                 <span class="rank-pill">55 / 60</span>
                 <span class="chip group-chip">State Estimation</span>
-                <span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
+                <span class="chip task-chip">State Estimation</span><span class="chip task-chip">Continuum Robotics</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">Factor Graph Optimization</span>
               </div>
               <h1 class="paper-title">State Estimation for Continuum Multi-Robot Systems on SE(3)</h1>
-              <p class="hook">This paper presents a novel approach to state estimation for systems with multiple coupled continuum robots, which allows estimating the shape and strain variables of multiple continuum robots in an arbitrary coupled topology.</p>
+              <p class="hook">coupled continuum multi-robot system 全般を扱える一般的な state estimator。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper presents a novel approach to state estimation for systems with multiple coupled continuum robots, which allows estimating the shape and strain variables of multiple continuum robots in an arbitrary coupled topology.</li><li>In contrast to conventional robots, accurately modeling the kinematics and statics of continuum robots is challenging due to partially unknown material properties, parasitic effects, or unknown forces acting on the continuous body.</li><li>Simulations and experiments demonstrate the capabilities and versatility of the proposed method, while achieving accurate and continuous estimates for the state of such systems, resulting in average end-effector errors of 3.3 mm and 5.02° depending on the sensor setup.</li></ul>
+                  <ul class="bullet-list"><li>continuum multi-robot system の shape / strain estimation を、**SE(3) 上の Gaussian process + factor graph** で解く論文。</li><li>並列・協調・混合トポロジまで含む **任意結合 topology** を扱えるのが大きい。</li><li>force/moment を直接知らなくても、Cosserat rod ベース prior と sensor fusion で実時間推定している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>In contrast to conventional robots, accurately modeling the kinematics and statics of continuum robots is challenging due to partially unknown material properties, parasitic effects, or unknown forces acting on the continuous body.</p>
+                  <p>continuum robot は変形自由度が大きく、単体でも状態推定が難しい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper presents a novel approach to state estimation for systems with multiple coupled continuum robots, which allows estimating the shape and strain variables of multiple continuum robots in an arbitrary coupled topology.</p>
+                  <p>coupled continuum multi-robot system 全般を扱える一般的な state estimator。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Consequentially, state estimation approaches that utilize additional sensor information to predict the shape of continuum robots have garnered significant interest.</p>
+                  <p>各 continuum robot を Cosserat rod 系の簡略 prior で表し、arclength 離散点上に pose / strain state を置く。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Simulations and experiments demonstrate the capabilities and versatility of the proposed method, while achieving accurate and continuous estimates for the state of such systems, resulting in average end-effector errors of 3.3 mm and 5.02° depending on the sensor setup.</p>
+                  <p>continuum multi-robot という難しい設定に対して、**かなり一般的な枠組み**を出している。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>continuum robotics で state estimation をどう立てるかが、**SE(3)・GP・Cosserat rod** の接続としてきれいに見える。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>数学的には重いが、かなり良い classical robotics 論文。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>State Estimation</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Flexible Robots / State Estimation / Sensor Fusion / Parallel Robots</strong></div>
+                <div class="fact"><span>Keywords</span><strong>SE(3) / Gaussian Process / Cosserat Rod / FBG / EM Tracking / Sparse Cholesky</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-state-estimation-for-continuum-multi-robot-systems-on-se-3-516e64ee.md">Detail note</a>
@@ -3826,7 +3826,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Simulations and experiments demonstrate the capabilities and versatility of the proposed method, while achieving accurate and continuous estimates for the state of such systems, resulting in average end-effector errors of 3.3 mm and 5.02° depending on the sensor setup.</p>
+                <p>continuum multi-robot という難しい設定に対して、**かなり一般的な枠組み**を出している。</p>
               </div>
             </aside>
           </div>
@@ -3839,47 +3839,47 @@
               <div class="meta-row">
                 <span class="rank-pill">56 / 60</span>
                 <span class="chip group-chip">Surgical Robotics: Planning</span>
-                <span class="chip task-chip">Perception</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+                <span class="chip task-chip">Surgical Robotics</span><span class="chip task-chip">Model Predictive Control</span><span class="chip task-chip">Sampling-Based Planning</span><span class="chip task-chip">Laser Ablation</span>
               </div>
               <h1 class="paper-title">Sampling-Based Model Predictive Control for Volumetric Ablation in Robotic Laser Surgery</h1>
-              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <p class="hook">volumetric ablation を Gaussian beam model で近似し、sampling-based MPC に載せている点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper describes a sampling-based model predictive control (MPC) scheme to plan ablation sequences for arbitrary tissue volumes.</li><li>Laser-based surgical ablation relies heavily on surgeon involvement, restricting precision to the limits of human error and perception.</li><li>The interaction between laser and tissue is governed by various laser parameters that control the laser irradiance on the tissue, including the power, distance, spot size, orientation, and exposure time.</li></ul>
+                  <ul class="bullet-list"><li>robotic laser surgery の volumetric ablation を、**sampling-based MPC** で計画する論文。</li><li>Gaussian point-ablation model を使い、角度付き・複数回照射を含む 3D resection planning をやっている。</li><li>real surgery 直前にそのまま使うにはまだ重いが、**pre-op planning** としてはかなり筋が良い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Laser-based surgical ablation relies heavily on surgeon involvement, restricting precision to the limits of human error and perception.</p>
+                  <p>laser ablation で複雑形状の腫瘍を削るには、どこをどの角度・出力で何回照射するかを決める必要がある。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                  <p>volumetric ablation を Gaussian beam model で近似し、sampling-based MPC に載せている点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>The interaction between laser and tissue is governed by various laser parameters that control the laser irradiance on the tissue, including the power, distance, spot size, orientation, and exposure time.</p>
+                  <p>各 laser shot の ablation 量を、spot size と距離に基づく Gaussian model で表す。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                  <p>ただの path planning でなく、**切除 volume そのもの**を最適化対象にしている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>surgical planning を learned policy でなく、**物理モデル + constraint-aware planning** で解いているのが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>応用は特殊だが、中身はかなり王道の model-based planning。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Surgical Robotics: Planning</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Surgical Robotics: Planning / Constrained Motion Planning / Integrated Planning and Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Volumetric Ablation / MPC / Graph Search / Gaussian Beam Model / Surgical Planning</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-sampling-based-model-predictive-control-for-volumetric-ablation-in-robot-23ba27ef.md">Detail note</a>
@@ -3892,7 +3892,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                <p>ただの path planning でなく、**切除 volume そのもの**を最適化対象にしている。</p>
               </div>
             </aside>
           </div>
