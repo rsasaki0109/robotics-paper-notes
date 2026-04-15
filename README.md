@@ -5,7 +5,7 @@
 まずは **AI偏重ではない論文**、つまり幾何・最適化・推定・制御・システム設計など、古典的かつ実装に近い知見を含む論文を優先して整理します。
 
 現在、**ICRA 2025 の arXiv 公開済みと判定できた 521本** について abstract ベースの自動下書きを作成済みです。
-さらに、**まず読むべき Non-AI Top 12** の curated feed と、**Non-AI 60 全体** を figure 付きで眺める縦スクロール feed も追加しています。こちらの Non-AI 60 は、拡張前 corpus をもとに作った **first-pass curated subset** です。
+さらに、**まず読むべき Non-AI Top 12** の curated feed と、**Non-AI 60 全体** を figure 付きで眺める縦スクロール feed も追加しています。どちらも **expanded 521 corpus を見直して再選定した curated subset** をベースにしています。
 
 ## 対象分野
 
@@ -51,12 +51,14 @@
 │       ├── icra2025-non-ai/
 │       └── icra2025-top12/
 ├── build_icra2025_arxiv_dataset.py
+├── build_non_ai_selection.py
 ├── build_non_ai_feed.py
 ├── data/
 │   └── icra2025/
 │       ├── ICRA2025_Paper_List_with_Abstract.csv
 │       ├── icra2025_arxiv_matches.csv
-│       └── icra2025_arxiv_matches.json
+│       ├── icra2025_arxiv_matches.json
+│       └── icra2025_non_ai60_selection.json
 ├── extract_paper_figures.py
 ├── extract_top12_figures.py
 ├── index.html
@@ -66,6 +68,7 @@
 │   ├── icra2025-arxiv/
 │   │   ├── index.md
 │   │   ├── non-ai-feed.html
+│   │   ├── non-ai-top.md
 │   │   └── non-ai.md
 │   └── index.md
 ├── templates/
@@ -76,6 +79,7 @@
 - `assets/figures/icra2025-non-ai/`: Non-AI 60 用に arXiv source から自動抽出した図
 - `assets/figures/icra2025-top12/`: Top 12 用に arXiv source から自動抽出した図
 - `build_icra2025_arxiv_dataset.py`: ICRA 2025 CSV と arXiv ICRA query corpus から note / index / match data を再構築するスクリプト
+- `build_non_ai_selection.py`: expanded 521 corpus から Non-AI 60 / Top 12 を再選定するスクリプト
 - `build_non_ai_feed.py`: Non-AI 60 の note と manifest から feed HTML を生成するスクリプト
 - `data/icra2025/`: 元 CSV と再構築した arXiv match data
 - `extract_paper_figures.py`: 任意の論文セットから代表図を自動抽出して PNG 化するスクリプト
@@ -91,7 +95,7 @@
 ## 現在の入口
 
 - `papers/icra2025-arxiv/index.md`: ICRA 2025 arXiv 下書き 521本の一覧
-- `papers/icra2025-arxiv/non-ai.md`: first-pass Non-AI 判定 60本の優先読みリスト
+- `papers/icra2025-arxiv/non-ai.md`: expanded 521 corpus から再選定した Non-AI 60 本の優先読みリスト
 - `papers/icra2025-arxiv/non-ai-top.md`: 最初に読むべき Top 12
 - `papers/icra2025-arxiv/non-ai-feed.html`: Non-AI 60 全体を figure 付きで眺める feed
 - `index.html`: GitHub Pages のトップで開く 1スライド richer feed（自動抽出図つき）
@@ -104,4 +108,4 @@
 
 ## 今後
 
-今後 `papers/` に論文まとめを追加し、まずは non-AI な SLAM / Localization / GNSS / LiDAR / Planning / Control の論文から整理し、その後必要に応じて AI 系の論文も比較対象として扱います。ICRA 2025 については、まず arXiv 公開済み論文の下書きから順に精読版へ育て、必要なら expanded 521 corpus をもとに Non-AI subset も再編します。
+今後 `papers/` に論文まとめを追加し、まずは non-AI な SLAM / Localization / GNSS / LiDAR / Planning / Control の論文から整理し、その後必要に応じて AI 系の論文も比較対象として扱います。ICRA 2025 については、arXiv 公開済み論文の下書きを順に精読版へ育てつつ、Non-AI 60 / Top 12 も必要に応じて見直していきます。

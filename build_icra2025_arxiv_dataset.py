@@ -439,7 +439,7 @@ def write_index(rows: dict[str, PaperRow], matches: dict[str, dict[str, str]], i
         "- Source: ICRA 2025 paper list abstract CSV + arXiv ICRA 2025 query corpus + prior verified matches",
         "- Matching: exact normalized title match against arXiv entries mentioning ICRA 2025, then union with previously verified legacy matches",
         "- Note: すべて abstract ベースの初稿であり、精読前のメモです。",
-        "- Browse: [Non-AI 60 feed](./non-ai-feed.html) / [Non-AI first](./non-ai.md) / [Non-AI Top 12](./non-ai-top.md)",
+        "- Browse: [Non-AI 60 feed](./non-ai-feed.html) / [Non-AI 60 list](./non-ai.md) / [Non-AI Top 12](./non-ai-top.md)",
         "",
         "## AI dependency overview",
         "",
