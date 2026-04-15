@@ -4,30 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>robotics-paper-notes | ICRA 2025 Non-AI Top 12</title>
-    <meta name="description" content="ICRA 2025 Non-AI Top 12 を、1論文1スライドの縦スクロール feed で見る GitHub Pages">
+    <meta name="description" content="expanded 521 corpus を見直して選んだ ICRA 2025 Non-AI Top 12 を縦スクロール feed で読む GitHub Pages">
     <style>
       :root {
         --bg: #040816;
         --bg-2: #091223;
-        --panel: rgba(8, 15, 30, 0.82);
+        --panel: rgba(8, 15, 30, 0.84);
         --panel-soft: rgba(255, 255, 255, 0.05);
         --line: rgba(255, 255, 255, 0.1);
         --text: #f8fbff;
         --muted: #b7c0d8;
         --cyan: #7dd3fc;
         --violet: #c4b5fd;
-        --rose: #f9a8d4;
-        --green: #86efac;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -38,11 +30,7 @@
           linear-gradient(180deg, var(--bg), var(--bg-2) 42%, #020611);
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
+      a { color: inherit; text-decoration: none; }
       .topbar {
         position: fixed;
         inset: 0 0 auto 0;
@@ -51,69 +39,27 @@
         justify-content: space-between;
         align-items: center;
         gap: 1rem;
-        padding: 0.85rem 1rem;
-        background: rgba(3, 7, 15, 0.66);
+        padding: 0.8rem 1rem;
+        background: rgba(3, 7, 15, 0.68);
         backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--line);
       }
-
-      .brand {
-        font-size: 0.95rem;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-      }
-
-      .toplinks {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-        justify-content: flex-end;
-      }
-
-      .toplinks a {
+      .brand { font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em; }
+      .toplinks { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: flex-end; align-items: center; }
+      .toplinks a, .counter {
         padding: 0.55rem 0.85rem;
         border-radius: 999px;
         border: 1px solid var(--line);
         background: rgba(255, 255, 255, 0.04);
         color: var(--muted);
         font-size: 0.82rem;
-        font-weight: 600;
+        font-weight: 700;
       }
-
-      .progress {
-        position: fixed;
-        right: 0.95rem;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 25;
-        display: grid;
-        gap: 0.45rem;
-      }
-
-      .progress a {
-        width: 0.82rem;
-        height: 0.82rem;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.26);
-        background: rgba(255, 255, 255, 0.07);
-      }
-
-      .feed {
-        height: 100vh;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-      }
-
-      .slide {
-        min-height: 100vh;
-        scroll-snap-align: start;
-        display: grid;
-        align-items: center;
-        padding: 5.4rem 1rem 2rem;
-      }
-
+      .counter strong { color: var(--text); margin-right: 0.4rem; }
+      .feed { height: 100vh; overflow-y: auto; scroll-snap-type: y mandatory; }
+      .slide { min-height: 100vh; scroll-snap-align: start; display: grid; align-items: center; padding: 5.2rem 1rem 2rem; }
       .card {
-        width: min(100%, 1180px);
+        width: min(100%, 1280px);
         margin: 0 auto;
         padding: clamp(1.2rem, 2vw, 1.6rem);
         border-radius: 2rem;
@@ -121,910 +67,947 @@
         background: var(--panel);
         box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
       }
-
       .cover .card {
         background:
           radial-gradient(circle at top right, rgba(125, 211, 252, 0.14), transparent 18rem),
           radial-gradient(circle at bottom left, rgba(196, 181, 253, 0.14), transparent 22rem),
           rgba(7, 13, 27, 0.92);
       }
-
-      .eyebrow {
-        font-size: 0.82rem;
-        text-transform: uppercase;
-        letter-spacing: 0.09em;
-        color: var(--muted);
-      }
-
-      .hero-title,
-      .paper-title {
-        margin: 0.55rem 0 0;
-        line-height: 1.04;
-      }
-
-      .hero-title {
-        font-size: clamp(2.3rem, 7vw, 5rem);
-      }
-
-      .paper-title {
-        font-size: clamp(1.7rem, 4vw, 3rem);
-      }
-
-      .lead,
-      .hook,
-      .copy {
-        color: var(--muted);
-        line-height: 1.72;
-      }
-
-      .lead {
-        max-width: 56rem;
-        font-size: clamp(1rem, 2vw, 1.15rem);
-      }
-
-      .cover-grid,
-      .slide-grid {
-        display: grid;
-        gap: 1rem;
-      }
-
-      .cover-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-top: 1.2rem;
-      }
-
-      .slide-grid {
-        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-        align-items: stretch;
-      }
-
-      .meta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-        align-items: center;
-      }
-
-      .rank-pill,
-      .chip {
+      .eyebrow { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); }
+      .hero-title, .paper-title { margin: 0.55rem 0 0; line-height: 1.04; }
+      .hero-title { font-size: clamp(2.2rem, 7vw, 4.8rem); }
+      .paper-title { font-size: clamp(1.65rem, 3.8vw, 2.9rem); }
+      .lead, .hook, .panel p, .bullet-list li, .group-list li, .figure-fallback { color: var(--muted); line-height: 1.72; }
+      .cover-grid, .slide-grid, .summary-grid, .detail-grid, .facts { display: grid; gap: 0.95rem; }
+      .cover-grid { grid-template-columns: 1.25fr 0.75fr; margin-top: 1.2rem; }
+      .slide-grid { grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr); align-items: stretch; }
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .detail-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0.95rem; }
+      .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0.95rem; }
+      .meta-row { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; }
+      .rank-pill, .chip {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.14);
       }
-
       .rank-pill {
-        min-width: 3.4rem;
+        min-width: 4.2rem;
         padding: 0.45rem 0.8rem;
         font-size: 0.92rem;
         font-weight: 800;
         background: rgba(255, 255, 255, 0.1);
       }
-
-      .chip {
-        padding: 0.38rem 0.7rem;
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--muted);
-        font-size: 0.84rem;
-        font-weight: 600;
-      }
-
-      .hook {
-        margin: 0.95rem 0 1.1rem;
-        font-size: clamp(1rem, 1.8vw, 1.12rem);
-      }
-
-      .content-block,
-      .poster,
-      .panel {
-        border-radius: 1.4rem;
+      .chip { padding: 0.38rem 0.7rem; background: rgba(255, 255, 255, 0.05); color: var(--muted); font-size: 0.84rem; font-weight: 700; }
+      .group-chip { color: var(--text); }
+      .task-chip { color: var(--cyan); }
+      .hook { margin: 0.95rem 0 1.05rem; font-size: clamp(0.98rem, 1.8vw, 1.1rem); }
+      .panel, .figure-card {
+        border-radius: 1.35rem;
         border: 1px solid rgba(255, 255, 255, 0.08);
         background: var(--panel-soft);
       }
-
-      .summary-list {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.9rem;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .summary-item {
-        padding: 0.9rem 0.95rem 1rem;
-      }
-
-      .summary-item strong,
-      .panel h2 {
-        display: block;
-        margin-bottom: 0.35rem;
-        font-size: 0.95rem;
-      }
-
-      .summary-item p,
-      .panel p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .info-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.9rem;
-        margin-top: 1rem;
-      }
-
-      .panel {
-        padding: 0.95rem 1rem 1rem;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.65rem;
-        margin-top: 1rem;
-      }
-
-      .actions a {
-        padding: 0.76rem 1rem;
-        border-radius: 999px;
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.05);
-        font-size: 0.92rem;
-        font-weight: 700;
-      }
-
-      .actions a.primary {
-        background: linear-gradient(135deg, rgba(125, 211, 252, 0.19), rgba(196, 181, 253, 0.18));
-      }
-
-      .poster {
-        position: relative;
-        overflow: hidden;
-        min-height: 100%;
-        padding: 1.05rem;
-        background:
-          radial-gradient(circle at 85% 16%, rgba(255, 255, 255, 0.13), transparent 8rem),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      }
-
-      .poster::before,
-      .poster::after {
-        content: "";
-        position: absolute;
-        border-radius: 999px;
-        pointer-events: none;
-      }
-
-      .poster::before {
-        width: 14rem;
-        height: 14rem;
-        top: -6rem;
-        right: -4rem;
-        opacity: 0.18;
-      }
-
-      .poster::after {
-        width: 10rem;
-        height: 10rem;
-        bottom: -4rem;
-        left: -2rem;
-        opacity: 0.16;
-      }
-
-      .theme-cyan .poster::before,
-      .theme-cyan .poster::after,
-      .theme-cyan .rank-pill {
-        background: rgba(125, 211, 252, 0.2);
-      }
-
-      .theme-violet .poster::before,
-      .theme-violet .poster::after,
-      .theme-violet .rank-pill {
-        background: rgba(196, 181, 253, 0.2);
-      }
-
-      .theme-rose .poster::before,
-      .theme-rose .poster::after,
-      .theme-rose .rank-pill {
-        background: rgba(249, 168, 212, 0.2);
-      }
-
-      .theme-green .poster::before,
-      .theme-green .poster::after,
-      .theme-green .rank-pill {
-        background: rgba(134, 239, 172, 0.2);
-      }
-
-      .poster-frame {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        gap: 0.9rem;
-        min-height: 100%;
-        padding: 1rem;
-        border-radius: 1.2rem;
-        background: rgba(4, 8, 20, 0.56);
+      .panel { padding: 1rem; }
+      .panel h2 { margin: 0 0 0.45rem; font-size: 0.96rem; }
+      .bullet-list { margin: 0; padding-left: 1.1rem; }
+      .bullet-list li + li { margin-top: 0.45rem; }
+      .facts .fact {
+        padding: 0.95rem 1rem;
+        border-radius: 1.15rem;
         border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
       }
-
-      .poster-top {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        align-items: flex-start;
+      .fact span {
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
       }
-
-      .poster-rank {
+      .fact strong { font-size: 0.96rem; line-height: 1.5; }
+      .links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; }
+      .links a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 3.9rem;
-        padding: 0.6rem 0.85rem;
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        font-size: 1.2rem;
-        font-weight: 900;
-      }
-
-      .poster-label {
-        color: var(--muted);
-        font-size: 0.82rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .poster-title {
-        margin: 0;
-        font-size: 1.45rem;
-        line-height: 1.15;
-      }
-
-      .poster-sub {
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .poster-list {
-        display: grid;
-        gap: 0.7rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .figure-box {
-        display: grid;
-        place-items: center;
-        min-height: 14rem;
-        padding: 0.9rem;
-        border-radius: 1.1rem;
-        background: rgba(255, 255, 255, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-      }
-
-      .figure-box img {
-        display: block;
-        width: 100%;
-        max-height: 18rem;
-        object-fit: contain;
-      }
-
-      .poster-list li {
-        padding: 0.78rem 0.85rem;
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .poster-list strong {
-        display: block;
-        margin-bottom: 0.18rem;
-        font-size: 0.86rem;
-        color: #ffffff;
-      }
-
-      .poster-list span {
-        color: var(--muted);
-        font-size: 0.9rem;
-        line-height: 1.55;
-      }
-
-      .poster-footer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .poster-tag {
-        padding: 0.42rem 0.68rem;
+        padding: 0.8rem 1rem;
         border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        color: var(--muted);
-        font-size: 0.82rem;
         font-weight: 700;
       }
-
-      .swipe {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.65rem;
-        margin-top: 1.15rem;
-        color: var(--muted);
-        font-size: 0.9rem;
+      .visual-column { display: grid; gap: 0.95rem; }
+      .figure-card { display: grid; place-items: center; min-height: 360px; padding: 1rem; overflow: hidden; }
+      .figure-card img {
+        width: 100%;
+        max-height: 72vh;
+        object-fit: contain;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.03);
       }
-
-      .swipe::before {
-        content: "";
-        width: 2.7rem;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.22);
+      .figure-fallback { font-weight: 700; text-align: center; }
+      .group-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.7rem;
       }
-
+      .group-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .group-list strong { color: var(--text); }
       @media (max-width: 980px) {
-        .slide-grid,
-        .cover-grid,
-        .summary-list,
-        .info-grid {
-          grid-template-columns: 1fr;
-        }
+        .cover-grid, .slide-grid, .summary-grid, .detail-grid, .facts { grid-template-columns: 1fr; }
+        .figure-card { min-height: 260px; }
       }
-
-      @media (max-width: 740px) {
-        .topbar {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .progress {
-          right: 0.55rem;
-        }
-
-        .progress a {
-          width: 0.7rem;
-          height: 0.7rem;
-        }
-
-        .slide {
-          padding-top: 7rem;
-        }
-
-        .card {
-          padding: 1rem;
-          border-radius: 1.4rem;
-        }
+      @media (max-width: 720px) {
+        .topbar { align-items: flex-start; flex-direction: column; }
+        .toplinks { justify-content: flex-start; }
       }
     </style>
   </head>
   <body>
     <header class="topbar">
       <div class="brand">robotics-paper-notes / ICRA 2025 Non-AI Top 12</div>
-      <nav class="toplinks" aria-label="Primary links">
-        <a href="./papers/icra2025-arxiv/non-ai-top.md">Top 12 notes</a>
-        <a href="./papers/icra2025-arxiv/non-ai-feed.html">Non-AI 60 feed</a>
-        <a href="./papers/icra2025-arxiv/non-ai.md">Non-AI 60 list</a>
-        <a href="./papers/icra2025-arxiv/index.md">All 521</a>
-        <a href="https://github.com/rsasaki0109/robotics-paper-notes">GitHub</a>
-      </nav>
+      <div class="toplinks">
+        <a href="papers/icra2025-arxiv/non-ai-top.md">Top 12 notes</a><a href="papers/icra2025-arxiv/non-ai-feed.html">Non-AI 60 feed</a><a href="papers/icra2025-arxiv/non-ai.md">Non-AI 60 list</a><a href="papers/icra2025-arxiv/index.md">All arXiv 521</a><a href="https://github.com/rsasaki0109/robotics-paper-notes">GitHub</a>
+        <div class="counter"><strong id="counter">00 / 12</strong><span id="counter-group">cover</span></div>
+      </div>
     </header>
-
-    <nav class="progress" id="progress" aria-label="Slide navigation"></nav>
-
     <main class="feed" id="feed">
-      <section class="slide cover" id="cover">
-        <article class="card">
-          <div class="eyebrow">Dense vertical feed</div>
-          <h1 class="hero-title">1 paper = 1 richer slide</h1>
-          <p class="lead">
-            ただのリンク集ではなく、1枚だけでも輪郭が掴めるように作り直した feed です。
-            各スライドに <strong>TL;DR / session / focus / difficulty / 自動抽出した図 / poster-like visual</strong> を入れて、
-            スクロールしながら気になる論文だけ詳細ノートや arXiv に飛べるようにしています。
-          </p>
+      <section class="slide cover" data-index="0" data-group="cover">
+        <div class="card">
+          <div class="eyebrow">ICRA 2025 / expanded arXiv corpus / curated</div>
+          <h1 class="hero-title">Top 12 curated feed</h1>
+          <p class="lead">expanded 521 corpus を見直したうえで、最初に読むべき 12 本を優先順で並べた curated feed。localization に寄りすぎず、planning / control まで含めて再選定しました。</p>
           <div class="cover-grid">
-            <div class="panel">
-              <h2>What changed</h2>
-              <p>各論文に TL;DR 3点、読む理由、見るべき技術ポイント、focus area、difficulty、実抽出 figure を追加しました。</p>
-            </div>
-            <div class="panel">
-              <h2>Visual layer</h2>
-              <p>右側には arXiv source から自動抽出した代表図を表示し、その下に summary panel を重ねています。</p>
-            </div>
+            <section class="panel">
+              <h2>このページの見方</h2>
+              <ul class="bullet-list"><li>1-6 は localization / estimation core、7-8 は SLAM / place recognition、9-12 は planning / control</li><li>各スライドは note 本文と representative figure をまとめて流し見できる</li><li>気になった論文だけ detail note と arXiv に飛ぶ</li></ul>
+            </section>
+            <section class="panel">
+              <h2>Topic spread</h2>
+              <ul class="group-list"><li><strong>Top 12</strong><span>12 papers</span></li></ul>
+            </section>
           </div>
-          <div class="actions">
-            <a class="primary" href="#p1">Start feed</a>
-            <a href="./papers/icra2025-arxiv/non-ai-feed.html">Open Non-AI 60 feed</a>
+        </div>
+      </section>
+
+      <section class="slide" id="2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82" data-index="1" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">01 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS Fusion</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Sensor Fusion</span>
+              </div>
+              <h1 class="paper-title">GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization</h1>
+              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>This paper introduces GNSS-FGO, an online trajectory estimator that fuses GNSS observations alongside multiple sensor measurements for robust vehicle localization.</li><li>In a test sequence containing a 17km route through Aachen, our method results in a mean 2-D positioning error of 0.48m while fusing raw GNSS observations with lidar odometry in tight coupling.</li><li>Our results show that the proposed approach enables robust trajectory estimation in dense urban areas, where the classic multi-sensor fusion method fails.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Accurate and robust vehicle localization in highly urbanized areas is challenging.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>This paper introduces GNSS-FGO, an online trajectory estimator that fuses GNSS observations alongside multiple sensor measurements for robust vehicle localization.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Our results show that the proposed approach enables robust trajectory estimation in dense urban areas, where the classic multi-sensor fusion method fails.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Localization 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Sensor Fusion / Localization / Autonomous Vehicle Navigation / Factor Graph Optimization</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2309.11134">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.png" alt="GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Our results show that the proposed approach enables robust trajectory estimation in dense urban areas, where the classic multi-sensor fusion method fails.</p>
+              </div>
+            </aside>
           </div>
-          <div class="swipe">scroll down</div>
-        </article>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464" data-index="2" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">02 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Mapping</span>
+              </div>
+              <h1 class="paper-title">Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry</h1>
+              <p class="hook">To provide a consistent and efficient solution of pose estimation, we propose Eq-LIO, a robust state estimator for tightly coupled LIO systems based on an equivariant filter (EqF).</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Pose estimation is a crucial problem in simultaneous localization and mapping (SLAM).</li><li>To provide a consistent and efficient solution of pose estimation, we propose Eq-LIO, a robust state estimator for tightly coupled LIO systems based on an equivariant filter (EqF).</li><li>However, developing a robust and consistent state estimator remains a significant challenge, as the traditional extended Kalman filter (EKF) struggles to handle the model nonlinearity, especially for inertial measurement unit (IMU) and light detection and ranging (LiDAR).</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Pose estimation is a crucial problem in simultaneous localization and mapping (SLAM).</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To provide a consistent and efficient solution of pose estimation, we propose Eq-LIO, a robust state estimator for tightly coupled LIO systems based on an equivariant filter (EqF).</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Compared with the invariant Kalman filter based on the SE_2(3) group structure, the EqF uses the symmetry of the semi-direct product group to couple the system state including IMU bias, navigation state, and LiDAR extrinsic calibration state, thereby suppressing linearization error and improving the behavior of the estimator in the event of unexpected state changes.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Localization 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization / SLAM</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2409.06948">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.png" alt="Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1" data-index="3" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">03 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Mapping</span>
+              </div>
+              <h1 class="paper-title">GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting</h1>
+              <p class="hook">To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</li><li>Light detection and ranging (LiDAR)-based odometry has been widely utilized for pose estimation due to its use of high-accuracy range measurements and immunity to ambient light conditions.</li><li>As demonstrated in our experimental evaluation, the proposed GenZ-ICP exhibits high adaptability to various environments and resilience to optimization degradation in corridor-like degenerative scenarios by preventing ill-posed problems during the optimization process.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Light detection and ranging (LiDAR)-based odometry has been widely utilized for pose estimation due to its use of high-accuracy range measurements and immunity to ambient light conditions.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>As demonstrated in our experimental evaluation, the proposed GenZ-ICP exhibits high adaptability to various environments and resilience to optimization degradation in corridor-like degenerative scenarios by preventing ill-posed problems during the optimization process.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>SLAM 4</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>SLAM / Localization / Mapping</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2411.06766">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.png" alt="GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>As demonstrated in our experimental evaluation, the proposed GenZ-ICP exhibits high adaptability to various environments and resilience to optimization degradation in corridor-like degenerative scenarios by preventing ill-posed problems during the optimization process.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a" data-index="4" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">04 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
+              </div>
+              <h1 class="paper-title">DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery</h1>
+              <p class="hook">To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</li><li>Despite extensive research in robust visual-inertial navigation systems(VINS) in dynamic environments, many approaches remain vulnerable to objects that suddenly start moving, which are referred to as abruptly dynamic objects.</li><li>As verified in both public and real-world datasets, our approach shows promising performance in dynamic environments, including scenes with abruptly dynamic objects.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Visual-Inertial Odometry</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Visual-Inertial SLAM / Sensor Fusion / SLAM</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2410.15373">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.png" alt="DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf" data-index="5" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">05 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Sensor Fusion</span>
+              </div>
+              <h1 class="paper-title">Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems</h1>
+              <p class="hook">To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>6-Degree of Freedom (6DoF) motion estimation with a combination of visual and inertial sensors is a growing area with numerous real-world applications.</li><li>To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</li><li>We evaluate our calibration method with both EuRoC and simulation data and extensive experiments demonstrate that our approach provides more accurate time offset estimation and faster convergence, particularly in the presence of noisy sensor data.The experimental code is available at https://github.com/bytedance/Ts_Online_Optimization.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>6-Degree of Freedom (6DoF) motion estimation with a combination of visual and inertial sensors is a growing area with numerous real-world applications.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We evaluate our calibration method with both EuRoC and simulation data and extensive experiments demonstrate that our approach provides more accurate time offset estimation and faster convergence, particularly in the presence of noisy sensor data.The experimental code is available at https://github.com/bytedance/Ts_Online_Optimization.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Calibration 3</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Visual-Inertial SLAM / Localization / Sensor Fusion</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2501.01788">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.png" alt="Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We evaluate our calibration method with both EuRoC and simulation data and extensive experiments demonstrate that our approach provides more accurate time offset estimation and faster convergence, particularly in the presence of noisy sensor data.The experimental code is available at https://github.com/bytedance/Ts_Online_Optimization.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227" data-index="6" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">06 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
+              </div>
+              <h1 class="paper-title">Equivariant IMU Preintegration with Biases: A Galilean Group Approach</h1>
+              <p class="hook">We define a novel preintegration error that geometrically couples the navigation states and the bias leading to lower linearization error.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>This letter proposes a new approach for Inertial Measurement Unit (IMU) preintegration, a fundamental building block that can be leveraged in different optimization-based Inertial Navigation System (INS) localization solutions.</li><li>Our method improves in consistency compared to existing preintegration approaches which treat IMU biases as a separate state-space.</li><li>Inspired by recent advances in equivariant theory applied to biased INSs, we derive a discrete-time formulation of the IMU preintegration on Gal(3) �?gal(3), the left-trivialization of the tangent group of the Galilean group Gal(3).</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>This letter proposes a new approach for Inertial Measurement Unit (IMU) preintegration, a fundamental building block that can be leveraged in different optimization-based Inertial Navigation System (INS) localization solutions.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We define a novel preintegration error that geometrically couples the navigation states and the bias leading to lower linearization error.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>This letter proposes a new approach for Inertial Measurement Unit (IMU) preintegration, a fundamental building block that can be leveraged in different optimization-based Inertial Navigation System (INS) localization solutions.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Extensive validation against state-of-the-art methods, both in simulation and with real-world IMU data, implementation in the Lie++ library, and open-source code are provided.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>State Estimation</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization / Sensor Fusion / Visual-Inertial SLAM</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2411.05548">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.png" alt="Equivariant IMU Preintegration with Biases: A Galilean Group Approach representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Extensive validation against state-of-the-art methods, both in simulation and with real-world IMU data, implementation in the Lie++ library, and open-source code are provided.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0" data-index="7" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">07 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
+              </div>
+              <h1 class="paper-title">A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares</h1>
+              <p class="hook">This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</li><li>Previous approaches manipulate the Gaussian mixture likelihood into a form that allows the problem to be represented as a nonlinear least squares (NLS) problem.</li><li>The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>The resulting Hessian approximation used within NLS solvers from these approaches neglects certain nonlinearities.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Sensor Fusion 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Sensor Fusion / Probabilistic Inference / SLAM</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2404.05452">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.png" alt="A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c" data-index="8" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">08 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Perception</span>
+              </div>
+              <h1 class="paper-title">Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition</h1>
+              <p class="hook">Thus, in this paper, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Thus, in this paper, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios.</li><li>Based on these representations, our method enables addressing rotational changes and determining the initial heading.</li><li>In addition, we achieve a robust place description through reweighting based on vertical direction information.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>We often encounter limited FOV situations due to various factors such as sensor fusion or sensor mount in real-world robot navigation.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Thus, in this paper, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>In addition, we achieve a robust place description through reweighting based on vertical direction information.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Perception 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization / SLAM / Range Sensing</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2408.07330">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.png" alt="Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>In addition, we achieve a robust place description through reweighting based on vertical direction information.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36" data-index="9" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">09 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+              </div>
+              <h1 class="paper-title">A Complete and Bounded-Suboptimal Algorithm for a Moving Target Traveling Salesman Problem with Obstacles in 3D</h1>
+              <p class="hook">We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>The moving target traveling salesman problem with obstacles (MT-TSP-O) seeks an obstacle-free trajectory for an agent that intercepts a given set of moving targets, each within a specified time windows, and returns to the agent&#x27;s starting position.</li><li>Each target moves with a constant velocity within its time windows, and the agent has a speed limit no smaller than any target&#x27;s speed.</li><li>We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>The moving target traveling salesman problem with obstacles (MT-TSP-O) seeks an obstacle-free trajectory for an agent that intercepts a given set of moving targets, each within a specified time windows, and returns to the agent&#x27;s starting position.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We test FMC*-TSP on 280 problem instances with up to 40 targets and demonstrate its smaller median runtime than a baseline based on prior work.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Motion Planning 3</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Constrained Motion Planning / Optimization and Optimal Control</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2504.14680">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36.png" alt="A Complete and Bounded-Suboptimal Algorithm for a Moving Target Traveling Salesman Problem with Obstacles in 3D representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We test FMC*-TSP on 280 problem instances with up to 40 targets and demonstrate its smaller median runtime than a baseline based on prior work.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2" data-index="10" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">10 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+              </div>
+              <h1 class="paper-title">Endpoint-Explicit Differential Dynamic Programming Via Exact Resolution</h1>
+              <p class="hook">We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</li><li>Unlike existing approaches, our method guarantees quadratic convergence and is exact, effectively managing rank deficiencies in both endpoint and stagewise equality constraints.</li><li>It is applicable to both forward and inverse dynamics formulations, making it particularly well-suited for model predictive control (MPC) applications and for accelerating optimal control (OC) solvers.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We demonstrate the efficacy of our approach across a broad range of robotics problems and provide a user-friendly open-source implementation within CROCODDYL.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Optimization and Optimal Control</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Optimization and Optimal Control / Multi-Contact Whole-Body Motion Planning and Control / Formal Methods in Robotics and Automation</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.03897">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2.png" alt="Endpoint-Explicit Differential Dynamic Programming Via Exact Resolution representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We demonstrate the efficacy of our approach across a broad range of robotics problems and provide a user-friendly open-source implementation within CROCODDYL.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef" data-index="11" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">11 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span><span class="chip task-chip">Aerial Robotics</span>
+              </div>
+              <h1 class="paper-title">Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets</h1>
+              <p class="hook">In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.</li><li>Agile trajectory planning can improve the efficiency of multi-rotor Uncrewed Aerial Vehicles (UAVs) in scenarios with combined task-oriented and kinematic trajectory planning, such as monitoring spatio-temporal phenomena or intercepting dynamic targets.</li><li>Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Agile trajectory planning can improve the efficiency of multi-rotor Uncrewed Aerial Vehicles (UAVs) in scenarios with combined task-oriented and kinematic trajectory planning, such as monitoring spatio-temporal phenomena or intercepting dynamic targets.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Agile planning using existing non-linear model predictive control methods is limited by the number of planning steps as it becomes increasingly computationally demanding.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Aerial Robots: Planning and Control</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Applications / Motion and Path Planning / Autonomous Vehicle Navigation</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.14184">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.png" alt="Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea" data-index="12" data-group="Top 12">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">12 / 12</span>
+                <span class="chip group-chip">Top 12</span>
+                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
+              </div>
+              <h1 class="paper-title">Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity</h1>
+              <p class="hook">The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>In this paper, we introduce a kinodynamic model predictive control (MPC) framework that exploits unidirectional parallel springs (UPS) to improve the energy efficiency of dynamic legged robots.</li><li>The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</li><li>The proposed approach enables energy efficient dynamic hopping on legged robots by using UPS to reduce peak motor torques and energy consumption during stance phases.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>In this paper, we introduce a kinodynamic model predictive control (MPC) framework that exploits unidirectional parallel springs (UPS) to improve the energy efficiency of dynamic legged robots.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Additionally, preliminary hardware experiments show a 14.8% reduction in energy consumption.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Model Predictive Control for Legged Robots 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Legged Robots / Optimization and Optimal Control / Compliant Joints and Mechanisms</strong></div>
+              </div>
+              <div class="links">
+                <a href="papers/icra2025-arxiv/2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.05666">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="assets/figures/icra2025-top12/2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea.png" alt="Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Additionally, preliminary hardware experiments show a 14.8% reduction in energy consumption.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
       </section>
     </main>
-
     <script>
-      const papers = [
-        {
-          id: "p1",
-          rank: 1,
-          theme: "theme-cyan",
-          session: "Localization 1",
-          title: "GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization",
-          chips: ["Localization", "GNSS", "Factor Graph", "LiDAR"],
-          focus: "localization / gnss integration",
-          difficulty: "★★★",
-          hook: "GNSS + LiDAR + factor graph で、都市部ローカライゼーションに直結。最初に読むならこれ。",
-          tldr: [
-            "GNSS-FGO は raw GNSS と複数センサを連続時間の FGO でまとめる online estimator。",
-            "17km の都市環境シーケンスで平均 2D 誤差 0.48m とされ、dense urban を強く意識している。",
-            "classical fusion が崩れやすい都市環境で、tight coupling の実装観点を回収しやすい。"
-          ],
-          why: "都市部 GNSS 問題に真正面から効くテーマで、non-AI かつ実運用寄りのローカライゼーション設計を掴みやすい。",
-          lookFor: "raw GNSS observation の扱い、continuous-time factor graph の設計、LiDAR odometry とどう tight coupling するか。",
-          detail: "./papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md",
-          arxiv: "http://arxiv.org/abs/2309.11134",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "GNSS-FGO",
-            sub: "continuous-time factor graph localization",
-            blocks: [
-              ["Problem", "dense urban GNSS localization"],
-              ["Core", "raw GNSS + LiDAR odometry + FGO"],
-              ["Takeaway", "tight coupling for practical localization"]
-            ],
-            tags: ["GNSS", "LiDAR", "FGO", "urban"]
-          }
-        },
-        {
-          id: "p2",
-          rank: 2,
-          theme: "theme-violet",
-          session: "Localization 1",
-          title: "Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry",
-          chips: ["LiDAR-IMU", "EqF", "State Estimation", "Localization"],
-          focus: "localization / lidar odometry",
-          difficulty: "★★★★★",
-          hook: "LiDAR-IMU の tightly coupled 推定を、EqF でどう安定化するかを短距離で学べる一本。",
-          tldr: [
-            "Eq-LIO は tightly coupled LIO 向けの equivariant filter として設計されている。",
-            "IMU bias, navigation state, LiDAR extrinsic を対称性ベースでまとめて扱うのが核。",
-            "EKF 系の線形化誤差に悩む文脈で、幾何的な安定化の見方を学びやすい。"
-          ],
-          why: "LiDAR-IMU の推定器設計を一段深く見たい時に、EqF の価値が分かりやすく出る。",
-          lookFor: "SE_2(3) 系との差、semi-direct product group の使い方、unexpected state changes にどう強くなるか。",
-          detail: "./papers/icra2025-arxiv/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md",
-          arxiv: "http://arxiv.org/abs/2409.06948",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "Eq-LIO",
-            sub: "equivariant filter for tightly coupled LIO",
-            blocks: [
-              ["Problem", "nonlinearity + linearization error"],
-              ["Core", "symmetry-aware filter design"],
-              ["Takeaway", "stable LIO under harder dynamics"]
-            ],
-            tags: ["LIO", "EqF", "IMU bias", "Lie"]
-          }
-        },
-        {
-          id: "p3",
-          rank: 3,
-          theme: "theme-rose",
-          session: "SLAM 4",
-          title: "GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting",
-          chips: ["LiDAR Odometry", "ICP", "Degeneracy", "SLAM"],
-          focus: "localization / lidar odometry",
-          difficulty: "★★★★★",
-          hook: "corridor 退化や ill-posed optimization に強い ICP。現場で困る問題にちゃんと刺さる。",
-          tldr: [
-            "GenZ-ICP は adaptive weighting を使って LiDAR odometry の退化ケースを抑える。",
-            "corridor-like な degenerative scenario で ill-posed optimization を避ける方向が主眼。",
-            "LiDAR odometry の現実的な壊れ方と、その守り方を押さえやすい。"
-          ],
-          why: "LiDAR odometry は精度より破綻ケースが痛いので、退化耐性をどう設計するかを見る価値が高い。",
-          lookFor: "adaptive weighting の設計、degeneracy 検知の考え方、従来 ICP と何が違うのか。",
-          detail: "./papers/icra2025-arxiv/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md",
-          arxiv: "http://arxiv.org/abs/2411.06766",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "GenZ-ICP",
-            sub: "robust ICP under degenerate geometry",
-            blocks: [
-              ["Problem", "corridor-like degeneracy"],
-              ["Core", "adaptive weighting in ICP"],
-              ["Takeaway", "fewer ill-posed odometry failures"]
-            ],
-            tags: ["ICP", "degeneracy", "LiDAR", "robustness"]
-          }
-        },
-        {
-          id: "p4",
-          rank: 4,
-          theme: "theme-green",
-          session: "Visual-Inertial Odometry",
-          title: "DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery",
-          chips: ["VINS", "Dynamic Scene", "Robust Estimation", "IMU"],
-          focus: "localization / sensor fusion",
-          difficulty: "★★★",
-          hook: "動的物体に壊される VINS を、学習ではなくロバスト推定と bias recovery で立て直す。",
-          tldr: [
-            "DynaVINS++ は abrupt dynamic objects に弱い VINS を守る方向のフレームワーク。",
-            "adaptive truncated least squares と stable state recovery がコアになっている。",
-            "dynamic scene を non-AI に処理する推定器改善として読みやすい。"
-          ],
-          why: "dynamic environment 対応は AI に寄りがちだが、これは推定と recovery 設計で戦っているのが面白い。",
-          lookFor: "feature association と IMU preintegration をどう truncation に効かせるか、bias consistency check の役割。",
-          detail: "./papers/icra2025-arxiv/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md",
-          arxiv: "http://arxiv.org/abs/2410.15373",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "DynaVINS++",
-            sub: "robust VINS in dynamic environments",
-            blocks: [
-              ["Problem", "abruptly dynamic objects"],
-              ["Core", "adaptive TLS + state recovery"],
-              ["Takeaway", "keep VINS from diverging"]
-            ],
-            tags: ["VINS", "TLS", "recovery", "dynamic"]
-          }
-        },
-        {
-          id: "p5",
-          rank: 5,
-          theme: "theme-cyan",
-          session: "Calibration 3",
-          title: "Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems",
-          chips: ["Calibration", "VIO", "Online", "Optimization"],
-          focus: "sensor calibration / localization",
-          difficulty: "★★★★★",
-          hook: "時間ずれ補正は地味だけど効く。online temporal calibration を最初に押さえるならここ。",
-          tldr: [
-            "optimization-based VINS 向けの universal online temporal calibration を提案している。",
-            "EuRoC と simulation で、time offset estimation と convergence の改善を主張している。",
-            "実機で地味に壊す sensor offset 問題に直接効くので、運用面の価値が高い。"
-          ],
-          why: "実運用で気づきにくい時間ずれ問題を扱うので、派手さ以上に重要な論文。",
-          lookFor: "時間ずれを最適化へどう組み込むか、noisy sensor に対する収束性、既存 temporal calibration との違い。",
-          detail: "./papers/icra2025-arxiv/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md",
-          arxiv: "http://arxiv.org/abs/2501.01788",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "Online Time Offset",
-            sub: "visual-inertial temporal calibration",
-            blocks: [
-              ["Problem", "hidden sensor time offset"],
-              ["Core", "online optimization-based calibration"],
-              ["Takeaway", "better convergence in noisy settings"]
-            ],
-            tags: ["time offset", "VIO", "calibration", "online"]
-          }
-        },
-        {
-          id: "p6",
-          rank: 6,
-          theme: "theme-violet",
-          session: "State Estimation",
-          title: "Equivariant IMU Preintegration with Biases: A Galilean Group Approach",
-          chips: ["IMU", "Preintegration", "Galilean Group", "INS"],
-          focus: "state estimation / localization",
-          difficulty: "★★★★★",
-          hook: "IMU preintegration は localization 系の基礎ブロック。bias を含めた幾何的整理がきれい。",
-          tldr: [
-            "biased INS 向けに Galilean group ベースの IMU preintegration を定式化している。",
-            "bias を separate state-space として雑に扱わない構造がポイント。",
-            "VIO / INS / factor graph 系を読むための共通基礎として効く。"
-          ],
-          why: "直接派手ではないが、preintegration の理解は広い範囲の論文理解に効く。",
-          lookFor: "novel preintegration error の意味、consistency 改善、Lie++ 実装との接続。",
-          detail: "./papers/icra2025-arxiv/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.md",
-          arxiv: "http://arxiv.org/abs/2411.05548",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "IMU Preintegration",
-            sub: "bias-aware Galilean formulation",
-            blocks: [
-              ["Problem", "bias handling in INS preintegration"],
-              ["Core", "Gal(3) based discrete-time formulation"],
-              ["Takeaway", "cleaner geometry + better consistency"]
-            ],
-            tags: ["INS", "IMU", "Gal(3)", "bias"]
-          }
-        },
-        {
-          id: "p7",
-          rank: 7,
-          theme: "theme-rose",
-          session: "Sensor Fusion 1",
-          title: "A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares",
-          chips: ["Optimization", "Gaussian Mixture", "NLS", "Estimation"],
-          focus: "estimation / optimization",
-          difficulty: "★★★★★",
-          hook: "SLAM の表面ではなく、推定と最適化の地力を上げるタイプの一本。",
-          tldr: [
-            "Gaussian mixture likelihood を含む MAP 問題に向けた Hessian approximation を提案している。",
-            "NLS solver 内での近似精度を改善し、convergence speed と uncertainty characterization を押し上げる狙い。",
-            "推定器の内部に効く論文なので、読んだ後に他の論文の見え方も変わる。"
-          ],
-          why: "派手な応用より、SLAM / sensor fusion の裏側の最適化基盤を理解したい時に刺さる。",
-          lookFor: "既存の GMM-to-NLS 変換の欠点、どの nonlinearities を拾い直しているのか、実験の見方。",
-          detail: "./papers/icra2025-arxiv/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md",
-          arxiv: "http://arxiv.org/abs/2404.05452",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "Better Hessian",
-            sub: "for Gaussian mixture likelihoods",
-            blocks: [
-              ["Problem", "weak Hessian approximation in NLS"],
-              ["Core", "improved curvature estimate"],
-              ["Takeaway", "faster convergence + better uncertainty"]
-            ],
-            tags: ["GMM", "Hessian", "MAP", "NLS"]
-          }
-        },
-        {
-          id: "p8",
-          rank: 8,
-          theme: "theme-green",
-          session: "Perception 1",
-          title: "Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition",
-          chips: ["LiDAR", "Place Recognition", "Narrow FOV", "Loop Closure"],
-          focus: "localization / place recognition",
-          difficulty: "★★★",
-          hook: "狭視野 LiDAR の place recognition。loop closure や再局在化の勘所を軽量に学びやすい。",
-          tldr: [
-            "狭視野 FOV という現実的な LiDAR 制約に対応した global descriptor を提案している。",
-            "vertical direction に基づく reweighting や heading inference がポイント。",
-            "理想センサ前提ではない place recognition を学ぶ入り口としてちょうど良い。"
-          ],
-          why: "loop closure / relocalization を現実のセンサ制約つきで考える視点が得られる。",
-          lookFor: "狭視野にすると何が壊れるのか、descriptor の空間構成、rotation handling の仕組み。",
-          detail: "./papers/icra2025-arxiv/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md",
-          arxiv: "http://arxiv.org/abs/2408.07330",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "SOLiD",
-            sub: "place recognition under narrow FOV",
-            blocks: [
-              ["Problem", "restricted LiDAR field of view"],
-              ["Core", "lightweight global descriptor"],
-              ["Takeaway", "better relocalization under real constraints"]
-            ],
-            tags: ["place rec", "FOV", "descriptor", "LiDAR"]
-          }
-        },
-        {
-          id: "p9",
-          rank: 9,
-          theme: "theme-cyan",
-          session: "SLAM 4",
-          title: "CoVoxSLAM: GPU Accelerated Globally Consistent Dense SLAM",
-          chips: ["Dense SLAM", "GPU", "Mapping", "Performance"],
-          focus: "mapping / localization",
-          difficulty: "★★★",
-          hook: "dense SLAM を GPU で現実的に回す話。精度だけでなく実行性能に意識があるのが良い。",
-          tldr: [
-            "volumetric dense SLAM を GPU 最適化で large-scale まで回すことを狙ったシステム。",
-            "globally consistent maps と execution time を両立させる方向が読みどころ。",
-            "discrete GPU と embedded GPU の両方に触れていて、実装寄りの温度感がある。"
-          ],
-          why: "dense SLAM は理論より“回るかどうか”が大きいので、GPU 前提の設計を学ぶ価値が高い。",
-          lookFor: "どこを GPU 化しているのか、volumetric 表現の選び方、accuracy と speed のバランス。",
-          detail: "./papers/icra2025-arxiv/2025-icra-covoxslam-gpu-accelerated-globally-consistent-dense-slam-6599ffd4.md",
-          arxiv: "http://arxiv.org/abs/2410.21149",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "CoVoxSLAM",
-            sub: "dense mapping at GPU speed",
-            blocks: [
-              ["Problem", "dense SLAM is computationally heavy"],
-              ["Core", "GPU-accelerated volumetric pipeline"],
-              ["Takeaway", "speed without losing consistency"]
-            ],
-            tags: ["dense", "GPU", "voxel", "mapping"]
-          }
-        },
-        {
-          id: "p10",
-          rank: 10,
-          theme: "theme-violet",
-          session: "Multi-Robot Path Planning 2",
-          title: "Exact Wavefront Propagation for Globally Optimal One-To-All Path Planning on 2D Cartesian Grids",
-          chips: ["Path Planning", "Geometry", "Global Optimality", "Grid"],
-          focus: "planning",
-          difficulty: "★★★",
-          hook: "幾何ベースで global optimality を出す planning。基礎体力を上げるのに向いている。",
-          tldr: [
-            "2D Cartesian grid に対する globally optimal one-to-all path planning を O(n) で解く方向の提案。",
-            "approximate marching method ではなく、visibility ベースの exact wavefront propagation が特徴。",
-            "planning の古典をちゃんとやりたい時の基礎補強として良い。"
-          ],
-          why: "近似で済ませがちな path planning を、exact にどう解くかを一度見ておくと視界が広がる。",
-          lookFor: "Eikonal 系との差、analytic distance function の pivoting、one-to-all の利点。",
-          detail: "./papers/icra2025-arxiv/2025-icra-exact-wavefront-propagation-for-globally-optimal-one-to-all-path-plannin-50b72344.md",
-          arxiv: "http://arxiv.org/abs/2409.11545",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "Exact Wavefront",
-            sub: "globally optimal planning on grids",
-            blocks: [
-              ["Problem", "approximate grid planning"],
-              ["Core", "exact wavefront by visibility"],
-              ["Takeaway", "global optimum to all grid points"]
-            ],
-            tags: ["grid", "optimal", "wavefront", "geometry"]
-          }
-        },
-        {
-          id: "p11",
-          rank: 11,
-          theme: "theme-rose",
-          session: "Aerial Robots: Planning and Control",
-          title: "Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets",
-          chips: ["MPC", "Planning", "Control", "UAV"],
-          focus: "planning / control",
-          difficulty: "★★★",
-          hook: "可変 time-step と horizon の設計が面白い。MPC をもう一歩実用に寄せる発想が取れる。",
-          tldr: [
-            "非線形 MPC が重くなりすぎる問題に対して、variable time-step と horizon coupling で答えている。",
-            "長い flight segment と密な maneuvering を両立させるのが狙い。",
-            "MPC の現実的な tuning / discretization の考え方を学びやすい。"
-          ],
-          why: "MPC は使えるけれど重い、という定番の悩みに直球で向き合っている。",
-          lookFor: "time-step と prediction horizon の結び付け方、solution quality 向上の根拠、実験での効き方。",
-          detail: "./papers/icra2025-arxiv/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md",
-          arxiv: "http://arxiv.org/abs/2503.14184",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "Variable-Step MPC",
-            sub: "long horizon + agile maneuvers",
-            blocks: [
-              ["Problem", "heavy nonlinear MPC"],
-              ["Core", "time-step / horizon coupling"],
-              ["Takeaway", "better long-range + agile planning"]
-            ],
-            tags: ["MPC", "timing", "UAV", "agile"]
-          }
-        },
-        {
-          id: "p12",
-          rank: 12,
-          theme: "theme-green",
-          session: "SLAM 4",
-          title: "Distributed Certifiably Correct Range-Aided SLAM",
-          chips: ["Distributed SLAM", "Certifiable", "Range-Aided", "Multi-Agent"],
-          focus: "multi-robot localization / SLAM",
-          difficulty: "★★★★★",
-          hook: "すぐ現場投入するタイプではないが、distributed / certifiable SLAM の頭を整理するには強い。",
-          tldr: [
-            "RA-SLAM に対する distributed かつ certifiably correct な解法を提示している。",
-            "Riemannian Staircase を multi-agent / communication-constrained setting に広げている。",
-            "難しいが、distributed SLAM の上位レイヤーを整理する一冊として価値がある。"
-          ],
-          why: "今すぐ使う論文ではなくても、certifiable design と distributed optimization の地図を頭に作れる。",
-          lookFor: "distributed certifiably correct pose graph optimization との関係、range sensor 前提の利点、global optimum の意味。",
-          detail: "./papers/icra2025-arxiv/2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.md",
-          arxiv: "http://arxiv.org/abs/2503.03192",
-          poster: {
-            kicker: "ICRA 2025 / Non-AI",
-            title: "DCORA",
-            sub: "distributed certifiably correct RA-SLAM",
-            blocks: [
-              ["Problem", "communication-constrained multi-agent SLAM"],
-              ["Core", "Riemannian Staircase for RA-SLAM"],
-              ["Takeaway", "distributed global optimum guarantees"]
-            ],
-            tags: ["RA-SLAM", "distributed", "certifiable", "range"]
-          }
-        }
-      ];
-
-      const escapeHtml = (text) =>
-        text
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#39;");
-
-      const feed = document.getElementById("feed");
-      const progress = document.getElementById("progress");
-
-      progress.innerHTML = ["cover", ...papers.map((paper) => paper.id)]
-        .map((id, index) => `<a href="#${id}" title="${index === 0 ? "Cover" : `Slide ${index}`}"></a>`)
-        .join("");
-
-      feed.insertAdjacentHTML(
-        "beforeend",
-        papers
-          .map(
-            (paper) => `
-              <section class="slide ${paper.theme}" id="${paper.id}">
-                <article class="card">
-                  <div class="slide-grid">
-                    <div class="content">
-                      <div class="meta-row">
-                        <span class="rank-pill">#${paper.rank}</span>
-                        <span class="chip">${escapeHtml(paper.session)}</span>
-                        ${paper.chips.map((chip) => `<span class="chip">${escapeHtml(chip)}</span>`).join("")}
-                      </div>
-                      <h1 class="paper-title">${escapeHtml(paper.title)}</h1>
-                      <p class="hook">${escapeHtml(paper.hook)}</p>
-                      <ul class="summary-list">
-                        ${paper.tldr
-                          .map(
-                            (line, index) => `
-                              <li class="summary-item">
-                                <strong>TL;DR ${index + 1}</strong>
-                                <p>${escapeHtml(line)}</p>
-                              </li>
-                            `
-                          )
-                          .join("")}
-                      </ul>
-                      <div class="info-grid">
-                        <div class="panel">
-                          <h2>Why read this now</h2>
-                          <p>${escapeHtml(paper.why)}</p>
-                        </div>
-                        <div class="panel">
-                          <h2>What to look for</h2>
-                          <p>${escapeHtml(paper.lookFor)}</p>
-                        </div>
-                        <div class="panel">
-                          <h2>Focus area</h2>
-                          <p>${escapeHtml(paper.focus)}</p>
-                        </div>
-                        <div class="panel">
-                          <h2>Difficulty</h2>
-                          <p>${escapeHtml(paper.difficulty)} / abstract 初見ベース</p>
-                        </div>
-                      </div>
-                      <div class="actions">
-                        <a class="primary" href="${paper.detail}">Detail note</a>
-                        <a href="${paper.arxiv}">arXiv</a>
-                      </div>
-                    </div>
-                    <aside class="visual">
-                      <div class="poster">
-                        <div class="poster-frame">
-                          <div class="poster-top">
-                            <div>
-                              <div class="poster-label">${escapeHtml(paper.poster.kicker)}</div>
-                              <h2 class="poster-title">${escapeHtml(paper.poster.title)}</h2>
-                              <div class="poster-sub">${escapeHtml(paper.poster.sub)}</div>
-                            </div>
-                            <div class="poster-rank">#${paper.rank}</div>
-                          </div>
-                          <div class="figure-box">
-                            <img src="./assets/figures/icra2025-top12/${paper.id}.png" alt="${escapeHtml(paper.title)} extracted figure" loading="lazy">
-                          </div>
-                          <ul class="poster-list">
-                            ${paper.poster.blocks
-                              .map(
-                                ([label, value]) => `
-                                  <li>
-                                    <strong>${escapeHtml(label)}</strong>
-                                    <span>${escapeHtml(value)}</span>
-                                  </li>
-                                `
-                              )
-                              .join("")}
-                          </ul>
-                          <div class="poster-footer">
-                            ${paper.poster.tags.map((tag) => `<span class="poster-tag">${escapeHtml(tag)}</span>`).join("")}
-                          </div>
-                        </div>
-                      </div>
-                    </aside>
-                  </div>
-                </article>
-              </section>
-            `
-          )
-          .join("")
-      );
+      const slides = [...document.querySelectorAll('.slide[data-index]')];
+      const counter = document.getElementById('counter');
+      const counterGroup = document.getElementById('counter-group');
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const index = Number(visible.target.dataset.index || 0);
+        const group = visible.target.dataset.group || 'cover';
+        counter.textContent = index === 0 ? '00 / 12' : `${String(index).padStart(2, '0')} / 12`;
+        counterGroup.textContent = group;
+      }, { threshold: [0.35, 0.6, 0.85] });
+      slides.forEach((slide) => observer.observe(slide));
     </script>
   </body>
 </html>

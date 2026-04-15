@@ -39,11 +39,16 @@ PRIORITY_KEYS = [
     "fig1",
     "figure1",
 ]
+IGNORED_HEADINGS = {"Why these 12", "Good next picks"}
 PENALTY_KEYS = [
     "bio",
     "author",
     "logo",
     "admin",
+    "howto",
+    "template",
+    "tutorial",
+    "ieeetran",
     "review",
     "rebuttal",
     "hist",
@@ -203,20 +208,37 @@ def parse_homepage_index(root: Path, index_path: Path) -> list[dict[str, str]]:
 
 def parse_markdown_list(root: Path, list_path: Path) -> list[dict[str, str]]:
     text = list_path.read_text(encoding="utf-8")
-    pattern = re.compile(r"\[([^\]]+)\]\((\./[^)]+\.md)\)\s+—\s+\[arXiv\]\((https?://arxiv\.org/abs/([^)]+))\)")
+    pattern = re.compile(r"\[([^\]]+)\]\((\./[^)]+\.md)\)")
     papers = []
-    for match in pattern.finditer(text):
-        detail_path = (list_path.parent / match.group(2)).resolve()
-        rel_detail = detail_path.relative_to(root).as_posix()
-        papers.append(
-            {
-                "id": Path(match.group(2)).stem,
-                "title": match.group(1),
-                "detail_path": rel_detail,
-                "arxiv_url": match.group(3),
-                "arxiv_id": match.group(4),
-            }
-        )
+    seen: set[str] = set()
+    current_heading = ""
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        if line.startswith("## "):
+            current_heading = line[3:].strip()
+            continue
+        if current_heading in IGNORED_HEADINGS:
+            continue
+        for match in pattern.finditer(line):
+            detail_path = (list_path.parent / match.group(2)).resolve()
+            rel_detail = detail_path.relative_to(root).as_posix()
+            note_id = Path(match.group(2)).stem
+            if note_id in seen:
+                continue
+            seen.add(note_id)
+            note_text = detail_path.read_text(encoding="utf-8")
+            arxiv_match = re.search(r"\| arXiv \| \[(https?://arxiv\.org/abs/([^\]]+))\]", note_text)
+            if not arxiv_match:
+                continue
+            papers.append(
+                {
+                    "id": note_id,
+                    "title": match.group(1),
+                    "detail_path": rel_detail,
+                    "arxiv_url": arxiv_match.group(1),
+                    "arxiv_id": arxiv_match.group(2),
+                }
+            )
     if not papers:
         raise RuntimeError(f"Failed to parse papers from markdown list: {list_path}")
     return papers

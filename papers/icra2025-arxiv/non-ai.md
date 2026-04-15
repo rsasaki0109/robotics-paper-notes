@@ -1,38 +1,39 @@
-# ICRA 2025 Non-AI first
+# ICRA 2025 Non-AI 60
 
-ICRA 2025 の arXiv 公開済み論文のうち、**Non-AI と判定した 60本** を先に読むための入口です。
+ICRA 2025 の arXiv 公開済み 521 本の下書き群から、**classical / model-based 寄り** の論文を強めに残して **60 本** に絞った入口です。
 
-- Heuristic: title / keywords / abstract に強い学習語が見えないものを Non-AI と分類
-- Note: 誤分類の可能性はあるので、読む前に 1 分だけ abstract を見直す前提
+- Base corpus: expanded arXiv drafts 521
+- Filter: `Non-AI` 判定 + `deep / neural / transformer / diffusion / llm` などを除外する stricter pass
+- Selection: localization / SLAM / GNSS / LiDAR / calibration / planning / control を強めに重み付けして 60 本を抽出
 - figure 付きで流し見したい場合は [Non-AI 60 feed](./non-ai-feed.html) を開く
 - まず読む順番が欲しい場合は [Non-AI Top 12](./non-ai-top.md) から入る
 
 ## Aerial Manipulation 1
 
 - [Hook-Based Aerial Payload Grasping from a Moving Platform](./2025-icra-hook-based-aerial-payload-grasping-from-a-moving-platform-9f68225c.md) — [arXiv](http://arxiv.org/abs/2409.11788)
-- [Human-Aware Physical Human-Robot Collaborative Transportation and Manipulation with Multiple Aerial Robots](./2025-icra-human-aware-physical-human-robot-collaborative-transportation-and-manipu-b5e5f8c6.md) — [arXiv](http://arxiv.org/abs/2210.05894)
-
-## Aerial Robots 1
-
-- [Survey of Simulators for Aerial Robots: An Overview and In-Depth Systematic Comparisons](./2025-icra-survey-of-simulators-for-aerial-robots-an-overview-and-in-depth-systemat-d36640cb.md) — [arXiv](http://arxiv.org/abs/2311.02296)
 
 ## Aerial Robots: Mechanics and Control 1
 
 - [A Generalized Thrust Estimation and Control Approach for Multirotors Micro Aerial Vehicles](./2025-icra-a-generalized-thrust-estimation-and-control-approach-for-multirotors-mic-071f780b.md) — [arXiv](http://arxiv.org/abs/2412.02874)
+- [The Spinning Blimp: Design and Control of a Novel Minimalist Aerial Vehicle Leveraging Rotational Dynamics and Locomotion](./2025-icra-the-spinning-blimp-design-and-control-of-a-novel-minimalist-aerial-vehicle-leveraging-rotational-dynamics-and-locomotion-dd85cec6.md) — [arXiv](http://arxiv.org/abs/2503.04112)
+- [Safe Quadrotor Navigation Using Composite Control Barrier Functions](./2025-icra-safe-quadrotor-navigation-using-composite-control-barrier-functions-1016b316.md) — [arXiv](http://arxiv.org/abs/2502.04101)
 
 ## Aerial Robots: Planning and Control
 
-- [Design, Contact Modeling, and Collision-Inclusive Planning of a Dual-Stiffness Aerial RoboT (DART)](./2025-icra-design-contact-modeling-and-collision-inclusive-planning-of-a-dual-stiff-bf11f006.md) — [arXiv](http://arxiv.org/abs/2504.18780)
-- [Real-Time Planning of Minimum-Time Trajectories for Agile UAV Flight](./2025-icra-real-time-planning-of-minimum-time-trajectories-for-agile-uav-flight-5c4195e2.md) — [arXiv](http://arxiv.org/abs/2409.16074)
 - [Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets](./2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md) — [arXiv](http://arxiv.org/abs/2503.14184)
+- [Real-Time Planning of Minimum-Time Trajectories for Agile UAV Flight](./2025-icra-real-time-planning-of-minimum-time-trajectories-for-agile-uav-flight-5c4195e2.md) — [arXiv](http://arxiv.org/abs/2409.16074)
 
-## Autonomous Vehicle Navigation 2
+## Agricultural Automation 4
 
-- [Decentralized Vehicle Coordination: The Berkeley DeepDrive Drone Dataset and Consensus-Based Models](./2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914.md) — [arXiv](http://arxiv.org/abs/2209.08763)
+- [Towards Over-Canopy Autonomous Navigation: Crop-Agnostic LiDAR-Based Crop-Row Detection in Arable Fields](./2025-icra-towards-over-canopy-autonomous-navigation-crop-agnostic-lidar-based-crop-row-detection-in-arable-fields-8decc42c.md) — [arXiv](http://arxiv.org/abs/2403.17774)
 
-## Autonomous Vehicle Perception 3
+## Autonomous Vehicle Perception 4
 
-- [Low-Rank Adaptation-Based All-Weather Removal for Autonomous Navigation](./2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112.md) — [arXiv](http://arxiv.org/abs/2411.17814)
+- [Efficient Submap-Based Autonomous MAV Exploration Using Visual-Inertial SLAM Configurable for LiDARs or Depth Cameras](./2025-icra-efficient-submap-based-autonomous-mav-exploration-using-visual-inertial-slam-configurable-for-lidars-or-depth-cameras-7f26157b.md) — [arXiv](http://arxiv.org/abs/2409.16972)
+
+## Calibration 1
+
+- [Bayesian Optimal Experimental Design for Robot Kinematic Calibration](./2025-icra-bayesian-optimal-experimental-design-for-robot-kinematic-calibration-a5e7d087.md) — [arXiv](http://arxiv.org/abs/2409.10802)
 
 ## Calibration 2
 
@@ -41,61 +42,58 @@ ICRA 2025 の arXiv 公開済み論文のうち、**Non-AI と判定した 60本
 ## Calibration 3
 
 - [Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems](./2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md) — [arXiv](http://arxiv.org/abs/2501.01788)
+- [Large-Scale UWB Anchor Calibration and One-Shot Localization Using Gaussian Process](./2025-icra-large-scale-uwb-anchor-calibration-and-one-shot-localization-using-gaussian-process-9a06b17e.md) — [arXiv](http://arxiv.org/abs/2412.16880)
 
-## Field Robotics: Forestry and Mining
+## Imaging, Scanning, Localization
 
-- [Near Time-Optimal Hybrid Motion Planning for Timber Cranes](./2025-icra-near-time-optimal-hybrid-motion-planning-for-timber-cranes-40eedebc.md) — [arXiv](http://arxiv.org/abs/2506.20314)
-
-## Human-Robot Interaction 3
-
-- [UGotMe: An Embodied System for Affective Human-Robot Interaction](./2025-icra-ugotme-an-embodied-system-for-affective-human-robot-interaction-0b020b79.md) — [arXiv](http://arxiv.org/abs/2410.18373)
-
-## Identifcation and Estimation for Legged Robots
-
-- [Simultaneous Collision Detection and Force Estimation for Dynamic Quadrupedal Locomotion](./2025-icra-simultaneous-collision-detection-and-force-estimation-for-dynamic-quadru-8299b641.md) — [arXiv](http://arxiv.org/abs/2504.17201)
-
-## Information Gathering, Planning and Control in Challenging Environments
-
-- [Multi-Agent Path Planning in Complex Environments Using Gaussian Belief Propagation with Global Path Finding](./2025-icra-multi-agent-path-planning-in-complex-environments-using-gaussian-belief-a110f6c4.md) — [arXiv](http://arxiv.org/abs/2502.20369)
+- [Automatic Robotic-Assisted Diffuse Reflectance Spectroscopy Scanning System](./2025-icra-automatic-robotic-assisted-diffuse-reflectance-spectroscopy-scanning-system-b56e3217.md) — [arXiv](http://arxiv.org/abs/2503.08470)
+- [Robust and Accurate Multi-View 2D/3D Image Registration with Differentiable X-Ray Rendering and Dual Cross-View Constraints](./2025-icra-robust-and-accurate-multi-view-2d-3d-image-registration-with-differentiable-x-ray-rendering-and-dual-cross-view-constraints-ac4b8d46.md) — [arXiv](http://arxiv.org/abs/2506.22191)
 
 ## Legged Locomotion: Novel Methods
 
 - [Angular Divergent Component of Motion: A Step towards Planning Spatial DCM Objectives for Legged Robots](./2025-icra-angular-divergent-component-of-motion-a-step-towards-planning-spatial-dc-94b0a68e.md) — [arXiv](http://arxiv.org/abs/2409.12796)
+- [Single-Stage Optimization of Open-Loop Stable Limit Cycles with Smooth, Symbolic Derivatives](./2025-icra-single-stage-optimization-of-open-loop-stable-limit-cycles-with-smooth-symbolic-derivatives-7d2ff686.md) — [arXiv](http://arxiv.org/abs/2312.10647)
 
-## Legged Locomotion: Novel Platforms
+## Legged Robots
 
-- [Addition of a Peristaltic Wave Improves Multi-Legged Locomotion Performance on Complex Terrains](./2025-icra-addition-of-a-peristaltic-wave-improves-multi-legged-locomotion-performa-ec25931c.md) — [arXiv](http://arxiv.org/abs/2410.01046)
-- [Effective Self-Righting Strategies for Elongate Multi-Legged Robots](./2025-icra-effective-self-righting-strategies-for-elongate-multi-legged-robots-cd04b2a6.md) — [arXiv](http://arxiv.org/abs/2410.01056)
+- [Deformable Multibody Modeling for Model Predictive Control in Legged Locomotion with Embodied Compliance](./2025-icra-deformable-multibody-modeling-for-model-predictive-control-in-legged-locomotion-with-embodied-compliance-c5b57a92.md) — [arXiv](http://arxiv.org/abs/2504.20301)
+- [Benchmarking Different QP Formulations and Solvers for Dynamic Quadrupedal Walking](./2025-icra-benchmarking-different-qp-formulations-and-solvers-for-dynamic-quadrupedal-walking-d1a834c4.md) — [arXiv](http://arxiv.org/abs/2502.01329)
 
 ## Localization 1
 
-- [Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry](./2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md) — [arXiv](http://arxiv.org/abs/2409.06948)
 - [GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization](./2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md) — [arXiv](http://arxiv.org/abs/2309.11134)
+- [Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry](./2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md) — [arXiv](http://arxiv.org/abs/2409.06948)
 
-## Manipulation 1
+## Localization 4
 
-- [From Instantaneous to Predictive Control: A More Intuitive and Tunable MPC Formulation for Robot Manipulators](./2025-icra-from-instantaneous-to-predictive-control-a-more-intuitive-and-tunable-mp-10d09420.md) — [arXiv](http://arxiv.org/abs/2412.01597)
-- [Robotic Sim-To-Real Transfer for Long-Horizon Pick-And-Place Tasks in the Robotic Sim2Real Competition](./2025-icra-robotic-sim-to-real-transfer-for-long-horizon-pick-and-place-tasks-in-th-2b794f59.md) — [arXiv](http://arxiv.org/abs/2503.11012)
+- [Improved Bag-Of-Words Image Retrieval with Geometric Constraints for Ground Texture Localization](./2025-icra-improved-bag-of-words-image-retrieval-with-geometric-constraints-for-ground-texture-localization-55bfcb4c.md) — [arXiv](http://arxiv.org/abs/2505.11620)
 
-## Manipulation 2
+## Localization 6
 
-- [Foresee and Act Ahead: Task Prediction and Pre-Scheduling Enabled Efficient Robotic Warehousing](./2025-icra-foresee-and-act-ahead-task-prediction-and-pre-scheduling-enabled-efficie-72689ad8.md) — [arXiv](http://arxiv.org/abs/2412.06425)
+- [Enhancing Feature Tracking Reliability for Visual Navigation Using Real-Time Safety Filter](./2025-icra-enhancing-feature-tracking-reliability-for-visual-navigation-using-real-time-safety-filter-77cf0e2e.md) — [arXiv](http://arxiv.org/abs/2502.01092)
+- [SuperLoc: The Key to Robust LiDAR-Inertial Localization Lies in Predicting Alignment Risks](./2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd.md) — [arXiv](http://arxiv.org/abs/2412.02901)
 
-## Mechanism Design 1
+## Manipulation Planning
 
-- [A Novel Twisted-Winching String Actuator for Robotic Applications: Design and Validation](./2025-icra-a-novel-twisted-winching-string-actuator-for-robotic-applications-design-cebb7ad7.md) — [arXiv](http://arxiv.org/abs/2410.12097)
+- [Hierarchical Contact-Rich Trajectory Optimization for Multi-Modal Manipulation Using Tight Convex Relaxations](./2025-icra-hierarchical-contact-rich-trajectory-optimization-for-multi-modal-manipulation-using-tight-convex-relaxations-535e2614.md) — [arXiv](http://arxiv.org/abs/2503.07963)
 
-## Mechanism Design 2
+## Marine Robotics 3
 
-- [Pinto: A Latched Spring Actuated Robot for Jumping and Perching](./2025-icra-pinto-a-latched-spring-actuated-robot-for-jumping-and-perching-bfd6e8df.md) — [arXiv](http://arxiv.org/abs/2409.09203)
+- [Cascade IPG Observer for Underwater Robot State Estimation](./2025-icra-cascade-ipg-observer-for-underwater-robot-state-estimation-dc217dc9.md) — [arXiv](http://arxiv.org/abs/2504.15235)
 
-## Micro/Nano Robots
+## Model Predictive Control
 
-- [Efficient Optimization of a Permanent Magnet Array for a Stable 2D Trap](./2025-icra-efficient-optimization-of-a-permanent-magnet-array-for-a-stable-2d-trap-7cc83215.md) — [arXiv](http://arxiv.org/abs/2511.19201)
+- [Efficient Trajectory Generation Based on Traversable Planes in 3D Complex Architectural Spaces](./2025-icra-efficient-trajectory-generation-based-on-traversable-planes-in-3d-complex-architectural-spaces-691f6427.md) — [arXiv](http://arxiv.org/abs/2503.08076)
+- [Model Predictive Control with Visibility Graphs for Humanoid Path Planning and Tracking against Adversarial Opponents](./2025-icra-model-predictive-control-with-visibility-graphs-for-humanoid-path-planning-and-tracking-against-adversarial-opponents-3d0b1830.md) — [arXiv](http://arxiv.org/abs/2504.02184)
+
+## Model Predictive Control for Legged Robots 1
+
+- [Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity](./2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea.md) — [arXiv](http://arxiv.org/abs/2503.05666)
 
 ## Motion Planning 1
 
 - [Pushing through Clutter with Movability Awareness of Blocking Obstacles](./2025-icra-pushing-through-clutter-with-movability-awareness-of-blocking-obstacles-0b040a9c.md) — [arXiv](http://arxiv.org/abs/2502.20106)
+- [Search-Based Path Planning in Interactive Environments among Movable Obstacles](./2025-icra-search-based-path-planning-in-interactive-environments-among-movable-obstacles-44315a93.md) — [arXiv](http://arxiv.org/abs/2410.18333)
 
 ## Motion Planning 2
 
@@ -103,70 +101,70 @@ ICRA 2025 の arXiv 公開済み論文のうち、**Non-AI と判定した 60本
 
 ## Motion Planning 3
 
+- [A Complete and Bounded-Suboptimal Algorithm for a Moving Target Traveling Salesman Problem with Obstacles in 3D](./2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36.md) — [arXiv](http://arxiv.org/abs/2504.14680)
 - [Non-Conservative Obstacle Avoidance for Multi-Body Systems Leveraging Convex Hulls and Predicted Closest Points](./2025-icra-non-conservative-obstacle-avoidance-for-multi-body-systems-leveraging-co-32788149.md) — [arXiv](http://arxiv.org/abs/2410.12659)
 
 ## Motion Planning 4
 
-- [Making a Complete Mess and Getting Away with It: Traveling Salesperson Problems with Circle Placement Variants](./2025-icra-making-a-complete-mess-and-getting-away-with-it-traveling-salesperson-pr-c137f604.md) — [arXiv](http://arxiv.org/abs/2410.08627)
 - [Topo-Geometrically Distinct Path Computation Using Neighborhood-Augmented Graph, and Its Application to Path Planning for a Tethered Robot in 3D](./2025-icra-topo-geometrically-distinct-path-computation-using-neighborhood-augmente-e05a5465.md) — [arXiv](http://arxiv.org/abs/2306.01203)
 
-## Multi-Robot Path Planning 2
+## Motion Planning and Control
 
-- [Exact Wavefront Propagation for Globally Optimal One-To-All Path Planning on 2D Cartesian Grids](./2025-icra-exact-wavefront-propagation-for-globally-optimal-one-to-all-path-plannin-50b72344.md) — [arXiv](http://arxiv.org/abs/2409.11545)
+- [Robot Navigation in Unknown and Cluttered Workspace with Dynamical System Modulation in Starshaped Roadmap](./2025-icra-robot-navigation-in-unknown-and-cluttered-workspace-with-dynamical-system-modulation-in-starshaped-roadmap-737b6845.md) — [arXiv](http://arxiv.org/abs/2403.11484)
+- [No Plan but Everything under Control: Robustly Solving Sequential Tasks with Dynamically Composed Gradient Descent](./2025-icra-no-plan-but-everything-under-control-robustly-solving-sequential-tasks-with-dynamically-composed-gradient-descent-04cbfe5d.md) — [arXiv](http://arxiv.org/abs/2503.01732)
 
-## Multi-Robot Swarms 2
+## Multi-Robot Path Planning 3
 
-- [Impossibility of Self-Organized Aggregation without Computation](./2025-icra-impossibility-of-self-organized-aggregation-without-computation-20a5fd6c.md) — [arXiv](http://arxiv.org/abs/2501.00390)
+- [Constrained Nonlinear Kaczmarz Projection on Intersections of Manifolds for Coordinated Multi-Robot Mobile Manipulation](./2025-icra-constrained-nonlinear-kaczmarz-projection-on-intersections-of-manifolds-for-coordinated-multi-robot-mobile-manipulation-532eff2e.md) — [arXiv](http://arxiv.org/abs/2410.21630)
 
-## Multi-Robot and Human-Robot Teams
+## Multi-Robot SLAM and Mapping
 
-- [Training Human-Robot Teams by Improving Transparency through a Virtual Spectator Interface](./2025-icra-training-human-robot-teams-by-improving-transparency-through-a-virtual-s-358b28fd.md) — [arXiv](http://arxiv.org/abs/2503.09849)
+- [TCAFF: Temporal Consistency for Robot Frame Alignment](./2025-icra-tcaff-temporal-consistency-for-robot-frame-alignment-8ecb8226.md) — [arXiv](http://arxiv.org/abs/2405.05210)
 
 ## Optimization and Optimal Control
 
+- [Endpoint-Explicit Differential Dynamic Programming Via Exact Resolution](./2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2.md) — [arXiv](http://arxiv.org/abs/2503.03897)
 - [Enhancing Robotic System Robustness Via Lyapunov Exponent-Based Optimization](./2025-icra-enhancing-robotic-system-robustness-via-lyapunov-exponent-based-optimiza-5f808c03.md) — [arXiv](http://arxiv.org/abs/2412.06776)
-- [Second-Order Stein Variational Dynamic Optimization](./2025-icra-second-order-stein-variational-dynamic-optimization-2eea0b0d.md) — [arXiv](http://arxiv.org/abs/2409.04644)
 
 ## Perception 1
 
 - [Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition](./2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md) — [arXiv](http://arxiv.org/abs/2408.07330)
 
-## Perception for Mobile Robots 1
+## Perception for Manipulation 1
 
-- [CoDynTrust: Robust Asynchronous Collaborative Perception Via Dynamic Feature Trust Modulus](./2025-icra-codyntrust-robust-asynchronous-collaborative-perception-via-dynamic-feat-6fd028fb.md) — [arXiv](http://arxiv.org/abs/2502.08169)
+- [Visuo-Tactile Object Pose Estimation for a Multi-Finger Robot Hand with Low-Resolution In-Hand Tactile Sensing](./2025-icra-visuo-tactile-object-pose-estimation-for-a-multi-finger-robot-hand-with-low-resolution-in-hand-tactile-sensing-30e33710.md) — [arXiv](http://arxiv.org/abs/2503.19893)
 
-## Planinng and Control for Legged Robots 1
+## Point Cloud Registration
 
-- [Bipedal Walking with Continuously Compliant Robotic Legs](./2025-icra-bipedal-walking-with-continuously-compliant-robotic-legs-159269a1.md) — [arXiv](http://arxiv.org/abs/2411.06948)
+- [Kinematic-ICP: Enhancing LiDAR Odometry with Kinematic Constraints for Wheeled Mobile Robots Moving on Planar Surfaces](./2025-icra-kinematic-icp-enhancing-lidar-odometry-with-kinematic-constraints-for-wheeled-mobile-robots-moving-on-planar-surfaces-c7ecb98b.md) — [arXiv](http://arxiv.org/abs/2410.10277)
 
-## Rehabiliation and Ergonomics
+## RADAR-Based Navigation
 
-- [A Human-In-The-Loop Simulation Framework for Evaluating Control Strategies in Gait Assistive Robots](./2025-icra-a-human-in-the-loop-simulation-framework-for-evaluating-control-strategi-b92b1e24.md) — [arXiv](http://arxiv.org/abs/2503.05825)
+- [Radar Teach and Repeat: Architecture and Initial Field Testing](./2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf.md) — [arXiv](http://arxiv.org/abs/2409.10491)
 
-## Robot Interaction Interfaces
+## Resiliency and Security 1
 
-- [Optimizing Robot Programming: Mixed Reality Gripper Control](./2025-icra-optimizing-robot-programming-mixed-reality-gripper-control-de85554e.md) — [arXiv](http://arxiv.org/abs/2503.02042)
+- [SLAMSpoof: Practical LiDAR Spoofing Attacks on Localization Systems Guided by Scan Matching Vulnerability Analysis](./2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745.md) — [arXiv](http://arxiv.org/abs/2502.13641)
+
+## Robot Mapping 2
+
+- [DynORecon: Dynamic Object Reconstruction for Navigation](./2025-icra-dynorecon-dynamic-object-reconstruction-for-navigation-100f53a2.md) — [arXiv](http://arxiv.org/abs/2409.19928)
+- [Ephemerality Meets LiDAR-Based Lifelong Mapping](./2025-icra-ephemerality-meets-lidar-based-lifelong-mapping-4addd7f8.md) — [arXiv](http://arxiv.org/abs/2502.13452)
 
 ## SLAM 3
 
+- [Submodular Optimization for Keyframe Selection & Usage in SLAM](./2025-icra-submodular-optimization-for-keyframe-selection-usage-in-slam-7ddbb6cb.md) — [arXiv](http://arxiv.org/abs/2410.05576)
 - [Equivariant Filter Design for Range-Only SLAM](./2025-icra-equivariant-filter-design-for-range-only-slam-89523508.md) — [arXiv](http://arxiv.org/abs/2503.03973)
 
 ## SLAM 4
 
-- [CoVoxSLAM: GPU Accelerated Globally Consistent Dense SLAM](./2025-icra-covoxslam-gpu-accelerated-globally-consistent-dense-slam-6599ffd4.md) — [arXiv](http://arxiv.org/abs/2410.21149)
-- [Distributed Certifiably Correct Range-Aided SLAM](./2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.md) — [arXiv](http://arxiv.org/abs/2503.03192)
 - [GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting](./2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md) — [arXiv](http://arxiv.org/abs/2411.06766)
-- [Range-Based 6-DoF Monte Carlo SLAM with Gradient-Guided Particle Filter on GPU](./2025-icra-range-based-6-dof-monte-carlo-slam-with-gradient-guided-particle-filter-240dc6c2.md) — [arXiv](http://arxiv.org/abs/2504.18056)
+- [Introspective Loop Closure for SLAM with 4D Imaging Radar](./2025-icra-introspective-loop-closure-for-slam-with-4d-imaging-radar-2151239e.md) — [arXiv](http://arxiv.org/abs/2503.02383)
+- [Distributed Certifiably Correct Range-Aided SLAM](./2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.md) — [arXiv](http://arxiv.org/abs/2503.03192)
 
 ## Sensor Fusion 1
 
 - [A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares](./2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md) — [arXiv](http://arxiv.org/abs/2404.05452)
-
-## Software Tools 1
-
-- [A Survey on Small-Scale Testbeds for Connected and Automated Vehicles and Robot Swarms](./2025-icra-a-survey-on-small-scale-testbeds-for-connected-and-automated-vehicles-an-ea5354fc.md) — [arXiv](http://arxiv.org/abs/2408.14199)
-- [Motion Comparator: Visual Comparison of Robot Motions](./2025-icra-motion-comparator-visual-comparison-of-robot-motions-91267c68.md) — [arXiv](http://arxiv.org/abs/2407.02746)
-- [Text2Robot: Evolutionary Robot Design from Text Descriptions](./2025-icra-text2robot-evolutionary-robot-design-from-text-descriptions-a010a123.md) — [arXiv](http://arxiv.org/abs/2406.19963)
 
 ## State Estimation
 
@@ -175,29 +173,14 @@ ICRA 2025 の arXiv 公開済み論文のうち、**Non-AI と判定した 60本
 
 ## Surgical Robotics: Planning
 
-- [ETSM: Automating Dissection Trajectory Suggestion and Confidence Map-Based Safety Margin Prediction for Robot-Assisted Endoscopic Submucosal Dissection](./2025-icra-etsm-automating-dissection-trajectory-suggestion-and-confidence-map-base-e49748a4.md) — [arXiv](http://arxiv.org/abs/2411.18884)
 - [Sampling-Based Model Predictive Control for Volumetric Ablation in Robotic Laser Surgery](./2025-icra-sampling-based-model-predictive-control-for-volumetric-ablation-in-robot-23ba27ef.md) — [arXiv](http://arxiv.org/abs/2410.03152)
 
-## Tracking and Prediction 1
+## Task and Motion Planning 1
 
-- [Asynchronous Multi-Object Tracking with an Event Camera](./2025-icra-asynchronous-multi-object-tracking-with-an-event-camera-0c268a02.md) — [arXiv](http://arxiv.org/abs/2505.08126)
-
-## Tracking and Prediction 2
-
-- [BiTrack: Bidirectional Offline 3D Multi-Object Tracking Using Camera-LiDAR Data](./2025-icra-bitrack-bidirectional-offline-3d-multi-object-tracking-using-camera-lida-41bfb5b4.md) — [arXiv](http://arxiv.org/abs/2406.18414)
-
-## Tracking and Prediction 3
-
-- [Tracking Everything in Robotic-Assisted Surgery](./2025-icra-tracking-everything-in-robotic-assisted-surgery-9ac64c25.md) — [arXiv](http://arxiv.org/abs/2409.19821)
-
-## Vision-Based Tactile Sensing 1
-
-- [NormalFlow: Fast, Robust, and Accurate Contact-Based Object 6DoF Pose Tracking with Vision-Based Tactile Sensors](./2025-icra-normalflow-fast-robust-and-accurate-contact-based-object-6dof-pose-track-fb8683bf.md) — [arXiv](http://arxiv.org/abs/2412.09617)
+- [Optimization-Based Task and Motion Planning under Signal Temporal Logic Specifications Using Logic Network Flow](./2025-icra-optimization-based-task-and-motion-planning-under-signal-temporal-logic-specifications-using-logic-network-flow-bb8b76c8.md) — [arXiv](http://arxiv.org/abs/2409.19168)
 
 ## Visual-Inertial Odometry
 
 - [DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery](./2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md) — [arXiv](http://arxiv.org/abs/2410.15373)
-
-## Wearable Robotics 2
-
-- [Design, Characterization, and Validation of a Variable Stiffness Prosthetic Elbow](./2025-icra-design-characterization-and-validation-of-a-variable-stiffness-prostheti-b5c9e39d.md) — [arXiv](http://arxiv.org/abs/2412.03985)
+- [Leg Exoskeleton Odometry Using a Limited FOV Depth Sensor](./2025-icra-leg-exoskeleton-odometry-using-a-limited-fov-depth-sensor-b8ea749d.md) — [arXiv](http://arxiv.org/abs/2502.19237)
+- [Improving Monocular Visual-Inertial Initialization with Structureless Visual-Inertial Bundle Adjustment](./2025-icra-improving-monocular-visual-inertial-initialization-with-structureless-visual-inertial-bundle-adjustment-0e004ceb.md) — [arXiv](http://arxiv.org/abs/2502.16598)

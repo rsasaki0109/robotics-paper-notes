@@ -1,98 +1,122 @@
 [
   {
-    "id": "p1",
+    "id": "2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82",
     "title": "GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md",
     "arxiv_id": "2309.11134",
-    "asset": "assets/figures/icra2025-top12/p1.png",
+    "arxiv_url": "http://arxiv.org/abs/2309.11134",
+    "asset": "assets/figures/icra2025-top12/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.png",
     "method": "source",
     "extracted_from": "figures/system_overview.pdf"
   },
   {
-    "id": "p2",
+    "id": "2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464",
     "title": "Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md",
     "arxiv_id": "2409.06948",
-    "asset": "assets/figures/icra2025-top12/p2.png",
+    "arxiv_url": "http://arxiv.org/abs/2409.06948",
+    "asset": "assets/figures/icra2025-top12/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.png",
     "method": "source",
     "extracted_from": "figures/flow/flow.pdf"
   },
   {
-    "id": "p3",
+    "id": "2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1",
     "title": "GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md",
     "arxiv_id": "2411.06766",
-    "asset": "assets/figures/icra2025-top12/p3.png",
+    "arxiv_url": "http://arxiv.org/abs/2411.06766",
+    "asset": "assets/figures/icra2025-top12/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.png",
     "method": "source",
     "extracted_from": "pics/GenZ-ICP_flowchart.pdf"
   },
   {
-    "id": "p4",
+    "id": "2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a",
     "title": "DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md",
     "arxiv_id": "2410.15373",
-    "asset": "assets/figures/icra2025-top12/p4.png",
+    "arxiv_url": "http://arxiv.org/abs/2410.15373",
+    "asset": "assets/figures/icra2025-top12/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.png",
     "method": "source",
     "extracted_from": "figs/fig1/fig1.pdf"
   },
   {
-    "id": "p5",
+    "id": "2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf",
     "title": "Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md",
     "arxiv_id": "2501.01788",
-    "asset": "assets/figures/icra2025-top12/p5.png",
+    "arxiv_url": "http://arxiv.org/abs/2501.01788",
+    "asset": "assets/figures/icra2025-top12/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.png",
     "method": "source",
     "extracted_from": "figures/timeoffset1_icra2025.pdf"
   },
   {
-    "id": "p6",
+    "id": "2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227",
     "title": "Equivariant IMU Preintegration with Biases: A Galilean Group Approach",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.md",
     "arxiv_id": "2411.05548",
-    "asset": "assets/figures/icra2025-top12/p6.png",
+    "arxiv_url": "http://arxiv.org/abs/2411.05548",
+    "asset": "assets/figures/icra2025-top12/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.png",
     "method": "source",
     "extracted_from": "images/linearization_error.pdf"
   },
   {
-    "id": "p7",
+    "id": "2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0",
     "title": "A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md",
     "arxiv_id": "2404.05452",
-    "asset": "assets/figures/icra2025-top12/p7.png",
+    "arxiv_url": "http://arxiv.org/abs/2404.05452",
+    "asset": "assets/figures/icra2025-top12/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.png",
     "method": "source",
     "extracted_from": "figs/2d_psr_setup.pdf"
   },
   {
-    "id": "p8",
+    "id": "2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c",
     "title": "Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md",
     "arxiv_id": "2408.07330",
-    "asset": "assets/figures/icra2025-top12/p8.png",
+    "arxiv_url": "http://arxiv.org/abs/2408.07330",
+    "asset": "assets/figures/icra2025-top12/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.png",
     "method": "source",
     "extracted_from": "Figure/main_figure/main_figure5.pdf"
   },
   {
-    "id": "p9",
-    "title": "CoVoxSLAM: GPU Accelerated Globally Consistent Dense SLAM",
-    "arxiv_id": "2410.21149",
-    "asset": "assets/figures/icra2025-top12/p9.png",
+    "id": "2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36",
+    "title": "A Complete and Bounded-Suboptimal Algorithm for a Moving Target Traveling Salesman Problem with Obstacles in 3D",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36.md",
+    "arxiv_id": "2504.14680",
+    "arxiv_url": "http://arxiv.org/abs/2504.14680",
+    "asset": "assets/figures/icra2025-top12/2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36.png",
     "method": "source",
-    "extracted_from": "pipeline.system.pdf"
+    "extracted_from": "comp_times_vary_tw_len_and_vmax_and_subopt_50instances.png"
   },
   {
-    "id": "p10",
-    "title": "Exact Wavefront Propagation for Globally Optimal One-To-All Path Planning on 2D Cartesian Grids",
-    "arxiv_id": "2409.11545",
-    "asset": "assets/figures/icra2025-top12/p10.png",
+    "id": "2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2",
+    "title": "Endpoint-Explicit Differential Dynamic Programming Via Exact Resolution",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2.md",
+    "arxiv_id": "2503.03897",
+    "arxiv_url": "http://arxiv.org/abs/2503.03897",
+    "asset": "assets/figures/icra2025-top12/2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2.png",
     "method": "source",
-    "extracted_from": "images/new_comparison.png"
+    "extracted_from": "figs/z1_bw_2.png"
   },
   {
-    "id": "p11",
+    "id": "2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef",
     "title": "Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md",
     "arxiv_id": "2503.14184",
-    "asset": "assets/figures/icra2025-top12/p11.png",
+    "arxiv_url": "http://arxiv.org/abs/2503.14184",
+    "asset": "assets/figures/icra2025-top12/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.png",
     "method": "source",
     "extracted_from": "fig/moving_targets_expt.eps"
   },
   {
-    "id": "p12",
-    "title": "Distributed Certifiably Correct Range-Aided SLAM",
-    "arxiv_id": "2503.03192",
-    "asset": "assets/figures/icra2025-top12/p12.png",
+    "id": "2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea",
+    "title": "Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity",
+    "detail_path": "papers/icra2025-arxiv/2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea.md",
+    "arxiv_id": "2503.05666",
+    "arxiv_url": "http://arxiv.org/abs/2503.05666",
+    "asset": "assets/figures/icra2025-top12/2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea.png",
     "method": "source",
-    "extracted_from": "img/dcora_graphical_representation.pdf"
+    "extracted_from": "figures/hopper.jpg"
   }
 ]

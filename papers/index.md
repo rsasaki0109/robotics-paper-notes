@@ -26,5 +26,5 @@
 - [Top 12 slide feed](../index.html): GitHub Pages のトップで開く、TL;DR・visual summary・自動抽出図付きの縦スクロール feed
 - [Non-AI 60 feed](./icra2025-arxiv/non-ai-feed.html): Non-AI 60 本全体を figure 付きで眺める縦スクロール feed
 - [ICRA 2025 arXiv drafts](./icra2025-arxiv/index.md): arXiv 公開済みと判定できた 521本の自動下書き
-- [ICRA 2025 Non-AI first](./icra2025-arxiv/non-ai.md): first-pass Non-AI 判定 60本の優先読みリスト
+- [ICRA 2025 Non-AI 60](./icra2025-arxiv/non-ai.md): expanded 521 corpus から再選定した 60本の優先読みリスト
 - [ICRA 2025 Non-AI Top 12](./icra2025-arxiv/non-ai-top.md): 最初に読むべき curated reading list
