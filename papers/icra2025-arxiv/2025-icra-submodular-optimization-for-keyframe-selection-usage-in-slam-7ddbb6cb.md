@@ -1,6 +1,6 @@
 # Submodular Optimization for Keyframe Selection & Usage in SLAM
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,22 +11,20 @@
 
 ## TL;DR
 
-- Keyframes are LiDAR scans saved for future reference in Simultaneous Localization And Mapping (SLAM), but despite their central importance most algorithms leave choices of which scans to save and how to use them to wasteful heuristics.
-- This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.
-- Our results show that online keyframe identification and submap generation reduce the number of saved keyframes and improve per scan computation time without compromising localization performance.
+- SLAM の keyframe selection と submap generation を、ヒューリスティックではなく **submodular optimization** として定式化した論文。
+- 似たフレームを無駄に抱え込まない keyframe 選択、局所化をよく拘束する submap 選択、容量制限付き map summarization の3点をまとめて扱う。
+- メモリ削減と計算時間改善を両立しており、SLAM を長時間回す実システムにかなり実用的。
 
 ## Task
 
 * SLAM
-* Localization
+* Mapping
 * LiDAR
-* Visual-Inertial
+* Optimization
 
 ## Keywords
 
-* SLAM
-* Optimization and Optimal Control
-* Field Robots
+* Keyframe Selection / Submodular Optimization / Submap Generation / Map Summarization / LiDAR SLAM
 
 ## AI依存度
 
@@ -34,36 +32,50 @@
 
 ## 何を解決？
 
-* Keyframes are LiDAR scans saved for future reference in Simultaneous Localization And Mapping (SLAM), but despite their central importance most algorithms leave choices of which scans to save and how to use them to wasteful heuristics.
+* 多くの SLAM は、どの scan を keyframe として残すかを単純な距離閾値などで決めていて無駄が多い。
+* keyframe を減らしたい一方で、submap が localization を十分拘束しないと精度が落ちる。
 
 ## 何が新しい？
 
-* This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.
+* keyframe selection を submodular set function として定式化し、理論保証付きの近似選択を行う点。
+* submap generation を Hessian の拘束性と結び付け、localization に効く keyframe 集合を選ぶ点。
+* map summarization まで同じ枠組みへ入れて、保存・利用の両面を整理している点。
 
 ## どうやってる？
 
-* This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.
+* 点群の global descriptor を作り、descriptor 空間で似たフレームを避けながら keyframe を選ぶ。
+* localization を強く拘束する keyframe 集合を、Hessian 最小固有値などの指標を通して評価する。
+* 容量制約付きの summarization は streaming submodular optimization で近似的に解く。
+* つまり「何を保存するか」だけでなく「どう submap として使うか」も最適化している。
 
 ## どこが強い？
 
-* Our results show that online keyframe identification and submap generation reduce the number of saved keyframes and improve per scan computation time without compromising localization performance.
+* メモリ削減と計算時間短縮がはっきりしていて、長時間運用へ直結しやすい。
+* heuristic を theory-backed な selection に置き換えているので、設計の見通しが良い。
+* keyframe / submap / summary をバラバラに扱わず、一つの見方で整理しているのが良い。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* descriptor の一般化性能や学習データ依存性は残りそう。
+* Hessian の近似的な扱いが複雑環境でどこまで素直に効くかはさらに見たい。
+* 実装負荷は heuristic より高く、軽量 SLAM にそのまま入れるには工夫が要る。
 
 ## 関連研究との違い
 
-* This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.
+* 従来の keyframe selection は距離・角度閾値や経験則に寄ることが多い。
+* pose graph sparsification と似た匂いはあるが、本論文は scan / submap / summary の運用面まで踏み込んでいる。
+* VIO や active perception 周辺で使われる submodular 選択の考え方を LiDAR SLAM へ強く持ち込んだ感じ。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* SLAM の性能は front-end / back-end だけでなく、「何を保存するか」でかなり変わるとわかる。
+* 大規模マッピングを実際に回すときの resource-aware な設計として価値が高い。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* かなり地味だが、製品化や長時間運用ではこういう論文が効く。
+* 60本の中でも「読むと実装方針が変わる」タイプで、思ったより重要度が高い。

@@ -1,6 +1,6 @@
 # PTZ-Calib: Robust Pan-Tilt-Zoom Camera Calibration
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,19 +11,19 @@
 
 ## TL;DR
 
-- In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.
-- Our method includes an offline and an online stage.
-- Extensive evaluations demonstrate our robustness and superior performance over state-of-the-art methods on various real and synthetic datasets.
+- PTZ camera の calibration を、offline と online に分けた二段構成で解く `PTZ-Calib`。
+- offline では reference views から feature tracks と ray landmarks を作って self-calibration し、online では新視点を relocalization として解く。
+- pan / tilt / zoom に加えて focal length や distortion もまとめて扱い、real / synthetic の両方で強い。
 
 ## Task
 
-* SLAM
-* Localization
 * Calibration
+* Localization
+* Vision
 
 ## Keywords
 
-* Surveillance Robotic Systems / Calibration and Identification / SLAM
+* PTZ Camera / Bundle Adjustment / Relocalization / Ray Landmarks / Georeferencing
 
 ## AI依存度
 
@@ -31,36 +31,50 @@
 
 ## 何を解決？
 
-* In the online stage, we formulate the calibration of any new viewpoints as a relocalization problem.
+* PTZ camera は pan / tilt / zoom が変わるたびに内外部パラメータ推定が面倒で、既存法は既知初期値や単純化仮定に寄りがち。
+* 実運用では arbitrary viewpoint から素早く calibration / relocalization したい。
 
 ## 何が新しい？
 
-* In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.
+* offline-heavy / online-light な **two-stage** 設計で、実運用に向いた PTZ calibration にした点。
+* translation を持たない PTZ 特性に合わせて、ray landmark ベースの incremental bundle adjustment を作った点。
+* local calibration だけでなく georeferencing まで視野に入れている点。
 
 ## どうやってる？
 
-* In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.
+* offline では、最低 zoom で 360 度をカバーする reference images を集め、SuperPoint / SuperGlue で feature tracks を構築する。
+* track を ray landmark としてまとめ、PTZ-IBA と global BA で camera parameters を最適化する。
+* online では、新しい viewpoint を relocalization 問題として解き、frustum overlap で reference candidates を絞る。
+* 少数の 2D-3D annotation で local system を geographic frame へ写す georeferencing も行える。
 
 ## どこが強い？
 
-* Extensive evaluations demonstrate our robustness and superior performance over state-of-the-art methods on various real and synthetic datasets.
+* PTZ の実用運用をかなり意識した構成で、online stage を軽くしている。
+* 内部パラメータや distortion までまとめて扱い、仮定を減らしている。
+* synthetic だけでなく real data でも強く、feature matching 部分も modern pipeline を使って堅牢。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* offline stage の feature matching コストは重く、reference set が大きいと時間が伸びる。
+* georeferencing には手注釈が必要で、完全自動ではない。
+* principal point 固定など camera model 側の仮定が合わない特殊レンズでは厳しいかもしれない。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* 既存 PTZ calibration は known initial pose や rotation-only などの仮定を置くものが多い。
+* 学習ベース手法と違い、幾何と BA を主軸にしていて汎化性を狙っている。
+* 本手法は calibration だけでなく online relocalization と地理座標合わせまでつないでいるのが特徴。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* calibration を「一回の最適化」でなく、offline asset 構築と online inference に分ける設計が勉強になる。
+* 実システムで効く camera calibration の組み立て方として、かなり実務的。
 
 ## 難易度
 
-★★★（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* calibration 論文としてかなりバランスが良く、theory と system design の距離が近い。
+* PTZ を扱う監視・放送・ロボット視覚で、そのまま参考にしやすいタイプの論文だと思う。

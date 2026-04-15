@@ -803,47 +803,47 @@
               <div class="meta-row">
                 <span class="rank-pill">10 / 60</span>
                 <span class="chip group-chip">Calibration 2</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Calibration</span>
+                <span class="chip task-chip">Calibration</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Vision</span>
               </div>
               <h1 class="paper-title">PTZ-Calib: Robust Pan-Tilt-Zoom Camera Calibration</h1>
-              <p class="hook">In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.</p>
+              <p class="hook">offline-heavy / online-light な **two-stage** 設計で、実運用に向いた PTZ calibration にした点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.</li><li>Our method includes an offline and an online stage.</li><li>Extensive evaluations demonstrate our robustness and superior performance over state-of-the-art methods on various real and synthetic datasets.</li></ul>
+                  <ul class="bullet-list"><li>PTZ camera の calibration を、offline と online に分けた二段構成で解く `PTZ-Calib`。</li><li>offline では reference views から feature tracks と ray landmarks を作って self-calibration し、online では新視点を relocalization として解く。</li><li>pan / tilt / zoom に加えて focal length や distortion もまとめて扱い、real / synthetic の両方で強い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>In the online stage, we formulate the calibration of any new viewpoints as a relocalization problem.</p>
+                  <p>PTZ camera は pan / tilt / zoom が変わるたびに内外部パラメータ推定が面倒で、既存法は既知初期値や単純化仮定に寄りがち。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.</p>
+                  <p>offline-heavy / online-light な **two-stage** 設計で、実運用に向いた PTZ calibration にした点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>In this paper, we present PTZ-Calib, a robust two-stage PTZ camera calibration method, that efficiently and accurately estimates camera parameters for arbitrary viewpoints.</p>
+                  <p>offline では、最低 zoom で 360 度をカバーする reference images を集め、SuperPoint / SuperGlue で feature tracks を構築する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Extensive evaluations demonstrate our robustness and superior performance over state-of-the-art methods on various real and synthetic datasets.</p>
+                  <p>PTZ の実用運用をかなり意識した構成で、online stage を軽くしている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>calibration を「一回の最適化」でなく、offline asset 構築と online inference に分ける設計が勉強になる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>calibration 論文としてかなりバランスが良く、theory と system design の距離が近い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Calibration 2</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Surveillance Robotic Systems / Calibration and Identification / SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>PTZ Camera / Bundle Adjustment / Relocalization / Ray Landmarks / Georeferencing</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-ptz-calib-robust-pan-tilt-zoom-camera-calibration-b24578c8.md">Detail note</a>
@@ -856,7 +856,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Extensive evaluations demonstrate our robustness and superior performance over state-of-the-art methods on various real and synthetic datasets.</p>
+                <p>PTZ の実用運用をかなり意識した構成で、online stage を軽くしている。</p>
               </div>
             </aside>
           </div>
@@ -1661,47 +1661,47 @@
               <div class="meta-row">
                 <span class="rank-pill">23 / 60</span>
                 <span class="chip group-chip">Localization 6</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">SuperLoc: The Key to Robust LiDAR-Inertial Localization Lies in Predicting Alignment Risks</h1>
-              <p class="hook">This paper introduces SuperLoc, a robust LiDAR localization package that addresses key limitations in existing methods.</p>
+              <p class="hook">point correspondence の Jacobian から、最適化前に **alignment risk** を計算する予測的な退化検知。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Map-based LiDAR localization, while widely used in autonomous systems, faces significant challenges in degraded environments due to the lack of distinct geometric features.</li><li>This paper introduces SuperLoc, a robust LiDAR localization package that addresses key limitations in existing methods.</li><li>SuperLoc features a novel predictive alignment risk assessment technique, enabling early detection and mitigation of potential failures before optimization.</li></ul>
+                  <ul class="bullet-list"><li>LiDAR localization の失敗を ICP の後で検知するのでなく、**最適化前に alignment risk を予測**して回避する `SuperLoc` を提案している。</li><li>point-plane 対応の Jacobian から各自由度の観測性を推定し、退化方向だけ代替 odometry の拘束を強める能動的 sensor fusion が肝。</li><li>洞窟・長廊下・階段のような退化環境で大きく効いており、従来の Hessian 事後解析よりかなり実用寄り。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Map-based LiDAR localization, while widely used in autonomous systems, faces significant challenges in degraded environments due to the lack of distinct geometric features.</p>
+                  <p>map-based LiDAR localization は、幾何特徴が弱い環境で ICP が不安定になりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper introduces SuperLoc, a robust LiDAR localization package that addresses key limitations in existing methods.</p>
+                  <p>point correspondence の Jacobian から、最適化前に **alignment risk** を計算する予測的な退化検知。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This paper introduces SuperLoc, a robust LiDAR localization package that addresses key limitations in existing methods.</p>
+                  <p>point-to-plane 対応の Jacobian を解析し、X/Y/Z/Roll/Pitch/Yaw 方向の観測可能性を評価する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Experimental results demonstrate significant performance improvements over state-of-the-art methods across various degraded environments.</p>
+                  <p>退化を後追いでなく事前に見るので、安全側に寄せやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>localization failure を「最適化器の不調」ではなく「どの自由度が観測されていないか」で考えられる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>退化問題への向き合い方が良く、LiDAR localization の壊れ方をかなり実務的に捉えている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Localization 6</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / SLAM / Mapping</strong></div>
+                <div class="fact"><span>Keywords</span><strong>LiDAR Localization / Alignment Risk / Observability / Degeneracy / Sensor Fusion</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd.md">Detail note</a>
@@ -1714,7 +1714,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Experimental results demonstrate significant performance improvements over state-of-the-art methods across various degraded environments.</p>
+                <p>退化を後追いでなく事前に見るので、安全側に寄せやすい。</p>
               </div>
             </aside>
           </div>
@@ -2651,47 +2651,47 @@
               <div class="meta-row">
                 <span class="rank-pill">38 / 60</span>
                 <span class="chip group-chip">Multi-Robot SLAM and Mapping</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Multi-Robot SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Frame Alignment</span><span class="chip task-chip">Perception</span>
               </div>
               <h1 class="paper-title">TCAFF: Temporal Consistency for Robot Frame Alignment</h1>
-              <p class="hook">To this end, we develop a novel multiple hypothesis algorithm, called TCAFF, for aligning the coordinate frames of neighboring robots.</p>
+              <p class="hook">frame alignment を multiple hypothesis tracking 的に扱い、時間的一貫性で候補を絞る点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In the field of collaborative robotics, the ability to communicate spatial information like planned trajectories and shared environment information is crucial.</li><li>When no global position information is available (e.g., indoor or GPS-denied environments), agents must align their coordinate frames before shared spatial information can be properly expressed and interpreted.</li><li>Coordinate frame alignment is particularly difficult when robots have no initial alignment and are affected by odometry drift.</li></ul>
+                  <ul class="bullet-list"><li>GPS-denied 環境で複数ロボットの座標系を合わせるために、**temporal consistency** を使った multiple-hypothesis frame alignment `TCAFF` を提案している。</li><li>単発の幾何マッチングではなく、候補 alignment を仮説木として追跡し、時間方向に矛盾しないものを残す。</li><li>multi-robot での shared map / trajectory 共有に直結する実用的な frame alignment 手法。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>In the field of collaborative robotics, the ability to communicate spatial information like planned trajectories and shared environment information is crucial.</p>
+                  <p>複数ロボットがそれぞれの local frame で動いていると、shared map や trajectory を扱う前に frame alignment が必要になる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To this end, we develop a novel multiple hypothesis algorithm, called TCAFF, for aligning the coordinate frames of neighboring robots.</p>
+                  <p>frame alignment を multiple hypothesis tracking 的に扱い、時間的一貫性で候補を絞る点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>To this end, we develop a novel multiple hypothesis algorithm, called TCAFF, for aligning the coordinate frames of neighboring robots.</p>
+                  <p>各ロボットが物体検出などから spatial measurements を作り、候補となる frame alignment 測定を生成する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We demonstrate TCAFF being used for frame alignment in a collaborative object tracking application on a team of four robots tracking six pedestrians and show that TCAFF enables robots to achieve a tracking accuracy similar to that of a system with ground truth localization.</p>
+                  <p>初期値なし・大きいずれありでも扱えるのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>multi-robot localization の難しさが「最適化」以前に data association にあるとよくわかる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>単発 alignment を当てにいかず、仮説を時間で育てる設計がかなり実践的。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Multi-Robot SLAM and Mapping</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / Multi-Robot SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Frame Alignment / Multiple Hypothesis Tracking / Temporal Consistency / Multi-Robot Mapping / Data Association</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-tcaff-temporal-consistency-for-robot-frame-alignment-8ecb8226.md">Detail note</a>
@@ -2704,7 +2704,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We demonstrate TCAFF being used for frame alignment in a collaborative object tracking application on a team of four robots tracking six pedestrians and show that TCAFF enables robots to achieve a tracking accuracy similar to that of a system with ground truth localization.</p>
+                <p>初期値なし・大きいずれありでも扱えるのが強い。</p>
               </div>
             </aside>
           </div>
@@ -2981,47 +2981,47 @@
               <div class="meta-row">
                 <span class="rank-pill">43 / 60</span>
                 <span class="chip group-chip">Point Cloud Registration</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span>
+                <span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Odometry</span><span class="chip task-chip">Mapping</span>
               </div>
               <h1 class="paper-title">Kinematic-ICP: Enhancing LiDAR Odometry with Kinematic Constraints for Wheeled Mobile Robots Moving on Planar Surfaces</h1>
-              <p class="hook">In this paper, we present Kinematic-ICP, a LiDAR odometry system that focuses on wheeled mobile robots equipped with a 3D LiDAR and moving on a planar surface, which is a common assumption for warehouses, offices, hospitals, etc.</p>
+              <p class="hook">SE(3) の ICP 修正を、そのまま受け入れるのでなく **kinematic model を通して制約**する点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>LiDAR odometry is essential for many robotics applications, including 3D mapping, navigation, and simultaneous localization and mapping.</li><li>LiDAR odometry systems are usually based on some form of point cloud registration to compute the ego-motion of a mobile robot.</li><li>Yet, few of today&#x27;s LiDAR odometry systems consider domain-specific knowledge or the kinematic model of the mobile platform during the point cloud alignment.</li></ul>
+                  <ul class="bullet-list"><li>wheeled robot が平面上を動くという前提を ICP の**最適化そのもの**に入れた `Kinematic-ICP` を提案している。</li><li>wheel odometry を初期値に使うだけでなく、LiDAR registration の修正量を unicycle 系の運動学制約に沿って制限するのが肝。</li><li>倉庫や屋外で KISS-ICP 系より安定しており、特徴が薄い corridor 的環境でも wheel 制約が効く。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>LiDAR odometry is essential for many robotics applications, including 3D mapping, navigation, and simultaneous localization and mapping.</p>
+                  <p>LiDAR odometry は 6DoF registration として書かれることが多いが、平面移動する車輪ロボットでは不自然な自由度まで解いてしまう。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we present Kinematic-ICP, a LiDAR odometry system that focuses on wheeled mobile robots equipped with a 3D LiDAR and moving on a planar surface, which is a common assumption for warehouses, offices, hospitals, etc.</p>
+                  <p>SE(3) の ICP 修正を、そのまま受け入れるのでなく **kinematic model を通して制約**する点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Kinematic-ICP has been recently deployed in the Dexory fleet of robots operating in warehouses worldwide at their customers&#x27; sites, showing that our method can run in the real world alongside a complete navigation stack.</p>
+                  <p>wheel odometry を使って scan alignment の初期姿勢を与える。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The experiments show that our approach achieves top performances and is more accurate than wheel odometry and common LiDAR odometry systems.</p>
+                  <p>問題設定が明快で、車輪ロボットならかなり広く刺さる。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>odometry の性能は特徴抽出だけでなく、「どんな運動を許すか」のモデル化で大きく変わるとわかる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>ICP をただ頑健化するのでなく、ロボットの動き方そのものを入れているのが良い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Point Cloud Registration</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / Mapping</strong></div>
+                <div class="fact"><span>Keywords</span><strong>ICP / Wheeled Robots / Kinematic Constraints / Planar Motion / Wheel Odometry</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-kinematic-icp-enhancing-lidar-odometry-with-kinematic-constraints-for-wheeled-mobile-robots-moving-on-planar-surfaces-c7ecb98b.md">Detail note</a>
@@ -3034,7 +3034,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The experiments show that our approach achieves top performances and is more accurate than wheel odometry and common LiDAR odometry systems.</p>
+                <p>問題設定が明快で、車輪ロボットならかなり広く刺さる。</p>
               </div>
             </aside>
           </div>
@@ -3311,47 +3311,47 @@
               <div class="meta-row">
                 <span class="rank-pill">48 / 60</span>
                 <span class="chip group-chip">SLAM 3</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Mapping</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Optimization</span>
               </div>
               <h1 class="paper-title">Submodular Optimization for Keyframe Selection &amp; Usage in SLAM</h1>
-              <p class="hook">This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.</p>
+              <p class="hook">keyframe selection を submodular set function として定式化し、理論保証付きの近似選択を行う点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Keyframes are LiDAR scans saved for future reference in Simultaneous Localization And Mapping (SLAM), but despite their central importance most algorithms leave choices of which scans to save and how to use them to wasteful heuristics.</li><li>This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.</li><li>Our results show that online keyframe identification and submap generation reduce the number of saved keyframes and improve per scan computation time without compromising localization performance.</li></ul>
+                  <ul class="bullet-list"><li>SLAM の keyframe selection と submap generation を、ヒューリスティックではなく **submodular optimization** として定式化した論文。</li><li>似たフレームを無駄に抱え込まない keyframe 選択、局所化をよく拘束する submap 選択、容量制限付き map summarization の3点をまとめて扱う。</li><li>メモリ削減と計算時間改善を両立しており、SLAM を長時間回す実システムにかなり実用的。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Keyframes are LiDAR scans saved for future reference in Simultaneous Localization And Mapping (SLAM), but despite their central importance most algorithms leave choices of which scans to save and how to use them to wasteful heuristics.</p>
+                  <p>多くの SLAM は、どの scan を keyframe として残すかを単純な距離閾値などで決めていて無駄が多い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.</p>
+                  <p>keyframe selection を submodular set function として定式化し、理論保証付きの近似選択を行う点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This work proposes two novel keyframe selection strategies for localization and map summarization, as well as a novel approach to submap generation which selects keyframes that best constrain localization.</p>
+                  <p>点群の global descriptor を作り、descriptor 空間で似たフレームを避けながら keyframe を選ぶ。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Our results show that online keyframe identification and submap generation reduce the number of saved keyframes and improve per scan computation time without compromising localization performance.</p>
+                  <p>メモリ削減と計算時間短縮がはっきりしていて、長時間運用へ直結しやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>SLAM の性能は front-end / back-end だけでなく、「何を保存するか」でかなり変わるとわかる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり地味だが、製品化や長時間運用ではこういう論文が効く。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>SLAM 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>SLAM / Optimization and Optimal Control / Field Robots</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Keyframe Selection / Submodular Optimization / Submap Generation / Map Summarization / LiDAR SLAM</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-submodular-optimization-for-keyframe-selection-usage-in-slam-7ddbb6cb.md">Detail note</a>
@@ -3364,7 +3364,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Our results show that online keyframe identification and submap generation reduce the number of saved keyframes and improve per scan computation time without compromising localization performance.</p>
+                <p>メモリ削減と計算時間短縮がはっきりしていて、長時間運用へ直結しやすい。</p>
               </div>
             </aside>
           </div>
@@ -3377,47 +3377,47 @@
               <div class="meta-row">
                 <span class="rank-pill">49 / 60</span>
                 <span class="chip group-chip">SLAM 3</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Mapping</span><span class="chip task-chip">Aerial Robotics</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Range Sensing</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">Equivariant Filter Design for Range-Only SLAM</h1>
-              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <p class="hook">range-only measurement と整合する symmetry Lie group を明示し、その上で EqF を導いた点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>We derive an equivariant filter (EqF) for the RO-SLAM problem based on a symmetry Lie group that is compatible with the range measurements.</li><li>Range-only Simultaneous Localisation and Mapping (RO-SLAM) is of interest in the robotics community due to its practical applications; for example, ultra-wideband (UWB) and Bluetooth Low Energy (BLE) localisation in terrestrial and aerial applications and acoustic beacon localisation in marine applications.</li><li>The proposed filter does not require bootstrapping or initialisation of landmark positions, and demonstrates robustness to the no-prior situation.</li></ul>
+                  <ul class="bullet-list"><li>range-only SLAM に対して、距離観測と相性の良い Lie 群対称性を使った **equivariant filter** を設計した論文。</li><li>landmark 初期化を前提にせず、no-prior 条件でも回りやすい filter を目指している。</li><li>UWB / BLE / acoustic beacon 系の localization を、古典的だがかなり美しい形で再定式化している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>We derive an equivariant filter (EqF) for the RO-SLAM problem based on a symmetry Lie group that is compatible with the range measurements.</p>
+                  <p>range-only SLAM は landmark 初期化や観測の非線形性が厳しく、標準 EKF だと linearization error に苦しみやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                  <p>range-only measurement と整合する symmetry Lie group を明示し、その上で EqF を導いた点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                  <p>robot pose と landmark state を含む range-only SLAM を、多様体上の状態空間として書く。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The proposed filter does not require bootstrapping or initialisation of landmark positions, and demonstrates robustness to the no-prior situation.</p>
+                  <p>range-only SLAM という難しい設定で、bootstrap なしを狙っているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>beacon localization や UWB SLAM を、state estimation の設計原理から理解できる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>数学はかなり重いが、range-only SLAM をここまできれいに書き直しているのが良い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>SLAM 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>SLAM / Range Sensing / Mapping</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Range-Only SLAM / Equivariant Filter / Lie Group / UWB / Beacon Localization</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-equivariant-filter-design-for-range-only-slam-89523508.md">Detail note</a>
@@ -3430,7 +3430,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The proposed filter does not require bootstrapping or initialisation of landmark positions, and demonstrates robustness to the no-prior situation.</p>
+                <p>range-only SLAM という難しい設定で、bootstrap なしを狙っているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -3509,47 +3509,47 @@
               <div class="meta-row">
                 <span class="rank-pill">51 / 60</span>
                 <span class="chip group-chip">SLAM 4</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Radar</span><span class="chip task-chip">Mapping</span>
               </div>
               <h1 class="paper-title">Introspective Loop Closure for SLAM with 4D Imaging Radar</h1>
-              <p class="hook">We generate submaps for a denser environment representation and use introspective measures to reject false detections in feature-degenerate environments.</p>
+              <p class="hook">similar viewpoint と opposing viewpoint を明示的に分けて扱う loop closure 設計。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Simultaneous Localization and Mapping (SLAM) allows mobile robots to navigate without external positioning systems or pre-existing maps.</li><li>Radar is emerging as a valuable sensing tool, especially in vision-obstructed environments, as it is less affected by particles than lidars or cameras.</li><li>Modern 4D imaging radars provide three-dimensional geometric information and relative velocity measurements, but they bring challenges such as a small field of view and sparse, noisy point clouds.</li></ul>
+                  <ul class="bullet-list"><li>4D imaging radar の狭い FOV と疎で noisy な点群でも loop closure できるように、**introspective verification** を入れた radar SLAM の loop detection 手法。</li><li>CartContext descriptor、sequence-based filtering、odometry-coupled search を組み合わせ、similar viewpoint だけでなく opposing viewpoint も扱う。</li><li>候補 loop を最後に quality metrics の分類器で検証するので、自己相似環境での false loop をかなり減らせる。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Simultaneous Localization and Mapping (SLAM) allows mobile robots to navigate without external positioning systems or pre-existing maps.</p>
+                  <p>4D imaging radar は悪環境に強いが、FOV が狭く点群も疎なので、LiDAR のような loop closure がそのまま効かない。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We generate submaps for a denser environment representation and use introspective measures to reject false detections in feature-degenerate environments.</p>
+                  <p>similar viewpoint と opposing viewpoint を明示的に分けて扱う loop closure 設計。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Radar is emerging as a valuable sensing tool, especially in vision-obstructed environments, as it is less affected by particles than lidars or cameras.</p>
+                  <p>odometry と submap を作りつつ、CartContext で radar keyframe descriptor を構築する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Our experiments show accurate loop closure detection in geometrically diverse settings for both similar and opposing viewpoints, improving trajectory estimation with up to 82 % improvement in ATE and rejecting false positives in self-similar environments.</p>
+                  <p>radar 固有の limited FOV と sparse point cloud を正面から扱っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>radar SLAM の loop closure を、descriptor・時系列・後段検証の組み合わせで解く設計が学べる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>radar はまだ LiDAR ほど手法が枯れていないので、こういう failure-aware な loop closure 設計は価値が高い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>SLAM 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>SLAM / Mapping / Localization</strong></div>
+                <div class="fact"><span>Keywords</span><strong>4D Imaging Radar / Loop Closure / CartContext / Introspective Verification / Sequence Filtering</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-introspective-loop-closure-for-slam-with-4d-imaging-radar-2151239e.md">Detail note</a>
@@ -3562,7 +3562,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Our experiments show accurate loop closure detection in geometrically diverse settings for both similar and opposing viewpoints, improving trajectory estimation with up to 82 % improvement in ATE and rejecting false positives in self-similar environments.</p>
+                <p>radar 固有の limited FOV と sparse point cloud を正面から扱っている。</p>
               </div>
             </aside>
           </div>
@@ -3575,47 +3575,47 @@
               <div class="meta-row">
                 <span class="rank-pill">52 / 60</span>
                 <span class="chip group-chip">SLAM 4</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Mapping</span><span class="chip task-chip">Motion Planning</span>
+                <span class="chip task-chip">Multi-Robot SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Range Sensing</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">Distributed Certifiably Correct Range-Aided SLAM</h1>
-              <p class="hook">To this end, we present the first distributed algorithm for RA-SLAM that can efficiently recover certifiably globally optimal solutions.</p>
+              <p class="hook">RA-SLAM に対して **distributed certifiably correct** なアルゴリズムを与えた点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>The state estimation problem for these systems takes the form of range-aided (RA) SLAM.</li><li>To this end, we present the first distributed algorithm for RA-SLAM that can efficiently recover certifiably globally optimal solutions.</li><li>Our algorithm, distributed certifiably correct RA-SLAM (DCORA), achieves this via the Riemannian Staircase method, where computational procedures developed for distributed certifiably correct pose graph optimization are generalized to the RA-SLAM problem.</li></ul>
+                  <ul class="bullet-list"><li>range-aided SLAM を multi-agent / distributed setting で、しかも **certifiably correct** に解こうとする `DCORA` の論文。</li><li>RA-SLAM を QCQP → SDP → rank-restricted problem と整理し、Riemannian Staircase で globally optimality certificate まで見に行く。</li><li>centralized CORA に近い精度を分散で狙っており、通信制約下の multi-robot SLAM としてかなり筋が良い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>The state estimation problem for these systems takes the form of range-aided (RA) SLAM.</p>
+                  <p>複数ロボットが UWB などの range 観測を持つとき、RA-SLAM は自然だが、非凸性と分散計算の両方が難しい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To this end, we present the first distributed algorithm for RA-SLAM that can efficiently recover certifiably globally optimal solutions.</p>
+                  <p>RA-SLAM に対して **distributed certifiably correct** なアルゴリズムを与えた点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>In the communication-constrained multi-agent setting, navigation systems increasingly use point-to-point range sensors as they afford measurements with low bandwidth requirements and known data association.</p>
+                  <p>RA-SLAM の最尤問題を QCQP として書き、そこから SDP 緩和へ落とす。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Our algorithm, distributed certifiably correct RA-SLAM (DCORA), achieves this via the Riemannian Staircase method, where computational procedures developed for distributed certifiably correct pose graph optimization are generalized to the RA-SLAM problem.</p>
+                  <p>distributed SLAM でここまで理論保証を押し出しているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>multi-robot SLAM を「なんとなく解く」のではなく、最適性認証つきで解く世界観が学べる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>数学は重いが、certifiable SLAM の流れを distributed まで伸ばしているのが良い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>SLAM 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Multi-Robot SLAM / Range Sensing</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Range-Aided SLAM / Certifiable Optimization / Riemannian Staircase / Distributed SLAM / Global Optimality</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-distributed-certifiably-correct-range-aided-slam-22538aae.md">Detail note</a>
@@ -3628,7 +3628,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Our algorithm, distributed certifiably correct RA-SLAM (DCORA), achieves this via the Riemannian Staircase method, where computational procedures developed for distributed certifiably correct pose graph optimization are generalized to the RA-SLAM problem.</p>
+                <p>distributed SLAM でここまで理論保証を押し出しているのが強い。</p>
               </div>
             </aside>
           </div>

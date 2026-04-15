@@ -1,6 +1,6 @@
 # Equivariant Filter Design for Range-Only SLAM
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,20 +11,20 @@
 
 ## TL;DR
 
-- We derive an equivariant filter (EqF) for the RO-SLAM problem based on a symmetry Lie group that is compatible with the range measurements.
-- Range-only Simultaneous Localisation and Mapping (RO-SLAM) is of interest in the robotics community due to its practical applications; for example, ultra-wideband (UWB) and Bluetooth Low Energy (BLE) localisation in terrestrial and aerial applications and acoustic beacon localisation in marine applications.
-- The proposed filter does not require bootstrapping or initialisation of landmark positions, and demonstrates robustness to the no-prior situation.
+- range-only SLAM に対して、距離観測と相性の良い Lie 群対称性を使った **equivariant filter** を設計した論文。
+- landmark 初期化を前提にせず、no-prior 条件でも回りやすい filter を目指している。
+- UWB / BLE / acoustic beacon 系の localization を、古典的だがかなり美しい形で再定式化している。
 
 ## Task
 
 * SLAM
 * Localization
-* Mapping
-* Aerial Robotics
+* Range Sensing
+* State Estimation
 
 ## Keywords
 
-* SLAM / Range Sensing / Mapping
+* Range-Only SLAM / Equivariant Filter / Lie Group / UWB / Beacon Localization
 
 ## AI依存度
 
@@ -32,36 +32,50 @@
 
 ## 何を解決？
 
-* We derive an equivariant filter (EqF) for the RO-SLAM problem based on a symmetry Lie group that is compatible with the range measurements.
+* range-only SLAM は landmark 初期化や観測の非線形性が厳しく、標準 EKF だと linearization error に苦しみやすい。
+* beacon 系 localization は実用性が高い一方で、状態表現と filter 設計が難しい。
 
 ## 何が新しい？
 
-* Abstract ベースでは、提案手法のコア設計を本文で要確認。
+* range-only measurement と整合する symmetry Lie group を明示し、その上で EqF を導いた点。
+* landmark 初期化フェーズなしでも動けるように、state と誤差座標の持ち方を工夫した点。
+* SOT(3) 系の normal coordinates を使って、ランドマーク不確かさを幾何的に扱う点。
 
 ## どうやってる？
 
-* 手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。
+* robot pose と landmark state を含む range-only SLAM を、多様体上の状態空間として書く。
+* range measurements に対して等変性を持つ群作用を定義し、EqF の correction term を導く。
+* landmark を単純な Cartesian 座標で持たず、range-only に相性の良い誤差表現を使う。
+* 実験では UAV / ground robot 系データで、EKF 系との比較を行っている。
 
 ## どこが強い？
 
-* The proposed filter does not require bootstrapping or initialisation of landmark positions, and demonstrates robustness to the no-prior situation.
+* range-only SLAM という難しい設定で、bootstrap なしを狙っているのが強い。
+* UWB / BLE / acoustic beacon など応用先が広い。
+* Lie 群ベースの filter 設計としてかなり一貫していて、理論的に筋が良い。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* 理論負荷がかなり高く、実装やデバッグの敷居は高い。
+* IMU bias など実機で重要な誤差源は基本形ではまだ弱い可能性がある。
+* 実験条件によっては range dropout や severe noise の影響がさらに見たい。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* 標準 EKF は Cartesian state で range 非線形性を受け止めるので、初期化や linearization が重い。
+* polar / ROP-EKF 系は range に寄せた座標を使うが、EqF ほど幾何的に統一されていない。
+* 本論文は RO-SLAM を symmetry-aware filter design の文脈に乗せたのが大きい。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* beacon localization や UWB SLAM を、state estimation の設計原理から理解できる。
+* VIO/LIO と違う sensing modality でも、EqF 的発想が効くことを示していて面白い。
 
 ## 難易度
 
-★★★（abstract 初見ベース）
+★★★★★
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 数学はかなり重いが、range-only SLAM をここまできれいに書き直しているのが良い。
+* すぐ実装に使うというより、sensor modality に合わせた filter design を学ぶための論文として価値が高い。

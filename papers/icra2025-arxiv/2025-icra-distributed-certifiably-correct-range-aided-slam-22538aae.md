@@ -1,6 +1,6 @@
 # Distributed Certifiably Correct Range-Aided SLAM
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,20 +11,20 @@
 
 ## TL;DR
 
-- The state estimation problem for these systems takes the form of range-aided (RA) SLAM.
-- To this end, we present the first distributed algorithm for RA-SLAM that can efficiently recover certifiably globally optimal solutions.
-- Our algorithm, distributed certifiably correct RA-SLAM (DCORA), achieves this via the Riemannian Staircase method, where computational procedures developed for distributed certifiably correct pose graph optimization are generalized to the RA-SLAM problem.
+- range-aided SLAM を multi-agent / distributed setting で、しかも **certifiably correct** に解こうとする `DCORA` の論文。
+- RA-SLAM を QCQP → SDP → rank-restricted problem と整理し、Riemannian Staircase で globally optimality certificate まで見に行く。
+- centralized CORA に近い精度を分散で狙っており、通信制約下の multi-robot SLAM としてかなり筋が良い。
 
 ## Task
 
-* SLAM
+* Multi-Robot SLAM
 * Localization
-* Mapping
-* Motion Planning
+* Range Sensing
+* State Estimation
 
 ## Keywords
 
-* Multi-Robot SLAM / Range Sensing
+* Range-Aided SLAM / Certifiable Optimization / Riemannian Staircase / Distributed SLAM / Global Optimality
 
 ## AI依存度
 
@@ -32,36 +32,50 @@
 
 ## 何を解決？
 
-* The state estimation problem for these systems takes the form of range-aided (RA) SLAM.
+* 複数ロボットが UWB などの range 観測を持つとき、RA-SLAM は自然だが、非凸性と分散計算の両方が難しい。
+* local method だけでは bad local minimum にはまりやすく、centralized solver は通信前提が重い。
 
 ## 何が新しい？
 
-* To this end, we present the first distributed algorithm for RA-SLAM that can efficiently recover certifiably globally optimal solutions.
+* RA-SLAM に対して **distributed certifiably correct** なアルゴリズムを与えた点。
+* CORA 系の certifiable optimization を distributed setting へ拡張した点。
+* dual certificate と staircase を組み合わせ、単なる良い近似解でなく最適性認証まで狙う点。
 
 ## どうやってる？
 
-* In the communication-constrained multi-agent setting, navigation systems increasingly use point-to-point range sensors as they afford measurements with low bandwidth requirements and known data association.
+* RA-SLAM の最尤問題を QCQP として書き、そこから SDP 緩和へ落とす。
+* rank-restricted SDP を Stiefel manifold 上の問題へ変え、Riemannian Staircase で解く。
+* 各 agent は variable ownership に従って局所ブロック更新し、必要な情報だけ通信する。
+* 解が得られたら dual certificate を計算して、global optimality を満たすか確認する。
 
 ## どこが強い？
 
-* Our algorithm, distributed certifiably correct RA-SLAM (DCORA), achieves this via the Riemannian Staircase method, where computational procedures developed for distributed certifiably correct pose graph optimization are generalized to the RA-SLAM problem.
+* distributed SLAM でここまで理論保証を押し出しているのが強い。
+* range 観測を含む multi-agent localization を、ちゃんと certifiable optimization の文脈へ乗せている。
+* centralized 法の精度に近づけつつ、分散化の道筋を示している。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* 実装はかなり重く、Riemannian Staircase と certificate 計算の負担は小さくない。
+* エージェント数や通信遅延が増えたときの scaling はシビアそう。
+* 実データ評価はあるが、非常に大規模な swarm まで見たわけではない。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* 一般的な distributed SLAM は local convergence ベースで、global optimality certificate までは出さない。
+* SE-Sync / CORA 系の certifiable PGO を、range-aided multi-agent setting に広げた位置づけ。
+* back-end の安全性を上げる方向で、front-end robustness と違う価値を持つ。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* multi-robot SLAM を「なんとなく解く」のではなく、最適性認証つきで解く世界観が学べる。
+* UWB / BLE / ranging を使う cooperative localization の back-end 設計としてかなり重要。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★★
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 数学は重いが、certifiable SLAM の流れを distributed まで伸ばしているのが良い。
+* 実装難度は高いものの、multi-robot localization を本気でやるなら押さえておきたい一本。
