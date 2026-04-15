@@ -548,7 +548,7 @@ def build_html(papers: list[dict[str, str | list[str]]]) -> str:
       <div class="toplinks">
         <a href="../../index.html">Top 12</a>
         <a href="./non-ai.md">Markdown list</a>
-        <a href="./index.md">All arXiv 159</a>
+        <a href="./index.md">All arXiv 521</a>
         <a href="https://github.com/rsasaki0109/robotics-paper-notes">GitHub</a>
         <div class="counter"><strong id="counter">00 / {total}</strong><span id="counter-group">cover</span></div>
       </div>
