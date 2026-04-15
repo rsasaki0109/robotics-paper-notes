@@ -1,6 +1,6 @@
 # Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,22 +11,19 @@
 
 ## TL;DR
 
-- In this paper, we introduce a kinodynamic model predictive control (MPC) framework that exploits unidirectional parallel springs (UPS) to improve the energy efficiency of dynamic legged robots.
-- The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.
-- The proposed approach enables energy efficient dynamic hopping on legged robots by using UPS to reduce peak motor torques and energy consumption during stance phases.
+- unidirectional parallel spring (UPS) を持つ脚ロボットに対して、その弾性を活かす kinodynamic MPC を設計した論文。
+- SLIP → SRB MPC → kinodynamic MPC の階層 warm-start 構造で、非凸な locomotion NLP を実時間で解きやすくしている。
+- energy efficiency と peak motor torque の両方を下げており、parallel elasticity を controller がちゃんと使う設計になっている。
 
 ## Task
 
-* Visual-Inertial
 * Motion Planning
 * Control
 * Legged Robotics
 
 ## Keywords
 
-* Legged Robots
-* Optimization and Optimal Control
-* Compliant Joints and Mechanisms
+* Kinodynamic MPC / Parallel Elasticity / UPS / SLIP / Energy Efficiency
 
 ## AI依存度
 
@@ -34,36 +31,50 @@
 
 ## 何を解決？
 
-* In this paper, we introduce a kinodynamic model predictive control (MPC) framework that exploits unidirectional parallel springs (UPS) to improve the energy efficiency of dynamic legged robots.
+* ばね機構を持つ脚ロボットは、機械としては省エネ余地があるのに、controller 側がその弾性を十分活かせないことが多い。
+* full kinodynamic MPC で弾性まで含めると非凸で重く、リアルタイム制御が難しい。
 
 ## 何が新しい？
 
-* The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.
+* UPS の torque contribution を kinodynamic MPC の中へ明示的に入れた点。
+* SLIP / SRB / kinodynamic の 3 段階 warm-start により、重い問題を実時間へ持ち込んだ点。
+* energy efficiency だけでなく peak motor torque の削減まで定量的に見ている点。
 
 ## どうやってる？
 
-* The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.
+* 最上位では SLIP で CoM 的な粗い reference を出し、中段で SRB MPC により torso dynamics を入れた reference に整える。
+* 最下段の kinodynamic MPC では joint angle・torque・spring effect を含む nonlinear problem を解く。
+* spring torque は motor torque と合成して扱い、stance phase のエネルギー再利用を controller 側で引き出す。
+* warm-start によって、いきなり full NLP を解くより安定して高速化している。
 
 ## どこが強い？
 
-* Additionally, preliminary hardware experiments show a 14.8% reduction in energy consumption.
+* 機構設計（parallel elasticity）と controller 設計をきちんとつないでいる。
+* simulation だけでなく hardware でも CoT 改善を出していて説得力がある。
+* torque 軽減が見えているので、単なる「省エネっぽい」ではなく actuator 負荷の実利もある。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* sim-to-real gap は残っており、摩擦や spring の非線形性など未モデル化要素の影響が大きい。
+* 単脚ホッパー中心の検証なので、多脚・不整地への一般化はまだ先。
+* spring stiffness の設計にかなり依存しそうで、mechanical co-design 問題が残る。
 
 ## 関連研究との違い
 
-* The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.
+* SLIP ベース制御は弾性の恩恵を使うが、関節 torque 分配まで最適化しないことが多い。
+* standard SRB / whole-body MPC は rigid body 寄りで、parallel elasticity を controller に活かし切れない。
+* 本論文は hardware design と MPC を一体で見て、エネルギー再利用を最適化対象へ入れている。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* 「良い機構を作る」だけでは足りず、「その機構を活かす controller」が必要だとよくわかる。
+* legged MPC を設計するときに、モデル簡略化と warm-start の使い方がかなり参考になる。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* parallel elasticity をちゃんと control 側まで落としていて、mechanics と control の接続がきれい。
+* まだ単脚寄りだが、legged control の広がりを見る枠として Top 12 に入るのは納得。

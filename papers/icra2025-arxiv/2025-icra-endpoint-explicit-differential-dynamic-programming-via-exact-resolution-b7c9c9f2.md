@@ -1,6 +1,6 @@
 # Endpoint-Explicit Differential Dynamic Programming Via Exact Resolution
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,9 +11,9 @@
 
 ## TL;DR
 
-- We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).
-- Unlike existing approaches, our method guarantees quadratic convergence and is exact, effectively managing rank deficiencies in both endpoint and stagewise equality constraints.
-- It is applicable to both forward and inverse dynamics formulations, making it particularly well-suited for model predictive control (MPC) applications and for accelerating optimal control (OC) solvers.
+- endpoint constraints を正確に扱える constrained DDP を提案しており、既存の inexact 解法より **quadratic convergence** を狙っている。
+- Schur complement と nullspace decomposition を使い、rank-deficient な endpoint / stagewise equality constraints も処理する。
+- inverse dynamics や接触制約を含む optimal control 問題で、体操動作のような複雑タスクまで扱っている。
 
 ## Task
 
@@ -22,9 +22,7 @@
 
 ## Keywords
 
-* Optimization and Optimal Control
-* Multi-Contact Whole-Body Motion Planning and Control
-* Formal Methods in Robotics and Automation
+* DDP / Endpoint Constraints / Riccati Recursion / Schur Complement / Optimal Control
 
 ## AI依存度
 
@@ -32,36 +30,50 @@
 
 ## 何を解決？
 
-* We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).
+* constrained DDP で endpoint constraints を入れたいとき、既存法は ADMM 的な inexact resolution に寄りがちで収束が鈍い。
+* 制約 Jacobian が rank deficient だと、単純な疑似逆行列処理では数値的に危ない。
 
 ## 何が新しい？
 
-* We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).
+* endpoint constraints を **exact** に解く DDP ステップを作り、quadratic convergence を主張している点。
+* rank deficiency を nullspace 分解で安全に扱う設計。
+* Riccati recursion 構造を壊さずに、endpoint constraint を solver に織り込んでいる点。
 
 ## どうやってる？
 
-* We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).
+* 各 iteration で constraint 付き QP を解くが、その KKT 系を Schur complement / nullspace decomposition で解消する。
+* 可逆な場合は Schur complement を使い、rank-deficient な場合は nullspace に分けて安定に解く。
+* backward pass の Riccati recursion は維持しつつ、endpoint multipliers を明示的に解く構造になっている。
+* Crocoddyl 系の流れに近く、MPC や trajectory optimization への接続も意識されている。
 
 ## どこが強い？
 
-* We demonstrate the efficacy of our approach across a broad range of robotics problems and provide a user-friendly open-source implementation within CROCODDYL.
+* endpoint constraints を「ペナルティでごまかす」のではなく、solver 側で正面から解いている。
+* quadratic convergence を押し出していて、large-scale OC solver の加速に効きやすい。
+* inverse dynamics / contact constraints まで見ているので、legged / humanoid 系への広がりがある。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* nullspace 分解まわりは実装の難度が高く、数値線形代数の理解がかなり必要。
+* 問題定式化に依存する部分が大きく、いつもきれいに効くとは限らなさそう。
+* 実ロボットよりシミュレーション寄りなので、実機 MPC での実利はもう少し見たい。
 
 ## 関連研究との違い
 
-* We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).
+* ADMM ベースや penalty ベースの constrained DDP は扱いやすいが、収束性では妥協がある。
+* endpoint-explicit Riccati 系の先行仕事を、rank-deficient constraint まで含めて押し広げた位置づけ。
+* interior-point 系より、DDP / Riccati 構造を活かしたまま constraint を解きたい立場に近い。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* 最適制御ソルバの中身を理解したいときにかなり良い教材。
+* 「制約をどう exact に解くか」という話で、MPC 実装の先にある solver design を学べる。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★★
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* DDP をただ使うだけでなく、solver の core を改善するタイプの論文でかなり好み。
+* すぐ実装に入るには重いが、optimal control を本気でやるなら押さえておきたい。
