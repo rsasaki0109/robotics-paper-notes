@@ -407,47 +407,47 @@
               <div class="meta-row">
                 <span class="rank-pill">04 / 60</span>
                 <span class="chip group-chip">Aerial Robots: Mechanics and Control 1</span>
-                <span class="chip task-chip">LiDAR</span><span class="chip task-chip">Control</span><span class="chip task-chip">Aerial Robotics</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Aerial Robots</span><span class="chip task-chip">Safe Navigation</span><span class="chip task-chip">Control Barrier Functions</span><span class="chip task-chip">Motion Control</span>
               </div>
               <h1 class="paper-title">Safe Quadrotor Navigation Using Composite Control Barrier Functions</h1>
-              <p class="hook">The proposed formalism leverages a single Composite Control Barrier Function from all position constraints acting on a third-order nonlinear representation of the robot&#x27;s dynamics.</p>
+              <p class="hook">各障害物の安全制約を soft-min 的にまとめた **composite CBF** で、多数制約を 1 本の滑らかな制約として扱う点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper introduces a safety filter to ensure collision avoidance for multirotor aerial robots.</li><li>The proposed formalism leverages a single Composite Control Barrier Function from all position constraints acting on a third-order nonlinear representation of the robot&#x27;s dynamics.</li><li>We analyze the recursive feasibility of the safety filter under the composite constraint and demonstrate that the infeasible set is negligible.</li></ul>
+                  <ul class="bullet-list"><li>cluttered environment で多数の障害物制約をそのまま扱うと重い、という CBF の弱点に対して、**composite CBF** で 1 つの滑らかな安全制約にまとめている。</li><li>quadrotor の姿勢を直接ひっくり返さず、**3次系っぽい thrust dynamics** を入れた定式化で high-order CBF を扱いやすくしている。</li><li>LiDAR ベースの実機実験まで出しており、**安全フィルタを最後段で被せる classical safety shield** としてかなり実用寄り。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper introduces a safety filter to ensure collision avoidance for multirotor aerial robots.</p>
+                  <p>CBF 系の安全制御は、障害物が増えると制約本数が増えすぎて計算が重くなりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The proposed formalism leverages a single Composite Control Barrier Function from all position constraints acting on a third-order nonlinear representation of the robot&#x27;s dynamics.</p>
+                  <p>各障害物の安全制約を soft-min 的にまとめた **composite CBF** で、多数制約を 1 本の滑らかな制約として扱う点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>The proposed method allows computational scalability against thousands of constraints and, thus, complex scenes with numerous obstacles.</p>
+                  <p>障害物との距離に基づく安全関数を各障害物について作り、それを exponential / high-order CBF の形で微分して扱う。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We experimentally demonstrate its ability to guarantee the safety of a quadrotor with an onboard LiDAR, operating in both indoor and outdoor cluttered environments against both naive and adversarial nominal policies.</p>
+                  <p>障害物数が多い場面でもスケールしやすく、**CBF の現場実装しづらさ**に真正面から答えている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>安全性を「policy が賢くなること」に期待せず、**安全制約を明示的に設計する**立場がはっきりしていて良い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>CBF を実機に持っていくときの「障害物が多いとつらい」をかなり素直に解いた論文に見える。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Aerial Robots: Mechanics and Control 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Mechanics and Control / Aerial Systems: Perception and Autonomy</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Composite CBF / High-Order CBF / Safety Filter / Quadrotor / Obstacle Avoidance</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-safe-quadrotor-navigation-using-composite-control-barrier-functions-1016b316.md">Detail note</a>
@@ -460,7 +460,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We experimentally demonstrate its ability to guarantee the safety of a quadrotor with an onboard LiDAR, operating in both indoor and outdoor cluttered environments against both naive and adversarial nominal policies.</p>
+                <p>障害物数が多い場面でもスケールしやすく、**CBF の現場実装しづらさ**に真正面から答えている。</p>
               </div>
             </aside>
           </div>
@@ -539,47 +539,47 @@
               <div class="meta-row">
                 <span class="rank-pill">06 / 60</span>
                 <span class="chip group-chip">Aerial Robots: Planning and Control</span>
-                <span class="chip task-chip">Perception</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Aerial Robotics</span>
+                <span class="chip task-chip">Aerial Robots</span><span class="chip task-chip">Trajectory Planning</span><span class="chip task-chip">Optimal Control</span><span class="chip task-chip">UAV</span>
               </div>
               <h1 class="paper-title">Real-Time Planning of Minimum-Time Trajectories for Agile UAV Flight</h1>
-              <p class="hook">Our approach overcomes this stumbling block by utilizing a point-mass model with a novel iterative thrust decomposition algorithm, enabling the UAV to use all of its collective thrust, something previous point-mass approaches could not achieve.</p>
+              <p class="hook">point-mass model で **axis-wise ではなく norm ベースの加速度制約**を使い、使える推力をより素直に使っている点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>We address the challenge of real-time planning of minimum-time trajectories over multiple waypoints, onboard multirotor UAVs.</li><li>Previous works demonstrated that achieving a truly time-optimal trajectory is computationally too demanding to enable frequent replanning during agile flight, especially on less powerful flight computers.</li><li>Our approach overcomes this stumbling block by utilizing a point-mass model with a novel iterative thrust decomposition algorithm, enabling the UAV to use all of its collective thrust, something previous point-mass approaches could not achieve.</li></ul>
+                  <ul class="bullet-list"><li>agile UAV flight の time-optimal trajectory planning を、**point-mass model ベースでミリ秒級**まで落としている。</li><li>軸ごとの加速度制約でなく **acceleration norm** を使い切る設計と、drag を含む簡略モデルが効いている。</li><li>full dynamics の厳密最適化ほど美しくはないが、**onboard replanning できる速度**を狙った実務寄りの論文。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>We address the challenge of real-time planning of minimum-time trajectories over multiple waypoints, onboard multirotor UAVs.</p>
+                  <p>multi-waypoint の time-optimal trajectory は、full multirotor dynamics で真面目に解くと重すぎて onboard replanning が難しい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Our approach overcomes this stumbling block by utilizing a point-mass model with a novel iterative thrust decomposition algorithm, enabling the UAV to use all of its collective thrust, something previous point-mass approaches could not achieve.</p>
+                  <p>point-mass model で **axis-wise ではなく norm ベースの加速度制約**を使い、使える推力をより素直に使っている点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Our approach overcomes this stumbling block by utilizing a point-mass model with a novel iterative thrust decomposition algorithm, enabling the UAV to use all of its collective thrust, something previous point-mass approaches could not achieve.</p>
+                  <p>まず単一区間では、Pontryagin 的な bang-bang / bang-singular-bang 構造を使って区間時間を解析的に近く解く。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Previous works demonstrated that achieving a truly time-optimal trajectory is computationally too demanding to enable frequent replanning during agile flight, especially on less powerful flight computers.</p>
+                  <p>とにかく速い。**minimum-time を onboard で回したい**という要求に対して、かなり筋が良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>「速い planner」が learned policy ではなく、**簡略化した力学と解析構造**から出てきているのが面白い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>理論的に一番美しいというより、agile flight を回すための良い engineering という印象。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Aerial Robots: Planning and Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Applications / Motion and Path Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Minimum-Time Planning / Point-Mass Model / Bang-Bang / Drag Modeling / NMPC</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-real-time-planning-of-minimum-time-trajectories-for-agile-uav-flight-5c4195e2.md">Detail note</a>
@@ -592,7 +592,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Previous works demonstrated that achieving a truly time-optimal trajectory is computationally too demanding to enable frequent replanning during agile flight, especially on less powerful flight computers.</p>
+                <p>とにかく速い。**minimum-time を onboard で回したい**という要求に対して、かなり筋が良い。</p>
               </div>
             </aside>
           </div>
@@ -737,47 +737,47 @@
               <div class="meta-row">
                 <span class="rank-pill">09 / 60</span>
                 <span class="chip group-chip">Calibration 1</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Calibration</span>
+                <span class="chip task-chip">Calibration</span><span class="chip task-chip">Manipulator</span><span class="chip task-chip">Experimental Design</span><span class="chip task-chip">Bayesian Optimization</span>
               </div>
               <h1 class="paper-title">Bayesian Optimal Experimental Design for Robot Kinematic Calibration</h1>
-              <p class="hook">The effectiveness of the proposed method is demonstrated via simulations and calibration experiments on NASA&#x27;s ocean world lander autonomy testbed (OWLAT).</p>
+              <p class="hook">end-effector pose 空間上で calibration 実験を設計する **Bayesian experimental design** を前面に出している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper develops a Bayesian optimal experimental design for robot kinematic calibration on {mathbb{S}^3 !times!</li><li>mathbb{R}^3}.</li><li>Our method builds upon a Gaussian process approach that incorporates a geometry-aware kernel based on Riemannian Mat&#x27;ern kernels over {mathbb{S}^3}.</li></ul>
+                  <ul class="bullet-list"><li>robot kinematic calibration で「どの姿勢を次に測ると一番うまく較正できるか」を、**Bayesian optimal experimental design** として解いている。</li><li>SE(3) を雑に Euclidean 扱いせず、**S^3 x R^3 上の geometry-aware kernel** を使うところが技術的な芯。</li><li>地味だがかなり classical で、少ない計測回数で calibration を詰めたい人には刺さるタイプ。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper develops a Bayesian optimal experimental design for robot kinematic calibration on {mathbb{S}^3 !times!</p>
+                  <p>kinematic calibration は、良い計測姿勢を少数選べるかで効率が大きく変わる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The effectiveness of the proposed method is demonstrated via simulations and calibration experiments on NASA&#x27;s ocean world lander autonomy testbed (OWLAT).</p>
+                  <p>end-effector pose 空間上で calibration 実験を設計する **Bayesian experimental design** を前面に出している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Our method builds upon a Gaussian process approach that incorporates a geometry-aware kernel based on Riemannian Mat&#x27;ern kernels over {mathbb{S}^3}.</p>
+                  <p>現在の calibration 誤差を、end-effector pose 上の関数として GP で近似する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>This paper develops a Bayesian optimal experimental design for robot kinematic calibration on {mathbb{S}^3 !times!</p>
+                  <p>calibration を単なる最小二乗でなく、**測定設計問題**としてきちんと扱っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>calibration で大事なのは「たくさん測る」より「どこを測るか」だとよく分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>派手さはないが、姿勢空間の幾何をちゃんと守る calibration 論文として好感が持てる。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Calibration 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Calibration and Identification / Kinematics</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Kinematic Calibration / Gaussian Process / Experimental Design / Quaternion Geometry / DH Parameters</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-bayesian-optimal-experimental-design-for-robot-kinematic-calibration-a5e7d087.md">Detail note</a>
@@ -790,7 +790,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>This paper develops a Bayesian optimal experimental design for robot kinematic calibration on {mathbb{S}^3 !times!</p>
+                <p>calibration を単なる最小二乗でなく、**測定設計問題**としてきちんと扱っている。</p>
               </div>
             </aside>
           </div>
@@ -1331,47 +1331,47 @@
               <div class="meta-row">
                 <span class="rank-pill">18 / 60</span>
                 <span class="chip group-chip">Legged Robots</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Legged Robots</span><span class="chip task-chip">Model Predictive Control</span><span class="chip task-chip">Whole-Body Control</span><span class="chip task-chip">Benchmarking</span>
               </div>
               <h1 class="paper-title">Benchmarking Different QP Formulations and Solvers for Dynamic Quadrupedal Walking</h1>
-              <p class="hook">We introduce the Solve Frequency per Watt (SFPW) as a performance measure to enable a cross-hardware comparison of the efficiency of QP solvers.</p>
+              <p class="hook">sparse / partially condensed / dense の各 QP formulation を、複数 solver と複数 hardware 上で系統比較している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Quadratic Programs (QPs) are widely used in the control of walking robots, especially in Model Predictive Control (MPC) and Whole-Body Control (WBC).</li><li>In both cases, the controller design requires the formulation of a QP and the selection of a suitable QP solver, both requiring considerable time and expertise.</li><li>While computational performance benchmarks exist for QP solvers, studies comparing optimal combinations of computational hardware (HW), QP formulation, and solver performance are lacking.</li></ul>
+                  <ul class="bullet-list"><li>quadruped walking で使う QP について、**formulation / solver / hardware** をまとめて比べた実務寄りベンチマーク。</li><li>MPC では **sparse + HPIPM** が強く、WBC では problem size が小さいため formulation 差のほうが効く、というかなり役立つ結論が出ている。</li><li>論文の芯は新アルゴリズムではなく、**Solve Frequency per Watt (SFPW)** という省電力込み指標を含めた比較にある。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Quadratic Programs (QPs) are widely used in the control of walking robots, especially in Model Predictive Control (MPC) and Whole-Body Control (WBC).</p>
+                  <p>legged control では MPC でも WBC でも QP を解くが、どの solver・定式化・計算機を選ぶべきかは経験則に寄りがち。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We introduce the Solve Frequency per Watt (SFPW) as a performance measure to enable a cross-hardware comparison of the efficiency of QP solvers.</p>
+                  <p>sparse / partially condensed / dense の各 QP formulation を、複数 solver と複数 hardware 上で系統比較している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>In this work, we compare dense and sparse QP formulations, and multiple solving methods on different HW architectures, focusing on their computational efficiency in dynamic walking of four-legged robots using MPC.</p>
+                  <p>単一剛体近似ベースの MPC と、TSID 系の WBC 問題を benchmark 問題として用意する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Quadratic Programs (QPs) are widely used in the control of walking robots, especially in Model Predictive Control (MPC) and Whole-Body Control (WBC).</p>
+                  <p>実装者にそのまま役立つ。「どれを使うべきか」にかなり直接答えている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>classical control の世界では、アルゴリズムだけでなく **数値最適化の実装選択** が性能を決めることがよく分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>新規性は控えめでも、こういう benchmark は実際かなりありがたい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Legged Robots</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Performance Evaluation and Benchmarking / Whole-Body Motion Planning and Control / Legged Robots</strong></div>
+                <div class="fact"><span>Keywords</span><strong>QP Solver / Sparse MPC / Condensing / Whole-Body Control / SFPW</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-benchmarking-different-qp-formulations-and-solvers-for-dynamic-quadrupedal-walking-d1a834c4.md">Detail note</a>
@@ -1384,7 +1384,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Quadratic Programs (QPs) are widely used in the control of walking robots, especially in Model Predictive Control (MPC) and Whole-Body Control (WBC).</p>
+                <p>実装者にそのまま役立つ。「どれを使うべきか」にかなり直接答えている。</p>
               </div>
             </aside>
           </div>
@@ -1727,47 +1727,47 @@
               <div class="meta-row">
                 <span class="rank-pill">24 / 60</span>
                 <span class="chip group-chip">Manipulation Planning</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Manipulation</span>
+                <span class="chip task-chip">Manipulation Planning</span><span class="chip task-chip">Contact-Rich Manipulation</span><span class="chip task-chip">Trajectory Optimization</span><span class="chip task-chip">Convex Relaxation</span>
               </div>
               <h1 class="paper-title">Hierarchical Contact-Rich Trajectory Optimization for Multi-Modal Manipulation Using Tight Convex Relaxations</h1>
-              <p class="hook">We propose a hierarchical optimization framework where Mixed-Integer Linear Program (MILP) selects optimal contacts between robot &amp; object using approximate dynamical constraints, and then a NonLinear Program (NLP) optimizes trajectory of the robot(s) and object considering full nonlinear constraints.</p>
+              <p class="hook">kinematic planning、contact selection、full nonlinear refinement を **3 段階に分ける階層構造**。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Designing trajectories for manipulation through contact is challenging as it requires reasoning of object &amp; robot trajectories as well as complex contact sequences simultaneously.</li><li>In this paper, we present a novel framework for simultaneously designing trajectories of robots, objects, and contacts efficiently for contact-rich manipulation.</li><li>We propose a hierarchical optimization framework where Mixed-Integer Linear Program (MILP) selects optimal contacts between robot &amp; object using approximate dynamical constraints, and then a NonLinear Program (NLP) optimizes trajectory of the robot(s) and object considering full nonlinear constraints.</li></ul>
+                  <ul class="bullet-list"><li>contact-rich manipulation を、**K-OPT -&gt; C-OPT -&gt; Q-OPT の階層最適化**に分けて現実的に解こうとしている。</li><li>contact mode を固定せずに、MILP と tight convex relaxation を使って **接触位置・接触力・物体軌道**を同時に詰めるのが肝。</li><li>quasi-static 前提ではあるが、pivoting / sliding / regrasping みたいな multi-modal manipulation をかなりうまく扱っている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Designing trajectories for manipulation through contact is challenging as it requires reasoning of object &amp; robot trajectories as well as complex contact sequences simultaneously.</p>
+                  <p>contact-rich manipulation は、軌道だけでなく「どこで接触するか」「いつ接触を切り替えるか」まで同時に考える必要がある。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We propose a hierarchical optimization framework where Mixed-Integer Linear Program (MILP) selects optimal contacts between robot &amp; object using approximate dynamical constraints, and then a NonLinear Program (NLP) optimizes trajectory of the robot(s) and object considering full nonlinear constraints.</p>
+                  <p>kinematic planning、contact selection、full nonlinear refinement を **3 段階に分ける階層構造**。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>In this paper, we present a novel framework for simultaneously designing trajectories of robots, objects, and contacts efficiently for contact-rich manipulation.</p>
+                  <p>まず K-OPT で、物体がどう動くか・どの接触状態がありそうかを粗く決める。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We also demonstrate our framework in hardware experiments using a bimanual robot system.</p>
+                  <p>contact mode を固定しないのに、完全一体最適化よりはかなり現実的な計算量に落としている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>manipulation を learned policy で押し切らず、**接触の組合せ爆発をどう数理最適化で扱うか**が見える。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>発想としてはすごくまっとうで、「全部同時最適化は重すぎるから階層化し、でも緩みすぎないよう relaxation を締める」という流れが綺麗。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Manipulation Planning</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Manipulation Planning / Multi-Contact Whole-Body Motion Planning and Control / Optimization and Optimal Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Contact Planning / MILP / McCormick Relaxation / Quasi-Static Manipulation / Multi-Modal</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-hierarchical-contact-rich-trajectory-optimization-for-multi-modal-manipulation-using-tight-convex-relaxations-535e2614.md">Detail note</a>
@@ -1780,7 +1780,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We also demonstrate our framework in hardware experiments using a bimanual robot system.</p>
+                <p>contact mode を固定しないのに、完全一体最適化よりはかなり現実的な計算量に落としている。</p>
               </div>
             </aside>
           </div>
@@ -1793,47 +1793,47 @@
               <div class="meta-row">
                 <span class="rank-pill">25 / 60</span>
                 <span class="chip group-chip">Marine Robotics 3</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Marine Robotics</span><span class="chip task-chip">State Estimation</span><span class="chip task-chip">Underwater Localization</span><span class="chip task-chip">Nonlinear Observers</span>
               </div>
               <h1 class="paper-title">Cascade IPG Observer for Underwater Robot State Estimation</h1>
-              <p class="hook">The proposed observer comprises two nonlinear observers based on a recently developed iteratively preconditioned gradient descent (IPG) algorithm.</p>
+              <p class="hook">rotation 推定と translation / velocity 推定を分けた **cascade IPG observer**。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper presents a novel cascade nonlinear observer framework for inertial state estimation.</li><li>It tackles the problem of intermediate state estimation when external localization is unavailable or in the event of a sensor outage.</li><li>The proposed observer comprises two nonlinear observers based on a recently developed iteratively preconditioned gradient descent (IPG) algorithm.</li></ul>
+                  <ul class="bullet-list"><li>underwater robot の state estimation を、**2 段の IPG observer を cascade** する形で設計している。</li><li>IMU preintegration を使うことで、厳密な hydrodynamic model に依りすぎない **model-light observer** にしているのがポイント。</li><li>EKF / InEKF 系より精度面でかなり健闘しており、underwater らしい「GPS なし・モデル不確か」をよく意識している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper presents a novel cascade nonlinear observer framework for inertial state estimation.</p>
+                  <p>underwater では GPS が使えず、vision も濁りや照明で不安定になりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The proposed observer comprises two nonlinear observers based on a recently developed iteratively preconditioned gradient descent (IPG) algorithm.</p>
+                  <p>rotation 推定と translation / velocity 推定を分けた **cascade IPG observer**。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Results demonstrate that our method outperforms these methods regarding better positional accuracy and lower variance.</p>
+                  <p>第1段で quaternion / rotation を IPG ベースの observer で推定する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The proposed observer is validated on a public underwater dataset and a real-world experiment using our robot platform.</p>
+                  <p>hydrodynamic model への依存を減らしているので、platform 変更に強そう。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>sensor fusion を learned black box でなく、**observer design と preintegration** で詰める王道の論文。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>新奇性は爆発的ではないが、underwater という難しい条件に対してかなり筋の良い設計。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Marine Robotics 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Marine Robotics / Localization / Sensor Fusion</strong></div>
+                <div class="fact"><span>Keywords</span><strong>IPG Observer / IMU Preintegration / DVL / AHRS / Underwater State Estimation</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-cascade-ipg-observer-for-underwater-robot-state-estimation-dc217dc9.md">Detail note</a>
@@ -1846,7 +1846,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The proposed observer is validated on a public underwater dataset and a real-world experiment using our robot platform.</p>
+                <p>hydrodynamic model への依存を減らしているので、platform 変更に強そう。</p>
               </div>
             </aside>
           </div>
@@ -2123,47 +2123,47 @@
               <div class="meta-row">
                 <span class="rank-pill">30 / 60</span>
                 <span class="chip group-chip">Motion Planning 1</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Search</span><span class="chip task-chip">Navigation Among Movable Obstacles</span><span class="chip task-chip">Interactive Environments</span>
               </div>
               <h1 class="paper-title">Search-Based Path Planning in Interactive Environments among Movable Obstacles</h1>
-              <p class="hook">Based on this idea, this paper introduces two PAMO formulations, i.e., bi-objective and resource constrained problems in an occupancy grid, and develops PAMO*, a planning method with completeness and solution optimality guarantees, to solve the two problems.</p>
+              <p class="hook">PAMO を **bi-objective** と **resource-constrained** の 2 つの見方で定式化している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper investigates Path planning Among Movable Obstacles (PAMO), which seeks a minimum cost collision-free path among static obstacles from start to goal while allowing the robot to push away movable obstacles (i.e., objects) along its path when needed.</li><li>To develop planners that are complete and optimal for PAMO, the planner has to search a giant state space involving both the location of the robot as well as the locations of the objects, which grows exponentially with respect to the number of objects.</li><li>This paper leverages a simple yet under-explored idea that, only a small fraction of this giant state space needs to be searched during planning as guided by a heuristic, and most of the objects far away from the robot are intact, which thus leads to runtime efficient algorithms.</li></ul>
+                  <ul class="bullet-list"><li>movable obstacle を押してどけてもよい path planning を、**PAMO\*** という search-based formulation でかなり真面目に解いている。</li><li>robot 位置だけでなく object 配置まで入るので状態空間は爆発するが、**heuristic と dominance pruning** で実用域まで持っていく。</li><li>multi-objective / resource-constrained の両方を扱っており、「押す回数」と「移動コスト」の trade-off を見せられるのが良い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper investigates Path planning Among Movable Obstacles (PAMO), which seeks a minimum cost collision-free path among static obstacles from start to goal while allowing the robot to push away movable obstacles (i.e., objects) along its path when needed.</p>
+                  <p>movable obstacle を含む環境では、単なる collision-free planning では足りず、「どの障害物を押すか」まで計画する必要がある。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Based on this idea, this paper introduces two PAMO formulations, i.e., bi-objective and resource constrained problems in an occupancy grid, and develops PAMO*, a planning method with completeness and solution optimality guarantees, to solve the two problems.</p>
+                  <p>PAMO を **bi-objective** と **resource-constrained** の 2 つの見方で定式化している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Based on this idea, this paper introduces two PAMO formulations, i.e., bi-objective and resource constrained problems in an occupancy grid, and develops PAMO*, a planning method with completeness and solution optimality guarantees, to solve the two problems.</p>
+                  <p>状態は robot 位置に加えて、各 movable object の位置も含む複合状態。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Our results show that, PAMO* can often find optimal solutions within a second in cluttered maps with up to 400 objects.</p>
+                  <p>「押してよい環境」の planning を、理論保証つき search として整理しているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>movable obstacle planning を learned interaction policy でなく、**状態空間設計と探索戦略**で解いているのが面白い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり王道な search 論文で、interactive environment をちゃんと planning problem として扱っている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>NAMO / A* / Multi-Objective Planning / Resource Constraints / Hybrid Planning</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-search-based-path-planning-in-interactive-environments-among-movable-obstacles-44315a93.md">Detail note</a>
@@ -2176,7 +2176,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Our results show that, PAMO* can often find optimal solutions within a second in cluttered maps with up to 400 objects.</p>
+                <p>「押してよい環境」の planning を、理論保証つき search として整理しているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -3113,47 +3113,47 @@
               <div class="meta-row">
                 <span class="rank-pill">45 / 60</span>
                 <span class="chip group-chip">Resiliency and Security 1</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span>
+                <span class="chip task-chip">Security</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Robustness Analysis</span>
               </div>
               <h1 class="paper-title">SLAMSpoof: Practical LiDAR Spoofing Attacks on Localization Systems Guided by Scan Matching Vulnerability Analysis</h1>
-              <p class="hook">SLAMSpoof can effectively find the effective attack location based on our scan matching vulnerability score (SMVS), a point-wise metric representing the potential vulnerability to spoofing attacks.</p>
+              <p class="hook">scan matching の Hessian / 感度解析から、点群のどの部分が pose estimation に強く効くかを測る vulnerability score。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Accurate localization is essential for enabling modern full self-driving services.</li><li>These services heavily rely on map-based traffic information to reduce uncertainties in recognizing lane shapes, traffic light locations, and traffic signs.</li><li>Achieving this level of reliance on map information requires centimeter-level localization accuracy, which is currently only achievable with LiDAR sensors.</li></ul>
+                  <ul class="bullet-list"><li>LiDAR-based localization に対する spoofing を、scan matching の脆弱部位解析に基づいて評価した **security paper**。</li><li>論文の芯は、どの点群領域が registration を強く支配するかを測る **vulnerability score** の考え方にある。</li><li>重要なのは攻撃テクニックそのものより、**LiDAR 単独 localization は思ったより攻撃面がある**と示した点。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Accurate localization is essential for enabling modern full self-driving services.</p>
+                  <p>これまでの LiDAR spoofing 研究は、点群を乱すだけでは localization を大きく崩せないことも多かった。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>SLAMSpoof can effectively find the effective attack location based on our scan matching vulnerability score (SMVS), a point-wise metric representing the potential vulnerability to spoofing attacks.</p>
+                  <p>scan matching の Hessian / 感度解析から、点群のどの部分が pose estimation に強く効くかを測る vulnerability score。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>To evaluate the effectiveness of the attack, we conduct real-world experiments on ground vehicles and confirm its high capability in real-world scenarios, inducing position errors of �?.2 meters (more than typical lane width) for all 3 popular LiDAR-based localization algorithms.</p>
+                  <p>ICP / NDT 系の registration がどの点群構造に強く依存しているかを、最適化感度の観点から解析する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>To evaluate the effectiveness of the attack, we conduct real-world experiments on ground vehicles and confirm its high capability in real-world scenarios, inducing position errors of �?.2 meters (more than typical lane width) for all 3 popular LiDAR-based localization algorithms.</p>
+                  <p>security 論文として、単なる脅しでなく **scan matching の構造理解**に踏み込んでいる。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>classical localization は高精度でも、**明示的な脆弱性解析なしでは安全でない**ことがよく分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>攻撃論文として読むより、LiDAR localization の failure / vulnerability analysis 論文として読むと価値が高い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Resiliency and Security 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / SLAM / Intelligent Transportation Systems</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization Security / Scan Matching / Vulnerability Analysis / LiDAR / Robustness</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745.md">Detail note</a>
@@ -3166,7 +3166,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>To evaluate the effectiveness of the attack, we conduct real-world experiments on ground vehicles and confirm its high capability in real-world scenarios, inducing position errors of �?.2 meters (more than typical lane width) for all 3 popular LiDAR-based localization algorithms.</p>
+                <p>security 論文として、単なる脅しでなく **scan matching の構造理解**に踏み込んでいる。</p>
               </div>
             </aside>
           </div>
