@@ -1,6 +1,6 @@
 # DynORecon: Dynamic Object Reconstruction for Navigation
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,22 +11,20 @@
 
 ## TL;DR
 
-- This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.
-- By capitalising on the motion estimations provided by Dynamic SLAM, DynORecon continuously refines the representation of dynamic objects to eliminate residual artefacts from past observations and incrementally reconstructs each object, seamlessly integrating new observations to capture previously unseen structures.
-- Our system is highly efficient (�?0 FPS) and produces accurate (�?0 cm) object reconstructions using simulated and real-world outdoor datasets.
+- moving object を navigation 向けに扱うため、**object-centric submap** で動的物体を体固定座標系に再構成する論文。
+- occupied だけでなく free space も明示的に持つ ESDF ベースで、**動的物体の形と通れる空間**を両方扱っている。
+- Dynamic SLAM の object motion estimate を前提にした設計なので、dense dynamic mapping をかなり実務寄りに組んでいる。
 
 ## Task
 
+* Dynamic Mapping
+* Reconstruction
+* Navigation
 * SLAM
-* Visual-Inertial
-* Motion Planning
-* Perception
 
 ## Keywords
 
-* Mapping
-* Vision-Based Navigation
-* Motion and Path Planning
+* ESDF / Object Submaps / Dynamic SLAM / Free-Space Mapping / Rigid Motion
 
 ## AI依存度
 
@@ -34,36 +32,51 @@
 
 ## 何を解決？
 
-* This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.
+* static-world 前提の dense mapping では、動く物体が通った履歴が map に残って navigation を邪魔しやすい。
+* 一方、動的物体を単なる point cluster として捨てるだけでは、実際の形状や占有を十分使えない。
+* そこで、dynamic object を **再構成しつつ free space も壊さない map** を作りたい。
 
 ## 何が新しい？
 
-* This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.
+* 各 dynamic object に **object-centric ESDF submap** を持たせ、物体座標系で再構成する点。
+* occupied voxel は object submap に、free voxel は static map に入れる分離設計。
+* motion estimate に基づいて submap を時刻間で運ぶことで、毎回 map を作り直さずに済ませる点。
 
 ## どうやってる？
 
-* This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.
+* Dynamic SLAM から object ごとの SE(3) motion とラベル付き点群を受け取る。
+* static 部分は world frame の ESDF に積み、dynamic object はそれぞれの local frame に変換して submap へ積む。
+* object pose を時刻ごとに伝播させることで、物体が動いても local submap 自体は安定して使える。
+* query 時には static map と relevant object submap をまとめて見て、距離場を返す。
 
 ## どこが強い？
 
-* This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.
+* dynamic scene で **形状再構成と navigation 用 free-space** を両立しているのが強い。
+* object-centric submap の発想がきれいで、moving object の voxel 再配置地獄を避けている。
+* outdoor っぽい大規模シーンでも回る速度感を出している。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* rigid object 前提なので、人や柔らかい物体にはそのまま乗りにくい。
+* upstream の Dynamic SLAM が崩れると、submap 側もそのまま壊れる。
+* object 数が増えると query / 管理が重くなりやすい。
 
 ## 関連研究との違い
 
-* This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.
+* Dynablox のように free-space 主体の方法より、**dynamic object 自体の volumetric reconstruction** も持つ。
+* object TSDF / surfel 系より、navigation 向けに ESDF と free-space を前に出している。
+* non-rigid warp field 系より、rigid-body assumption のぶん実用的で軽い。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* dynamic environment を学習で吸収せず、**SE(3) motion + ESDF + submap** で整理しているのが良い。
+* navigation map をどう dynamic object と両立させるかの設計としてかなり参考になる。
 
 ## 難易度
 
-★★★☆☆（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 大発明というより、dynamic mapping のつらいところにかなりまっすぐ答えた論文。
+* free space をきちんと意識しているので、「reconstruction for pretty meshes」ではなく navigation 寄りなのが好み。

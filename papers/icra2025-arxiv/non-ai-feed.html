@@ -209,47 +209,47 @@
               <div class="meta-row">
                 <span class="rank-pill">01 / 60</span>
                 <span class="chip group-chip">Aerial Manipulation 1</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Aerial Robotics</span><span class="chip task-chip">Manipulation</span>
+                <span class="chip task-chip">Aerial Manipulation</span><span class="chip task-chip">Trajectory Optimization</span><span class="chip task-chip">Robust Control</span><span class="chip task-chip">Moving Target Grasping</span>
               </div>
               <h1 class="paper-title">Hook-Based Aerial Payload Grasping from a Moving Platform</h1>
-              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <p class="hook">hook が payload に掛かるイベントを **complementarity constraint** で表し、把持時刻を最適化の中で決める点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper investigates payload grasping from a moving platform using a hook-equipped aerial manipulator.</li><li>First, a computationally efficient trajectory optimization based on complementarity constraints is proposed to determine the optimal grasping time.</li><li>The proposed algorithms are evaluated in a high-fidelity physical simulator, and in real flight experiments using a custom-designed aerial manipulator platform.</li></ul>
+                  <ul class="bullet-list"><li>moving platform 上の payload を hook 付き quadrotor で拾う問題を、**complementarity constraints 付き軌道最適化**で解いている。</li><li>把持時刻を固定せず、一定時間窓の中で **いつ引っ掛けるのが最適か**まで最適化に入れているのが肝。</li><li>digital twin 予測と IQC ベースの robustness analysis まで入っており、単なる demo よりかなり control 寄りの論文。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper investigates payload grasping from a moving platform using a hook-equipped aerial manipulator.</p>
+                  <p>moving UGV などから aerial robot が payload を受け取るには、位置合わせだけでなく **タイミング** が非常に重要になる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                  <p>hook が payload に掛かるイベントを **complementarity constraint** で表し、把持時刻を最適化の中で決める点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>First, a computationally efficient trajectory optimization based on complementarity constraints is proposed to determine the optimal grasping time.</p>
+                  <p>quadrotor と hook-payload 系のダイナミクスを入れた nonlinear optimal control problem を立てる。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The proposed algorithms are evaluated in a high-fidelity physical simulator, and in real flight experiments using a custom-designed aerial manipulator platform.</p>
+                  <p>grasping event を「離散な if 文」でなく、最適化の中で扱っているのがきれい。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>aerial manipulation の難しさを、policy 学習ではなく **接触イベントと軌道最適化**として正面から扱っている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>派手な aerial pickup demo というより、moving grasp をきちんと数理化した論文という印象。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Aerial Manipulation 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Applications / Motion and Path Planning / Planning under Uncertainty</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Hook Grasping / Complementarity Constraints / IQC / LTV-LQR / Digital Twin</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-hook-based-aerial-payload-grasping-from-a-moving-platform-9f68225c.md">Detail note</a>
@@ -262,7 +262,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The proposed algorithms are evaluated in a high-fidelity physical simulator, and in real flight experiments using a custom-designed aerial manipulator platform.</p>
+                <p>grasping event を「離散な if 文」でなく、最適化の中で扱っているのがきれい。</p>
               </div>
             </aside>
           </div>
@@ -605,47 +605,47 @@
               <div class="meta-row">
                 <span class="rank-pill">07 / 60</span>
                 <span class="chip group-chip">Agricultural Automation 4</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span>
+                <span class="chip task-chip">Agricultural Robotics</span><span class="chip task-chip">Navigation</span><span class="chip task-chip">LiDAR Perception</span><span class="chip task-chip">Model Predictive Control</span>
               </div>
               <h1 class="paper-title">Towards Over-Canopy Autonomous Navigation: Crop-Agnostic LiDAR-Based Crop-Row Detection in Arable Fields</h1>
-              <p class="hook">The proposed navigation system has undergone tests in various simulated and real agricultural fields, achieving an average cross-track error of 3.55 cm without human intervention.</p>
+              <p class="hook">crop-specific な特徴設計に寄らず、**高さ差と row 幾何**で検出する crop-agnostic な over-canopy LiDAR pipeline。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Autonomous navigation is crucial for various robotics applications in agriculture.</li><li>However, many existing methods depend on RTK-GPS devices, which can be susceptible to loss of radio signal or intermittent reception of corrections from the internet.</li><li>Consequently, research has increasingly focused on using RGB cameras for crop-row detection, though challenges persist when dealing with grown plants.</li></ul>
+                  <ul class="bullet-list"><li>crop row detection を **over-canopy LiDAR** でやり、RTK-GPS なしでも field navigation できるようにしている。</li><li>ground filtering + K-means + RANSAC というかなり classical な構成で、**crop-agnostic** に row を抜くのがポイント。</li><li>detection だけで終わらず、nonlinear MPC による row following と lane switching まで入れた実システム論文。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Autonomous navigation is crucial for various robotics applications in agriculture.</p>
+                  <p>農業ロボットは RTK-GPS に強く依存しがちだが、環境やコストの制約で使いにくいことがある。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The proposed navigation system has undergone tests in various simulated and real agricultural fields, achieving an average cross-track error of 3.55 cm without human intervention.</p>
+                  <p>crop-specific な特徴設計に寄らず、**高さ差と row 幾何**で検出する crop-agnostic な over-canopy LiDAR pipeline。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>However, many existing methods depend on RTK-GPS devices, which can be susceptible to loss of radio signal or intermittent reception of corrections from the internet.</p>
+                  <p>傾けて載せた LiDAR から点群を取り、virtual ground plane で地面や低い不要点を落とす。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Autonomous navigation is crucial for various robotics applications in agriculture.</p>
+                  <p>アルゴリズムがかなり素朴で、**field robot に載せやすい**。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>農業ロボでも、派手な学習器なしで **幾何・フィルタ・MPC** を積めばかなり戦えると分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>新規アルゴリズムが尖っているというより、field deployment を強く意識した堅いシステム論文。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Agricultural Automation 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Agricultural Automation / Reactive and Sensor-Based Planning / Field Robots</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Crop Row Detection / Over-Canopy / K-Means / RANSAC / EKF / MPC</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-towards-over-canopy-autonomous-navigation-crop-agnostic-lidar-based-crop-row-detection-in-arable-fields-8decc42c.md">Detail note</a>
@@ -658,7 +658,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Autonomous navigation is crucial for various robotics applications in agriculture.</p>
+                <p>アルゴリズムがかなり素朴で、**field robot に載せやすい**。</p>
               </div>
             </aside>
           </div>
@@ -671,47 +671,47 @@
               <div class="meta-row">
                 <span class="rank-pill">08 / 60</span>
                 <span class="chip group-chip">Autonomous Vehicle Perception 4</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span>
+                <span class="chip task-chip">Exploration</span><span class="chip task-chip">MAV</span><span class="chip task-chip">SLAM</span><span class="chip task-chip">Occupancy Mapping</span>
               </div>
               <h1 class="paper-title">Efficient Submap-Based Autonomous MAV Exploration Using Visual-Inertial SLAM Configurable for LiDARs or Depth Cameras</h1>
-              <p class="hook">We propose a Micro Aerial Vehicle (MAV) exploration framework based on local submaps to allow retaining global consistency by applying loop-closure corrections to the relative submap poses.</p>
+              <p class="hook">active submap と frozen submap を分け、**submap-local frontier から global frontier を効率更新**する点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Autonomous exploration of unknown space is an essential component for the deployment of mobile robots in the real world.</li><li>Safe navigation is crucial for all robotics applications and requires accurate and consistent maps of the robot&#x27;s surroundings.</li><li>To achieve full autonomy and allow deployment in a wide variety of environments, the robot must rely on on-board state estimation which is prone to drift over time.</li></ul>
+                  <ul class="bullet-list"><li>MAV exploration を、**submap ベースの frontier 管理**で軽く回すシステム論文。</li><li>local / global frontier をうまく分けつつ、階層 planner を複雑化しすぎず **single-pass exploration** にしているのがポイント。</li><li>depth camera と LiDAR の両方に寄せられる構成で、GPU なし寄りの onboard 実装として実用感が高い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Autonomous exploration of unknown space is an essential component for the deployment of mobile robots in the real world.</p>
+                  <p>長距離 exploration では visual-inertial odometry drift が溜まり、map が歪んで frontier 管理も重くなりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We propose a Micro Aerial Vehicle (MAV) exploration framework based on local submaps to allow retaining global consistency by applying loop-closure corrections to the relative submap poses.</p>
+                  <p>active submap と frozen submap を分け、**submap-local frontier から global frontier を効率更新**する点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Our method seamlessly supports using either a LiDAR sensor or a depth camera, making it suitable for different kinds of MAV platforms.</p>
+                  <p>state estimation は OKVIS2 系を土台にし、必要に応じて LiDAR を重ねる。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Finally, we demonstrate the applicability of our method to real-world MAVs, one equipped with a LiDAR and the other with a depth camera.</p>
+                  <p>drift と frontier explosion の両方に対して、submap でかなり上手く整理している。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>exploration を learned NBV でなく、**frontier / occupancy / MPC** の王道構成で実務寄りに磨いている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>論文単体の新規性より、現場で本当に回る exploration system をどう組むかが見えるのが良い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Perception and Autonomy / Reactive and Sensor-Based Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Frontier Exploration / Submaps / VI-SLAM / supereight2 / MPC / Loop Closure</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-efficient-submap-based-autonomous-mav-exploration-using-visual-inertial-slam-configurable-for-lidars-or-depth-cameras-7f26157b.md">Detail note</a>
@@ -724,7 +724,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Finally, we demonstrate the applicability of our method to real-world MAVs, one equipped with a LiDAR and the other with a depth camera.</p>
+                <p>drift と frontier explosion の両方に対して、submap でかなり上手く整理している。</p>
               </div>
             </aside>
           </div>
@@ -1067,47 +1067,47 @@
               <div class="meta-row">
                 <span class="rank-pill">14 / 60</span>
                 <span class="chip group-chip">Imaging, Scanning, Localization</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Medical Robotics</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Medical Imaging</span><span class="chip task-chip">2D/3D Registration</span><span class="chip task-chip">Surgical Navigation</span><span class="chip task-chip">Multi-View Pose Estimation</span>
               </div>
               <h1 class="paper-title">Robust and Accurate Multi-View 2D/3D Image Registration with Differentiable X-Ray Rendering and Dual Cross-View Constraints</h1>
-              <p class="hook">In this paper, we propose a novel multi-view 2D/3D rigid registration approach which consists of two stages.</p>
+              <p class="hook">single-view DiffPose 系を拡張し、**multi-view registration** として明示的に定式化した点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Robust and accurate 2D/3D registration, which aligns the preoperative model and the intraoperative image of the same anatomy, plays an important role in enabling successful interventional navigation.</li><li>To alleviate the challenge of limited field of view associated with single intraoperative image, more than one intraoperative images can be leveraged and the multi-view 2D/3D registration is thus needed.</li><li>In this paper, we propose a novel multi-view 2D/3D rigid registration approach which consists of two stages.</li></ul>
+                  <ul class="bullet-list"><li>preoperative CT と intraoperative X-ray を合わせる 2D/3D registration を、**multi-view 化**して安定化した論文。</li><li>differentiable DRR rendering と cross-view consistency が核で、単一 view より registration を崩れにくくしている。</li><li>ただし中には ResNet ベースの pose regressor も入っていて、幾何主体ではあるが **pure non-AI ではない**。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Robust and accurate 2D/3D registration, which aligns the preoperative model and the intraoperative image of the same anatomy, plays an important role in enabling successful interventional navigation.</p>
+                  <p>単一 X-ray から CT を rigid registration する 2D/3D alignment は、投影情報が少なく不安定になりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we propose a novel multi-view 2D/3D rigid registration approach which consists of two stages.</p>
+                  <p>single-view DiffPose 系を拡張し、**multi-view registration** として明示的に定式化した点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Our method leverages the mutual constraints of multi-frame view projection poses to enhance the robustness of the multi-view 2D/3D registration approach.</p>
+                  <p>CT から differentiable DRR renderer で各 view の合成 X-ray を作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Robust and accurate 2D/3D registration, which aligns the preoperative model and the intraoperative image of the same anatomy, plays an important role in enabling successful interventional navigation.</p>
+                  <p>2D/3D registration を multi-view consistency で補強する発想が素直で、single-view の不安定さに効いている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>fully non-AI ではないが、**DRR rendering / SE(3) geometry / NCC fine-tuning** など classical 要素が主役。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>中身は hybrid だが、「学習だけ」ではなく幾何とレンダリングで支えている点が面白い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Imaging, Scanning, Localization</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
-                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Medical Robots and Systems / Computer Vision for Medical Robotics</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>DRR / X-Ray Rendering / SE(3) / Cross-View Constraint / Registration / Surgical Guidance</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-robust-and-accurate-multi-view-2d-3d-image-registration-with-differentiable-x-ray-rendering-and-dual-cross-view-constraints-ac4b8d46.md">Detail note</a>
@@ -1120,7 +1120,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Robust and accurate 2D/3D registration, which aligns the preoperative model and the intraoperative image of the same anatomy, plays an important role in enabling successful interventional navigation.</p>
+                <p>2D/3D registration を multi-view consistency で補強する発想が素直で、single-view の不安定さに効いている。</p>
               </div>
             </aside>
           </div>
@@ -3047,47 +3047,47 @@
               <div class="meta-row">
                 <span class="rank-pill">44 / 60</span>
                 <span class="chip group-chip">RADAR-Based Navigation</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Radar Navigation</span><span class="chip task-chip">Teach and Repeat</span><span class="chip task-chip">Off-Road Autonomy</span><span class="chip task-chip">Localization</span>
               </div>
               <h1 class="paper-title">Radar Teach and Repeat: Architecture and Initial Field Testing</h1>
-              <p class="hook">This paper presents Radar Teach and Repeat (RT&amp;R): a full-stack radar system for long-term off-road robot autonomy.</p>
+              <p class="hook">FMCW radar を使った **closed-loop teach and repeat** の一式アーキテクチャ。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Frequency-modulated continuous-wave (FMCW) scanning radar has emerged as an alternative to spinning LiDAR for state estimation on mobile robots.</li><li>Radar&#x27;s longer wavelength is less affected by small particulates, providing operational advantages in challenging environments such as dust, smoke, and fog.</li><li>This paper presents Radar Teach and Repeat (RT&amp;R): a full-stack radar system for long-term off-road robot autonomy.</li></ul>
+                  <ul class="bullet-list"><li>FMCW radar だけで **teach and repeat** を閉ループ実証した off-road navigation 論文。</li><li>continuous-time ICP と高レート gyro 補間で、4 Hz radar でも path tracking を成立させている。</li><li>LiDAR より精度は落ちるが、**dust / fog / darkness に強い sensor choice** として radar を現実的に評価しているのが良い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Frequency-modulated continuous-wave (FMCW) scanning radar has emerged as an alternative to spinning LiDAR for state estimation on mobile robots.</p>
+                  <p>LiDAR や camera は悪天候・粉塵・暗所でつらく、GPS も当てにできない環境がある。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper presents Radar Teach and Repeat (RT&amp;R): a full-stack radar system for long-term off-road robot autonomy.</p>
+                  <p>FMCW radar を使った **closed-loop teach and repeat** の一式アーキテクチャ。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Radar&#x27;s longer wavelength is less affected by small particulates, providing operational advantages in challenging environments such as dust, smoke, and fog.</p>
+                  <p>teach phase では人が運転しながら radar scan から local submap を作り、odometry でつなぐ。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>RT&amp;R was evaluated on four different routes with progressively less structured scene geometry.</p>
+                  <p>「radar が使えるか」を demo でなく **実際の自律走行距離**で見せている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>radar autonomy を learned perception ではなく、**ICP / gyro fusion / controller** で堅く組んでいる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>method novelty は大きくないが、「radar だけで本当に走れるのか」にちゃんと答えているのが価値。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>RADAR-Based Navigation</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Field Robots / Autonomous Vehicle Navigation / Localization</strong></div>
+                <div class="fact"><span>Keywords</span><strong>FMCW Radar / ICP / Teach-and-Repeat / Gyro Fusion / Path Tracking</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf.md">Detail note</a>
@@ -3100,7 +3100,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>RT&amp;R was evaluated on four different routes with progressively less structured scene geometry.</p>
+                <p>「radar が使えるか」を demo でなく **実際の自律走行距離**で見せている。</p>
               </div>
             </aside>
           </div>
@@ -3179,47 +3179,47 @@
               <div class="meta-row">
                 <span class="rank-pill">46 / 60</span>
                 <span class="chip group-chip">Robot Mapping 2</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Dynamic Mapping</span><span class="chip task-chip">Reconstruction</span><span class="chip task-chip">Navigation</span><span class="chip task-chip">SLAM</span>
               </div>
               <h1 class="paper-title">DynORecon: Dynamic Object Reconstruction for Navigation</h1>
-              <p class="hook">This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</p>
+              <p class="hook">各 dynamic object に **object-centric ESDF submap** を持たせ、物体座標系で再構成する点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</li><li>By capitalising on the motion estimations provided by Dynamic SLAM, DynORecon continuously refines the representation of dynamic objects to eliminate residual artefacts from past observations and incrementally reconstructs each object, seamlessly integrating new observations to capture previously unseen structures.</li><li>Our system is highly efficient (�?0 FPS) and produces accurate (�?0 cm) object reconstructions using simulated and real-world outdoor datasets.</li></ul>
+                  <ul class="bullet-list"><li>moving object を navigation 向けに扱うため、**object-centric submap** で動的物体を体固定座標系に再構成する論文。</li><li>occupied だけでなく free space も明示的に持つ ESDF ベースで、**動的物体の形と通れる空間**を両方扱っている。</li><li>Dynamic SLAM の object motion estimate を前提にした設計なので、dense dynamic mapping をかなり実務寄りに組んでいる。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</p>
+                  <p>static-world 前提の dense mapping では、動く物体が通った履歴が map に残って navigation を邪魔しやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</p>
+                  <p>各 dynamic object に **object-centric ESDF submap** を持たせ、物体座標系で再構成する点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</p>
+                  <p>Dynamic SLAM から object ごとの SE(3) motion とラベル付き点群を受け取る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</p>
+                  <p>dynamic scene で **形状再構成と navigation 用 free-space** を両立しているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>dynamic environment を学習で吸収せず、**SE(3) motion + ESDF + submap** で整理しているのが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>大発明というより、dynamic mapping のつらいところにかなりまっすぐ答えた論文。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Robot Mapping 2</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Mapping / Vision-Based Navigation / Motion and Path Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>ESDF / Object Submaps / Dynamic SLAM / Free-Space Mapping / Rigid Motion</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-dynorecon-dynamic-object-reconstruction-for-navigation-100f53a2.md">Detail note</a>
@@ -3232,7 +3232,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>This paper presents DynORecon, a Dynamic Object Reconstruction system that leverages the information provided by Dynamic SLAM to simultaneously generate a volumetric map of observed moving entities while estimating free space to support navigation.</p>
+                <p>dynamic scene で **形状再構成と navigation 用 free-space** を両立しているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -3905,47 +3905,47 @@
               <div class="meta-row">
                 <span class="rank-pill">57 / 60</span>
                 <span class="chip group-chip">Task and Motion Planning 1</span>
-                <span class="chip task-chip">Motion Planning</span>
+                <span class="chip task-chip">Task and Motion Planning</span><span class="chip task-chip">Formal Methods</span><span class="chip task-chip">Mixed-Integer Optimization</span><span class="chip task-chip">Temporal Logic</span>
               </div>
               <h1 class="paper-title">Optimization-Based Task and Motion Planning under Signal Temporal Logic Specifications Using Logic Network Flow</h1>
-              <p class="hook">This paper proposes an optimization-based task and motion planning framework, named &quot;Logic Network Flow&quot;, to integrate signal temporal logic (STL) specifications into efficient mixed-binary linear programmings.</p>
+              <p class="hook">STL の論理構造を tree ではなく **network flow** として書き直す LNF。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper proposes an optimization-based task and motion planning framework, named &quot;Logic Network Flow&quot;, to integrate signal temporal logic (STL) specifications into efficient mixed-binary linear programmings.</li><li>In this framework, temporal predicates are encoded as polyhedron constraints on each edge of the network flow, instead of as constraints between the nodes as in the traditional Logic Tree formulation.</li><li>Synthesized with Dynamic Network Flows, Logic Network Flows render a tighter convex relaxation compared to Logic Trees derived from these STL specifications.</li></ul>
+                  <ul class="bullet-list"><li>STL 付き TAMP を MILP で解くとき、logic tree の代わりに **logic network flow (LNF)** で論理を表す論文。</li><li>predicate を leaf でなく **edge 上の flow constraint** として持つことで、convex relaxation を tighter にしている。</li><li>理論は綺麗だが、wall-clock では per-node cost も増えるので、常に速いわけではないのが正直なところ。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper proposes an optimization-based task and motion planning framework, named &quot;Logic Network Flow&quot;, to integrate signal temporal logic (STL) specifications into efficient mixed-binary linear programmings.</p>
+                  <p>STL 制約付き TAMP は expressiveness が高い一方、MILP 化すると branch-and-bound が重い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper proposes an optimization-based task and motion planning framework, named &quot;Logic Network Flow&quot;, to integrate signal temporal logic (STL) specifications into efficient mixed-binary linear programmings.</p>
+                  <p>STL の論理構造を tree ではなく **network flow** として書き直す LNF。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>As the problem size scales up, our method still discovers better lower and upper bounds by exploring fewer number of nodes during the branches.</p>
+                  <p>STL formula を再帰的に分解し、and/or 構造を network flow graph に変換する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Empirical results demonstrate that our formulation outperforms Logic Tree formulation in terms of computation time for several planning problems.</p>
+                  <p>formal methods と optimization の接続がきれいで、考え方がかなり整理されている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>TAMP を learned policy でなく、**temporal logic + MILP** で押し切る formal planning の良い例。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり数理っぽいが、logic tree を flow に言い換える発想は美しい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Task and Motion Planning 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Task and Motion Planning / Path Planning for Multiple Mobile Robots or Agents / Formal Methods in Robotics and Automation</strong></div>
+                <div class="fact"><span>Keywords</span><strong>STL / MILP / Logic Network Flow / Branch-and-Bound / Dynamic Network Flow</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-optimization-based-task-and-motion-planning-under-signal-temporal-logic-specifications-using-logic-network-flow-bb8b76c8.md">Detail note</a>
@@ -3958,7 +3958,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Empirical results demonstrate that our formulation outperforms Logic Tree formulation in terms of computation time for several planning problems.</p>
+                <p>formal methods と optimization の接続がきれいで、考え方がかなり整理されている。</p>
               </div>
             </aside>
           </div>
@@ -4103,47 +4103,47 @@
               <div class="meta-row">
                 <span class="rank-pill">60 / 60</span>
                 <span class="chip group-chip">Visual-Inertial Odometry</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Visual-Inertial Odometry</span><span class="chip task-chip">Initialization</span><span class="chip task-chip">Bundle Adjustment</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">Improving Monocular Visual-Inertial Initialization with Structureless Visual-Inertial Bundle Adjustment</h1>
-              <p class="hook">To address this issue, some researchers recently proposed a structureless initialization method, which can solve the initial state without recovering 3D structure.</p>
+              <p class="hook">3D landmark を持たない **structureless visual-inertial BA** を初期化 refinement に使う点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Monocular visual inertial odometry (VIO) has facilitated a wide range of real-time motion tracking applications, thanks to the small size of the sensor suite and low power consumption.</li><li>To successfully bootstrap VIO algorithms, the initialization module is extremely important.</li><li>Most initialization methods rely on the reconstruction of 3D visual point clouds.</li></ul>
+                  <ul class="bullet-list"><li>monocular VIO initialization を、**structureless visual-inertial BA** で精度改善する論文。</li><li>3D point を明示再構成せず、epipolar constraint と IMU preintegration を使って **初期化だけを joint refinement** している。</li><li>full structure-based BA ほど重くしたくないが、従来の decoupled structureless init よりは精度が欲しい、というかなり実務的な狙い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Monocular visual inertial odometry (VIO) has facilitated a wide range of real-time motion tracking applications, thanks to the small size of the sensor suite and low power consumption.</p>
+                  <p>monocular VIO は初期化が不安定だと、その後全部が崩れる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To address this issue, some researchers recently proposed a structureless initialization method, which can solve the initial state without recovering 3D structure.</p>
+                  <p>3D landmark を持たない **structureless visual-inertial BA** を初期化 refinement に使う点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Most initialization methods rely on the reconstruction of 3D visual point clouds.</p>
+                  <p>まず既存の structureless 法で初期姿勢・速度・bias などをざっくり求める。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Extensive experiments on real-world datasets show our method significantly improves the VIO initialization accuracy, while maintaining real-time performance.</p>
+                  <p>structureless の軽さを保ちながら、初期化精度をかなり改善している。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>VIO の難所である initialization を、**epipolar geometry と IMU preintegration** で丁寧に詰めている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>派手な新機軸ではないが、VIO を実装するときにかなり欲しい改善。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Visual-Inertial Odometry</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Structureless BA / Epipolar Constraint / IMU Preintegration / Monocular VIO / Initialization</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-improving-monocular-visual-inertial-initialization-with-structureless-visual-inertial-bundle-adjustment-0e004ceb.md">Detail note</a>
@@ -4156,7 +4156,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Extensive experiments on real-world datasets show our method significantly improves the VIO initialization accuracy, while maintaining real-time performance.</p>
+                <p>structureless の軽さを保ちながら、初期化精度をかなり改善している。</p>
               </div>
             </aside>
           </div>
