@@ -3,7 +3,7 @@
 expanded 521 corpus を見直したうえで、**最初に読むべき 12 本** を優先順で並べたページです。
 
 - 軸: **いま読む価値 / classical な学びの濃さ / 実装や設計に効くか / 分野の広がり**
-- 前提: full paper 精読前。draft note と abstract ベースの暫定キュレーション
+- 前提: Top 12 note は PDF をざっと読んで手で補強済み。ranking 自体は引き続き暫定キュレーション
 - 方針: localization / SLAM / GNSS / LiDAR を厚めにしつつ、planning / control も今回の corpus から入れ直した
 - 縦スクロールで見たい場合は [Top 12 slide feed](../../index.html) を開く
 

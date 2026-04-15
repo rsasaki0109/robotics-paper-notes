@@ -1,6 +1,6 @@
 # A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,9 +11,9 @@
 
 ## TL;DR
 
-- This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.
-- Previous approaches manipulate the Gaussian mixture likelihood into a form that allows the problem to be represented as a nonlinear least squares (NLS) problem.
-- The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.
+- Gaussian mixture likelihood を含む robotics の MAP 推定を NLS として解くとき、既存の Max-Mixture / Sum-Mixture 系より筋の良い Hessian 近似を与える論文。
+- LogSumExp の非線形性を正面から見て、各 mixture 成分の Gauss-Newton 近似を chain rule でまとめる `Hessian-Sum-Mixture` を提案している。
+- 既存 solver と互換性を保ちながら、収束性と uncertainty characterization を改善するのが狙い。
 
 ## Task
 
@@ -23,7 +23,7 @@
 
 ## Keywords
 
-* Sensor Fusion / Probabilistic Inference / SLAM
+* Gaussian Mixture / Nonlinear Least Squares / Hessian Approximation / MAP Estimation / Robust Inference
 
 ## AI依存度
 
@@ -31,36 +31,50 @@
 
 ## 何を解決？
 
-* This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.
+* data association や outlier を扱うために Gaussian mixture likelihood を入れると、NLS の Hessian 近似が難しくなる。
+* 既存の mixture 系定式化は、どこかで LogSumExp の非線形性を雑に潰しており、収束や共分散推定に歪みが出る。
 
 ## 何が新しい？
 
-* This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.
+* mixture likelihood 全体の Hessian を、成分ごとの GN 近似と chain rule で組み上げる `HSM` を提案した点。
+* Max-Sum-Mixture などで起きる「支配成分以外の Hessian が不自然になる」問題を整理した点。
+* 既存 solver に載せるための auxiliary residual まで含めて実装可能形にしている点。
 
 ## どうやってる？
 
-* The resulting Hessian approximation used within NLS solvers from these approaches neglects certain nonlinearities.
+* 負の対数 mixture likelihood を LogSumExp 付きの目的関数として定義し、その一階・二階構造を展開する。
+* 各 mixture 成分には usual な Gauss-Newton 近似を使いつつ、混合そのものの非線形性は chain rule で扱う。
+* Laplace approximation と矛盾しやすい cross term は省略し、solver 互換性と推定の妥当性を両立させる。
+* Ceres など既存 NLS ソルバで回せる形へ落として、simulation と real-world で比較している。
 
 ## どこが強い？
 
-* The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.
+* mixture likelihood を robotics optimizer に素直に入れたい人にとって、かなり実装しやすい形で整理されている。
+* 単に「robust」にするだけでなく、uncertainty まで意識した Hessian 設計なのが良い。
+* SLAM / sensor fusion で multi-hypothesis を扱うときの基盤部品として再利用範囲が広い。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* 改善幅は problem class によって差が出そうで、常に劇的に効くわけではなさそう。
+* local optimizer であること自体は変わらないので、初期値依存や mixture 設計依存は残る。
+* mixture モデルの選び方が悪ければ Hessian を良くしても根本解決にはならない。
 
 ## 関連研究との違い
 
-* Previous approaches manipulate the Gaussian mixture likelihood into a form that allows the problem to be represented as a nonlinear least squares (NLS) problem.
+* Max-Mixture は LogSumExp を max で近似するぶん扱いやすいが、目的関数の滑らかさを削りやすい。
+* Sum-Mixture / Max-Sum-Mixture は mixture を NLS へ持ち込む工夫だが、Hessian 側の扱いに歪みが残る。
+* 本論文は「mixture をどう residual 化するか」ではなく、「Hessian をどう正しく近似するか」に主眼がある。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* SLAM / sensor fusion の裏側にある optimizer を一段深く理解できる。
+* 論文タイトルは地味だが、multi-hypothesis inference をまともに扱うにはかなり重要な部品。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* これは派手な応用論文ではないが、最適化器の土台を良くするタイプで好き。
+* mixture likelihood を使うなら避けて通れない話で、理論と実装のバランスも良い。

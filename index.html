@@ -212,44 +212,44 @@
                 <span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS Fusion</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Sensor Fusion</span>
               </div>
               <h1 class="paper-title">GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization</h1>
-              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <p class="hook">センサ周波数に依存しない **time-centric** な因子グラフ構築にして、推定時刻を任意に選べるようにした点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper introduces GNSS-FGO, an online trajectory estimator that fuses GNSS observations alongside multiple sensor measurements for robust vehicle localization.</li><li>In a test sequence containing a 17km route through Aachen, our method results in a mean 2-D positioning error of 0.48m while fusing raw GNSS observations with lidar odometry in tight coupling.</li><li>Our results show that the proposed approach enables robust trajectory estimation in dense urban areas, where the classic multi-sensor fusion method fails.</li></ul>
+                  <ul class="bullet-list"><li>都市峡谷やトンネルで GNSS が壊れても動くように、連続時間の因子グラフで GNSS・IMU・速度・LiDAR odometry をまとめて融合する `gnssFGO` を提案している。</li><li>Gaussian process による連続時間軌跡表現を使うので、非同期センサを無理に同期させず、任意時刻の状態を補間して因子を張れる。</li><li>Aachen の 17 km シーケンスでは、tight coupling で平均 2D 誤差 0.48 m を出しており、GNSS 劣化区間で LiDAR 中心の従来法よりかなり粘る。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Accurate and robust vehicle localization in highly urbanized areas is challenging.</p>
+                  <p>都市環境では GNSS が multipath や NLOS で壊れやすく、LiDAR 側もトンネルや退化区間で外すので、単一センサ主導の localization だと破綻しやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                  <p>センサ周波数に依存しない **time-centric** な因子グラフ構築にして、推定時刻を任意に選べるようにした点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This paper introduces GNSS-FGO, an online trajectory estimator that fuses GNSS observations alongside multiple sensor measurements for robust vehicle localization.</p>
+                  <p>軌跡は GP prior 付きの連続時間状態列として表現し、測定時刻に厳密な state がなくても補間して残差評価する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Our results show that the proposed approach enables robust trajectory estimation in dense urban areas, where the classic multi-sensor fusion method fails.</p>
+                  <p>非同期センサ融合をかなり自然に扱えていて、実ロボットの現実的な timestamp ずれ・周波数差に強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>localization を「どのセンサを何時刻の状態に結び付けるか」という因子設計の問題として学べる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>GNSS + LiDAR の論文の中でも、単に精度が良いだけでなく「非同期センサをどう graph に入れるか」が主題になっていて学びやすい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Localization 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Sensor Fusion / Localization / Autonomous Vehicle Navigation / Factor Graph Optimization</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Continuous-Time FGO / Gaussian Process / Tight Coupling / GNSS Pseudorange / Doppler</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md">Detail note</a>
@@ -262,7 +262,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Our results show that the proposed approach enables robust trajectory estimation in dense urban areas, where the classic multi-sensor fusion method fails.</p>
+                <p>非同期センサ融合をかなり自然に扱えていて、実ロボットの現実的な timestamp ずれ・周波数差に強い。</p>
               </div>
             </aside>
           </div>
@@ -275,47 +275,47 @@
               <div class="meta-row">
                 <span class="rank-pill">02 / 12</span>
                 <span class="chip group-chip">Top 12</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Mapping</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">Equivariant Filter for Tightly Coupled LiDAR-Inertial Odometry</h1>
-              <p class="hook">To provide a consistent and efficient solution of pose estimation, we propose Eq-LIO, a robust state estimator for tightly coupled LIO systems based on an equivariant filter (EqF).</p>
+              <p class="hook">EqF を LIO に持ち込み、navigation state・IMU bias・LiDAR extrinsic を半直積群の対称性でまとめて扱った点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Pose estimation is a crucial problem in simultaneous localization and mapping (SLAM).</li><li>To provide a consistent and efficient solution of pose estimation, we propose Eq-LIO, a robust state estimator for tightly coupled LIO systems based on an equivariant filter (EqF).</li><li>However, developing a robust and consistent state estimator remains a significant challenge, as the traditional extended Kalman filter (EKF) struggles to handle the model nonlinearity, especially for inertial measurement unit (IMU) and light detection and ranging (LiDAR).</li></ul>
+                  <ul class="bullet-list"><li>EKF 系 LIO の弱点である線形化誤差と不整合を減らすために、equivariant filter を使った tightly coupled LIO `Eq-LIO` を提案している。</li><li>IMU bias と LiDAR extrinsic まで含めた半直積群の対称性を使い、常に固定された原点で線形化することで一貫性を改善する設計。</li><li>公開・私有データセットのベンチマークでは、計算コストを大きく増やさずに精度・堅牢性・consistency の改善を狙っている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Pose estimation is a crucial problem in simultaneous localization and mapping (SLAM).</p>
+                  <p>EKF ベースの LIO は非線形性が強い場面で線形化誤差が大きく、covariance が過信気味になる不整合が出やすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To provide a consistent and efficient solution of pose estimation, we propose Eq-LIO, a robust state estimator for tightly coupled LIO systems based on an equivariant filter (EqF).</p>
+                  <p>EqF を LIO に持ち込み、navigation state・IMU bias・LiDAR extrinsic を半直積群の対称性でまとめて扱った点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Compared with the invariant Kalman filter based on the SE_2(3) group structure, the EqF uses the symmetry of the semi-direct product group to couple the system state including IMU bias, navigation state, and LiDAR extrinsic calibration state, thereby suppressing linearization error and improving the behavior of the estimator in the event of unexpected state changes.</p>
+                  <p>state は navigation pose / velocity / position に加え、gyro・acc bias と LiDAR extrinsic を含む多様体上で定義する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                  <p>「なぜ一貫性が良くなるのか」の説明が、経験則ではなく群論ベースで通っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>LiDAR-IMU 融合を「どの群で state を持つか」というレベルまで掘って考えられる論文。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり理論寄りだが、LIO の精度改善を数値テクニックではなく state の持ち方から攻めているのが良い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Localization 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>LIO / Equivariant Filter / IMU Bias / Extrinsic Calibration / Consistency</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-equivariant-filter-for-tightly-coupled-lidar-inertial-odometry-2e53b464.md">Detail note</a>
@@ -328,7 +328,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                <p>「なぜ一貫性が良くなるのか」の説明が、経験則ではなく群論ベースで通っている。</p>
               </div>
             </aside>
           </div>
@@ -344,44 +344,44 @@
                 <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Mapping</span>
               </div>
               <h1 class="paper-title">GenZ-ICP: Generalizable and Degeneracy-Robust LiDAR Odometry Using an Adaptive Weighting</h1>
-              <p class="hook">To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</p>
+              <p class="hook">対応点ごとの **planarity classification** によって、点対平面と点対点を局所的に使い分ける点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</li><li>Light detection and ranging (LiDAR)-based odometry has been widely utilized for pose estimation due to its use of high-accuracy range measurements and immunity to ambient light conditions.</li><li>As demonstrated in our experimental evaluation, the proposed GenZ-ICP exhibits high adaptability to various environments and resilience to optimization degradation in corridor-like degenerative scenarios by preventing ill-posed problems during the optimization process.</li></ul>
+                  <ul class="bullet-list"><li>LiDAR odometry が corridor のような退化環境で壊れやすい原因を、単一の ICP error metric 依存だと捉え、`GenZ-ICP` を提案している。</li><li>point-to-plane と point-to-point を局所幾何に応じて切り替え、adaptive weighting で混ぜることで、構造化環境と非構造化環境の両方に対応する。</li><li>一般環境では SOTA 級と同等、長廊下のような退化ケースではかなり強く、ill-posed optimization を避けるのが効いている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</p>
+                  <p>point-to-plane は structured 環境では強いが、normal が信用できない場面では弱い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To address these problems, this study proposes a novel iterative closest point (ICP) method called GenZ-ICP.</p>
+                  <p>対応点ごとの **planarity classification** によって、点対平面と点対点を局所的に使い分ける点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Light detection and ranging (LiDAR)-based odometry has been widely utilized for pose estimation due to its use of high-accuracy range measurements and immunity to ambient light conditions.</p>
+                  <p>scan-to-map matching の各 correspondence について、局所幾何から planar か non-planar かを判定する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>As demonstrated in our experimental evaluation, the proposed GenZ-ICP exhibits high adaptability to various environments and resilience to optimization degradation in corridor-like degenerative scenarios by preventing ill-posed problems during the optimization process.</p>
+                  <p>設計がかなり素直で、既存 ICP 系フロントエンドに入れやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>LiDAR odometry の性能差が「特徴量」よりもまず residual 設計で決まることを実感しやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり好きなタイプの論文で、派手な新規モデルより「どの residual をどこで使うか」を丁寧に詰めている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>SLAM 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>SLAM / Localization / Mapping</strong></div>
+                <div class="fact"><span>Keywords</span><strong>ICP / Degeneracy / Point-to-Plane / Point-to-Point / Adaptive Weighting</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-genz-icp-generalizable-and-degeneracy-robust-lidar-odometry-using-an-ada-ba370ba1.md">Detail note</a>
@@ -394,7 +394,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>As demonstrated in our experimental evaluation, the proposed GenZ-ICP exhibits high adaptability to various environments and resilience to optimization degradation in corridor-like degenerative scenarios by preventing ill-posed problems during the optimization process.</p>
+                <p>設計がかなり素直で、既存 ICP 系フロントエンドに入れやすい。</p>
               </div>
             </aside>
           </div>
@@ -410,44 +410,44 @@
                 <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">DynaVINS++: Robust Visual-Inertial State Estimator in Dynamic Environments by Adaptive Truncated Least Squares and Stable State Recovery</h1>
-              <p class="hook">To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+              <p class="hook">視覚残差に対して truncation range を固定せず、状況に応じて調整する **adaptive TLS** を入れた点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</li><li>Despite extensive research in robust visual-inertial navigation systems(VINS) in dynamic environments, many approaches remain vulnerable to objects that suddenly start moving, which are referred to as abruptly dynamic objects.</li><li>As verified in both public and real-world datasets, our approach shows promising performance in dynamic environments, including scenes with abruptly dynamic objects.</li></ul>
+                  <ul class="bullet-list"><li>動的環境の VINS が急に動き出す物体で壊れる問題に対して、`DynaVINS++` は adaptive truncated least squares と state recovery を組み合わせて立て直す。</li><li>視覚残差の外れ値処理だけでなく、IMU bias の崩れも監視して rollback する構成になっているのがポイント。</li><li>public / real-world dataset で、abruptly dynamic object が出る場面でも既存 robust VINS より安定している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+                  <p>動的環境向け VINS は多数あるが、「途中から急に動き出す物体」による外れ値は依然つらい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+                  <p>視覚残差に対して truncation range を固定せず、状況に応じて調整する **adaptive TLS** を入れた点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>To overcome these problems, we propose a robust VINS framework called DynaVINS++, which employs a) adaptive truncated least square method that adaptively adjusts the truncation range using both feature association and IMU preintegration to effectively minimize the effect of the dynamic objects while reducing the computational cost, and b) stable state recovery with bias consistency check to correct misestimated IMU bias and to prevent the divergence caused by abruptly dynamic objects.</p>
+                  <p>bundle adjustment / VINS optimization の中で、feature association と IMU preintegration を見ながら truncation range を調整する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                  <p>abruptly dynamic objects に対して、既存の robust VINS より failure mode をよく捉えている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>dynamic environment の VINS を、semantic segmentation なしでどこまで守れるかを見る上で価値が高い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>これはかなり実装寄りで、動的物体に強い VINS を作るときの failure analysis がうまい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Visual-Inertial Odometry</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Visual-Inertial SLAM / Sensor Fusion / SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>VINS / Dynamic Objects / Truncated Least Squares / IMU Bias / Robust Estimation</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-dynavins-robust-visual-inertial-state-estimator-in-dynamic-environments-a88daf2a.md">Detail note</a>
@@ -460,7 +460,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                <p>abruptly dynamic objects に対して、既存の robust VINS より failure mode をよく捉えている。</p>
               </div>
             </aside>
           </div>
@@ -476,44 +476,44 @@
                 <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Sensor Fusion</span>
               </div>
               <h1 class="paper-title">Universal Online Temporal Calibration for Optimization-Based Visual-Inertial Navigation Systems</h1>
-              <p class="hook">To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</p>
+              <p class="hook">time offset `t_d` を state に足し、視覚残差の Jacobian に明示的に入れて online 最適化できるようにした点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>6-Degree of Freedom (6DoF) motion estimation with a combination of visual and inertial sensors is a growing area with numerous real-world applications.</li><li>To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</li><li>We evaluate our calibration method with both EuRoC and simulation data and extensive experiments demonstrate that our approach provides more accurate time offset estimation and faster convergence, particularly in the presence of noisy sensor data.The experimental code is available at https://github.com/bytedance/Ts_Online_Optimization.</li></ul>
+                  <ul class="bullet-list"><li>optimization-based VINS の camera-IMU time offset を、追加 state と Jacobian で online に同時推定する手法。</li><li>optical flow に強く依存せず、姿勢・速度由来の補正式を視覚残差へ直接組み込むので、既存 VINS に比較的入れやすい。</li><li>EuRoC と simulation では noisy sensor 条件でも time offset 推定が安定し、収束速度も良いという主張。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>6-Degree of Freedom (6DoF) motion estimation with a combination of visual and inertial sensors is a growing area with numerous real-world applications.</p>
+                  <p>camera と IMU の時間ずれは、見た目以上に VINS の初期化・追跡・精度に効く。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</p>
+                  <p>time offset `t_d` を state に足し、視覚残差の Jacobian に明示的に入れて online 最適化できるようにした点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>To address this, we propose a universal online temporal calibration strategy for optimization-based visual-inertial navigation systems.</p>
+                  <p>IMU 姿勢・位置を画像タイムスタンプへずらす補正式を導き、視覚因子の residual に `t_d` の寄与を追加する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We evaluate our calibration method with both EuRoC and simulation data and extensive experiments demonstrate that our approach provides more accurate time offset estimation and faster convergence, particularly in the presence of noisy sensor data.The experimental code is available at https://github.com/bytedance/Ts_Online_Optimization.</p>
+                  <p>地味だが効く calibration 問題を、VINS の本体 optimizer の中で自然に扱っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>localization の実性能を落とす原因が「アルゴリズム本体」ではなく「時刻ずれ」にあることを再認識できる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり実装フレンドリーで、VINS の安定化に効くタイプの論文。こういう論文は後から効いてくる。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Calibration 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Visual-Inertial SLAM / Localization / Sensor Fusion</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Temporal Calibration / VINS / Time Offset / Jacobian / Online Optimization</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-universal-online-temporal-calibration-for-optimization-based-visual-iner-ab7c16cf.md">Detail note</a>
@@ -526,7 +526,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We evaluate our calibration method with both EuRoC and simulation data and extensive experiments demonstrate that our approach provides more accurate time offset estimation and faster convergence, particularly in the presence of noisy sensor data.The experimental code is available at https://github.com/bytedance/Ts_Online_Optimization.</p>
+                <p>地味だが効く calibration 問題を、VINS の本体 optimizer の中で自然に扱っている。</p>
               </div>
             </aside>
           </div>
@@ -542,44 +542,44 @@
                 <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">Equivariant IMU Preintegration with Biases: A Galilean Group Approach</h1>
-              <p class="hook">We define a novel preintegration error that geometrically couples the navigation states and the bias leading to lower linearization error.</p>
+              <p class="hook">bias と navigation state を幾何的に結合した新しい preintegration error を導いた点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This letter proposes a new approach for Inertial Measurement Unit (IMU) preintegration, a fundamental building block that can be leveraged in different optimization-based Inertial Navigation System (INS) localization solutions.</li><li>Our method improves in consistency compared to existing preintegration approaches which treat IMU biases as a separate state-space.</li><li>Inspired by recent advances in equivariant theory applied to biased INSs, we derive a discrete-time formulation of the IMU preintegration on Gal(3) �?gal(3), the left-trivialization of the tangent group of the Galilean group Gal(3).</li></ul>
+                  <ul class="bullet-list"><li>IMU preintegration を、bias を外付け state として扱う従来形ではなく、Galilean group の拡張空間で幾何的に定式化し直した論文。</li><li>bias と navigation state をまとめた preintegration error を導き、線形化誤差と consistency を改善したい立場。</li><li>EuRoC では NEES などの一貫性指標で既存 preintegration より良い結果を示しており、理論色の強い基盤論文。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This letter proposes a new approach for Inertial Measurement Unit (IMU) preintegration, a fundamental building block that can be leveraged in different optimization-based Inertial Navigation System (INS) localization solutions.</p>
+                  <p>既存の IMU preintegration は bias を別空間に持つことが多く、幾何構造と linearization の噛み合いが悪くなりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We define a novel preintegration error that geometrically couples the navigation states and the bias leading to lower linearization error.</p>
+                  <p>bias と navigation state を幾何的に結合した新しい preintegration error を導いた点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This letter proposes a new approach for Inertial Measurement Unit (IMU) preintegration, a fundamental building block that can be leveraged in different optimization-based Inertial Navigation System (INS) localization solutions.</p>
+                  <p>continuous-time biased INS を Galilean group に沿って書き換え、preintegrated increment を群の指数写像で更新する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Extensive validation against state-of-the-art methods, both in simulation and with real-world IMU data, implementation in the Lie++ library, and open-source code are provided.</p>
+                  <p>preintegration を「便利な近似部品」ではなく、state geometry から組み直しているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>VIO / INS の性能が「フロントエンド」以前に、IMU モデルの持ち方で変わることを学べる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり理論寄りだが、こういう基礎部品の改善は長い目で効く。Top 12 に入れる理由は十分ある。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>State Estimation</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / Sensor Fusion / Visual-Inertial SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>IMU Preintegration / Galilean Group / Equivariant Filtering / Consistency / Lie Theory</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-equivariant-imu-preintegration-with-biases-a-galilean-group-approach-1c90d227.md">Detail note</a>
@@ -592,7 +592,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Extensive validation against state-of-the-art methods, both in simulation and with real-world IMU data, implementation in the Lie++ library, and open-source code are provided.</p>
+                <p>preintegration を「便利な近似部品」ではなく、state geometry から組み直しているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -608,44 +608,44 @@
                 <span class="chip task-chip">SLAM</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">State Estimation</span>
               </div>
               <h1 class="paper-title">A Hessian for Gaussian Mixture Likelihoods in Nonlinear Least Squares</h1>
-              <p class="hook">This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</p>
+              <p class="hook">mixture likelihood 全体の Hessian を、成分ごとの GN 近似と chain rule で組み上げる `HSM` を提案した点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</li><li>Previous approaches manipulate the Gaussian mixture likelihood into a form that allows the problem to be represented as a nonlinear least squares (NLS) problem.</li><li>The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.</li></ul>
+                  <ul class="bullet-list"><li>Gaussian mixture likelihood を含む robotics の MAP 推定を NLS として解くとき、既存の Max-Mixture / Sum-Mixture 系より筋の良い Hessian 近似を与える論文。</li><li>LogSumExp の非線形性を正面から見て、各 mixture 成分の Gauss-Newton 近似を chain rule でまとめる `Hessian-Sum-Mixture` を提案している。</li><li>既存 solver と互換性を保ちながら、収束性と uncertainty characterization を改善するのが狙い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</p>
+                  <p>data association や outlier を扱うために Gaussian mixture likelihood を入れると、NLS の Hessian 近似が難しくなる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper proposes a novel Hessian approximation for Maximum a Posteriori estimation problems in robotics involving Gaussian mixture likelihoods.</p>
+                  <p>mixture likelihood 全体の Hessian を、成分ごとの GN 近似と chain rule で組み上げる `HSM` を提案した点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>The resulting Hessian approximation used within NLS solvers from these approaches neglects certain nonlinearities.</p>
+                  <p>負の対数 mixture likelihood を LogSumExp 付きの目的関数として定義し、その一階・二階構造を展開する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.</p>
+                  <p>mixture likelihood を robotics optimizer に素直に入れたい人にとって、かなり実装しやすい形で整理されている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>SLAM / sensor fusion の裏側にある optimizer を一段深く理解できる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>これは派手な応用論文ではないが、最適化器の土台を良くするタイプで好き。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Sensor Fusion 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Sensor Fusion / Probabilistic Inference / SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Gaussian Mixture / Nonlinear Least Squares / Hessian Approximation / MAP Estimation / Robust Inference</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-a-hessian-for-gaussian-mixture-likelihoods-in-nonlinear-least-squares-6e9814a0.md">Detail note</a>
@@ -658,7 +658,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The proposed Hessian approximation results in improved convergence speed and uncertainty characterization for simulated experiments, and similar performance to the state of the art on real-world experiments.</p>
+                <p>mixture likelihood を robotics optimizer に素直に入れたい人にとって、かなり実装しやすい形で整理されている。</p>
               </div>
             </aside>
           </div>
@@ -674,44 +674,44 @@
                 <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Perception</span>
               </div>
               <h1 class="paper-title">Narrowing Your FOV with SOLiD: Spatially Organized and Lightweight Global Descriptor for FOV-Constrained LiDAR Place Recognition</h1>
-              <p class="hook">Thus, in this paper, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios.</p>
+              <p class="hook">range-elevation / azimuth-elevation の二つの投影で limited FOV に向いた global descriptor を作った点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Thus, in this paper, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios.</li><li>Based on these representations, our method enables addressing rotational changes and determining the initial heading.</li><li>In addition, we achieve a robust place description through reweighting based on vertical direction information.</li></ul>
+                  <ul class="bullet-list"><li>限定 FOV の LiDAR でも使える place recognition descriptor `SOLiD` を提案しており、solid-state LiDAR や制約付き mount を強く意識した論文。</li><li>BEV に潰すのでなく、球座標ベースの range/elevation・azimuth/elevation 表現と IEV 重み付けで狭視野の情報欠損を扱う。</li><li>descriptor はかなり軽く、CPU ベースで高速。limited FOV 条件でも既存法より壊れにくい。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>We often encounter limited FOV situations due to various factors such as sensor fusion or sensor mount in real-world robot navigation.</p>
+                  <p>実ロボットではセンサ統合や mount 制約で LiDAR の FOV が狭くなることが多く、既存 descriptor は full-view 前提で崩れやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Thus, in this paper, we propose a robust LiDAR-based place recognition method for handling narrow FOV scenarios.</p>
+                  <p>range-elevation / azimuth-elevation の二つの投影で limited FOV に向いた global descriptor を作った点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                  <p>点群を球座標系の 3D bin に分け、REC / AEC を構成する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>In addition, we achieve a robust place description through reweighting based on vertical direction information.</p>
+                  <p>limited FOV を主題に据えたところがまず実用的で、sensor mount が厳しいロボットに刺さる。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>place recognition を深層特徴ではなく記述子設計で解こうとしており、LiDAR geometry の使い方がわかりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>問題設定がとても良い。実機だと「full 360° LiDAR 前提じゃない」ことが多いので、かなり現場寄り。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Perception 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / SLAM / Range Sensing</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Place Recognition / Limited FOV / Global Descriptor / Loop Closure / Solid-State LiDAR</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-narrowing-your-fov-with-solid-spatially-organized-and-lightweight-global-587da81c.md">Detail note</a>
@@ -724,7 +724,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>In addition, we achieve a robust place description through reweighting based on vertical direction information.</p>
+                <p>limited FOV を主題に据えたところがまず実用的で、sensor mount が厳しいロボットに刺さる。</p>
               </div>
             </aside>
           </div>
@@ -740,44 +740,44 @@
                 <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
               </div>
               <h1 class="paper-title">A Complete and Bounded-Suboptimal Algorithm for a Moving Target Traveling Salesman Problem with Obstacles in 3D</h1>
-              <p class="hook">We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</p>
+              <p class="hook">MT-TSP-O を **3D** で扱い、complete + bounded-suboptimal を同時に出している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>The moving target traveling salesman problem with obstacles (MT-TSP-O) seeks an obstacle-free trajectory for an agent that intercepts a given set of moving targets, each within a specified time windows, and returns to the agent&#x27;s starting position.</li><li>Each target moves with a constant velocity within its time windows, and the agent has a speed limit no smaller than any target&#x27;s speed.</li><li>We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</li></ul>
+                  <ul class="bullet-list"><li>moving target TSP with obstacles in 3D に対して、初めて **complete かつ bounded-suboptimal** なアルゴリズム `FMC*-TSP` を与えた論文。</li><li>target order を決める高レベル探索と、GCS 上で軌跡を解く低レベル探索を組み合わせ、訪問順序と時空間 feasibility を両方見る。</li><li>3D 障害物環境・時間窓付き moving targets を、理論保証つきで扱っているのが大きい。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>The moving target traveling salesman problem with obstacles (MT-TSP-O) seeks an obstacle-free trajectory for an agent that intercepts a given set of moving targets, each within a specified time windows, and returns to the agent&#x27;s starting position.</p>
+                  <p>moving targets を time window 内に捕捉しつつ障害物回避して帰還する問題は、順序計画と幾何計画が強く結び付く。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</p>
+                  <p>MT-TSP-O を **3D** で扱い、complete + bounded-suboptimal を同時に出している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>We present FMC*-TSP, the first complete and bounded-suboptimal algorithm for the MT-TSP-O, and results for an agent whose configuration space is in R^3.</p>
+                  <p>高レベルでは、target と time window をまとめた graph 上で GTSP-TW 風に候補 tour を探索する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We test FMC*-TSP on 280 problem instances with up to 40 targets and demonstrate its smaller median runtime than a baseline based on prior work.</p>
+                  <p>3D moving-target planning で complete / bounded-suboptimal をちゃんと明示しているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>「順序最適化」と「軌跡最適化」をどうつなぐかの設計がかなり勉強になる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>理論保証を崩さずに 3D へ持って行っているのが偉い。泥臭いが価値の高い planning 論文。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Constrained Motion Planning / Optimization and Optimal Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>MT-TSP / GCS / Focal Search / Time Windows / Complete Algorithm</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-a-complete-and-bounded-suboptimal-algorithm-for-a-moving-target-traveling-salesman-problem-with-obstacles-in-3d-918c2b36.md">Detail note</a>
@@ -790,7 +790,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We test FMC*-TSP on 280 problem instances with up to 40 targets and demonstrate its smaller median runtime than a baseline based on prior work.</p>
+                <p>3D moving-target planning で complete / bounded-suboptimal をちゃんと明示しているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -806,44 +806,44 @@
                 <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
               </div>
               <h1 class="paper-title">Endpoint-Explicit Differential Dynamic Programming Via Exact Resolution</h1>
-              <p class="hook">We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+              <p class="hook">endpoint constraints を **exact** に解く DDP ステップを作り、quadratic convergence を主張している点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</li><li>Unlike existing approaches, our method guarantees quadratic convergence and is exact, effectively managing rank deficiencies in both endpoint and stagewise equality constraints.</li><li>It is applicable to both forward and inverse dynamics formulations, making it particularly well-suited for model predictive control (MPC) applications and for accelerating optimal control (OC) solvers.</li></ul>
+                  <ul class="bullet-list"><li>endpoint constraints を正確に扱える constrained DDP を提案しており、既存の inexact 解法より **quadratic convergence** を狙っている。</li><li>Schur complement と nullspace decomposition を使い、rank-deficient な endpoint / stagewise equality constraints も処理する。</li><li>inverse dynamics や接触制約を含む optimal control 問題で、体操動作のような複雑タスクまで扱っている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+                  <p>constrained DDP で endpoint constraints を入れたいとき、既存法は ADMM 的な inexact resolution に寄りがちで収束が鈍い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+                  <p>endpoint constraints を **exact** に解く DDP ステップを作り、quadratic convergence を主張している点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>We introduce a novel method for handling endpoint constraints in constrained differential dynamic programming (DDP).</p>
+                  <p>各 iteration で constraint 付き QP を解くが、その KKT 系を Schur complement / nullspace decomposition で解消する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We demonstrate the efficacy of our approach across a broad range of robotics problems and provide a user-friendly open-source implementation within CROCODDYL.</p>
+                  <p>endpoint constraints を「ペナルティでごまかす」のではなく、solver 側で正面から解いている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>最適制御ソルバの中身を理解したいときにかなり良い教材。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>DDP をただ使うだけでなく、solver の core を改善するタイプの論文でかなり好み。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Optimization and Optimal Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Optimization and Optimal Control / Multi-Contact Whole-Body Motion Planning and Control / Formal Methods in Robotics and Automation</strong></div>
+                <div class="fact"><span>Keywords</span><strong>DDP / Endpoint Constraints / Riccati Recursion / Schur Complement / Optimal Control</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-endpoint-explicit-differential-dynamic-programming-via-exact-resolution-b7c9c9f2.md">Detail note</a>
@@ -856,7 +856,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We demonstrate the efficacy of our approach across a broad range of robotics problems and provide a user-friendly open-source implementation within CROCODDYL.</p>
+                <p>endpoint constraints を「ペナルティでごまかす」のではなく、solver 側で正面から解いている。</p>
               </div>
             </aside>
           </div>
@@ -872,44 +872,44 @@
                 <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span><span class="chip task-chip">Aerial Robotics</span>
               </div>
               <h1 class="paper-title">Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets</h1>
-              <p class="hook">In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.</p>
+              <p class="hook">prediction step の `Δt_k` を最適化変数にし、horizon 長と sampling density を同時に調整する点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.</li><li>Agile trajectory planning can improve the efficiency of multi-rotor Uncrewed Aerial Vehicles (UAVs) in scenarios with combined task-oriented and kinematic trajectory planning, such as monitoring spatio-temporal phenomena or intercepting dynamic targets.</li><li>Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.</li></ul>
+                  <ul class="bullet-list"><li>予測ステップ幅そのものを最適化変数に入れた `variable time-step MPC` を提案し、固定ステップ MPC より長い horizon と細かい maneuver を両立させる。</li><li>dynamic target interception / monitoring のような KOP 的タスクに対して、報酬と機動性を両方見ながら UAV 軌跡を作る。</li><li>onboard 実験まで通していて、agile UAV planning を実践寄りに詰めた MPC 論文。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Agile trajectory planning can improve the efficiency of multi-rotor Uncrewed Aerial Vehicles (UAVs) in scenarios with combined task-oriented and kinematic trajectory planning, such as monitoring spatio-temporal phenomena or intercepting dynamic targets.</p>
+                  <p>fixed time-step MPC は、長い horizon を見たければ step 数を増やす必要があり、計算量がすぐ増える。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.</p>
+                  <p>prediction step の `Δt_k` を最適化変数にし、horizon 長と sampling density を同時に調整する点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Agile planning using existing non-linear model predictive control methods is limited by the number of planning steps as it becomes increasingly computationally demanding.</p>
+                  <p>quadrotor は differential flatness を使って簡略化し、jerk 入力の点質量モデル上で MPC を定式化する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.</p>
+                  <p>アイデアが単純で効き方がわかりやすく、MPC 実装者に刺さる。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>MPC の性能が cost だけでなく time discretization 設計で変わることがよくわかる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>変数時刻幅は素朴だが強い発想で、agile planning の悩みにかなり素直に効いている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Aerial Robots: Planning and Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Aerial Systems: Applications / Motion and Path Planning / Autonomous Vehicle Navigation</strong></div>
+                <div class="fact"><span>Keywords</span><strong>MPC / Variable Time-Step / KOP / UAV Interception / Differential Flatness</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-variable-time-step-mpc-for-agile-multi-rotor-uav-interception-of-dynamic-aa48ddef.md">Detail note</a>
@@ -922,7 +922,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.</p>
+                <p>アイデアが単純で効き方がわかりやすく、MPC 実装者に刺さる。</p>
               </div>
             </aside>
           </div>
@@ -935,47 +935,47 @@
               <div class="meta-row">
                 <span class="rank-pill">12 / 12</span>
                 <span class="chip group-chip">Top 12</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
               </div>
               <h1 class="paper-title">Kinodynamic Model Predictive Control for Energy Efficient Locomotion of Legged Robots with Parallel Elasticity</h1>
-              <p class="hook">The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</p>
+              <p class="hook">UPS の torque contribution を kinodynamic MPC の中へ明示的に入れた点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In this paper, we introduce a kinodynamic model predictive control (MPC) framework that exploits unidirectional parallel springs (UPS) to improve the energy efficiency of dynamic legged robots.</li><li>The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</li><li>The proposed approach enables energy efficient dynamic hopping on legged robots by using UPS to reduce peak motor torques and energy consumption during stance phases.</li></ul>
+                  <ul class="bullet-list"><li>unidirectional parallel spring (UPS) を持つ脚ロボットに対して、その弾性を活かす kinodynamic MPC を設計した論文。</li><li>SLIP → SRB MPC → kinodynamic MPC の階層 warm-start 構造で、非凸な locomotion NLP を実時間で解きやすくしている。</li><li>energy efficiency と peak motor torque の両方を下げており、parallel elasticity を controller がちゃんと使う設計になっている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>In this paper, we introduce a kinodynamic model predictive control (MPC) framework that exploits unidirectional parallel springs (UPS) to improve the energy efficiency of dynamic legged robots.</p>
+                  <p>ばね機構を持つ脚ロボットは、機械としては省エネ余地があるのに、controller 側がその弾性を十分活かせないことが多い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</p>
+                  <p>UPS の torque contribution を kinodynamic MPC の中へ明示的に入れた点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>The proposed method employs a hierarchical control structure, where the solution of MPC with simplified dynamic models is used to warm-start the kinodynamic MPC, which accounts for nonlinear centroidal dynamics and kinematic constraints.</p>
+                  <p>最上位では SLIP で CoM 的な粗い reference を出し、中段で SRB MPC により torso dynamics を入れた reference に整える。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Additionally, preliminary hardware experiments show a 14.8% reduction in energy consumption.</p>
+                  <p>機構設計（parallel elasticity）と controller 設計をきちんとつないでいる。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>「良い機構を作る」だけでは足りず、「その機構を活かす controller」が必要だとよくわかる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>parallel elasticity をちゃんと control 側まで落としていて、mechanics と control の接続がきれい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Model Predictive Control for Legged Robots 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Legged Robots / Optimization and Optimal Control / Compliant Joints and Mechanisms</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Kinodynamic MPC / Parallel Elasticity / UPS / SLIP / Energy Efficiency</strong></div>
               </div>
               <div class="links">
                 <a href="papers/icra2025-arxiv/2025-icra-kinodynamic-model-predictive-control-for-energy-efficient-locomotion-of-legged-robots-with-parallel-elasticity-881862ea.md">Detail note</a>
@@ -988,7 +988,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Additionally, preliminary hardware experiments show a 14.8% reduction in energy consumption.</p>
+                <p>機構設計（parallel elasticity）と controller 設計をきちんとつないでいる。</p>
               </div>
             </aside>
           </div>

@@ -1,6 +1,6 @@
 # Variable Time-Step MPC for Agile Multi-Rotor UAV Interception of Dynamic Targets
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,9 +11,9 @@
 
 ## TL;DR
 
-- In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.
-- Agile trajectory planning can improve the efficiency of multi-rotor Uncrewed Aerial Vehicles (UAVs) in scenarios with combined task-oriented and kinematic trajectory planning, such as monitoring spatio-temporal phenomena or intercepting dynamic targets.
-- Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.
+- 予測ステップ幅そのものを最適化変数に入れた `variable time-step MPC` を提案し、固定ステップ MPC より長い horizon と細かい maneuver を両立させる。
+- dynamic target interception / monitoring のような KOP 的タスクに対して、報酬と機動性を両方見ながら UAV 軌跡を作る。
+- onboard 実験まで通していて、agile UAV planning を実践寄りに詰めた MPC 論文。
 
 ## Task
 
@@ -24,7 +24,7 @@
 
 ## Keywords
 
-* Aerial Systems: Applications / Motion and Path Planning / Autonomous Vehicle Navigation
+* MPC / Variable Time-Step / KOP / UAV Interception / Differential Flatness
 
 ## AI依存度
 
@@ -32,36 +32,50 @@
 
 ## 何を解決？
 
-* Agile trajectory planning can improve the efficiency of multi-rotor Uncrewed Aerial Vehicles (UAVs) in scenarios with combined task-oriented and kinematic trajectory planning, such as monitoring spatio-temporal phenomena or intercepting dynamic targets.
+* fixed time-step MPC は、長い horizon を見たければ step 数を増やす必要があり、計算量がすぐ増える。
+* 逆に機動区間を細かく刻みたいときは、長距離計画の見通しが悪くなる。
 
 ## 何が新しい？
 
-* In this paper, we propose to address these limitations by introducing variable time-steps and coupling them with the prediction horizon length.
+* prediction step の `Δt_k` を最適化変数にし、horizon 長と sampling density を同時に調整する点。
+* Kinematic Orienteering Problem 的な reward collection を、agile UAV trajectory generation と結び付けた点。
+* 軸ごとの box 制約でなく、速度・加速度の球面制約を使って機体能力をより自然に使う点。
 
 ## どうやってる？
 
-* Agile planning using existing non-linear model predictive control methods is limited by the number of planning steps as it becomes increasingly computationally demanding.
+* quadrotor は differential flatness を使って簡略化し、jerk 入力の点質量モデル上で MPC を定式化する。
+* cost に target reward と flight time を入れつつ、各 step の時間幅 `Δt_k` も一緒に最適化する。
+* NLP は IPOPT 系で解き、前回解の warm start を使って onboard replanning へつなぐ。
+* 実験では KOP benchmark と実ドローンで、fixed-step MPC との比較をしている。
 
 ## どこが強い？
 
-* Based on evaluation results and experimentally validated deployment, the proposed method increases the solution quality by enabling planning for long flight segments but allowing tightly sampled maneuvering.
+* アイデアが単純で効き方がわかりやすく、MPC 実装者に刺さる。
+* same horizon steps でも、先を見る区間と細かく操る区間を両立できるのが実用的。
+* simulation だけでなく onboard 実験まで回しているのが良い。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* target motion の外部推定に依存するので、perception 誤差込みの robustness は別問題として残る。
+* NLP の安定性や warm start 品質に依存し、状況によっては local minima に入りそう。
+* obstacle-rich な 3D 環境で多数 target を扱うと、計算コストの伸びが気になる。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* fixed-step MPC は実装しやすいが、long-horizon と agile maneuver の両立が苦手。
+* minimum-snap や spline 系の offline planning より、closed-loop replanning を前提にしている。
+* routing と trajectory generation を分離しすぎず、reward-aware MPC として一体化しているのが特徴。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* MPC の性能が cost だけでなく time discretization 設計で変わることがよくわかる。
+* UAV planning を classical optimal control で押し切る設計として、かなり実務的。
 
 ## 難易度
 
-★★★（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 変数時刻幅は素朴だが強い発想で、agile planning の悩みにかなり素直に効いている。
+* 固定離散化を当たり前と思っていた MPC 実装を見直したくなるタイプの論文。
