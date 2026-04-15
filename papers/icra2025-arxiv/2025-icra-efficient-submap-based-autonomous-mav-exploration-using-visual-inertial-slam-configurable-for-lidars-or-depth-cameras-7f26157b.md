@@ -1,6 +1,6 @@
 # Efficient Submap-Based Autonomous MAV Exploration Using Visual-Inertial SLAM Configurable for LiDARs or Depth Cameras
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,21 +11,20 @@
 
 ## TL;DR
 
-- Autonomous exploration of unknown space is an essential component for the deployment of mobile robots in the real world.
-- Safe navigation is crucial for all robotics applications and requires accurate and consistent maps of the robot's surroundings.
-- To achieve full autonomy and allow deployment in a wide variety of environments, the robot must rely on on-board state estimation which is prone to drift over time.
+- MAV exploration を、**submap ベースの frontier 管理**で軽く回すシステム論文。
+- local / global frontier をうまく分けつつ、階層 planner を複雑化しすぎず **single-pass exploration** にしているのがポイント。
+- depth camera と LiDAR の両方に寄せられる構成で、GPU なし寄りの onboard 実装として実用感が高い。
 
 ## Task
 
+* Exploration
+* MAV
 * SLAM
-* Localization
-* LiDAR
-* Visual-Inertial
+* Occupancy Mapping
 
 ## Keywords
 
-* Aerial Systems: Perception and Autonomy
-* Reactive and Sensor-Based Planning
+* Frontier Exploration / Submaps / VI-SLAM / supereight2 / MPC / Loop Closure
 
 ## AI依存度
 
@@ -33,36 +32,51 @@
 
 ## 何を解決？
 
-* Autonomous exploration of unknown space is an essential component for the deployment of mobile robots in the real world.
+* 長距離 exploration では visual-inertial odometry drift が溜まり、map が歪んで frontier 管理も重くなりやすい。
+* 既存の hierarchical exploration は local/global planner の分業が複雑になりがち。
+* そこで、submap と loop closure を使って map consistency を保ちつつ、**frontier 更新を軽くしたい**。
 
 ## 何が新しい？
 
-* We propose a Micro Aerial Vehicle (MAV) exploration framework based on local submaps to allow retaining global consistency by applying loop-closure corrections to the relative submap poses.
+* active submap と frozen submap を分け、**submap-local frontier から global frontier を効率更新**する点。
+* local/global を完全分離するのでなく、global frontier を使う single-pass の next-best-view planning にしている点。
+* LiDAR でも depth camera でも載せ替えやすい exploration stack にしている点。
 
 ## どうやってる？
 
-* Our method seamlessly supports using either a LiDAR sensor or a depth camera, making it suitable for different kinds of MAV platforms.
+* state estimation は OKVIS2 系を土台にし、必要に応じて LiDAR を重ねる。
+* occupancy mapping は supereight2 の octree submaps で管理し、新しい submap を適宜切る。
+* frontier は active submap で増分更新し、frozen submap 側の frontier と合わせて global frontier を組み立てる。
+* candidate view を sampling し、information gain / travel time で utility を計算して next pose を選び、MPC で追従する。
 
 ## どこが強い？
 
-* Finally, we demonstrate the applicability of our method to real-world MAVs, one equipped with a LiDAR and the other with a depth camera.
+* drift と frontier explosion の両方に対して、submap でかなり上手く整理している。
+* システム全体が軽く、**小型 MAV に載せる現実感**がある。
+* simulation だけでなく実機 platform でも見せており、汎用 exploration stack として使い回しやすそう。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* dynamic object や強い環境変化は主眼ではない。
+* submap alignment や loop closure が外れると、frontier の整合も崩れやすい。
+* novelty は大発明というより、既存部品のうまい再構成に近い。
 
 ## 関連研究との違い
 
-* We propose a Micro Aerial Vehicle (MAV) exploration framework based on local submaps to allow retaining global consistency by applying loop-closure corrections to the relative submap poses.
+* voxblox / GLocal 系の階層探索より、**submap frontier aggregation** による軽量化が特徴。
+* 純粋な frontier method より、SLAM drift と loop closure を exploration system にきちんと織り込んでいる。
+* GPU 前提の重い exploration stack より、小型機向けの practical design。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* exploration を learned NBV でなく、**frontier / occupancy / MPC** の王道構成で実務寄りに磨いている。
+* MAV exploration stack を組むときの全体像がかなり分かりやすい。
 
 ## 難易度
 
-★★★★☆（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 論文単体の新規性より、現場で本当に回る exploration system をどう組むかが見えるのが良い。
+* drone exploration の実装地図としてかなり役立つタイプ。
