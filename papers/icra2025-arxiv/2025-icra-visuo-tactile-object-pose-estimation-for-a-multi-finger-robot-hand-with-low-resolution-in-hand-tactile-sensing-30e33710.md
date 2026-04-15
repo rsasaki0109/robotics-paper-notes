@@ -1,6 +1,6 @@
 # Visuo-Tactile Object Pose Estimation for a Multi-Finger Robot Hand with Low-Resolution In-Hand Tactile Sensing
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,58 +11,72 @@
 
 ## TL;DR
 
-- Accurate 3D pose estimation of grasped objects is an important prerequisite for robots to perform assembly or in-hand manipulation tasks, but object occlusion by the robot's own hand greatly increases the difficulty of this perceptual task.
-- Here, we propose that combining visual information and proprioception with binary, low-resolution tactile contact measurements from across the interior surface of an articulated robotic hand can mitigate this issue.
-- The visuo-tactile object-pose-estimation problem is formulated probabilistically in a factor graph.
+- multi-finger hand の in-hand pose estimation を、**vision + binary tactile + proprioception** の factor graph で解く論文。
+- tactile は高解像でなくても、**SDF residual** として幾何的に入れるだけで occlusion 下の pose tracking をかなり助ける。
+- vision の初期値には FoundationPose を使っており、全体としては **Hybrid** だが、コアは古典的最適化。
 
 ## Task
 
-* Visual-Inertial
-* Manipulation
-* Perception
+* Manipulation Perception
+* Pose Estimation
+* Tactile Sensing
+* Factor Graph Optimization
 
 ## Keywords
 
-* Perception for Grasping and Manipulation
-* Sensor Fusion
-* Force and Tactile Sensing
+* Visuo-Tactile Fusion / SDF / Factor Graph / In-Hand Manipulation / FoundationPose
 
 ## AI依存度
 
-* Non-AI
+* Hybrid
 
 ## 何を解決？
 
-* Accurate 3D pose estimation of grasped objects is an important prerequisite for robots to perform assembly or in-hand manipulation tasks, but object occlusion by the robot's own hand greatly increases the difficulty of this perceptual task.
+* multi-finger grasp 中は hand が object を大きく隠すため、vision-only pose estimation が崩れやすい。
+* 高解像 tactile を使う方法もあるが、センサ実装が重く高価になりやすい。
+* そこで、低解像・binary tactile でも **幾何制約として十分効かせられるか**を見ている。
 
 ## 何が新しい？
 
-* Here, we propose that combining visual information and proprioception with binary, low-resolution tactile contact measurements from across the interior surface of an articulated robotic hand can mitigate this issue.
+* low-resolution binary tactile を multi-finger hand に多数載せ、factor graph に自然に統合している点。
+* tactile contact を object SDF への signed-distance residual として書く点。
+* non-penetration prior も入れ、vision が見えないときに pose を geometry で支える点。
 
 ## どうやってる？
 
-* The advantages of the proposed approach are first demonstrated in simulation: a custom 15-DoF robot hand with one binary tactile sensor per link grasps 17 YCB objects while observed by an RGB-D camera.
+* vision 側は FoundationPose から初期 pose を得る。
+* tactile pad の接触有無と hand kinematics から、pad 周辺の点が object SDF 上でどうあるべきかを residual にする。
+* visual factor、tactile factor、penetration factor をまとめて factor graph で最適化する。
+* LM 最適化を数回回し、occlusion 時でも pose を安定化させる。
 
 ## どこが強い？
 
-* The advantages of the proposed approach are first demonstrated in simulation: a custom 15-DoF robot hand with one binary tactile sensor per link grasps 17 YCB objects while observed by an RGB-D camera.
+* tactile を高解像画像化せず、**安い binary contact でも効く**ことを示したのが良い。
+* factor graph で各センサの役割が明快で、解釈しやすい。
+* in-hand manipulation での occlusion 問題にかなり素直に効いている。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* object CAD / SDF が既知である前提が強い。
+* vision 初期値に学習系を使っているため、完全な non-AI とは言えない。
+* リアルタイム性は十分だが、vision-only よりは当然重い。
 
 ## 関連研究との違い
 
-* Here, we propose that combining visual information and proprioception with binary, low-resolution tactile contact measurements from across the interior surface of an articulated robotic hand can mitigate this issue.
+* 高解像 tactile ベースより、**低解像 tactile を幾何最適化で活かす**方向。
+* particle filter や learned tactile fusion より、SDF と factor graph でかなり明示的。
+* 単一 modality より、occlusion 時の頑健性が明確に強い。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* Hybrid ではあるが、中核は **SE(3) 最適化・SDF・factor graph** という classical pose estimation。
+* manipulation で tactile をどう geometry に変えるかの教材として面白い。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* tactile を増やしただけでなく、「どう residual に書くか」がきれい。
+* learned front-end を使いつつ、最後は幾何で詰めるバランスが実務的。

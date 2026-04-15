@@ -1,6 +1,6 @@
 # Deformable Multibody Modeling for Model Predictive Control in Legged Locomotion with Embodied Compliance
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,22 +11,20 @@
 
 ## TL;DR
 
-- The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.
-- Our approach introduces a unified description for rigid and compliant bodies to approximate their deformation and a formulation for deformable multibody systems.
-- We develop the centroidal composite predictive deformed inertia (CCPDI) tensor of a deformable multibody system and show how to integrate it with the standard-of-practice model predictive controller (MPC).
+- compliant spine を持つ脚ロボを rigid body 近似で済ませず、**deformable multibody model** を MPC に入れようとする論文。
+- 変形に応じて inertia が変わることを、**predictive deformed inertia / CCPDI** で horizon 内へ持ち込むのが肝。
+- locomotion with embodied compliance を真面目にモデル化したい人にはかなり刺さる。
 
 ## Task
 
-* Visual-Inertial
-* Motion Planning
-* Control
-* Legged Robotics
+* Legged Robots
+* Model Predictive Control
+* Multibody Dynamics
+* Embodied Compliance
 
 ## Keywords
 
-* Dynamics
-* Legged Robots
-* Compliant Joints and Mechanisms
+* Centroidal Dynamics / Deformable Multibody / Compliance / Inertia Prediction / MPC
 
 ## AI依存度
 
@@ -34,36 +32,51 @@
 
 ## 何を解決？
 
-* The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.
+* 標準的な legged MPC は rigid-body 前提が強く、柔らかい spine や compliance を持つ robot では inertia 予測がズレやすい。
+* compliance を完全に無視すると、GRF 配分や姿勢安定化が悪くなる。
+* そこで、**変形が MPC の中でどう inertia を変えるか**を予測したい。
 
 ## 何が新しい？
 
-* The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.
+* deformable body を複数 sub-body に分けて扱う一般的な multibody 表現。
+* 予測 horizon 内で inertia の変化を追う **predictive deformed inertia**。
+* centroidal composite inertia を compliant system に拡張した **CCPDI** を MPC にそのまま差し込める形にした点。
 
 ## どうやってる？
 
-* The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.
+* deformable spine などを、相対運動する rigid sub-body 群として近似する。
+* 各 sub-body の相対 twist から、horizon 先の姿勢と inertia 変化を予測する。
+* それらをまとめて centroidal inertia に反映し、MPC の dynamics constraint を更新する。
+* 実験では rigid 近似との比較で、GRF 分布や姿勢安定性の改善を見ている。
 
 ## どこが強い？
 
-* We develop the centroidal composite predictive deformed inertia (CCPDI) tensor of a deformable multibody system and show how to integrate it with the standard-of-practice model predictive controller (MPC).
+* compliance を「余計なノイズ」でなく、**モデルに入れるべき構造**として扱っているのが良い。
+* rigid robot と compliant robot を同じ枠組みで扱える見通しがある。
+* centroidal MPC 系とつながるので、既存 legged control 文脈に乗せやすい。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* sub-body twist を horizon 中でほぼ一定とみなす近似には限界がある。
+* parameter sensitivity があり、柔らかすぎる条件では厳しい。
+* 実機 validation がまだ薄く、現時点では simulation 色が強い。
 
 ## 関連研究との違い
 
-* The paper presents a method to stabilize dynamic gait for a legged robot with embodied compliance.
+* rigid-body centroidal MPC より、**compliance に伴う inertia 変化**をちゃんと入れている。
+* 材料依存の特殊モデルより、もう少し一般的な deformable multibody 記述に寄せている。
+* full-body FEM 的な重さと rigid 近似の雑さの中間を狙った立ち位置。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* embodied compliance を「学習で吸収」せず、**ダイナミクスを増やしてでもモデルで扱う**方向性が明快。
+* legged robot の mechanics と control の接点としてかなり面白い。
 
 ## 難易度
 
-★★★★☆（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* かなりまっとうな問題設定で、compliant legged system を rigid MPC の外側に置かないのが良い。
+* hardware まで強く出るとさらに面白くなりそうだが、理論の筋はかなりいい。
