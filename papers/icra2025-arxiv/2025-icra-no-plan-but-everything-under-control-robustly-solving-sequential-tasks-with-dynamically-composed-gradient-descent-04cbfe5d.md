@@ -1,6 +1,6 @@
 # No Plan but Everything under Control: Robustly Solving Sequential Tasks with Dynamically Composed Gradient Descent
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,21 +11,20 @@
 
 ## TL;DR
 
-- We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world's regularities.
-- This adjustment implicitly considers subgoals encoded in these regularities, enabling the solution of long sequential tasks, as demonstrated by solving the traditional planning domain of Blocks Worldwithout any planning.
-- Unlike conventional planning methods, our feedback-driven approach adapts to uncertain and dynamic environments, as demonstrated by one hundred real-world trials involving drawer manipulation.
+- 明示的 planner を立てず、**dynamically composed gradient descent** で sequential task を解こうとする論文。
+- AICON 的な相互接続された推定器群を使い、world regularity と現在の不確実性から **その場で有効な勾配経路**を選ぶ。
+- Blocks World と drawer manipulation を例に、planning なしでもかなり robust に多段タスクを回せる、と主張している。
 
 ## Task
 
-* Control
-* Manipulation
-* Perception
+* Sequential Task Solving
+* Reactive Manipulation
+* Gradient-Based Control
+* Uncertainty-Aware Decision Making
 
 ## Keywords
 
-* Integrated Planning and Control
-* Reactive and Sensor-Based Planning
-* Optimization and Optimal Control
+* Dynamically Composed Gradient Descent / AICON / EKF / Sequential Tasks / Reactive Control
 
 ## AI依存度
 
@@ -33,36 +32,53 @@
 
 ## 何を解決？
 
-* We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world's regularities.
+* 長い sequential task は通常 planning に寄るが、不確実性や外乱があると先読みがすぐ壊れる。
+* 単純な potential field / gradient descent は reactive だが、普通は多段の subgoal をうまく扱えない。
+* 本論文は、**今この瞬間に意味のある勾配を動的に構成**すれば、計画なしでもかなり先まで仕事を進められるのでは、という問題意識。
 
 ## 何が新しい？
 
-* We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world's regularities.
+* 単一の固定ポテンシャルではなく、複数の勾配候補を world state と interconnection から動的に構成する点。
+* AICON の枠組みを perception だけでなく **action selection** へ広げている。
+* symbolic planning の代表例である Blocks World を、planning ではなく gradient composition で解く見せ方が象徴的。
 
 ## どうやってる？
 
-* Unlike conventional planning methods, our feedback-driven approach adapts to uncertain and dynamic environments, as demonstrated by one hundred real-world trials involving drawer manipulation.
+* タスクを構成する状態量や関係を、それぞれ推定器・相互接続として表す。
+* 各推定器は観測と他推定器からの情報で状態を更新し、不確実性も追う。
+* その時点で有効な勾配経路の集合を作り、最も強く task progress を生む方向を選んで制御へ使う。
+* drawer task では、見失ったら見直し、把持が怪しければ確認し直す、といった **epistemic action** が明示計画なしに出てくる。
 
 ## どこが強い？
 
-* These experiments highlight the robustness of our method compared to planning and show how interactive perception and error recovery naturally emerge from gradient descent without explicitly implementing them.
+* planning と reactive control の二者択一ではなく、その中間をかなり本気で掘っている。
+* 不確実性が増えると自然に情報取得行動が出る、という説明がわかりやすい。
+* Blocks World のような象徴タスクと、実ロボ manipulation の両方を見せているのでメッセージ性が強い。
+* ニューラル policy に頼らず、挙動の理由をかなり追いやすい。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* 勾配候補や interconnection の設計は手作業寄りで、タスクが変わると人手がかかる。
+* competing goals があると、global optimal な順序を選ぶ保証はなく、不可逆タスクでは限界が見えやすい。
+* 「planner 不要」と言い切るには、設計側でかなり task structure を入れている印象もある。
 
 ## 関連研究との違い
 
-* We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world's regularities.
+* classical planner のように長期離散計画を明示しない。
+* standard potential field のように固定ポテンシャルへ全部押し込まず、**状態依存で勾配を組み替える**。
+* learned policy と違って、状態推定・相互接続・勾配がどこで効いたかを比較的説明しやすい。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* non-learning で sequential behavior をどこまで作れるか、という意味でかなり面白い。
+* planning を諦めて reactive に落とすのではなく、task structure を gradient composition へ埋め込む発想が新鮮。
+* manipulation の robustification を考えるとき、policy 学習以外の選択肢として覚えておきたい。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 主張はやや挑発的だが、単なる「planner は要らない」ではなく、reactive system をどう賢く見せるかの設計が丁寧。
+* 汎用自動化というより、設計者が task structure を与えたうえで強い reactive system を作る論文として読むと納得しやすい。

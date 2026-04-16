@@ -1529,47 +1529,47 @@
               <div class="meta-row">
                 <span class="rank-pill">21 / 60</span>
                 <span class="chip group-chip">Localization 4</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Ground Texture Localization</span><span class="chip task-chip">Visual Place Recognition</span><span class="chip task-chip">Loop Closure Detection</span><span class="chip task-chip">SLAM</span>
               </div>
               <h1 class="paper-title">Improved Bag-Of-Words Image Retrieval with Geometric Constraints for Ground Texture Localization</h1>
-              <p class="hook">We test the effect of each of our proposed improvements through an ablation study and demonstrate our method&#x27;s effectiveness for both global localization and loop closure detection.</p>
+              <p class="hook">hierarchical k-means ではなく **approximate k-means (AKM)** を使って語彙の質を上げている。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Ground texture localization using a downward-facing camera offers a low-cost, high-precision localization solution that is robust to dynamic environments and requires no environmental modification.</li><li>We present a significantly improved bag-of-words (BoW) image retrieval system for ground texture localization, achieving substantially higher accuracy for global localization and higher precision and recall for loop closure detection in SLAM.</li><li>Our approach leverages an approximate k-means (AKM) vocabulary with soft assignment, and exploits the consistent orientation and constant scale constraints inherent to ground texture localization.</li></ul>
+                  <ul class="bullet-list"><li>downward-looking camera で地面テクスチャを読む localization / loop closure を、**BoW retrieval の改良だけで大きく伸ばした**論文。</li><li>改良の核は、AKM vocabulary、soft assignment、keypoint size binning、orientation consistency check で、**ground texture 特有の幾何制約**を素直に使っている点。</li><li>学習器を足すのではなく、古典的 image retrieval をタスクに合わせて詰め直したタイプで、かなり実装志向。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Ground texture localization using a downward-facing camera offers a low-cost, high-precision localization solution that is robust to dynamic environments and requires no environmental modification.</p>
+                  <p>地面テクスチャ localization は、環境改変なしで高精度を狙える一方、BoW をそのまま当てると量子化誤差や誤対応で retrieval 精度が頭打ちになりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We test the effect of each of our proposed improvements through an ablation study and demonstrate our method&#x27;s effectiveness for both global localization and loop closure detection.</p>
+                  <p>hierarchical k-means ではなく **approximate k-means (AKM)** を使って語彙の質を上げている。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>We test the effect of each of our proposed improvements through an ablation study and demonstrate our method&#x27;s effectiveness for both global localization and loop closure detection.</p>
+                  <p>ORB 系の局所特徴を抽出し、BoW inverse index で候補画像を検索する基本構造は維持する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We test the effect of each of our proposed improvements through an ablation study and demonstrate our method&#x27;s effectiveness for both global localization and loop closure detection.</p>
+                  <p>やっていることは BoW の延長だが、**ground texture という限定ドメインに対して改良点が全部噛み合っている**。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>「古典手法でも、観測条件の幾何をちゃんと使えばまだ伸びる」ことを示す良い例。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり好感の持てる改良論文で、派手さはないが「なぜ ground texture で標準 BoW がもったいないのか」を丁寧に潰している印象。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Localization 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / SLAM / Mapping</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Bag-of-Words / Approximate k-means / Soft Assignment / Ground Texture / Loop Closure</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-improved-bag-of-words-image-retrieval-with-geometric-constraints-for-ground-texture-localization-55bfcb4c.md">Detail note</a>
@@ -1582,7 +1582,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We test the effect of each of our proposed improvements through an ablation study and demonstrate our method&#x27;s effectiveness for both global localization and loop closure detection.</p>
+                <p>やっていることは BoW の延長だが、**ground texture という限定ドメインに対して改良点が全部噛み合っている**。</p>
               </div>
             </aside>
           </div>
@@ -1595,47 +1595,47 @@
               <div class="meta-row">
                 <span class="rank-pill">22 / 60</span>
                 <span class="chip group-chip">Localization 6</span>
-                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS</span><span class="chip task-chip">Visual-Inertial</span>
+                <span class="chip task-chip">Visual Navigation</span><span class="chip task-chip">Feature Tracking</span><span class="chip task-chip">Safety Filter</span><span class="chip task-chip">Control for Perception</span>
               </div>
               <h1 class="paper-title">Enhancing Feature Tracking Reliability for Visual Navigation Using Real-Time Safety Filter</h1>
-              <p class="hook">By leveraging the invariance properties of visibility constraints within the robot&#x27;s kinematic model, we propose a real-time safety filter based on quadratic programming.</p>
+              <p class="hook">可視 landmark の重み付き総量を **safety condition** として定義し、forward invariance を保つ filter に落としている。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Vision sensors are extensively used for localizing a robot&#x27;s pose, particularly in environments where global localization tools such as GPS or motion capture systems are unavailable.</li><li>In many visual navigation systems, localization is achieved by detecting and tracking visual features or landmarks, which provide information about the sensor&#x27;s relative pose.</li><li>For reliable feature tracking and accurate pose estimation, it is crucial to maintain visibility of a sufficient number of features.</li></ul>
+                  <ul class="bullet-list"><li>visual navigation で十分な feature を見失わないよう、**visibility を制御制約として扱う safety filter** を提案している。</li><li>参照入力をなるべく崩さずに、QP ベースの filter でロボット速度を修正し、**必要な visual information score を下回らない**ようにする。</li><li>belief-space planning のような重い手法ではなく、**リアルタイムな制御層で feature tracking reliability を守る**発想が面白い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Vision sensors are extensively used for localizing a robot&#x27;s pose, particularly in environments where global localization tools such as GPS or motion capture systems are unavailable.</p>
+                  <p>visual odometry / V-SLAM は、追跡できる feature 数が落ちるとすぐ不安定になる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>By leveraging the invariance properties of visibility constraints within the robot&#x27;s kinematic model, we propose a real-time safety filter based on quadratic programming.</p>
+                  <p>可視 landmark の重み付き総量を **safety condition** として定義し、forward invariance を保つ filter に落としている。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>In this paper, we approach it as a constrained control problem.</p>
+                  <p>ロボット運動学と landmark の見え方を関係づけ、現在の状態でどれだけ feature visibility を確保できているかを score 化する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Numerical simulations demonstrate that the proposed safety filter preserves the invariance condition and ensures the visibility of more features than the required minimum.</p>
+                  <p>視覚情報を「nice to have」ではなく、**守るべき制約**として明示しているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>perception と control をつなぐ古典的アプローチの好例で、learned active perception と違って挙動理由を説明しやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>「見えるように計画する」ではなく「見えなくならないように制御で守る」という切り方がうまい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Localization 6</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Sensor-based Control / Reactive and Sensor-Based Planning / View Planning for SLAM</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Quadratic Programming / Control Barrier Function / Visibility Constraint / Real-Time Filtering</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-enhancing-feature-tracking-reliability-for-visual-navigation-using-real-time-safety-filter-77cf0e2e.md">Detail note</a>
@@ -1648,7 +1648,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Numerical simulations demonstrate that the proposed safety filter preserves the invariance condition and ensures the visibility of more features than the required minimum.</p>
+                <p>視覚情報を「nice to have」ではなく、**守るべき制約**として明示しているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -1859,47 +1859,47 @@
               <div class="meta-row">
                 <span class="rank-pill">26 / 60</span>
                 <span class="chip group-chip">Model Predictive Control</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Ground Robot Navigation</span><span class="chip task-chip">Trajectory Optimization</span><span class="chip task-chip">3D Architectural Spaces</span>
               </div>
               <h1 class="paper-title">Efficient Trajectory Generation Based on Traversable Planes in 3D Complex Architectural Spaces</h1>
-              <p class="hook">In this paper, we propose a novel efficient planner for ground robots to autonomously navigate in large complex multi-layered architectural spaces.</p>
+              <p class="hook">点群から region growing などで **走行可能平面を抽出し、交差関係つき graph** を自動構築する。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>With the increasing integration of robots into human life, their role in architectural spaces where people spend most of their time has become more prominent.</li><li>While motion capabilities and accurate localization for automated robots have rapidly developed, the challenge remains to generate efficient, smooth, comprehensive, and high-quality trajectories in these areas.</li><li>In this paper, we propose a novel efficient planner for ground robots to autonomously navigate in large complex multi-layered architectural spaces.</li></ul>
+                  <ul class="bullet-list"><li>建築空間の floor / ramp / stairs を点群から **traversable plane graph** として抽出し、その上で ground robot の軌道を最適化する。</li><li>単に path をつなぐだけでなく、**斜面の速度制限や階段上の姿勢制約**を明示的に入れているのが肝。</li><li>平面抽出、graph search、trajectory optimization の流れがきれいで、複雑な屋内構造を classical に扱う実装論文という印象。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>With the increasing integration of robots into human life, their role in architectural spaces where people spend most of their time has become more prominent.</p>
+                  <p>一般的な ground robot planner は 2.5D map や単層の floor を前提にしがちで、階段・斜面・多層空間では扱いにくい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we propose a novel efficient planner for ground robots to autonomously navigate in large complex multi-layered architectural spaces.</p>
+                  <p>点群から region growing などで **走行可能平面を抽出し、交差関係つき graph** を自動構築する。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>We conduct experiments in simulated environments and test on a CubeTrack robot in real-world scenarios, validating the method&#x27;s effectiveness and practicality.</p>
+                  <p>LiDAR point cloud から法線推定と領域成長で平面候補を作り、統合・分類して traversable planes を得る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We conduct experiments in simulated environments and test on a CubeTrack robot in real-world scenarios, validating the method&#x27;s effectiveness and practicality.</p>
+                  <p>建築空間の複雑さを、点群丸ごとではなく **robot 可走行な平面構造**に落とすので見通しが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>センサ点群から構造を抽出し、それをそのまま optimization に食わせる流れがきれい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>建築空間を plane graph にするアイデア自体は素直だが、そこに stair / ramp の constraint を丁寧に入れているので論文として締まっている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Model Predictive Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Field Robots / Nonholonomic Motion Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Traversable Plane / Plane Graph / ESDF / Trajectory Optimization / Stair Traversal</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-efficient-trajectory-generation-based-on-traversable-planes-in-3d-complex-architectural-spaces-691f6427.md">Detail note</a>
@@ -1912,7 +1912,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We conduct experiments in simulated environments and test on a CubeTrack robot in real-world scenarios, validating the method&#x27;s effectiveness and practicality.</p>
+                <p>建築空間の複雑さを、点群丸ごとではなく **robot 可走行な平面構造**に落とすので見通しが良い。</p>
               </div>
             </aside>
           </div>
@@ -2189,47 +2189,47 @@
               <div class="meta-row">
                 <span class="rank-pill">31 / 60</span>
                 <span class="chip group-chip">Motion Planning 2</span>
-                <span class="chip task-chip">Motion Planning</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Computational Geometry</span><span class="chip task-chip">Multi-Query Planning</span><span class="chip task-chip">Polygonal Robot</span>
               </div>
               <h1 class="paper-title">Asymptotically-Optimal Multi-Query Path Planning for a Polygonal Robot</h1>
-              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <p class="hook">回転角を複数の層に分け、各層で成長障害物に対する visibility graph を作る **RVG** を提案している。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Shortest-path roadmaps, also known as reduced visibility graphs, provide a highly efficient multi-query method for computing optimal paths in two-dimensional environments.</li><li>Combined with Minkowski sum computations, shortest-path roadmaps can compute optimal paths for a translating robot in 2D.</li><li>The resulting algorithm, rotation-stacked visibility graph(RVG), is shown to be resolution-complete and asymptotically optimal.</li></ul>
+                  <ul class="bullet-list"><li>2D polygonal robot の SE(2) planning を、**rotation-stacked visibility graph (RVG)** で multi-query に解く手法。</li><li>各回転層で visibility graph を作り、層間の vertex propagation を入れることで、**resolution-complete かつ asymptotically optimal** を狙っている。</li><li>sampling-based planner ではなく、Minkowski 和と visibility graph を押し出した、かなり computational geometry 寄りの論文。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Shortest-path roadmaps, also known as reduced visibility graphs, provide a highly efficient multi-query method for computing optimal paths in two-dimensional environments.</p>
+                  <p>並進だけなら visibility graph は強いが、回転自由度が入るとそのままでは使いにくい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                  <p>回転角を複数の層に分け、各層で成長障害物に対する visibility graph を作る **RVG** を提案している。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                  <p>各回転区間ごとに robot shape を包み込む形で障害物の Minkowski 差分を取り、reflex vertex を使って visibility graph を構成する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Extensive computational experiments show RVG significantly outperforms state-of-the-art single- and multi-query sampling-based methods on both computation time and solution optimality fronts.</p>
+                  <p>sampling-based でなく **visibility graph 系の強い理論と multi-query 性**を保ったまま、SE(2) に拡張しているのが大きい。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>幾何計画の王道で、visibility graph、Minkowski sum、optimality proof がきれいにつながっている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり好きなタイプの論文で、手法の核は素朴なのに、層間接続の詰め方で一段レベルが上がっている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning 2</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Constrained Motion Planning / Computational Geometry</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Visibility Graph / Minkowski Sum / SE(2) Planning / Rotation Layers / Asymptotic Optimality</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-asymptotically-optimal-multi-query-path-planning-for-a-polygonal-robot-a521594f.md">Detail note</a>
@@ -2242,7 +2242,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Extensive computational experiments show RVG significantly outperforms state-of-the-art single- and multi-query sampling-based methods on both computation time and solution optimality fronts.</p>
+                <p>sampling-based でなく **visibility graph 系の強い理論と multi-query 性**を保ったまま、SE(2) に拡張しているのが大きい。</p>
               </div>
             </aside>
           </div>
@@ -2321,47 +2321,47 @@
               <div class="meta-row">
                 <span class="rank-pill">33 / 60</span>
                 <span class="chip group-chip">Motion Planning 3</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+                <span class="chip task-chip">Obstacle Avoidance</span><span class="chip task-chip">Model Predictive Control</span><span class="chip task-chip">Convex Hull Geometry</span><span class="chip task-chip">Multi-Body Robot Control</span>
               </div>
               <h1 class="paper-title">Non-Conservative Obstacle Avoidance for Multi-Body Systems Leveraging Convex Hulls and Predicted Closest Points</h1>
-              <p class="hook">This paper introduces a novel approach that integrates future closest point predictions into the distance constraints of a collision avoidance controller, leveraging convex hulls with closest point distance calculations.</p>
+              <p class="hook">現在の closest point だけを見るのではなく、**予測 horizon 内の closest point 候補**を制約に入れている。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>This paper introduces a novel approach that integrates future closest point predictions into the distance constraints of a collision avoidance controller, leveraging convex hulls with closest point distance calculations.</li><li>By addressing abrupt shifts in closest points, this method effectively reduces collision risks and enhances controller performance.</li><li>Applied to an Image Guided Therapy robot and validated through simulations and user experiments, the framework demonstrates improved distance prediction accuracy, smoother trajectories, and safer navigation near obstacles.</li></ul>
+                  <ul class="bullet-list"><li>凸包で表した multi-body robot に対し、**現在の closest point だけでなく予測された closest point** も MPC 制約へ入れる obstacle avoidance 手法。</li><li>closest point が急に切り替わると距離予測が壊れやすい、という凸包ベース回避の実務的な弱点をかなり真っ当に潰している。</li><li>医療系 IGT robot で検証しており、保守的すぎる近似を避けつつ滑らかさと安全性を上げる、という狙いがはっきりしている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>This paper introduces a novel approach that integrates future closest point predictions into the distance constraints of a collision avoidance controller, leveraging convex hulls with closest point distance calculations.</p>
+                  <p>複雑形状ロボットの collision avoidance では、球近似は保守的すぎ、厳密形状をそのまま扱うと重い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>This paper introduces a novel approach that integrates future closest point predictions into the distance constraints of a collision avoidance controller, leveraging convex hulls with closest point distance calculations.</p>
+                  <p>現在の closest point だけを見るのではなく、**予測 horizon 内の closest point 候補**を制約に入れている。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This paper introduces a novel approach that integrates future closest point predictions into the distance constraints of a collision avoidance controller, leveraging convex hulls with closest point distance calculations.</p>
+                  <p>ロボットと障害物を convex hull 群で表し、各時刻で距離と勾配を計算する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Applied to an Image Guided Therapy robot and validated through simulations and user experiments, the framework demonstrates improved distance prediction accuracy, smoother trajectories, and safer navigation near obstacles.</p>
+                  <p>closest point switching という、幾何ベース回避で本当に困るところを正面から扱っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>collision avoidance で learned policy を使わず、幾何計算と MPC だけでかなり詰められることがわかる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>派手ではないが、実機 MPC をやる人が本当に欲しい改善という感じで好印象。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Collision Avoidance / Constrained Motion Planning / Computational Geometry</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Closest Point Prediction / Convex Hull / GJK / MPC / Shared Control</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-non-conservative-obstacle-avoidance-for-multi-body-systems-leveraging-co-32788149.md">Detail note</a>
@@ -2374,7 +2374,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Applied to an Image Guided Therapy robot and validated through simulations and user experiments, the framework demonstrates improved distance prediction accuracy, smoother trajectories, and safer navigation near obstacles.</p>
+                <p>closest point switching という、幾何ベース回避で本当に困るところを正面から扱っている。</p>
               </div>
             </aside>
           </div>
@@ -2387,47 +2387,47 @@
               <div class="meta-row">
                 <span class="rank-pill">34 / 60</span>
                 <span class="chip group-chip">Motion Planning 4</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+                <span class="chip task-chip">Multi-Path Planning</span><span class="chip task-chip">Topological Motion Planning</span><span class="chip task-chip">Tethered Robot Planning</span><span class="chip task-chip">3D Path Computation</span>
               </div>
               <h1 class="paper-title">Topo-Geometrically Distinct Path Computation Using Neighborhood-Augmented Graph, and Its Application to Path Planning for a Tethered Robot in 3D</h1>
-              <p class="hook">In this paper, we propose an approach to compute k geodesic paths using the concept of a novel neighborhood-augmented graph, on which graph search algorithms can compute multiple optimal paths that are topo-geometrically distinct.</p>
+              <p class="hook">各 graph vertex に単なる位置だけでなく **path neighborhood set** を持たせる発想。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In this paper, we propose an approach to compute k geodesic paths using the concept of a novel neighborhood-augmented graph, on which graph search algorithms can compute multiple optimal paths that are topo-geometrically distinct.</li><li>Many robotics applications benefit from being able to compute multiple geodesic paths in a given configuration space.</li><li>We demonstrate the application of our algorithm to planning shortest traversible paths for a tethered robot in 3D with cable-length constraint.</li></ul>
+                  <ul class="bullet-list"><li>**Neighborhood-Augmented Graph** を使って、topologically だけでなく geometrically も異なる複数経路を計算する手法。</li><li>明示的な homotopy invariant や複雑な 3D 幾何構造を前計算せず、**経路近傍集合の重なり具合**で経路の違いを判定するのが核。</li><li>tethered robot in 3D への応用まで見せていて、複数の有意味な path を出したい場面にかなり向く。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Our approach does not require complex geometric constructions, and the resulting paths are not restricted to distinct topological classes, making the algorithm suitable for problems where finding and distinguishing between geodesic paths are of interest.</p>
+                  <p>従来の topological path planning は、異なる homotopy class を区別するのは得意だが、同一 class の中の幾何的に違う良い経路を落としやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, we propose an approach to compute k geodesic paths using the concept of a novel neighborhood-augmented graph, on which graph search algorithms can compute multiple optimal paths that are topo-geometrically distinct.</p>
+                  <p>各 graph vertex に単なる位置だけでなく **path neighborhood set** を持たせる発想。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Existing paradigm is to use topological path planning, which can compute optimal paths in distinct topological classes.</p>
+                  <p>ベースは通常の graph search だが、探索中の各頂点に「そこへ来るまでの path neighborhood」を持たせる。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We demonstrate the application of our algorithm to planning shortest traversible paths for a tethered robot in 3D with cable-length constraint.</p>
+                  <p>topology をガチガチに記述しなくても、**複数の意味ある経路**を取り出せるのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>graph search と topology の間を、かなり実装しやすい形でつないでいる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>かなり知的に面白い論文で、トポロジーの重さをうまく graph search 側へ寄せて吸収している。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Optimization and Optimal Control / Foundations of Automation / Multi Path Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Neighborhood-Augmented Graph / Homotopy / Geodesic Path / Tether Constraint / Graph Search</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-topo-geometrically-distinct-path-computation-using-neighborhood-augmente-e05a5465.md">Detail note</a>
@@ -2440,7 +2440,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We demonstrate the application of our algorithm to planning shortest traversible paths for a tethered robot in 3D with cable-length constraint.</p>
+                <p>topology をガチガチに記述しなくても、**複数の意味ある経路**を取り出せるのが強い。</p>
               </div>
             </aside>
           </div>
@@ -2453,47 +2453,47 @@
               <div class="meta-row">
                 <span class="rank-pill">35 / 60</span>
                 <span class="chip group-chip">Motion Planning and Control</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span>
+                <span class="chip task-chip">Robot Navigation</span><span class="chip task-chip">Unknown Environment Exploration</span><span class="chip task-chip">Reactive Planning and Control</span><span class="chip task-chip">LiDAR-Based Navigation</span>
               </div>
               <h1 class="paper-title">Robot Navigation in Unknown and Cluttered Workspace with Dynamical System Modulation in Starshaped Roadmap</h1>
-              <p class="hook">To ensure safe and efficient movement within the starshaped roadmap, we propose a reactive controller based on Dynamic System Modulation (DSM).</p>
+              <p class="hook">LiDAR 点群から区分多項式で境界を近似し、**starshaped free-space region** をその場で構成する。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Compared to conventional decomposition methods that use ellipses or polygons to represent free space, starshaped representation can better capture the natural distribution of sensor data, thereby exploiting a larger portion of traversable space.</li><li>This paper introduces a novel motion planning and control framework for navigating robots in unknown and cluttered environments using a dynamically constructed starshaped roadmap.</li><li>Our approach generates a starshaped representation of the surrounding free space from real-time sensor data using piece-wise polynomials.</li></ul>
+                  <ul class="bullet-list"><li>未知・混雑環境に対して、LiDAR 点群から **starshaped free-space roadmap** を逐次作り、DSM ベースで反応的に走る手法。</li><li>楕円や凸 corridor より広い自由空間を取りやすく、**未知環境でも star-shaped region を直接つくる**のが売り。</li><li>frontier 管理と stuck 判定も入っていて、reactive control だけでは詰まりやすい場面に少し deliberative 要素を足している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Compared to conventional decomposition methods that use ellipses or polygons to represent free space, starshaped representation can better capture the natural distribution of sensor data, thereby exploiting a larger portion of traversable space.</p>
+                  <p>cluttered unknown environment では、free space を保守的に切る corridor 型手法だと通れる空間を狭めすぎる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To ensure safe and efficient movement within the starshaped roadmap, we propose a reactive controller based on Dynamic System Modulation (DSM).</p>
+                  <p>LiDAR 点群から区分多項式で境界を近似し、**starshaped free-space region** をその場で構成する。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Compared to conventional decomposition methods that use ellipses or polygons to represent free space, starshaped representation can better capture the natural distribution of sensor data, thereby exploiting a larger portion of traversable space.</p>
+                  <p>センサ点群を極座標で扱い、角度方向に piecewise polynomial を当てて free-space boundary を近似する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Comprehensive evaluations in both simulations and real-world experiments show that the proposed method achieves higher success rates and reduced travel times compared to other methods.</p>
+                  <p>star-shaped 表現のおかげで、凸 corridor より **空間を無駄なく使える**。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>point cloud から自由空間表現を作って、そのまま controller へ食わせる classical pipeline として非常に読みやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>反応型と roadmap の中間を狙った実装で、派手ではないが実機寄りの工夫が多い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning and Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Integrated Planning and Control / Autonomous Vehicle Navigation / Sensor-based Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Starshaped Region / Dynamical System Modulation / Frontier Point / Roadmap / Reactive Control</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-robot-navigation-in-unknown-and-cluttered-workspace-with-dynamical-system-modulation-in-starshaped-roadmap-737b6845.md">Detail note</a>
@@ -2506,7 +2506,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Comprehensive evaluations in both simulations and real-world experiments show that the proposed method achieves higher success rates and reduced travel times compared to other methods.</p>
+                <p>star-shaped 表現のおかげで、凸 corridor より **空間を無駄なく使える**。</p>
               </div>
             </aside>
           </div>
@@ -2519,47 +2519,47 @@
               <div class="meta-row">
                 <span class="rank-pill">36 / 60</span>
                 <span class="chip group-chip">Motion Planning and Control</span>
-                <span class="chip task-chip">Control</span><span class="chip task-chip">Manipulation</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Sequential Task Solving</span><span class="chip task-chip">Reactive Manipulation</span><span class="chip task-chip">Gradient-Based Control</span><span class="chip task-chip">Uncertainty-Aware Decision Making</span>
               </div>
               <h1 class="paper-title">No Plan but Everything under Control: Robustly Solving Sequential Tasks with Dynamically Composed Gradient Descent</h1>
-              <p class="hook">We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world&#x27;s regularities.</p>
+              <p class="hook">単一の固定ポテンシャルではなく、複数の勾配候補を world state と interconnection から動的に構成する点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world&#x27;s regularities.</li><li>This adjustment implicitly considers subgoals encoded in these regularities, enabling the solution of long sequential tasks, as demonstrated by solving the traditional planning domain of Blocks Worldwithout any planning.</li><li>Unlike conventional planning methods, our feedback-driven approach adapts to uncertain and dynamic environments, as demonstrated by one hundred real-world trials involving drawer manipulation.</li></ul>
+                  <ul class="bullet-list"><li>明示的 planner を立てず、**dynamically composed gradient descent** で sequential task を解こうとする論文。</li><li>AICON 的な相互接続された推定器群を使い、world regularity と現在の不確実性から **その場で有効な勾配経路**を選ぶ。</li><li>Blocks World と drawer manipulation を例に、planning なしでもかなり robust に多段タスクを回せる、と主張している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world&#x27;s regularities.</p>
+                  <p>長い sequential task は通常 planning に寄るが、不確実性や外乱があると先読みがすぐ壊れる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We introduce a novel gradient-based approach for solving sequential tasks by dynamically adjusting the underlying myopic potential field in response to feedback and the world&#x27;s regularities.</p>
+                  <p>単一の固定ポテンシャルではなく、複数の勾配候補を world state と interconnection から動的に構成する点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Unlike conventional planning methods, our feedback-driven approach adapts to uncertain and dynamic environments, as demonstrated by one hundred real-world trials involving drawer manipulation.</p>
+                  <p>タスクを構成する状態量や関係を、それぞれ推定器・相互接続として表す。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>These experiments highlight the robustness of our method compared to planning and show how interactive perception and error recovery naturally emerge from gradient descent without explicitly implementing them.</p>
+                  <p>planning と reactive control の二者択一ではなく、その中間をかなり本気で掘っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>non-learning で sequential behavior をどこまで作れるか、という意味でかなり面白い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>主張はやや挑発的だが、単なる「planner は要らない」ではなく、reactive system をどう賢く見せるかの設計が丁寧。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Motion Planning and Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Integrated Planning and Control / Reactive and Sensor-Based Planning / Optimization and Optimal Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Dynamically Composed Gradient Descent / AICON / EKF / Sequential Tasks / Reactive Control</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-no-plan-but-everything-under-control-robustly-solving-sequential-tasks-with-dynamically-composed-gradient-descent-04cbfe5d.md">Detail note</a>
@@ -2572,7 +2572,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>These experiments highlight the robustness of our method compared to planning and show how interactive perception and error recovery naturally emerge from gradient descent without explicitly implementing them.</p>
+                <p>planning と reactive control の二者択一ではなく、その中間をかなり本気で掘っている。</p>
               </div>
             </aside>
           </div>
