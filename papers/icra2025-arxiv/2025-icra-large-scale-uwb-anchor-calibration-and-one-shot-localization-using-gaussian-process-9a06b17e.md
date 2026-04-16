@@ -1,6 +1,6 @@
 # Large-Scale UWB Anchor Calibration and One-Shot Localization Using Gaussian Process
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,22 +11,20 @@
 
 ## TL;DR
 
-- Ultra-wideband (UWB) is gaining popularity with devices like AirTags for precise home item localization but faces significant challenges when scaled to large environments like seaports.
-- The main challenges are calibration and localization in obstructed conditions, which are common in logistics environments.
-- Traditional calibration methods, dependent on line-of-sight (LoS), are slow, costly, and unreliable in seaports and warehouses, making large-scale localization a significant pain point in the industry.
+- 広い warehouse / seaport 環境で、**UWB anchor calibration を one-shot でやる**ために GP を使った論文。
+- continuous-time LIO で作った軌跡と UWB range を合わせ、GPS なしでも anchor 位置を較正している。
+- その較正済み UWB を loop-closure / one-shot localization の search-space 削減に使う構成が実務的。
 
 ## Task
 
-* Localization
-* GNSS
-* LiDAR
 * Calibration
+* Localization
+* UWB
+* Sensor Fusion
 
 ## Keywords
 
-* Range Sensing
-* Localization
-* Factory Automation
+* UWB Calibration / Gaussian Process / CT-LIO / One-Shot Localization / Descriptor Filtering
 
 ## AI依存度
 
@@ -34,36 +32,51 @@
 
 ## 何を解決？
 
-* Ultra-wideband (UWB) is gaining popularity with devices like AirTags for precise home item localization but faces significant challenges when scaled to large environments like seaports.
+* 大規模屋外・半屋内では GPS が不安定で、UWB anchor の配置較正も簡単ではない。
+* UWB 単独の one-shot localization は NLoS や range bias で壊れやすく、LiDAR descriptor だけでも repetitive scene では false positive が多い。
+* そこで、**anchor calibration と one-shot localization を現場スケールで現実的に回したい**。
 
 ## 何が新しい？
 
-* To overcome these challenges, we propose a UWB-LiDAR fusion-based calibration and one-shot localization framework.
+* CT-LIO 軌跡と UWB range を使い、**Gaussian Process で大規模 anchor calibration** を行う点。
+* calibration 結果を、STD など descriptor-based localization の検索範囲フィルタとして使う点。
+* 600x450 m 級の環境で、UWB を trilateration の主役でなく **search-space reduction の補助情報**として使っている点。
 
 ## どうやってる？
 
-* Traditional calibration methods, dependent on line-of-sight (LoS), are slow, costly, and unreliable in seaports and warehouses, making large-scale localization a significant pain point in the industry.
+* 車体に LiDAR / IMU / UWB を積んで 1 回走行し、CT-LIO で連続時間軌跡を作る。
+* その軌跡と UWB 測距の誤差構造を GP で吸収しつつ、anchor 位置を推定する。
+* localization 時は、各 anchor からの距離に応じて候補領域を絞り、その領域内だけで STD descriptor matching を行う。
+* つまり、UWB は粗い global cue、LiDAR descriptor は幾何照合、という役割分担。
 
 ## どこが強い？
 
-* We demonstrate that by applying a UWB-range filter, the search range for LiDAR loop closure descriptors is significantly reduced, improving both accuracy and speed.
+* かなり広い現場スケールを意識していて、実環境での deployability が高い。
+* UWB を無理に単独定位へ使わず、**LiDAR localization の前段フィルタ**として使うのがうまい。
+* GP によって NLoS を含む range error を雑に捨てず、統計的に扱っている。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* UWB 環境依存 bias や湿度依存など、現場ごと tuning/再較正が必要そう。
+* LiDAR odometry / descriptor 側が崩れると、全体もそのまま苦しくなる。
+* 低コストセンサ構成へそのまま落とすには、まだ LiDAR 側の要求が高い。
 
 ## 関連研究との違い
 
-* To overcome these challenges, we propose a UWB-LiDAR fusion-based calibration and one-shot localization framework.
+* GPS 依存の UWB calibration より、**現場内自己較正**に寄せている。
+* UWB-only localization より、LiDAR descriptor と組み合わせて使うのが特徴。
+* iterative least squares 的 calibration より、GP で spatial error structure を吸う方向。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* UWB と LiDAR を learning なしで、**統計モデルと幾何照合**でうまく役割分担させている。
+* 大規模現場の hybrid localization を考える上でかなり実用的。
 
 ## 難易度
 
-★★★★☆（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 地味だけど現場ではかなり効きそうな論文。
+* UWB を「全部解く主役」にせず、LiDAR sidekick として使う割り切りが良い。

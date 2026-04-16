@@ -1,6 +1,6 @@
 # Model Predictive Control with Visibility Graphs for Humanoid Path Planning and Tracking against Adversarial Opponents
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,22 +11,20 @@
 
 ## TL;DR
 
-- In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.
-- Our team was undefeated for all seated matches and scored 45 goals over 6 games, winning the championship game 6 to 1.
-- During the competition, a major challenge for collision avoidance was the measurement noise coming from bipedal locomotion and a limited field of view (FOV).
+- humanoid soccer の path planning / tracking を、**turning-cost-aware visibility graph + collision-free MPC** で解く論文。
+- visibility graph 側で turning cost を入れるのが humanoid 向けにかなり重要。
+- obstacle avoidance と tracking を mode switching で分けず、**1つの MPC でなめらかに扱う**のが実践的。
 
 ## Task
 
-* Motion Planning
-* Control
-* Legged Robotics
-* Perception
+* Humanoid Navigation
+* Model Predictive Control
+* Path Planning
+* Obstacle Avoidance
 
 ## Keywords
 
-* Motion and Path Planning
-* Collision Avoidance
-* Optimization and Optimal Control
+* Visibility Graph / Turning Cost / Collision-Free MPC / RoboCup / Humanoid Path Tracking
 
 ## AI依存度
 
@@ -34,36 +32,51 @@
 
 ## 何を解決？
 
-* In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.
+* humanoid は turning が高コストなので、単純な Euclidean shortest path では走りにくい。
+* また RoboCup のような動的・視野制限あり環境では、obstacle avoidance を mode switching で入れると挙動が不安定になりやすい。
+* そこで、**global path でも local control でも turning と obstacle を自然に扱いたい**。
 
 ## 何が新しい？
 
-* To efficiently find a long-term general path that avoids all obstacles we developed DAVG (Dynamic Augmented Visibility Graphs).
+* visibility graph の node/state に heading を持たせた **Dynamic Augmented Visibility Graph**。
+* global planning で turning cost を明示的に加える点。
+* obstacle avoidance を switch せず、slack 付きの **unified collision-free MPC** で扱う点。
 
 ## どうやってる？
 
-* In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.
+* global 側では、active obstacle だけを抜き出して visibility graph を作る。
+* edge cost に移動距離だけでなく turning penalty を加え、Dijkstra/A* 的に経路を引く。
+* local 側は MPC で reference path tracking と obstacle avoidance を同時に最適化する。
+* slack を入れることで、視界に突然 obstacle が出入りしても mode jump せず連続的に挙動を変えられる。
 
 ## どこが強い？
 
-* In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.
+* humanoid にとって本当に重要な **turning cost** を graph planning に入れている。
+* mode switching を避ける設計が、実環境ノイズのある football setting に合っている。
+* RoboCup 実機運用まで行っていて、system paper として強い。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* turning weight は humanoid 特化で、他 platform にそのまま通るとは限らない。
+* obstacle 形状はかなり単純化しており、複雑形状には追加工夫が要る。
+* uncertainty を明示的に伝播しているわけではない。
 
 ## 関連研究との違い
 
-* To efficiently find a long-term general path that avoids all obstacles we developed DAVG (Dynamic Augmented Visibility Graphs).
+* RRT 系より、visibility graph ベースで解釈しやすく速い。
+* GCS や spline smoothing 系より、**turning-aware shortest path** をシンプルに出す立場。
+* switching MPC / CBF 系より、tracking と avoidance を単一 MPC で連続的に扱うのが特徴。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* competition-level humanoid navigation でも、**visibility graph + MPC** の王道構成がまだ非常に強いと分かる。
+* locomotion-aware path planning の実践例としてかなり良い。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 新理論というより、必要な工夫をちゃんと実機へ落とした良い system paper。
+* humanoid の「曲がるコスト」を軽視しないのが本当に大事だと分かる。

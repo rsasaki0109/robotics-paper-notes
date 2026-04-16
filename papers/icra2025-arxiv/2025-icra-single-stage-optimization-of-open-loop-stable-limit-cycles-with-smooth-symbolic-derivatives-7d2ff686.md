@@ -1,6 +1,6 @@
 # Single-Stage Optimization of Open-Loop Stable Limit Cycles with Smooth, Symbolic Derivatives
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,21 +11,20 @@
 
 ## TL;DR
 
-- Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.
-- While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.
-- We formulate the problem as a single-stage constrained optimization problem and use Direct Collocation to transcribe it into a nonlinear program with closed-form expressions for constraints, objectives, and their gradients.
+- open-loop stable な periodic gait を、**single-stage optimization** で直接求めようとする論文。
+- monodromy matrix の固有値制約をいくつか比較し、**Schur decomposition** が一番扱いやすいと示している。
+- open-loop stability を明示制約に入れる発想がかなり良い。
 
 ## Task
 
-* Visual-Inertial
-* Control
-* Legged Robotics
+* Legged Locomotion
+* Trajectory Optimization
+* Periodic Gaits
+* Stability Analysis
 
 ## Keywords
 
-* Legged Robots
-* Optimization and Optimal Control
-* Passive Walking
+* Limit Cycle / Direct Collocation / Monodromy Matrix / Schur Decomposition / Open-Loop Stability
 
 ## AI依存度
 
@@ -33,36 +32,51 @@
 
 ## 何を解決？
 
-* Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.
+* legged gait design では feedback stabilization が主役になりがちで、open-loop stability 自体は後回しにされやすい。
+* しかし inherent に安定な limit cycle を作れれば、feedback の負担を減らせる。
+* その一方で、**安定性を最適化制約に直接入れる**のは数値的に難しい。
 
 ## 何が新しい？
 
-* While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.
+* periodicity だけでなく、monodromy matrix の spectral radius を explicit に制約する single-stage optimization。
+* 固有値制約の書き方を複数比較し、Schur decomposition が最も robust と示した点。
+* hybrid hopping system でも実用的に解けることを見せた点。
 
 ## どうやってる？
 
-* While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.
+* Direct Collocation で周期運動の最適化問題を立てる。
+* periodic boundary condition に加え、monodromy matrix の固有値が単位円内へ入るよう制約する。
+* Frobenius norm, power iteration, eigendecomposition, Schur などの定式化を比較する。
+* その結果、Schur ベースが数値的に安定で、収束性も良かったと報告している。
 
 ## どこが強い？
 
-* Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.
+* stability を後付け評価でなく、**最適化の本体に入れている**のが本質的に強い。
+* limit cycle design の数値実装で何が効くかを丁寧に比較している。
+* 高速に stable hopping gait を出せる可能性が見えている。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* 固有値制約の書き方によって、得られる gait が結構変わる。
+* hybrid dynamics と接触不連続のせいで、最適化は依然として繊細。
+* model uncertainty や online adaptation までは直接扱っていない。
 
 ## 関連研究との違い
 
-* While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.
+* two-stage gait optimization より、**1 回の最適化で stability まで入れる**。
+* post-impact state を間接的に置く手法より、固有値を直接見にいく。
+* shooting 系より、Direct Collocation ベースで underactuated/hybrid 系へ使いやすい。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* locomotion stability を、経験的 tuning でなく **固有値と limit cycle 理論**で詰める classical ど真ん中の論文。
+* gait optimization に stability をどう入れるかの教材としてかなり良い。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 数値的には繊細だけど、やろうとしていることはとても正しい。
+* Schur を推す結論も実務的で、limit-cycle optimization を触る人にはかなりありがたい。

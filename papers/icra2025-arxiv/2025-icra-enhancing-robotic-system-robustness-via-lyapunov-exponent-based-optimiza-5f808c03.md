@@ -1,6 +1,6 @@
 # Enhancing Robotic System Robustness Via Lyapunov Exponent-Based Optimization
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,19 +11,20 @@
 
 ## TL;DR
 
-- We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.
-- Our method leverages differentiable simulation over extended time horizons to estimate a robustness metric based on the Lyapunov exponents.
-- We showcase, with an textit{ad-hoc} JAX gradient-based optimization framework, remarkable flexibility in tackling the robustness challenge.
+- ロボットの robustness を、**Lyapunov exponent** を直接最適化することで高めようとする論文。
+- differentiable simulation 上で hardware / control parameter を一緒に調整し、trajectory sensitivity を下げる。
+- equilibrium だけでなく limit cycle にも自然に使える robustness metric なのが良い。
 
 ## Task
 
-* Motion Planning
-* Control
-* Legged Robotics
+* Optimization
+* Robustness Analysis
+* Co-Design
+* Differentiable Simulation
 
 ## Keywords
 
-* Optimization and Optimal Control / Dynamics / Legged Robots
+* Lyapunov Exponents / Robustness Metric / Co-Optimization / JAX / Contact Dynamics
 
 ## AI依存度
 
@@ -31,36 +32,51 @@
 
 ## 何を解決？
 
-* We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.
+* ロボット最適化は task performance を主に見がちで、頑健性は後付けになりやすい。
+* stochastic stress test だけでは高 DoF / contact-rich robot の robustness を設計へうまく戻しにくい。
+* そこで、**trajectory が摂動にどれだけ敏感か**を、もっと根本的な dynamical metric で最適化したい。
 
 ## 何が新しい？
 
-* We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.
+* Lyapunov exponent を differentiable に計算し、gradient-based co-design に使う点。
+* floating-base / contact system に対して、SVD ベースで非正方 Jacobian も扱える実装。
+* manipulator, spider, quadruped など複数系で、hardware/control co-optimization まで見せている点。
 
 ## どうやってる？
 
-* We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.
+* differentiable simulator 上で trajectory rollout を行う。
+* 各 time step の state transition Jacobian から singular value を求め、Lyapunov spectrum を近似する。
+* その総和や代表値を robustness objective として、design/control parameter に勾配を返す。
+* ADAM などで link parameter や gain を更新し、より収束的なダイナミクスを目指す。
 
 ## どこが強い？
 
-* Our method leverages differentiable simulation over extended time horizons to estimate a robustness metric based on the Lyapunov exponents.
+* robustness を ad-hoc metric でなく、**非線形力学の本流の量**で見ているのが強い。
+* limit cycle を自然に扱えるので locomotion 系にも相性が良い。
+* differentiable simulation とかなり相性が良く、co-design 指標として綺麗。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* 長い rollout が必要で、gradient quality と計算量が厳しい。
+* contact smoothing を入れた simulator の artifact に引っ張られる可能性がある。
+* 現状は simulation 中心で、real hardware transfer はまだ未知数。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* 単なる robustness proxy や stress test より、**Lyapunov exponent を直接見る**。
+* region-of-attraction 系より、limit cycle を自然に扱える。
+* data-driven robustness metric より、完全に mechanics / dynamics ベース。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* robustness を「たくさん試して壊れなかった」ではなく、**力学系の性質として最適化**する発想が面白い。
+* differentiable robotics の中でもかなり classical theory 寄り。
 
 ## 難易度
 
-★★★★★（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 発想はとても良く、co-design に一本芯を通す metric として魅力がある。
+* 一方で、実務投入には simulator artifact と rollout 長さの問題がまだ重そう。
