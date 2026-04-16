@@ -1,6 +1,6 @@
 # Constrained Nonlinear Kaczmarz Projection on Intersections of Manifolds for Coordinated Multi-Robot Mobile Manipulation
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,21 +11,20 @@
 
 ## TL;DR
 
-- Cooperative manipulation tasks impose various structure-, task-, and robot-specific constraints on mobile manipulators.
-- However, current methods struggle to model and solve these myriad constraints simultaneously.
-- We propose a twofold solution: first, we model constraints as a family of manifolds amenable to simultaneous solving.
+- 多ロボ協調搬送の大量制約を、**constrained nonlinear Kaczmarz (cNKZ)** で順番に投影して解く論文。
+- 各 constraint family を manifold として書き、**constraint ごとの residual threshold** を持たせるのがポイント。
+- 80 以上の heterogeneous constraint をまとめて扱えるのがかなり強い。
 
 ## Task
 
-* Visual-Inertial
+* Multi-Robot Manipulation
+* Constraint Projection
 * Motion Planning
-* Manipulation
+* Coordinated Transportation
 
 ## Keywords
 
-* Path Planning for Multiple Mobile Robots or Agents
-* Constrained Motion Planning
-* Cooperating Robots
+* Nonlinear Kaczmarz / Manifold Intersection / RRT Projection / Mobile Manipulation / Cooperative Transport
 
 ## AI依存度
 
@@ -33,36 +32,51 @@
 
 ## 何を解決？
 
-* Cooperative manipulation tasks impose various structure-, task-, and robot-specific constraints on mobile manipulators.
+* 複数の mobile manipulator が剛体構造物を運ぶと、距離・角度・姿勢・非ホロ拘束など大量の制約が同時に掛かる。
+* Newton-Raphson や null-space ベースでは、多数の heterogeneous constraint をうまく同時に満たしにくい。
+* そのため、**多種類 constraint の交差集合へ高速に投影する方法**が欲しい。
 
 ## 何が新しい？
 
-* We propose a twofold solution: first, we model constraints as a family of manifolds amenable to simultaneous solving.
+* nonlinear Kaczmarz を multi-robot manipulation の manifold constraint に拡張した **cNKZ**。
+* 距離/角度/姿勢など constraint のスケールが違うので、manifold ごとに residual threshold を持たせる点。
+* RRT の steer / projection に cNKZ を組み込み、constraint-satisfying planning を実現している点。
 
 ## どうやってる？
 
-* However, current methods struggle to model and solve these myriad constraints simultaneously.
+* 構造拘束・タスク拘束・各 robot の非ホロ拘束を、それぞれ implicit manifold として書く。
+* cNKZ は、全制約の巨大 Jacobian を毎回まとめて解く代わりに、1 constraint を1回ずつ cyclic に投影していく。
+* しきい値は manifold ごとに設定し、距離と角度のような異種 residual を同じ土俵で扱わない。
+* motion planning では RRT の候補状態を cNKZ で constraint manifold へ引き戻して使う。
 
 ## どこが強い？
 
-* We also demonstrate our approach on hardware using three Turtlebot3 Waffle Pi robots with OpenMANIPULATOR-X arms.
+* constraint 数が多い問題に対して、**1行ずつ解く Kaczmarz 的発想**がかなりスケールする。
+* manifold threshold の考え方が実務的で、多種 constraint を無理なく混ぜられる。
+* hardware demo まであり、理論だけでなく本当に運べている。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* threshold tuning はかなり経験的で、タスク依存が強い。
+* payload dynamics や compliance は明示的に入っていない。
+* centralized 計画なので、さらに大規模な team へそのまま伸ばすには限界がありそう。
 
 ## 関連研究との違い
 
-* We propose a twofold solution: first, we model constraints as a family of manifolds amenable to simultaneous solving.
+* TSR / null-space 的処理より、**constraint を正面から manifold intersection として扱う**。
+* Newton-Raphson より、1 constraint ごとの Jacobian しか見ないので大規模で安定しやすい。
+* sampling-based planning と projection solver の結合としてかなり自然。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* 多ロボ拘束問題を learning で近似せず、**数値解法と manifold 記述**で押しているのが良い。
+* multi-robot mobile manipulation の constraint explosion を理解するのに役立つ。
 
 ## 難易度
 
-★★★☆☆（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* Kaczmarz をこういう形で robotics constraint projection に使うのはかなりうまい。
+* 地味に見えるけど、多ロボ協調搬送の本丸に効く手法だと思う。

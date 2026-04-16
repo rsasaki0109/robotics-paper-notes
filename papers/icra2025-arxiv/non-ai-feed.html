@@ -935,47 +935,47 @@
               <div class="meta-row">
                 <span class="rank-pill">12 / 60</span>
                 <span class="chip group-chip">Calibration 3</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Calibration</span>
+                <span class="chip task-chip">Calibration</span><span class="chip task-chip">Localization</span><span class="chip task-chip">UWB</span><span class="chip task-chip">Sensor Fusion</span>
               </div>
               <h1 class="paper-title">Large-Scale UWB Anchor Calibration and One-Shot Localization Using Gaussian Process</h1>
-              <p class="hook">To overcome these challenges, we propose a UWB-LiDAR fusion-based calibration and one-shot localization framework.</p>
+              <p class="hook">CT-LIO 軌跡と UWB range を使い、**Gaussian Process で大規模 anchor calibration** を行う点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Ultra-wideband (UWB) is gaining popularity with devices like AirTags for precise home item localization but faces significant challenges when scaled to large environments like seaports.</li><li>The main challenges are calibration and localization in obstructed conditions, which are common in logistics environments.</li><li>Traditional calibration methods, dependent on line-of-sight (LoS), are slow, costly, and unreliable in seaports and warehouses, making large-scale localization a significant pain point in the industry.</li></ul>
+                  <ul class="bullet-list"><li>広い warehouse / seaport 環境で、**UWB anchor calibration を one-shot でやる**ために GP を使った論文。</li><li>continuous-time LIO で作った軌跡と UWB range を合わせ、GPS なしでも anchor 位置を較正している。</li><li>その較正済み UWB を loop-closure / one-shot localization の search-space 削減に使う構成が実務的。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Ultra-wideband (UWB) is gaining popularity with devices like AirTags for precise home item localization but faces significant challenges when scaled to large environments like seaports.</p>
+                  <p>大規模屋外・半屋内では GPS が不安定で、UWB anchor の配置較正も簡単ではない。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To overcome these challenges, we propose a UWB-LiDAR fusion-based calibration and one-shot localization framework.</p>
+                  <p>CT-LIO 軌跡と UWB range を使い、**Gaussian Process で大規模 anchor calibration** を行う点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Traditional calibration methods, dependent on line-of-sight (LoS), are slow, costly, and unreliable in seaports and warehouses, making large-scale localization a significant pain point in the industry.</p>
+                  <p>車体に LiDAR / IMU / UWB を積んで 1 回走行し、CT-LIO で連続時間軌跡を作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We demonstrate that by applying a UWB-range filter, the search range for LiDAR loop closure descriptors is significantly reduced, improving both accuracy and speed.</p>
+                  <p>かなり広い現場スケールを意識していて、実環境での deployability が高い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>UWB と LiDAR を learning なしで、**統計モデルと幾何照合**でうまく役割分担させている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>地味だけど現場ではかなり効きそうな論文。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Calibration 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Range Sensing / Localization / Factory Automation</strong></div>
+                <div class="fact"><span>Keywords</span><strong>UWB Calibration / Gaussian Process / CT-LIO / One-Shot Localization / Descriptor Filtering</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-large-scale-uwb-anchor-calibration-and-one-shot-localization-using-gaussian-process-9a06b17e.md">Detail note</a>
@@ -988,7 +988,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We demonstrate that by applying a UWB-range filter, the search range for LiDAR loop closure descriptors is significantly reduced, improving both accuracy and speed.</p>
+                <p>かなり広い現場スケールを意識していて、実環境での deployability が高い。</p>
               </div>
             </aside>
           </div>
@@ -1001,47 +1001,47 @@
               <div class="meta-row">
                 <span class="rank-pill">13 / 60</span>
                 <span class="chip group-chip">Imaging, Scanning, Localization</span>
-                <span class="chip task-chip">Control</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Medical Robotics</span>
+                <span class="chip task-chip">Medical Robotics</span><span class="chip task-chip">Visual Servoing</span><span class="chip task-chip">Spectroscopy Scanning</span><span class="chip task-chip">Surgical Assistance</span>
               </div>
               <h1 class="paper-title">Automatic Robotic-Assisted Diffuse Reflectance Spectroscopy Scanning System</h1>
-              <p class="hook">We propose a robotic system to facilitate autonomous DRS scanning with hybrid visual servoing control.</p>
+              <p class="hook">DRS scanning を in-situ tissue 上で行う robotic assistance system。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Diffuse Reflectance Spectroscopy (DRS) is a well-established optical technique for tissue composition assessment which has been validated for tumour detection to ensure the complete removal of cancerous tissue.</li><li>While point-wise assessment has many potential applications, incorporating automated large-area scanning would enable holistic tissue sampling with higher consistency.</li><li>We propose a robotic system to facilitate autonomous DRS scanning with hybrid visual servoing control.</li></ul>
+                  <ul class="bullet-list"><li>DRS probe を tissue 上で安定走査するための、**robot-assisted spectroscopy scanning system**。</li><li>image-based visual servoing と learned height estimation を組み合わせ、probe contact を安定させている。</li><li>control の芯は classical だが、probe/light detection や height estimation に DNN を使っており **Hybrid** 色が強い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Diffuse Reflectance Spectroscopy (DRS) is a well-established optical technique for tissue composition assessment which has been validated for tumour detection to ensure the complete removal of cancerous tissue.</p>
+                  <p>手持ち DRS probe による tissue scanning は、接触圧や手ぶれでスペクトル品質がぶれやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We propose a robotic system to facilitate autonomous DRS scanning with hybrid visual servoing control.</p>
+                  <p>DRS scanning を in-situ tissue 上で行う robotic assistance system。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>This could reduce the need for manual scanning by the surgeon while ensuring complete tumor removal in clinical practice.</p>
+                  <p>KUKA iiwa に probe を載せ、third-person / wrist camera で probe と light area を観測する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>The evaluation results show that the system can accurately execute the scanning command and acquire consistent DRS spectra with comparable results to the manual collection, which is the current gold standard protocol.</p>
+                  <p>spectroscopy を「データを取るだけ」でなく、**安定に押し当てて走査するロボ制御問題**として扱っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>Hybrid だが、医療ロボで **perception は学習、制御は classical** という分担がよく見える。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>医療系システム論文としてかなりちゃんとしていて、見た目以上に control integration が大変そう。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Imaging, Scanning, Localization</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
-                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Medical Robots and Systems / Computer Vision for Medical Robotics / Visual Servoing</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>DRS / Visual Servoing / Contact Height Estimation / KUKA iiwa / Surgical Scanning</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-automatic-robotic-assisted-diffuse-reflectance-spectroscopy-scanning-system-b56e3217.md">Detail note</a>
@@ -1054,7 +1054,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>The evaluation results show that the system can accurately execute the scanning command and acquire consistent DRS spectra with comparable results to the manual collection, which is the current gold standard protocol.</p>
+                <p>spectroscopy を「データを取るだけ」でなく、**安定に押し当てて走査するロボ制御問題**として扱っている。</p>
               </div>
             </aside>
           </div>
@@ -1133,47 +1133,47 @@
               <div class="meta-row">
                 <span class="rank-pill">15 / 60</span>
                 <span class="chip group-chip">Legged Locomotion: Novel Methods</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Legged Locomotion</span><span class="chip task-chip">Humanoid Control</span><span class="chip task-chip">DCM</span><span class="chip task-chip">Angular Momentum Planning</span>
               </div>
               <h1 class="paper-title">Angular Divergent Component of Motion: A Step towards Planning Spatial DCM Objectives for Legged Robots</h1>
-              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <p class="hook">flywheel 的な 1D 回転モデルから **angular DCM** を導いた点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In this work, the Divergent Component of Motion (DCM) method is expanded to include angular coordinates for the first time.</li><li>This work introduces the idea of spatial DCM, which adds an angular objective to the existing linear DCM theory.</li><li>A simulation in MATLAB and hardware results on the TORO humanoid are presented to validate the framework&#x27;s performance.</li></ul>
+                  <ul class="bullet-list"><li>従来 linear CoM motion 中心だった DCM を、**角運動側へ拡張した angular DCM** の論文。</li><li>1D 回転については linear DCM とかなり似た形になり、orientation planning を同じ枠組みで扱える。</li><li>humanoid walking で並進と回転を一緒に考えたい人にはかなり自然な拡張。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>In this work, the Divergent Component of Motion (DCM) method is expanded to include angular coordinates for the first time.</p>
+                  <p>DCM は humanoid locomotion で強力だが、主に CoM 並進の計画に使われ、姿勢回転側は別扱いになりがちだった。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                  <p>flywheel 的な 1D 回転モデルから **angular DCM** を導いた点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                  <p>SRBM に基づいて、並進側と角運動側の簡約ダイナミクスを作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>A simulation in MATLAB and hardware results on the TORO humanoid are presented to validate the framework&#x27;s performance.</p>
+                  <p>DCM 系の理論を壊さずに、**orientation objective** を追加できるのが綺麗。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>locomotion control の classic tool を、**数理的に少し広げるだけで新しい制御対象へ拡張できる**好例。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>extension として非常に素直で、読むと「確かに欲しかったやつ」という感じ。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Legged Locomotion: Novel Methods</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Humanoid and Bipedal Locomotion / Body Balancing / Whole-Body Motion Planning and Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Divergent Component of Motion / Angular DCM / SRBM / VRP / CoP Constraint</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-angular-divergent-component-of-motion-a-step-towards-planning-spatial-dc-94b0a68e.md">Detail note</a>
@@ -1186,7 +1186,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>A simulation in MATLAB and hardware results on the TORO humanoid are presented to validate the framework&#x27;s performance.</p>
+                <p>DCM 系の理論を壊さずに、**orientation objective** を追加できるのが綺麗。</p>
               </div>
             </aside>
           </div>
@@ -1199,47 +1199,47 @@
               <div class="meta-row">
                 <span class="rank-pill">16 / 60</span>
                 <span class="chip group-chip">Legged Locomotion: Novel Methods</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Legged Locomotion</span><span class="chip task-chip">Trajectory Optimization</span><span class="chip task-chip">Periodic Gaits</span><span class="chip task-chip">Stability Analysis</span>
               </div>
               <h1 class="paper-title">Single-Stage Optimization of Open-Loop Stable Limit Cycles with Smooth, Symbolic Derivatives</h1>
-              <p class="hook">While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.</p>
+              <p class="hook">periodicity だけでなく、monodromy matrix の spectral radius を explicit に制約する single-stage optimization。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.</li><li>While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.</li><li>We formulate the problem as a single-stage constrained optimization problem and use Direct Collocation to transcribe it into a nonlinear program with closed-form expressions for constraints, objectives, and their gradients.</li></ul>
+                  <ul class="bullet-list"><li>open-loop stable な periodic gait を、**single-stage optimization** で直接求めようとする論文。</li><li>monodromy matrix の固有値制約をいくつか比較し、**Schur decomposition** が一番扱いやすいと示している。</li><li>open-loop stability を明示制約に入れる発想がかなり良い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.</p>
+                  <p>legged gait design では feedback stabilization が主役になりがちで、open-loop stability 自体は後回しにされやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.</p>
+                  <p>periodicity だけでなく、monodromy matrix の spectral radius を explicit に制約する single-stage optimization。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>While previous methods have primarily targeted specific robotic models, this paper introduces a general framework for rapidly generating limit cycles across various dynamical systems, with the flexibility to impose arbitrarily tight stability bounds.</p>
+                  <p>Direct Collocation で周期運動の最適化問題を立てる。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.</p>
+                  <p>stability を後付け評価でなく、**最適化の本体に入れている**のが本質的に強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>locomotion stability を、経験的 tuning でなく **固有値と limit cycle 理論**で詰める classical ど真ん中の論文。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>数値的には繊細だけど、やろうとしていることはとても正しい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Legged Locomotion: Novel Methods</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Legged Robots / Optimization and Optimal Control / Passive Walking</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Limit Cycle / Direct Collocation / Monodromy Matrix / Schur Decomposition / Open-Loop Stability</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-single-stage-optimization-of-open-loop-stable-limit-cycles-with-smooth-symbolic-derivatives-7d2ff686.md">Detail note</a>
@@ -1252,7 +1252,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Open-loop stable limit cycles are foundational to legged robotics, providing inherent self-stabilization that minimizes the need for computationally intensive feedback-based gait correction.</p>
+                <p>stability を後付け評価でなく、**最適化の本体に入れている**のが本質的に強い。</p>
               </div>
             </aside>
           </div>
@@ -1925,47 +1925,47 @@
               <div class="meta-row">
                 <span class="rank-pill">27 / 60</span>
                 <span class="chip group-chip">Model Predictive Control</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span><span class="chip task-chip">Perception</span>
+                <span class="chip task-chip">Humanoid Navigation</span><span class="chip task-chip">Model Predictive Control</span><span class="chip task-chip">Path Planning</span><span class="chip task-chip">Obstacle Avoidance</span>
               </div>
               <h1 class="paper-title">Model Predictive Control with Visibility Graphs for Humanoid Path Planning and Tracking against Adversarial Opponents</h1>
-              <p class="hook">To efficiently find a long-term general path that avoids all obstacles we developed DAVG (Dynamic Augmented Visibility Graphs).</p>
+              <p class="hook">visibility graph の node/state に heading を持たせた **Dynamic Augmented Visibility Graph**。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.</li><li>Our team was undefeated for all seated matches and scored 45 goals over 6 games, winning the championship game 6 to 1.</li><li>During the competition, a major challenge for collision avoidance was the measurement noise coming from bipedal locomotion and a limited field of view (FOV).</li></ul>
+                  <ul class="bullet-list"><li>humanoid soccer の path planning / tracking を、**turning-cost-aware visibility graph + collision-free MPC** で解く論文。</li><li>visibility graph 側で turning cost を入れるのが humanoid 向けにかなり重要。</li><li>obstacle avoidance と tracking を mode switching で分けず、**1つの MPC でなめらかに扱う**のが実践的。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.</p>
+                  <p>humanoid は turning が高コストなので、単純な Euclidean shortest path では走りにくい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To efficiently find a long-term general path that avoids all obstacles we developed DAVG (Dynamic Augmented Visibility Graphs).</p>
+                  <p>visibility graph の node/state に heading を持たせた **Dynamic Augmented Visibility Graph**。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.</p>
+                  <p>global 側では、active obstacle だけを抜き出して visibility graph を作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.</p>
+                  <p>humanoid にとって本当に重要な **turning cost** を graph planning に入れている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>competition-level humanoid navigation でも、**visibility graph + MPC** の王道構成がまだ非常に強いと分かる。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>新理論というより、必要な工夫をちゃんと実機へ落とした良い system paper。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Model Predictive Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Motion and Path Planning / Collision Avoidance / Optimization and Optimal Control</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Visibility Graph / Turning Cost / Collision-Free MPC / RoboCup / Humanoid Path Tracking</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-model-predictive-control-with-visibility-graphs-for-humanoid-path-planning-and-tracking-against-adversarial-opponents-3d0b1830.md">Detail note</a>
@@ -1978,7 +1978,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>In this paper we detail the methods used for obstacle avoidance, path planning, and trajectory tracking that helped us win the adult-sized, autonomous humanoid soccer league in RoboCup 2024.</p>
+                <p>humanoid にとって本当に重要な **turning cost** を graph planning に入れている。</p>
               </div>
             </aside>
           </div>
@@ -2585,47 +2585,47 @@
               <div class="meta-row">
                 <span class="rank-pill">37 / 60</span>
                 <span class="chip group-chip">Multi-Robot Path Planning 3</span>
-                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Manipulation</span>
+                <span class="chip task-chip">Multi-Robot Manipulation</span><span class="chip task-chip">Constraint Projection</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Coordinated Transportation</span>
               </div>
               <h1 class="paper-title">Constrained Nonlinear Kaczmarz Projection on Intersections of Manifolds for Coordinated Multi-Robot Mobile Manipulation</h1>
-              <p class="hook">We propose a twofold solution: first, we model constraints as a family of manifolds amenable to simultaneous solving.</p>
+              <p class="hook">nonlinear Kaczmarz を multi-robot manipulation の manifold constraint に拡張した **cNKZ**。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Cooperative manipulation tasks impose various structure-, task-, and robot-specific constraints on mobile manipulators.</li><li>However, current methods struggle to model and solve these myriad constraints simultaneously.</li><li>We propose a twofold solution: first, we model constraints as a family of manifolds amenable to simultaneous solving.</li></ul>
+                  <ul class="bullet-list"><li>多ロボ協調搬送の大量制約を、**constrained nonlinear Kaczmarz (cNKZ)** で順番に投影して解く論文。</li><li>各 constraint family を manifold として書き、**constraint ごとの residual threshold** を持たせるのがポイント。</li><li>80 以上の heterogeneous constraint をまとめて扱えるのがかなり強い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Cooperative manipulation tasks impose various structure-, task-, and robot-specific constraints on mobile manipulators.</p>
+                  <p>複数の mobile manipulator が剛体構造物を運ぶと、距離・角度・姿勢・非ホロ拘束など大量の制約が同時に掛かる。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We propose a twofold solution: first, we model constraints as a family of manifolds amenable to simultaneous solving.</p>
+                  <p>nonlinear Kaczmarz を multi-robot manipulation の manifold constraint に拡張した **cNKZ**。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>However, current methods struggle to model and solve these myriad constraints simultaneously.</p>
+                  <p>構造拘束・タスク拘束・各 robot の非ホロ拘束を、それぞれ implicit manifold として書く。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We also demonstrate our approach on hardware using three Turtlebot3 Waffle Pi robots with OpenMANIPULATOR-X arms.</p>
+                  <p>constraint 数が多い問題に対して、**1行ずつ解く Kaczmarz 的発想**がかなりスケールする。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>多ロボ拘束問題を learning で近似せず、**数値解法と manifold 記述**で押しているのが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>Kaczmarz をこういう形で robotics constraint projection に使うのはかなりうまい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Multi-Robot Path Planning 3</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Path Planning for Multiple Mobile Robots or Agents / Constrained Motion Planning / Cooperating Robots</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Nonlinear Kaczmarz / Manifold Intersection / RRT Projection / Mobile Manipulation / Cooperative Transport</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-constrained-nonlinear-kaczmarz-projection-on-intersections-of-manifolds-for-coordinated-multi-robot-mobile-manipulation-532eff2e.md">Detail note</a>
@@ -2638,7 +2638,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We also demonstrate our approach on hardware using three Turtlebot3 Waffle Pi robots with OpenMANIPULATOR-X arms.</p>
+                <p>constraint 数が多い問題に対して、**1行ずつ解く Kaczmarz 的発想**がかなりスケールする。</p>
               </div>
             </aside>
           </div>
@@ -2783,47 +2783,47 @@
               <div class="meta-row">
                 <span class="rank-pill">40 / 60</span>
                 <span class="chip group-chip">Optimization and Optimal Control</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Optimization</span><span class="chip task-chip">Robustness Analysis</span><span class="chip task-chip">Co-Design</span><span class="chip task-chip">Differentiable Simulation</span>
               </div>
               <h1 class="paper-title">Enhancing Robotic System Robustness Via Lyapunov Exponent-Based Optimization</h1>
-              <p class="hook">We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.</p>
+              <p class="hook">Lyapunov exponent を differentiable に計算し、gradient-based co-design に使う点。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.</li><li>Our method leverages differentiable simulation over extended time horizons to estimate a robustness metric based on the Lyapunov exponents.</li><li>We showcase, with an textit{ad-hoc} JAX gradient-based optimization framework, remarkable flexibility in tackling the robustness challenge.</li></ul>
+                  <ul class="bullet-list"><li>ロボットの robustness を、**Lyapunov exponent** を直接最適化することで高めようとする論文。</li><li>differentiable simulation 上で hardware / control parameter を一緒に調整し、trajectory sensitivity を下げる。</li><li>equilibrium だけでなく limit cycle にも自然に使える robustness metric なのが良い。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.</p>
+                  <p>ロボット最適化は task performance を主に見がちで、頑健性は後付けになりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.</p>
+                  <p>Lyapunov exponent を differentiable に計算し、gradient-based co-design に使う点。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>We present a novel differentiable approach to quantifying and optimizing stability in robotic systems addressing an open challenge in the field of robot analysis, control,design, and optimization.</p>
+                  <p>differentiable simulator 上で trajectory rollout を行う。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Our method leverages differentiable simulation over extended time horizons to estimate a robustness metric based on the Lyapunov exponents.</p>
+                  <p>robustness を ad-hoc metric でなく、**非線形力学の本流の量**で見ているのが強い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>robustness を「たくさん試して壊れなかった」ではなく、**力学系の性質として最適化**する発想が面白い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>発想はとても良く、co-design に一本芯を通す metric として魅力がある。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Optimization and Optimal Control</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Optimization and Optimal Control / Dynamics / Legged Robots</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Lyapunov Exponents / Robustness Metric / Co-Optimization / JAX / Contact Dynamics</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-enhancing-robotic-system-robustness-via-lyapunov-exponent-based-optimiza-5f808c03.md">Detail note</a>
@@ -2836,7 +2836,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Our method leverages differentiable simulation over extended time horizons to estimate a robustness metric based on the Lyapunov exponents.</p>
+                <p>robustness を ad-hoc metric でなく、**非線形力学の本流の量**で見ているのが強い。</p>
               </div>
             </aside>
           </div>
@@ -4037,47 +4037,47 @@
               <div class="meta-row">
                 <span class="rank-pill">59 / 60</span>
                 <span class="chip group-chip">Visual-Inertial Odometry</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Legged Robotics</span>
+                <span class="chip task-chip">Odometry</span><span class="chip task-chip">Exoskeleton Robotics</span><span class="chip task-chip">Elevation Mapping</span><span class="chip task-chip">Sensor Fusion</span>
               </div>
               <h1 class="paper-title">Leg Exoskeleton Odometry Using a Limited FOV Depth Sensor</h1>
-              <p class="hook">To address this, we propose a novel odometry algorithm that integrates proprioceptive data from the exoskeleton with point clouds from a depth camera to produce accurate elevation maps despite these limitations.</p>
+              <p class="hook">点群を直接 point cloud map に合わせるのでなく、**elevation map へ ICP** する構成。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>For leg exoskeletons to operate effectively in real-world environments, they must be able to perceive and understand the terrain around them.</li><li>However, unlike other legged robots, exoskeletons face specific constraints on where depth sensors can be mounted due to the presence of a human user.</li><li>These constraints lead to a limited Field Of View (FOV) and greater sensor motion, making odometry particularly challenging.</li></ul>
+                  <ul class="bullet-list"><li>exoskeleton に載せた **limited-FOV depth sensor** 向けの odometry / elevation mapping 論文。</li><li>proprioceptive EKF と、**point-cloud-to-elevation-map ICP** を組み合わせて pose を補正している。</li><li>ICP covariance に normal uncertainty まで入れる点が技術的に一番おいしい。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>For leg exoskeletons to operate effectively in real-world environments, they must be able to perceive and understand the terrain around them.</p>
+                  <p>exoskeleton はセンサを head/chest に積みにくく、膝上あたりの limited FOV 深度カメラになりがち。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To address this, we propose a novel odometry algorithm that integrates proprioceptive data from the exoskeleton with point clouds from a depth camera to produce accurate elevation maps despite these limitations.</p>
+                  <p>点群を直接 point cloud map に合わせるのでなく、**elevation map へ ICP** する構成。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Our method builds on an extended Kalman filter (EKF) to fuse kinematic and inertial measurements, while incorporating a tailored iterative closest point (ICP) algorithm to register new point clouds with the elevation map.</p>
+                  <p>joint encoder と IMU から EKF で proprioceptive pose を推定する。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>Experimental validation with a leg exoskeleton demonstrates that our approach reduces drift and enhances the quality of elevation maps compared to a purely proprioceptive baseline, while also outperforming a more traditional point cloud map-based variant.</p>
+                  <p>platform 制約をよく見ていて、**rich map ではなく elevation map に寄せる**判断が現実的。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                  <p>exoskeleton robotics の sensing 問題を、**ICP / EKF / elevation map** で堅く解いている。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                  <p>センサが悪い場所にしか置けない、という exoskeleton らしい難しさがよく出ている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Visual-Inertial Odometry</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Sensor Fusion / Mapping / Prosthetics and Exoskeletons</strong></div>
+                <div class="fact"><span>Keywords</span><strong>ICP / Elevation Map / EKF / Limited FOV / Covariance Estimation / Exoskeleton</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-leg-exoskeleton-odometry-using-a-limited-fov-depth-sensor-b8ea749d.md">Detail note</a>
@@ -4090,7 +4090,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>Experimental validation with a leg exoskeleton demonstrates that our approach reduces drift and enhances the quality of elevation maps compared to a purely proprioceptive baseline, while also outperforming a more traditional point cloud map-based variant.</p>
+                <p>platform 制約をよく見ていて、**rich map ではなく elevation map に寄せる**判断が現実的。</p>
               </div>
             </aside>
           </div>
