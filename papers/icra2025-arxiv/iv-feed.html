@@ -275,47 +275,47 @@
               <div class="meta-row">
                 <span class="rank-pill">02 / 24</span>
                 <span class="chip group-chip">Localization / Re-localization</span>
-                <span class="chip task-chip">Localization</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Visual Localization</span><span class="chip task-chip">Uncertainty Quantification</span><span class="chip task-chip">Bayesian Filtering</span><span class="chip task-chip">Autonomous Driving Localization</span>
               </div>
               <h1 class="paper-title">Semantic and Feature Guided Uncertainty Quantification of Visual Localization for Autonomous Vehicles</h1>
-              <p class="hook">The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</p>
+              <p class="hook">localization result の後段に、**フレーム単位の uncertainty predictor** を外付けしている。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</li><li>This paper develops an uncertainty quantification approach in the context of visual localization for autonomous driving, where locations are selected based on images.</li><li>Key to our approach is to learn the measurement uncertainty using light-weight sensor error model, which maps both image feature and semantic information to 2-dimensional error distribution.</li></ul>
+                  <ul class="bullet-list"><li>visual localization の推定値そのものより、**その測定誤差分布を学習して Bayesian filter に渡す**ことを主題にした論文。</li><li>keypoint / matching score / semantic class を入力にして、各フレームごとの **2D error distribution** を KSE-Net で予測する。</li><li>単一 Gaussian でなく **Gaussian mixture** を使うことで、夜間や雪で出やすい長い裾の誤差を吸収し、Ithaca365 で gating と localization を安定化している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</p>
+                  <p>自動運転の visual localization は、推定位置が出ても **その信頼度をどれだけ正しく見積もれるか** が安全側の挙動に直結する。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</p>
+                  <p>localization result の後段に、**フレーム単位の uncertainty predictor** を外付けしている。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Both the uncertainty quantification of the sensor+network is evaluated, along with Bayesian localization filters using unique sensor gating method.</p>
+                  <p>ベースの localization pipeline は NetVLAD + SuperPoint / SuperGlue 系で query-reference 対応を作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We demonstrate the accuracy of our uncertainty prediction framework using the Ithaca365 dataset, which includes variations in lighting and weather (sunny, night, snowy).</p>
+                  <p>不確実性を「あとで calibration する」のではなく、**localization module の出力条件に応じて変える**点が実務的。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                  <p>学習は使っているが、主眼は「deep output をどう filter に接続するか」という **system integration** にある。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                  <p>かなり良い折衷案で、network を増やして accuracy を盛るというより、**filter が壊れにくい learned localization** を作ろうとしているのが好印象。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Localization 4</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Localization / Sensor Fusion / Deep Learning for Visual Perception</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Gaussian Mixture Model / KSE-Net / Sensor Error Model / Gating / Ithaca365</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-semantic-and-feature-guided-uncertainty-quantification-of-visual-localization-for-autonomous-vehicles-5366ee25.md">Detail note</a>
@@ -328,7 +328,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We demonstrate the accuracy of our uncertainty prediction framework using the Ithaca365 dataset, which includes variations in lighting and weather (sunny, night, snowy).</p>
+                <p>不確実性を「あとで calibration する」のではなく、**localization module の出力条件に応じて変える**点が実務的。</p>
               </div>
             </aside>
           </div>
@@ -671,47 +671,47 @@
               <div class="meta-row">
                 <span class="rank-pill">08 / 24</span>
                 <span class="chip group-chip">Maps / Topology / Driving Structure</span>
-                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Lane Topology Extraction</span><span class="chip task-chip">Mapless Autonomous Driving Perception</span><span class="chip task-chip">Neuro-Symbolic Reasoning</span><span class="chip task-chip">Vision-Language Reasoning</span>
               </div>
               <h1 class="paper-title">Chameleon: Fast-Slow Neuro-Symbolic Lane Topology Extraction</h1>
-              <p class="hook">To this end, we propose a fast-slow neuro-symbolic lane topology extraction algorithm, named Chameleon, which alternates between a fast system that directly reasons over detected instances using synthesized programs and a slow system that utilizes a VLM with a chainof-thought design to handle corner cases.</p>
+              <p class="hook">simple case を処理する **fast system** と、corner case を処理する **slow system** を分離している。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Lane topology extraction involves detecting lanes and traffic elements and determining their relationships, a key perception task for mapless autonomous driving.</li><li>This task requires complex reasoning, such as determining whether it is possible to turn left into a specific lane.</li><li>To address this challenge, we introduce neuro-symbolic methods powered by visionlanguage foundation models (VLMs).</li></ul>
+                  <ul class="bullet-list"><li>lane topology extraction を、**fast symbolic path と slow VLM reasoning path** に分けて解く neuro-symbolic 論文。</li><li>単純ケースは合成プログラムで高速に処理し、交差点などの corner case だけを **VLM + chain-of-thought** に回す。</li><li>全部を dense visual prompting で解くより現実的で、OpenLane-V2 で few-shot ベースでもかなり戦える構成にしている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Lane topology extraction involves detecting lanes and traffic elements and determining their relationships, a key perception task for mapless autonomous driving.</p>
+                  <p>lane topology extraction は、lane や traffic element を検出するだけでなく、**どの lane がどこへつながるか** まで推論しないといけない。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To this end, we propose a fast-slow neuro-symbolic lane topology extraction algorithm, named Chameleon, which alternates between a fast system that directly reasons over detected instances using synthesized programs and a slow system that utilizes a VLM with a chainof-thought design to handle corner cases.</p>
+                  <p>simple case を処理する **fast system** と、corner case を処理する **slow system** を分離している。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>To address this challenge, we introduce neuro-symbolic methods powered by visionlanguage foundation models (VLMs).</p>
+                  <p>まず lane / traffic element detector でインスタンスを取る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We evaluate the method on the OpenLane-v2 dataset, showing consistent improvements across various baseline detectors.</p>
+                  <p>VLM を使うが、**全部を expensive reasoning にしない**ので、計算コストのバランスが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>AI 寄りの論文だが、評価設定やタスク設計を比較対象として読む価値はある。</p>
+                  <p>AI-heavy な論文だが、「どの部分を symbolic に残し、どの部分だけ foundation model に任せるか」という設計が面白い。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、AI 系の流れを把握する比較対象として押さえておく価値がありそう。</p>
+                  <p>VLM を使った IV 論文の中では、わりと筋が良い部類で、「全部を end-to-end にしない」判断に好感が持てる。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>AI-heavy</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Cognitive Modeling / Object Detection / Segmentation and Categorization</strong></div>
+                <div class="fact"><span>Keywords</span><strong>OpenLane-V2 / VLM / Program Synthesis / Chain-of-Thought / Lane-Element Relations</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-chameleon-fast-slow-neuro-symbolic-lane-topology-extraction-71396389.md">Detail note</a>
@@ -724,7 +724,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We evaluate the method on the OpenLane-v2 dataset, showing consistent improvements across various baseline detectors.</p>
+                <p>VLM を使うが、**全部を expensive reasoning にしない**ので、計算コストのバランスが良い。</p>
               </div>
             </aside>
           </div>
@@ -737,47 +737,47 @@
               <div class="meta-row">
                 <span class="rank-pill">09 / 24</span>
                 <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
-                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">3D Occupancy Prediction</span><span class="chip task-chip">Autonomous Driving Perception</span><span class="chip task-chip">Multi-Camera Scene Understanding</span><span class="chip task-chip">Efficient 3D Representation Learning</span>
               </div>
               <h1 class="paper-title">H3O: Hyper-Efficient 3D Occupancy Prediction with Heterogeneous Supervision</h1>
-              <p class="hook">We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+              <p class="hook">画像特徴から 3D voxel feature を作る段で、重い attention ではなく **projection + bilinear sampling + averaging** を使っている。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>3D occupancy prediction has recently emerged as a new paradigm for holistic 3D scene understanding and provides valuable information for downstream planning in autonomous driving.</li><li>Most existing methods, however, are computationally expensive, requiring costly attention-based 2D-3D transformation and 3D feature processing.</li><li>In this paper, we present a novel 3D occupancy prediction approach, named H3O, which features highly efficient architecture designs and incurs a significantly lower computational cost as compared to the current state-of-the-art methods.</li></ul>
+                  <ul class="bullet-list"><li>3D occupancy prediction を、**cross-attention を減らした軽量 view transformation** と heterogeneous supervision で効率化した論文。</li><li>camera feature を 3D grid へ投影して平均化するかなり素朴な構成だが、深度・セマンティック・法線の **2D teacher** を volume rendering で入れることで精度を戻している。</li><li>Occ3D-nuScenes / SemanticKITTI で、計算量をかなり落としつつ occupancy 精度を維持・改善する、という方向性が明快。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>3D occupancy prediction has recently emerged as a new paradigm for holistic 3D scene understanding and provides valuable information for downstream planning in autonomous driving.</p>
+                  <p>3D occupancy は planning に使いやすい表現だが、既存法は 2D-3D cross-attention や heavy 3D processing でかなり重い。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+                  <p>画像特徴から 3D voxel feature を作る段で、重い attention ではなく **projection + bilinear sampling + averaging** を使っている。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Most existing methods, however, are computationally expensive, requiring costly attention-based 2D-3D transformation and 3D feature processing.</p>
+                  <p>multi-camera image から 2D backbone feature を取り、各 3D grid point を各カメラへ投影して特徴をサンプルする。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+                  <p>メッセージが明快で、**効率と精度のトレードオフ改善**に集中している。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                  <p>AI 依存は強いが、「どこを重くし、どこを教師信号で補うか」という **system design** が非常にわかりやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                  <p>派手な新モジュールより、**軽くして教師を増やす**方向で勝っているのが実務寄りで面白い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 2</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Semantic Scene Understanding / Deep Learning for Visual Perception / Computer Vision for Automation</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Occupancy Grid / Volume Rendering / Heterogeneous Supervision / Occ3D-nuScenes / SemanticKITTI</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-h3o-hyper-efficient-3d-occupancy-prediction-with-heterogeneous-supervision-b029e3c3.md">Detail note</a>
@@ -790,7 +790,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+                <p>メッセージが明快で、**効率と精度のトレードオフ改善**に集中している。</p>
               </div>
             </aside>
           </div>
@@ -869,47 +869,47 @@
               <div class="meta-row">
                 <span class="rank-pill">11 / 24</span>
                 <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
-                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+                <span class="chip task-chip">Camera-Radar Fusion</span><span class="chip task-chip">3D Object Detection</span><span class="chip task-chip">BEV Perception</span><span class="chip task-chip">Autonomous Driving Perception</span>
               </div>
               <h1 class="paper-title">CRAB: Camera-Radar Fusion for Reducing Depth Ambiguity in Backward Projection Based View Transformation</h1>
-              <p class="hook">In this paper, to address the aforementioned limitations, we propose a novel camera-radar fusion-based 3D object detection and segmentation model named CRAB (Camera-Radar fusion for reducing depth Ambiguity in Backward projection-based view transformation), using a backward projection that leverages radar to mitigate depth ambiguity.</p>
+              <p class="hook">backward projection 系で見落とされがちな **same-ray depth ambiguity** を問題の中心に据えている。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Recently, camera-radar fusion-based 3D object detection methods in bird&#x27;s eye view (BEV) have gained attention due to the complementary characteristics and cost-effectiveness of these sensors.</li><li>Previous approaches using forward projection struggle with sparse BEV feature generation, while those employing backward projection overlook depth ambiguity, leading to false positives.</li><li>In this paper, to address the aforementioned limitations, we propose a novel camera-radar fusion-based 3D object detection and segmentation model named CRAB (Camera-Radar fusion for reducing depth Ambiguity in Backward projection-based view transformation), using a backward projection that leverages radar to mitigate depth ambiguity.</li></ul>
+                  <ul class="bullet-list"><li>camera-radar BEV perception で、backward projection の **depth ambiguity** を正面から潰しにいく論文。</li><li>中心は **ROSCA** と **RCSCA** の 2 モジュールで、レーダ占有とレーダコンテキストを使って BEV query の深度対応を改善する。</li><li>nuScenes で backward projection 系の camera-radar fusion 手法としてかなり強く、悪天候や夜間も意識した評価が入っている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Recently, camera-radar fusion-based 3D object detection methods in bird&#x27;s eye view (BEV) have gained attention due to the complementary characteristics and cost-effectiveness of these sensors.</p>
+                  <p>camera-only の backward projection BEV は、同じ視線上の別深度点が画像上で潰れてしまい、**同一 ray 上の物体を区別しづらい**。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>In this paper, to address the aforementioned limitations, we propose a novel camera-radar fusion-based 3D object detection and segmentation model named CRAB (Camera-Radar fusion for reducing depth Ambiguity in Backward projection-based view transformation), using a backward projection that leverages radar to mitigate depth ambiguity.</p>
+                  <p>backward projection 系で見落とされがちな **same-ray depth ambiguity** を問題の中心に据えている。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Recently, camera-radar fusion-based 3D object detection methods in bird&#x27;s eye view (BEV) have gained attention due to the complementary characteristics and cost-effectiveness of these sensors.</p>
+                  <p>カメラ側は通常の BEV pipeline で image feature と depth-related feature を作る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>When evaluated on the nuScenes open dataset, our proposed approach achieves a state-of-the-art performance among backward projection-based camera-radar fusion methods with 62.4% NDS and 54.0% mAP in 3D object detection.</p>
+                  <p>問題設定がかなりクリアで、「camera-radar fusion の何が本当に難しいか」を depth ambiguity に絞っている。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                  <p>学習ベースではあるが、核は **センサ幾何と表現設計** にある。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                  <p>camera-radar fusion 論文としてかなり読みやすく、問題設定がきれい。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 6</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Object Detection / Segmentation and Categorization / Computer Vision for Transportation</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Backward Projection / Depth Ambiguity / ROSCA / RCSCA / nuScenes / BEV Detection</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-crab-camera-radar-fusion-for-reducing-depth-ambiguity-in-backward-projection-based-view-transformation-71aa85ea.md">Detail note</a>
@@ -922,7 +922,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>When evaluated on the nuScenes open dataset, our proposed approach achieves a state-of-the-art performance among backward projection-based camera-radar fusion methods with 62.4% NDS and 54.0% mAP in 3D object detection.</p>
+                <p>問題設定がかなりクリアで、「camera-radar fusion の何が本当に難しいか」を depth ambiguity に絞っている。</p>
               </div>
             </aside>
           </div>
