@@ -12,7 +12,7 @@ from pathlib import Path
 
 
 LIST_LINK_RE = re.compile(r"\[([^\]]+)\]\((\./[^)]+\.md)\)")
-IGNORED_HEADINGS = {"Why these 12", "Good next picks"}
+IGNORED_HEADINGS = {"Why these 12", "Why these 10", "Good next picks"}
 MODE_CONFIG = {
     "non-ai60": {
         "title": "robotics-paper-notes | ICRA 2025 Non-AI 60 Feed",
@@ -28,6 +28,7 @@ MODE_CONFIG = {
         ],
         "top_links": [
             ("Top 12", "index.html"),
+            ("IV 24 feed", "papers/icra2025-arxiv/iv-feed.html"),
             ("Markdown list", "papers/icra2025-arxiv/non-ai.md"),
             ("All arXiv 521", "papers/icra2025-arxiv/index.md"),
             ("GitHub", "https://github.com/rsasaki0109/robotics-paper-notes"),
@@ -47,8 +48,49 @@ MODE_CONFIG = {
         ],
         "top_links": [
             ("Top 12 notes", "papers/icra2025-arxiv/non-ai-top.md"),
+            ("IV 24 feed", "papers/icra2025-arxiv/iv-feed.html"),
             ("Non-AI 60 feed", "papers/icra2025-arxiv/non-ai-feed.html"),
             ("Non-AI 60 list", "papers/icra2025-arxiv/non-ai.md"),
+            ("All arXiv 521", "papers/icra2025-arxiv/index.md"),
+            ("GitHub", "https://github.com/rsasaki0109/robotics-paper-notes"),
+        ],
+    },
+    "iv24": {
+        "title": "robotics-paper-notes | ICRA 2025 IV 24 Feed",
+        "description": "expanded 521 corpus から選んだ Intelligent Vehicles / Autonomous Driving 寄り 24 本を figure 付き縦スクロール feed で読む GitHub Pages",
+        "brand": "robotics-paper-notes / ICRA 2025 IV 24",
+        "eyebrow": "ICRA 2025 / expanded arXiv corpus / intelligent vehicles",
+        "hero_title": "IV 24 feed",
+        "hero_lead": "expanded 521 corpus から、Intelligent Vehicles / Autonomous Driving を軸に 24 本を curated した feed。localization / perception / prediction / planning / safety を横断して流し見する入口です。",
+        "cover_bullets": [
+            "IV 系は AI-heavy な論文も多いため、Non-AI / Hybrid / AI-heavy を混ぜて curated している",
+            "左側で TL;DR / 問題設定 / 新規性 / 手法をざっと確認する",
+            "右側の representative figure で full-stack autonomy の論点を素早く掴む",
+        ],
+        "top_links": [
+            ("IV Top 10 feed", "papers/icra2025-arxiv/iv-top-feed.html"),
+            ("IV markdown list", "papers/icra2025-arxiv/iv.md"),
+            ("All arXiv 521", "papers/icra2025-arxiv/index.md"),
+            ("Non-AI 60 feed", "papers/icra2025-arxiv/non-ai-feed.html"),
+            ("GitHub", "https://github.com/rsasaki0109/robotics-paper-notes"),
+        ],
+    },
+    "ivtop10": {
+        "title": "robotics-paper-notes | ICRA 2025 IV Top 10",
+        "description": "expanded 521 corpus を見直して選んだ ICRA 2025 Intelligent Vehicles Top 10 を縦スクロール feed で読む GitHub Pages",
+        "brand": "robotics-paper-notes / ICRA 2025 IV Top 10",
+        "eyebrow": "ICRA 2025 / intelligent vehicles / curated",
+        "hero_title": "IV Top 10 curated feed",
+        "hero_lead": "expanded 521 corpus から、まず読む価値が高い IV / autonomous driving 論文 10 本を優先順で並べた curated feed。localization / perception / planning / safety を横断して入門しやすい並びにした。",
+        "cover_bullets": [
+            "1-3 は localization / relocalization、4-6 は perception / occupancy、7-9 は prediction / planning、10 は security",
+            "各スライドは note 本文と representative figure をまとめて流し見できる",
+            "draft-first note を含むが、入口としての比較価値を優先して curated している",
+        ],
+        "top_links": [
+            ("IV Top 10 notes", "papers/icra2025-arxiv/iv-top.md"),
+            ("IV 24 feed", "papers/icra2025-arxiv/iv-feed.html"),
+            ("IV 24 list", "papers/icra2025-arxiv/iv.md"),
             ("All arXiv 521", "papers/icra2025-arxiv/index.md"),
             ("GitHub", "https://github.com/rsasaki0109/robotics-paper-notes"),
         ],

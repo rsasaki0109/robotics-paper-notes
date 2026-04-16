@@ -1,0 +1,218 @@
+[
+  {
+    "id": "2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82",
+    "group": "Localization / Re-localization",
+    "session": "Localization 1",
+    "title": "GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization",
+    "note_path": "papers/icra2025-arxiv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md",
+    "arxiv_url": "http://arxiv.org/abs/2309.11134",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-semantic-and-feature-guided-uncertainty-quantification-of-visual-localization-for-autonomous-vehicles-5366ee25",
+    "group": "Localization / Re-localization",
+    "session": "Localization 4",
+    "title": "Semantic and Feature Guided Uncertainty Quantification of Visual Localization for Autonomous Vehicles",
+    "note_path": "papers/icra2025-arxiv/2025-icra-semantic-and-feature-guided-uncertainty-quantification-of-visual-localization-for-autonomous-vehicles-5366ee25.md",
+    "arxiv_url": "http://arxiv.org/abs/2506.15851",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd",
+    "group": "Localization / Re-localization",
+    "session": "Localization 6",
+    "title": "SuperLoc: The Key to Robust LiDAR-Inertial Localization Lies in Predicting Alignment Risks",
+    "note_path": "papers/icra2025-arxiv/2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd.md",
+    "arxiv_url": "http://arxiv.org/abs/2412.02901",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf",
+    "group": "Localization / Re-localization",
+    "session": "RADAR-Based Navigation",
+    "title": "Radar Teach and Repeat: Architecture and Initial Field Testing",
+    "note_path": "papers/icra2025-arxiv/2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf.md",
+    "arxiv_url": "http://arxiv.org/abs/2409.10491",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-tdfanet-encoding-sequential-4d-radar-point-clouds-using-trajectory-guided-deformable-feature-aggregation-for-place-recognition-c4987639",
+    "group": "Localization / Re-localization",
+    "session": "Place Recognition 1",
+    "title": "TDFANet: Encoding Sequential 4D Radar Point Clouds Using Trajectory-Guided Deformable Feature Aggregation for Place Recognition",
+    "note_path": "papers/icra2025-arxiv/2025-icra-tdfanet-encoding-sequential-4d-radar-point-clouds-using-trajectory-guided-deformable-feature-aggregation-for-place-recognition-c4987639.md",
+    "arxiv_url": "http://arxiv.org/abs/2504.05103",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-evaluating-global-geo-alignment-for-precision-learned-autonomous-vehicle-localization-using-aerial-data-9b6053c2",
+    "group": "Localization / Re-localization",
+    "session": "Novel Methods for Mapping and Localization",
+    "title": "Evaluating Global Geo-Alignment for Precision Learned Autonomous Vehicle Localization Using Aerial Data",
+    "note_path": "papers/icra2025-arxiv/2025-icra-evaluating-global-geo-alignment-for-precision-learned-autonomous-vehicle-localization-using-aerial-data-9b6053c2.md",
+    "arxiv_url": "http://arxiv.org/abs/2503.13896",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-smart-advancing-scalable-map-priors-for-driving-topology-reasoning-c9d6746c",
+    "group": "Maps / Topology / Driving Structure",
+    "session": "Robot Mapping 2",
+    "title": "SMART: Advancing Scalable Map Priors for Driving Topology Reasoning",
+    "note_path": "papers/icra2025-arxiv/2025-icra-smart-advancing-scalable-map-priors-for-driving-topology-reasoning-c9d6746c.md",
+    "arxiv_url": "http://arxiv.org/abs/2502.04329",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-chameleon-fast-slow-neuro-symbolic-lane-topology-extraction-71396389",
+    "group": "Maps / Topology / Driving Structure",
+    "session": "Autonomous Vehicle Perception 1",
+    "title": "Chameleon: Fast-Slow Neuro-Symbolic Lane Topology Extraction",
+    "note_path": "papers/icra2025-arxiv/2025-icra-chameleon-fast-slow-neuro-symbolic-lane-topology-extraction-71396389.md",
+    "arxiv_url": "http://arxiv.org/abs/2503.07485",
+    "ai_dependency": "AI-heavy"
+  },
+  {
+    "id": "2025-icra-h3o-hyper-efficient-3d-occupancy-prediction-with-heterogeneous-supervision-b029e3c3",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 2",
+    "title": "H3O: Hyper-Efficient 3D Occupancy Prediction with Heterogeneous Supervision",
+    "note_path": "papers/icra2025-arxiv/2025-icra-h3o-hyper-efficient-3d-occupancy-prediction-with-heterogeneous-supervision-b029e3c3.md",
+    "arxiv_url": "http://arxiv.org/abs/2503.04059",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-occuq-exploring-efficient-uncertainty-quantification-for-3d-occupancy-prediction-9899ebaa",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 2",
+    "title": "OCCUQ: Exploring Efficient Uncertainty Quantification for 3D Occupancy Prediction",
+    "note_path": "papers/icra2025-arxiv/2025-icra-occuq-exploring-efficient-uncertainty-quantification-for-3d-occupancy-prediction-9899ebaa.md",
+    "arxiv_url": "http://arxiv.org/abs/2503.10605",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-crab-camera-radar-fusion-for-reducing-depth-ambiguity-in-backward-projection-based-view-transformation-71aa85ea",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 6",
+    "title": "CRAB: Camera-Radar Fusion for Reducing Depth Ambiguity in Backward Projection Based View Transformation",
+    "note_path": "papers/icra2025-arxiv/2025-icra-crab-camera-radar-fusion-for-reducing-depth-ambiguity-in-backward-projection-based-view-transformation-71aa85ea.md",
+    "arxiv_url": "http://arxiv.org/abs/2509.05785",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-towards-latency-aware-3d-streaming-perception-for-autonomous-driving-830ea09e",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 1",
+    "title": "Towards Latency-Aware 3D Streaming Perception for Autonomous Driving",
+    "note_path": "papers/icra2025-arxiv/2025-icra-towards-latency-aware-3d-streaming-perception-for-autonomous-driving-830ea09e.md",
+    "arxiv_url": "http://arxiv.org/abs/2504.19115",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-unveiling-the-black-box-independent-functional-module-evaluation-for-bir-d048c0fd",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 4",
+    "title": "Unveiling the Black Box: Independent Functional Module Evaluation for Bird's-Eye-View Perception Model",
+    "note_path": "papers/icra2025-arxiv/2025-icra-unveiling-the-black-box-independent-functional-module-evaluation-for-bir-d048c0fd.md",
+    "arxiv_url": "http://arxiv.org/abs/2409.11969",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-savid-spectravista-aesthetic-vision-integration-for-robust-and-discerning-3d-object-detection-in-challenging-environments-5e1ff4ff",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 6",
+    "title": "SaViD: Spectravista Aesthetic Vision Integration for Robust and Discerning 3D Object Detection in Challenging Environments",
+    "note_path": "papers/icra2025-arxiv/2025-icra-savid-spectravista-aesthetic-vision-integration-for-robust-and-discerning-3d-object-detection-in-challenging-environments-5e1ff4ff.md",
+    "arxiv_url": "http://arxiv.org/abs/2503.20614",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-enhancing-autonomous-navigation-by-imaging-hidden-objects-using-single-p-fdffe9ca",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 2",
+    "title": "Enhancing Autonomous Navigation by Imaging Hidden Objects Using Single-Photon LiDAR",
+    "note_path": "papers/icra2025-arxiv/2025-icra-enhancing-autonomous-navigation-by-imaging-hidden-objects-using-single-p-fdffe9ca.md",
+    "arxiv_url": "http://arxiv.org/abs/2410.03555",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112",
+    "group": "Perception / Occupancy / Sensor Fusion / Adverse Conditions",
+    "session": "Autonomous Vehicle Perception 3",
+    "title": "Low-Rank Adaptation-Based All-Weather Removal for Autonomous Navigation",
+    "note_path": "papers/icra2025-arxiv/2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112.md",
+    "arxiv_url": "http://arxiv.org/abs/2411.17814",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-curb-your-attention-causal-attention-gating-for-robust-trajectory-predic-c099c718",
+    "group": "Prediction / Planning / Control",
+    "session": "Tracking and Prediction 1",
+    "title": "Curb Your Attention: Causal Attention Gating for Robust Trajectory Prediction in Autonomous Driving",
+    "note_path": "papers/icra2025-arxiv/2025-icra-curb-your-attention-causal-attention-gating-for-robust-trajectory-predic-c099c718.md",
+    "arxiv_url": "http://arxiv.org/abs/2410.07191",
+    "ai_dependency": "AI-heavy"
+  },
+  {
+    "id": "2025-icra-cafe-ad-cross-scenario-adaptive-feature-enhancement-for-trajectory-plann-f3b52abb",
+    "group": "Prediction / Planning / Control",
+    "session": "Autonomous Vehicle Navigation 1",
+    "title": "CAFE-AD: Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving",
+    "note_path": "papers/icra2025-arxiv/2025-icra-cafe-ad-cross-scenario-adaptive-feature-enhancement-for-trajectory-plann-f3b52abb.md",
+    "arxiv_url": "http://arxiv.org/abs/2504.06584",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-beyond-simulation-benchmarking-world-models-for-planning-and-causality-i-cfc5e0c1",
+    "group": "Prediction / Planning / Control",
+    "session": "Autonomous Vehicle Navigation 1",
+    "title": "Beyond Simulation: Benchmarking World Models for Planning and Causality in Autonomous Driving",
+    "note_path": "papers/icra2025-arxiv/2025-icra-beyond-simulation-benchmarking-world-models-for-planning-and-causality-i-cfc5e0c1.md",
+    "arxiv_url": "http://arxiv.org/abs/2508.01922",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-actor-critic-cooperative-compensation-to-model-predictive-control-for-of-2466ad7f",
+    "group": "Prediction / Planning / Control",
+    "session": "Reinforcement Learning 2",
+    "title": "Actor-Critic Cooperative Compensation to Model Predictive Control for Off-Road Autonomous Vehicles under Unknown Dynamics",
+    "note_path": "papers/icra2025-arxiv/2025-icra-actor-critic-cooperative-compensation-to-model-predictive-control-for-of-2466ad7f.md",
+    "arxiv_url": "http://arxiv.org/abs/2503.00577",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914",
+    "group": "Prediction / Planning / Control",
+    "session": "Autonomous Vehicle Navigation 2",
+    "title": "Decentralized Vehicle Coordination: The Berkeley DeepDrive Drone Dataset and Consensus-Based Models",
+    "note_path": "papers/icra2025-arxiv/2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914.md",
+    "arxiv_url": "http://arxiv.org/abs/2209.08763",
+    "ai_dependency": "Non-AI"
+  },
+  {
+    "id": "2025-icra-cadre-controllable-and-diverse-generation-of-safety-critical-driving-sce-ca41e39e",
+    "group": "Safety / Security / Benchmarks",
+    "session": "Safe Control 1",
+    "title": "CaDRE: Controllable and Diverse Generation of Safety-Critical Driving Scenarios Using Real-World Trajectories",
+    "note_path": "papers/icra2025-arxiv/2025-icra-cadre-controllable-and-diverse-generation-of-safety-critical-driving-sce-ca41e39e.md",
+    "arxiv_url": "http://arxiv.org/abs/2403.13208",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-betty-dataset-a-multi-modal-dataset-for-full-stack-autonomy-b5170da8",
+    "group": "Safety / Security / Benchmarks",
+    "session": "Autonomous Vehicle Navigation 2",
+    "title": "BETTY Dataset: A Multi-Modal Dataset for Full-Stack Autonomy",
+    "note_path": "papers/icra2025-arxiv/2025-icra-betty-dataset-a-multi-modal-dataset-for-full-stack-autonomy-b5170da8.md",
+    "arxiv_url": "http://arxiv.org/abs/2505.07266",
+    "ai_dependency": "Hybrid"
+  },
+  {
+    "id": "2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745",
+    "group": "Safety / Security / Benchmarks",
+    "session": "Resiliency and Security 1",
+    "title": "SLAMSpoof: Practical LiDAR Spoofing Attacks on Localization Systems Guided by Scan Matching Vulnerability Analysis",
+    "note_path": "papers/icra2025-arxiv/2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745.md",
+    "arxiv_url": "http://arxiv.org/abs/2502.13641",
+    "ai_dependency": "Non-AI"
+  }
+]

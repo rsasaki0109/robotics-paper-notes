@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>robotics-paper-notes | ICRA 2025 IV 24 Feed</title>
+    <meta name="description" content="expanded 521 corpus から選んだ Intelligent Vehicles / Autonomous Driving 寄り 24 本を figure 付き縦スクロール feed で読む GitHub Pages">
+    <style>
+      :root {
+        --bg: #040816;
+        --bg-2: #091223;
+        --panel: rgba(8, 15, 30, 0.84);
+        --panel-soft: rgba(255, 255, 255, 0.05);
+        --line: rgba(255, 255, 255, 0.1);
+        --text: #f8fbff;
+        --muted: #b7c0d8;
+        --cyan: #7dd3fc;
+        --violet: #c4b5fd;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(125, 211, 252, 0.14), transparent 22rem),
+          radial-gradient(circle at top right, rgba(196, 181, 253, 0.12), transparent 26rem),
+          linear-gradient(180deg, var(--bg), var(--bg-2) 42%, #020611);
+      }
+
+      a { color: inherit; text-decoration: none; }
+      .topbar {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 30;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+        background: rgba(3, 7, 15, 0.68);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+      }
+      .brand { font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em; }
+      .toplinks { display: flex; flex-wrap: wrap; gap: 0.55rem; justify-content: flex-end; align-items: center; }
+      .toplinks a, .counter {
+        padding: 0.55rem 0.85rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+      .counter strong { color: var(--text); margin-right: 0.4rem; }
+      .feed { height: 100vh; overflow-y: auto; scroll-snap-type: y mandatory; }
+      .slide { min-height: 100vh; scroll-snap-align: start; display: grid; align-items: center; padding: 5.2rem 1rem 2rem; }
+      .card {
+        width: min(100%, 1280px);
+        margin: 0 auto;
+        padding: clamp(1.2rem, 2vw, 1.6rem);
+        border-radius: 2rem;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+      }
+      .cover .card {
+        background:
+          radial-gradient(circle at top right, rgba(125, 211, 252, 0.14), transparent 18rem),
+          radial-gradient(circle at bottom left, rgba(196, 181, 253, 0.14), transparent 22rem),
+          rgba(7, 13, 27, 0.92);
+      }
+      .eyebrow { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); }
+      .hero-title, .paper-title { margin: 0.55rem 0 0; line-height: 1.04; }
+      .hero-title { font-size: clamp(2.2rem, 7vw, 4.8rem); }
+      .paper-title { font-size: clamp(1.65rem, 3.8vw, 2.9rem); }
+      .lead, .hook, .panel p, .bullet-list li, .group-list li, .figure-fallback { color: var(--muted); line-height: 1.72; }
+      .cover-grid, .slide-grid, .summary-grid, .detail-grid, .facts { display: grid; gap: 0.95rem; }
+      .cover-grid { grid-template-columns: 1.25fr 0.75fr; margin-top: 1.2rem; }
+      .slide-grid { grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr); align-items: stretch; }
+      .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .detail-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 0.95rem; }
+      .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0.95rem; }
+      .meta-row { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: center; }
+      .rank-pill, .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .rank-pill {
+        min-width: 4.2rem;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.92rem;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .chip { padding: 0.38rem 0.7rem; background: rgba(255, 255, 255, 0.05); color: var(--muted); font-size: 0.84rem; font-weight: 700; }
+      .group-chip { color: var(--text); }
+      .task-chip { color: var(--cyan); }
+      .hook { margin: 0.95rem 0 1.05rem; font-size: clamp(0.98rem, 1.8vw, 1.1rem); }
+      .panel, .figure-card {
+        border-radius: 1.35rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--panel-soft);
+      }
+      .panel { padding: 1rem; }
+      .panel h2 { margin: 0 0 0.45rem; font-size: 0.96rem; }
+      .bullet-list { margin: 0; padding-left: 1.1rem; }
+      .bullet-list li + li { margin-top: 0.45rem; }
+      .facts .fact {
+        padding: 0.95rem 1rem;
+        border-radius: 1.15rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .fact span {
+        display: block;
+        margin-bottom: 0.3rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .fact strong { font-size: 0.96rem; line-height: 1.5; }
+      .links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1rem; }
+      .links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 700;
+      }
+      .visual-column { display: grid; gap: 0.95rem; }
+      .figure-card { display: grid; place-items: center; min-height: 360px; padding: 1rem; overflow: hidden; }
+      .figure-card img {
+        width: 100%;
+        max-height: 72vh;
+        object-fit: contain;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .figure-fallback { font-weight: 700; text-align: center; }
+      .group-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.7rem;
+      }
+      .group-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .group-list strong { color: var(--text); }
+      @media (max-width: 980px) {
+        .cover-grid, .slide-grid, .summary-grid, .detail-grid, .facts { grid-template-columns: 1fr; }
+        .figure-card { min-height: 260px; }
+      }
+      @media (max-width: 720px) {
+        .topbar { align-items: flex-start; flex-direction: column; }
+        .toplinks { justify-content: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">robotics-paper-notes / ICRA 2025 IV 24</div>
+      <div class="toplinks">
+        <a href="iv-top-feed.html">IV Top 10 feed</a><a href="iv.md">IV markdown list</a><a href="index.md">All arXiv 521</a><a href="non-ai-feed.html">Non-AI 60 feed</a><a href="https://github.com/rsasaki0109/robotics-paper-notes">GitHub</a>
+        <div class="counter"><strong id="counter">00 / 24</strong><span id="counter-group">cover</span></div>
+      </div>
+    </header>
+    <main class="feed" id="feed">
+      <section class="slide cover" data-index="0" data-group="cover">
+        <div class="card">
+          <div class="eyebrow">ICRA 2025 / expanded arXiv corpus / intelligent vehicles</div>
+          <h1 class="hero-title">IV 24 feed</h1>
+          <p class="lead">expanded 521 corpus から、Intelligent Vehicles / Autonomous Driving を軸に 24 本を curated した feed。localization / perception / prediction / planning / safety を横断して流し見する入口です。</p>
+          <div class="cover-grid">
+            <section class="panel">
+              <h2>このページの見方</h2>
+              <ul class="bullet-list"><li>IV 系は AI-heavy な論文も多いため、Non-AI / Hybrid / AI-heavy を混ぜて curated している</li><li>左側で TL;DR / 問題設定 / 新規性 / 手法をざっと確認する</li><li>右側の representative figure で full-stack autonomy の論点を素早く掴む</li></ul>
+            </section>
+            <section class="panel">
+              <h2>Topic spread</h2>
+              <ul class="group-list"><li><strong>Perception / Occupancy / Sensor Fusion / Adverse Conditions</strong><span>8 papers</span></li><li><strong>Localization / Re-localization</strong><span>6 papers</span></li><li><strong>Prediction / Planning / Control</strong><span>5 papers</span></li><li><strong>Safety / Security / Benchmarks</strong><span>3 papers</span></li><li><strong>Maps / Topology / Driving Structure</strong><span>2 papers</span></li></ul>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" id="2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82" data-index="1" data-group="Localization / Re-localization">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">01 / 24</span>
+                <span class="chip group-chip">Localization / Re-localization</span>
+                <span class="chip task-chip">Localization</span><span class="chip task-chip">GNSS Fusion</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Sensor Fusion</span>
+              </div>
+              <h1 class="paper-title">GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization</h1>
+              <p class="hook">センサ周波数に依存しない **time-centric** な因子グラフ構築にして、推定時刻を任意に選べるようにした点。</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>都市峡谷やトンネルで GNSS が壊れても動くように、連続時間の因子グラフで GNSS・IMU・速度・LiDAR odometry をまとめて融合する `gnssFGO` を提案している。</li><li>Gaussian process による連続時間軌跡表現を使うので、非同期センサを無理に同期させず、任意時刻の状態を補間して因子を張れる。</li><li>Aachen の 17 km シーケンスでは、tight coupling で平均 2D 誤差 0.48 m を出しており、GNSS 劣化区間で LiDAR 中心の従来法よりかなり粘る。</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>都市環境では GNSS が multipath や NLOS で壊れやすく、LiDAR 側もトンネルや退化区間で外すので、単一センサ主導の localization だと破綻しやすい。</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>センサ周波数に依存しない **time-centric** な因子グラフ構築にして、推定時刻を任意に選べるようにした点。</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>軌跡は GP prior 付きの連続時間状態列として表現し、測定時刻に厳密な state がなくても補間して残差評価する。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>非同期センサ融合をかなり自然に扱えていて、実ロボットの現実的な timestamp ずれ・周波数差に強い。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>localization を「どのセンサを何時刻の状態に結び付けるか」という因子設計の問題として学べる。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>GNSS + LiDAR の論文の中でも、単に精度が良いだけでなく「非同期センサをどう graph に入れるか」が主題になっていて学びやすい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Localization 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Continuous-Time FGO / Gaussian Process / Tight Coupling / GNSS Pseudorange / Doppler</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2309.11134">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-gnss-multi-sensor-fusion-using-continuous-time-factor-graph-optimization-9a389d82.png" alt="GNSS/Multi-Sensor Fusion Using Continuous-Time Factor Graph Optimization for Robust Localization representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>非同期センサ融合をかなり自然に扱えていて、実ロボットの現実的な timestamp ずれ・周波数差に強い。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-semantic-and-feature-guided-uncertainty-quantification-of-visual-localization-for-autonomous-vehicles-5366ee25" data-index="2" data-group="Localization / Re-localization">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">02 / 24</span>
+                <span class="chip group-chip">Localization / Re-localization</span>
+                <span class="chip task-chip">Localization</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">Semantic and Feature Guided Uncertainty Quantification of Visual Localization for Autonomous Vehicles</h1>
+              <p class="hook">The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</li><li>This paper develops an uncertainty quantification approach in the context of visual localization for autonomous driving, where locations are selected based on images.</li><li>Key to our approach is to learn the measurement uncertainty using light-weight sensor error model, which maps both image feature and semantic information to 2-dimensional error distribution.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>The uncertainty quantification of sensor measurements coupled with deep learning networks is crucial for many robotics systems, especially for safety-critical applications such as self-driving cars.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Both the uncertainty quantification of the sensor+network is evaluated, along with Bayesian localization filters using unique sensor gating method.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We demonstrate the accuracy of our uncertainty prediction framework using the Ithaca365 dataset, which includes variations in lighting and weather (sunny, night, snowy).</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Localization 4</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization / Sensor Fusion / Deep Learning for Visual Perception</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-semantic-and-feature-guided-uncertainty-quantification-of-visual-localization-for-autonomous-vehicles-5366ee25.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2506.15851">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-semantic-and-feature-guided-uncertainty-quantification-of-visual-localization-for-autonomous-vehicles-5366ee25.png" alt="Semantic and Feature Guided Uncertainty Quantification of Visual Localization for Autonomous Vehicles representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We demonstrate the accuracy of our uncertainty prediction framework using the Ithaca365 dataset, which includes variations in lighting and weather (sunny, night, snowy).</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd" data-index="3" data-group="Localization / Re-localization">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">03 / 24</span>
+                <span class="chip group-chip">Localization / Re-localization</span>
+                <span class="chip task-chip">SLAM</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">State Estimation</span>
+              </div>
+              <h1 class="paper-title">SuperLoc: The Key to Robust LiDAR-Inertial Localization Lies in Predicting Alignment Risks</h1>
+              <p class="hook">point correspondence の Jacobian から、最適化前に **alignment risk** を計算する予測的な退化検知。</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>LiDAR localization の失敗を ICP の後で検知するのでなく、**最適化前に alignment risk を予測**して回避する `SuperLoc` を提案している。</li><li>point-plane 対応の Jacobian から各自由度の観測性を推定し、退化方向だけ代替 odometry の拘束を強める能動的 sensor fusion が肝。</li><li>洞窟・長廊下・階段のような退化環境で大きく効いており、従来の Hessian 事後解析よりかなり実用寄り。</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>map-based LiDAR localization は、幾何特徴が弱い環境で ICP が不安定になりやすい。</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>point correspondence の Jacobian から、最適化前に **alignment risk** を計算する予測的な退化検知。</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>point-to-plane 対応の Jacobian を解析し、X/Y/Z/Roll/Pitch/Yaw 方向の観測可能性を評価する。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>退化を後追いでなく事前に見るので、安全側に寄せやすい。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>localization failure を「最適化器の不調」ではなく「どの自由度が観測されていないか」で考えられる。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>退化問題への向き合い方が良く、LiDAR localization の壊れ方をかなり実務的に捉えている。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Localization 6</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>LiDAR Localization / Alignment Risk / Observability / Degeneracy / Sensor Fusion</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2412.02901">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-superloc-the-key-to-robust-lidar-inertial-localization-lies-in-predicting-alignment-risks-450d6bdd.png" alt="SuperLoc: The Key to Robust LiDAR-Inertial Localization Lies in Predicting Alignment Risks representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>退化を後追いでなく事前に見るので、安全側に寄せやすい。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf" data-index="4" data-group="Localization / Re-localization">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">04 / 24</span>
+                <span class="chip group-chip">Localization / Re-localization</span>
+                <span class="chip task-chip">Radar Navigation</span><span class="chip task-chip">Teach and Repeat</span><span class="chip task-chip">Off-Road Autonomy</span><span class="chip task-chip">Localization</span>
+              </div>
+              <h1 class="paper-title">Radar Teach and Repeat: Architecture and Initial Field Testing</h1>
+              <p class="hook">FMCW radar を使った **closed-loop teach and repeat** の一式アーキテクチャ。</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>FMCW radar だけで **teach and repeat** を閉ループ実証した off-road navigation 論文。</li><li>continuous-time ICP と高レート gyro 補間で、4 Hz radar でも path tracking を成立させている。</li><li>LiDAR より精度は落ちるが、**dust / fog / darkness に強い sensor choice** として radar を現実的に評価しているのが良い。</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>LiDAR や camera は悪天候・粉塵・暗所でつらく、GPS も当てにできない環境がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>FMCW radar を使った **closed-loop teach and repeat** の一式アーキテクチャ。</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>teach phase では人が運転しながら radar scan から local submap を作り、odometry でつなぐ。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>「radar が使えるか」を demo でなく **実際の自律走行距離**で見せている。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>radar autonomy を learned perception ではなく、**ICP / gyro fusion / controller** で堅く組んでいる。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>method novelty は大きくないが、「radar だけで本当に走れるのか」にちゃんと答えているのが価値。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>RADAR-Based Navigation</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>FMCW Radar / ICP / Teach-and-Repeat / Gyro Fusion / Path Tracking</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2409.10491">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-radar-teach-and-repeat-architecture-and-initial-field-testing-ef4907cf.png" alt="Radar Teach and Repeat: Architecture and Initial Field Testing representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>「radar が使えるか」を demo でなく **実際の自律走行距離**で見せている。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-tdfanet-encoding-sequential-4d-radar-point-clouds-using-trajectory-guided-deformable-feature-aggregation-for-place-recognition-c4987639" data-index="5" data-group="Localization / Re-localization">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">05 / 24</span>
+                <span class="chip group-chip">Localization / Re-localization</span>
+                <span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Motion Planning</span>
+              </div>
+              <h1 class="paper-title">TDFANet: Encoding Sequential 4D Radar Point Clouds Using Trajectory-Guided Deformable Feature Aggregation for Place Recognition</h1>
+              <p class="hook">Real-world experimental results validate the feasibility of the proposed method and demonstrate its robustness in handling dynamic environments.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Place recognition is essential for achieving closed-loop or global positioning in autonomous vehicles and mobile robots.</li><li>Despite recent advancements in place recognition using 2D cameras or 3D LiDAR, it remains to be seen how to use 4D radar for place recognition - an increasingly popular sensor for its robustness against adverse weather and lighting conditions.</li><li>Compared to LiDAR point clouds, radar data are drastically sparser, noisier and in much lower resolution, which hampers their ability to effectively represent scenes, posing significant challenges for 4D radar-based place recognition.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Place recognition is essential for achieving closed-loop or global positioning in autonomous vehicles and mobile robots.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Real-world experimental results validate the feasibility of the proposed method and demonstrate its robustness in handling dynamic environments.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Real-world experimental results validate the feasibility of the proposed method and demonstrate its robustness in handling dynamic environments.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Real-world experimental results validate the feasibility of the proposed method and demonstrate its robustness in handling dynamic environments.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Place Recognition 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization / Autonomous Vehicle Navigation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-tdfanet-encoding-sequential-4d-radar-point-clouds-using-trajectory-guided-deformable-feature-aggregation-for-place-recognition-c4987639.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2504.05103">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-tdfanet-encoding-sequential-4d-radar-point-clouds-using-trajectory-guided-deformable-feature-aggregation-for-place-recognition-c4987639.png" alt="TDFANet: Encoding Sequential 4D Radar Point Clouds Using Trajectory-Guided Deformable Feature Aggregation for Place Recognition representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Real-world experimental results validate the feasibility of the proposed method and demonstrate its robustness in handling dynamic environments.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-evaluating-global-geo-alignment-for-precision-learned-autonomous-vehicle-localization-using-aerial-data-9b6053c2" data-index="6" data-group="Localization / Re-localization">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">06 / 24</span>
+                <span class="chip group-chip">Localization / Re-localization</span>
+                <span class="chip task-chip">Localization</span><span class="chip task-chip">Aerial Robotics</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">Evaluating Global Geo-Alignment for Precision Learned Autonomous Vehicle Localization Using Aerial Data</h1>
+              <p class="hook">Recently there has been growing interest in the use of aerial and satellite map data for autonomous vehicles, primarily due to its potential for significant cost reduction and enhanced scalability.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Recently there has been growing interest in the use of aerial and satellite map data for autonomous vehicles, primarily due to its potential for significant cost reduction and enhanced scalability.</li><li>Despite the advantages, aerial data also comes with challenges such as a sensor-modality gap and a viewpoint difference gap.</li><li>Learned localization methods have shown promise for overcoming these challenges to provide precise metric localization for autonomous vehicles.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Recently there has been growing interest in the use of aerial and satellite map data for autonomous vehicles, primarily due to its potential for significant cost reduction and enhanced scalability.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Recently there has been growing interest in the use of aerial and satellite map data for autonomous vehicles, primarily due to its potential for significant cost reduction and enhanced scalability.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Learned localization methods have shown promise for overcoming these challenges to provide precise metric localization for autonomous vehicles.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Finally, we evaluate a learned localization system using the data alignment methods on a comprehensive (1600km) autonomous vehicle dataset and demonstrate localization error below 0.3m and 0.5�?sufficient for autonomous vehicle applications.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Novel Methods for Mapping and Localization</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization / Mapping / Intelligent Transportation Systems</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-evaluating-global-geo-alignment-for-precision-learned-autonomous-vehicle-localization-using-aerial-data-9b6053c2.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.13896">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-evaluating-global-geo-alignment-for-precision-learned-autonomous-vehicle-localization-using-aerial-data-9b6053c2.png" alt="Evaluating Global Geo-Alignment for Precision Learned Autonomous Vehicle Localization Using Aerial Data representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Finally, we evaluate a learned localization system using the data alignment methods on a comprehensive (1600km) autonomous vehicle dataset and demonstrate localization error below 0.3m and 0.5�?sufficient for autonomous vehicle applications.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-smart-advancing-scalable-map-priors-for-driving-topology-reasoning-c9d6746c" data-index="7" data-group="Maps / Topology / Driving Structure">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">07 / 24</span>
+                <span class="chip group-chip">Maps / Topology / Driving Structure</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">SMART: Advancing Scalable Map Priors for Driving Topology Reasoning</h1>
+              <p class="hook">To address this, we propose SMART, a scalable solution that leverages easily available standard-definition (SD) and satellite maps to learn a map prior model, supervised by large-scale geo-referenced high-definition (HD) maps independent of sensor settings.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Topology reasoning is crucial for autonomous driving as it enables comprehensive understanding of connectivity and relationships between lanes and traffic elements.</li><li>While recent approaches have shown success in perceiving driving topology using vehicle-mounted sensors, their scalability is hindered by the reliance on training data captured by consistent sensor configurations.</li><li>We identify that the key factor in scalable lane perception and topology reasoning is the elimination of this sensor-dependent feature.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Topology reasoning is crucial for autonomous driving as it enables comprehensive understanding of connectivity and relationships between lanes and traffic elements.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To address this, we propose SMART, a scalable solution that leverages easily available standard-definition (SD) and satellite maps to learn a map prior model, supervised by large-scale geo-referenced high-definition (HD) maps independent of sensor settings.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Extensive experiments further demonstrate that SMART can be seamlessly integrated into any online topology reasoning method, yielding significant improvements by up to 28% on the OpenLane-V2 benchmark.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Extensive experiments further demonstrate that SMART can be seamlessly integrated into any online topology reasoning method, yielding significant improvements by up to 28% on the OpenLane-V2 benchmark.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Robot Mapping 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Mapping / Computer Vision for Transportation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-smart-advancing-scalable-map-priors-for-driving-topology-reasoning-c9d6746c.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2502.04329">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-smart-advancing-scalable-map-priors-for-driving-topology-reasoning-c9d6746c.png" alt="SMART: Advancing Scalable Map Priors for Driving Topology Reasoning representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Extensive experiments further demonstrate that SMART can be seamlessly integrated into any online topology reasoning method, yielding significant improvements by up to 28% on the OpenLane-V2 benchmark.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-chameleon-fast-slow-neuro-symbolic-lane-topology-extraction-71396389" data-index="8" data-group="Maps / Topology / Driving Structure">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">08 / 24</span>
+                <span class="chip group-chip">Maps / Topology / Driving Structure</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">Chameleon: Fast-Slow Neuro-Symbolic Lane Topology Extraction</h1>
+              <p class="hook">To this end, we propose a fast-slow neuro-symbolic lane topology extraction algorithm, named Chameleon, which alternates between a fast system that directly reasons over detected instances using synthesized programs and a slow system that utilizes a VLM with a chainof-thought design to handle corner cases.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Lane topology extraction involves detecting lanes and traffic elements and determining their relationships, a key perception task for mapless autonomous driving.</li><li>This task requires complex reasoning, such as determining whether it is possible to turn left into a specific lane.</li><li>To address this challenge, we introduce neuro-symbolic methods powered by visionlanguage foundation models (VLMs).</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Lane topology extraction involves detecting lanes and traffic elements and determining their relationships, a key perception task for mapless autonomous driving.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To this end, we propose a fast-slow neuro-symbolic lane topology extraction algorithm, named Chameleon, which alternates between a fast system that directly reasons over detected instances using synthesized programs and a slow system that utilizes a VLM with a chainof-thought design to handle corner cases.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>To address this challenge, we introduce neuro-symbolic methods powered by visionlanguage foundation models (VLMs).</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We evaluate the method on the OpenLane-v2 dataset, showing consistent improvements across various baseline detectors.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>AI 寄りの論文だが、評価設定やタスク設計を比較対象として読む価値はある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、AI 系の流れを把握する比較対象として押さえておく価値がありそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>AI-heavy</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Cognitive Modeling / Object Detection / Segmentation and Categorization</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-chameleon-fast-slow-neuro-symbolic-lane-topology-extraction-71396389.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.07485">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-chameleon-fast-slow-neuro-symbolic-lane-topology-extraction-71396389.png" alt="Chameleon: Fast-Slow Neuro-Symbolic Lane Topology Extraction representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We evaluate the method on the OpenLane-v2 dataset, showing consistent improvements across various baseline detectors.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-h3o-hyper-efficient-3d-occupancy-prediction-with-heterogeneous-supervision-b029e3c3" data-index="9" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">09 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">H3O: Hyper-Efficient 3D Occupancy Prediction with Heterogeneous Supervision</h1>
+              <p class="hook">We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>3D occupancy prediction has recently emerged as a new paradigm for holistic 3D scene understanding and provides valuable information for downstream planning in autonomous driving.</li><li>Most existing methods, however, are computationally expensive, requiring costly attention-based 2D-3D transformation and 3D feature processing.</li><li>In this paper, we present a novel 3D occupancy prediction approach, named H3O, which features highly efficient architecture designs and incurs a significantly lower computational cost as compared to the current state-of-the-art methods.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>3D occupancy prediction has recently emerged as a new paradigm for holistic 3D scene understanding and provides valuable information for downstream planning in autonomous driving.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Most existing methods, however, are computationally expensive, requiring costly attention-based 2D-3D transformation and 3D feature processing.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Semantic Scene Understanding / Deep Learning for Visual Perception / Computer Vision for Automation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-h3o-hyper-efficient-3d-occupancy-prediction-with-heterogeneous-supervision-b029e3c3.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.04059">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-h3o-hyper-efficient-3d-occupancy-prediction-with-heterogeneous-supervision-b029e3c3.png" alt="H3O: Hyper-Efficient 3D Occupancy Prediction with Heterogeneous Supervision representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We conduct extensive experiments on the Occ3D-nuScenes and SemanticKITTI benchmarks that demonstrate the superiority of our proposed H3O.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-occuq-exploring-efficient-uncertainty-quantification-for-3d-occupancy-prediction-9899ebaa" data-index="10" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">10 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">Visual-Inertial</span><span class="chip task-chip">Calibration</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">OCCUQ: Exploring Efficient Uncertainty Quantification for 3D Occupancy Prediction</h1>
+              <p class="hook">We propose an efficient adaptation of an uncertainty estimation technique for 3D occupancy prediction.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Autonomous driving has the potential to significantly enhance productivity and provide numerous societal benefits.</li><li>Ensuring robustness in these safety-critical systems is essential, particularly when vehicles must navigate adverse weather conditions and sensor corruptions that may not have been encountered during training.</li><li>Current methods often overlook uncertainties arising from adversarial conditions or distributional shifts, limiting their real-world applicability.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Autonomous driving has the potential to significantly enhance productivity and provide numerous societal benefits.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We propose an efficient adaptation of an uncertainty estimation technique for 3D occupancy prediction.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Current methods often overlook uncertainties arising from adversarial conditions or distributional shifts, limiting their real-world applicability.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Our evaluation under various camera corruption scenarios, such as fog or missing cameras, demonstrates that our approach effectively quantifies epistemic uncertainty by assigning higher uncertainty values to unseen data.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Semantic Scene Understanding / Computer Vision for Transportation / Deep Learning for Visual Perception</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-occuq-exploring-efficient-uncertainty-quantification-for-3d-occupancy-prediction-9899ebaa.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.10605">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-occuq-exploring-efficient-uncertainty-quantification-for-3d-occupancy-prediction-9899ebaa.png" alt="OCCUQ: Exploring Efficient Uncertainty Quantification for 3D Occupancy Prediction representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Our evaluation under various camera corruption scenarios, such as fog or missing cameras, demonstrates that our approach effectively quantifies epistemic uncertainty by assigning higher uncertainty values to unseen data.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-crab-camera-radar-fusion-for-reducing-depth-ambiguity-in-backward-projection-based-view-transformation-71aa85ea" data-index="11" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">11 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">CRAB: Camera-Radar Fusion for Reducing Depth Ambiguity in Backward Projection Based View Transformation</h1>
+              <p class="hook">In this paper, to address the aforementioned limitations, we propose a novel camera-radar fusion-based 3D object detection and segmentation model named CRAB (Camera-Radar fusion for reducing depth Ambiguity in Backward projection-based view transformation), using a backward projection that leverages radar to mitigate depth ambiguity.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Recently, camera-radar fusion-based 3D object detection methods in bird&#x27;s eye view (BEV) have gained attention due to the complementary characteristics and cost-effectiveness of these sensors.</li><li>Previous approaches using forward projection struggle with sparse BEV feature generation, while those employing backward projection overlook depth ambiguity, leading to false positives.</li><li>In this paper, to address the aforementioned limitations, we propose a novel camera-radar fusion-based 3D object detection and segmentation model named CRAB (Camera-Radar fusion for reducing depth Ambiguity in Backward projection-based view transformation), using a backward projection that leverages radar to mitigate depth ambiguity.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Recently, camera-radar fusion-based 3D object detection methods in bird&#x27;s eye view (BEV) have gained attention due to the complementary characteristics and cost-effectiveness of these sensors.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>In this paper, to address the aforementioned limitations, we propose a novel camera-radar fusion-based 3D object detection and segmentation model named CRAB (Camera-Radar fusion for reducing depth Ambiguity in Backward projection-based view transformation), using a backward projection that leverages radar to mitigate depth ambiguity.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Recently, camera-radar fusion-based 3D object detection methods in bird&#x27;s eye view (BEV) have gained attention due to the complementary characteristics and cost-effectiveness of these sensors.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>When evaluated on the nuScenes open dataset, our proposed approach achieves a state-of-the-art performance among backward projection-based camera-radar fusion methods with 62.4% NDS and 54.0% mAP in 3D object detection.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素は含むが、周辺のシステム設計や問題設定の切り方には実装上の学びがある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と従来手法のつなぎ方を見る材料として良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 6</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Object Detection / Segmentation and Categorization / Computer Vision for Transportation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-crab-camera-radar-fusion-for-reducing-depth-ambiguity-in-backward-projection-based-view-transformation-71aa85ea.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2509.05785">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-crab-camera-radar-fusion-for-reducing-depth-ambiguity-in-backward-projection-based-view-transformation-71aa85ea.png" alt="CRAB: Camera-Radar Fusion for Reducing Depth Ambiguity in Backward Projection Based View Transformation representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>When evaluated on the nuScenes open dataset, our proposed approach achieves a state-of-the-art performance among backward projection-based camera-radar fusion methods with 62.4% NDS and 54.0% mAP in 3D object detection.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-towards-latency-aware-3d-streaming-perception-for-autonomous-driving-830ea09e" data-index="12" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">12 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Towards Latency-Aware 3D Streaming Perception for Autonomous Driving</h1>
+              <p class="hook">We propose a new benchmark tailored for online evaluation by considering runtime latency.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Although existing 3D perception algorithms have demonstrated significant improvements in performance, their deployment on edge devices continues to encounter critical challenges due to substantial runtime latency.</li><li>We propose a new benchmark tailored for online evaluation by considering runtime latency.</li><li>Based on the benchmark, we build a Latency-Aware 3D Streaming Perception (LASP) framework that addresses the latency issue through two primary components: 1) latency-aware history integration, which extends query propagation into a continuous process, ensuring the integration of historical data regardless of varying latency; 2) latency-aware predictive detection, a mechanism that compensates the detection results with the predicted trajectory and the posterior accessed latency.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Although existing 3D perception algorithms have demonstrated significant improvements in performance, their deployment on edge devices continues to encounter critical challenges due to substantial runtime latency.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We propose a new benchmark tailored for online evaluation by considering runtime latency.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>By incorporating the latency-aware mechanism, our method shows generalization across various latency levels, achieving an online performance that closely aligns with 80% of its offline evaluation on the Jetson AGX Orin without any acceleration techniques.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Although existing 3D perception algorithms have demonstrated significant improvements in performance, their deployment on edge devices continues to encounter critical challenges due to substantial runtime latency.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Deep Learning for Visual Perception / Sensor Fusion</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-towards-latency-aware-3d-streaming-perception-for-autonomous-driving-830ea09e.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2504.19115">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-towards-latency-aware-3d-streaming-perception-for-autonomous-driving-830ea09e.png" alt="Towards Latency-Aware 3D Streaming Perception for Autonomous Driving representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Although existing 3D perception algorithms have demonstrated significant improvements in performance, their deployment on edge devices continues to encounter critical challenges due to substantial runtime latency.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-unveiling-the-black-box-independent-functional-module-evaluation-for-bir-d048c0fd" data-index="13" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">13 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Calibration</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Unveiling the Black Box: Independent Functional Module Evaluation for Bird&#x27;s-Eye-View Perception Model</h1>
+              <p class="hook">Pioneering in the issue, we present the Independent Functional Module Evaluation for Birds-Eye-View Perception Model (BEV-IFME), a novel framework that juxtaposes the module&#x27;s feature maps against Ground Truth within a unified semantic Representation Space to quantify their similarity, thereby assessing the training maturity of individual functional modules.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>End-to-end models are emerging as the mainstream in autonomous driving perception.</li><li>Pioneering in the issue, we present the Independent Functional Module Evaluation for Birds-Eye-View Perception Model (BEV-IFME), a novel framework that juxtaposes the module&#x27;s feature maps against Ground Truth within a unified semantic Representation Space to quantify their similarity, thereby assessing the training maturity of individual functional modules.</li><li>However, the inability to meticulously deconstruct their internal mechanisms results in diminished development efficacy and impedes the establishment of trust.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>End-to-end models are emerging as the mainstream in autonomous driving perception.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Pioneering in the issue, we present the Independent Functional Module Evaluation for Birds-Eye-View Perception Model (BEV-IFME), a novel framework that juxtaposes the module&#x27;s feature maps against Ground Truth within a unified semantic Representation Space to quantify their similarity, thereby assessing the training maturity of individual functional modules.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>The core of the framework lies in the process of feature map encoding and representation aligning, facilitated by our proposed two-stage Alignment AutoEncoder, which ensures the preservation of salient information and the consistency of feature structure.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>However, the inability to meticulously deconstruct their internal mechanisms results in diminished development efficacy and impedes the establishment of trust.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 4</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Computer Vision for Automation / Deep Learning Methods / Representation Learning</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-unveiling-the-black-box-independent-functional-module-evaluation-for-bir-d048c0fd.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2409.11969">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-unveiling-the-black-box-independent-functional-module-evaluation-for-bir-d048c0fd.png" alt="Unveiling the Black Box: Independent Functional Module Evaluation for Bird&#x27;s-Eye-View Perception Model representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>However, the inability to meticulously deconstruct their internal mechanisms results in diminished development efficacy and impedes the establishment of trust.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-savid-spectravista-aesthetic-vision-integration-for-robust-and-discerning-3d-object-detection-in-challenging-environments-5e1ff4ff" data-index="14" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">14 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">LiDAR</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Software Tools</span>
+              </div>
+              <h1 class="paper-title">SaViD: Spectravista Aesthetic Vision Integration for Robust and Discerning 3D Object Detection in Challenging Environments</h1>
+              <p class="hook">We present SaViD, a novel framework comprised of a three-stage fusion alignment mechanism designed to address long-range detection challenges in the presence of natural corruption.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>The fusion of LiDAR and camera sensors has demonstrated significant effectiveness in achieving accurate detection for short-range tasks in autonomous driving.</li><li>However, this fusion approach could face challenges when dealing with long-range detection scenarios due to disparity between sparsity of LiDAR and high-resolution camera data.</li><li>Moreover, sensor corruption introduces complexities that affect the ability to maintain robustness, despite the growing adoption of sensor fusion in this domain.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>The fusion of LiDAR and camera sensors has demonstrated significant effectiveness in achieving accurate detection for short-range tasks in autonomous driving.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We present SaViD, a novel framework comprised of a three-stage fusion alignment mechanism designed to address long-range detection challenges in the presence of natural corruption.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>SaViD exhibits a robust performance improvement of 31.43% for AV2 and 16.13% for WOD in RCE value compared to other existing fusion-based methods while considering all the corruptions for both datasets.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Comprehensive experiments are carried out to showcase its robustness against 14 natural sensor corruptions.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 6</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Object Detection / Segmentation and Categorization / Autonomous Vehicle Navigation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-savid-spectravista-aesthetic-vision-integration-for-robust-and-discerning-3d-object-detection-in-challenging-environments-5e1ff4ff.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.20614">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-savid-spectravista-aesthetic-vision-integration-for-robust-and-discerning-3d-object-detection-in-challenging-environments-5e1ff4ff.png" alt="SaViD: Spectravista Aesthetic Vision Integration for Robust and Discerning 3D Object Detection in Challenging Environments representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Comprehensive experiments are carried out to showcase its robustness against 14 natural sensor corruptions.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-enhancing-autonomous-navigation-by-imaging-hidden-objects-using-single-p-fdffe9ca" data-index="15" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">15 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">LiDAR</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Enhancing Autonomous Navigation by Imaging Hidden Objects Using Single-Photon LiDAR</h1>
+              <p class="hook">We present a novel approach that leverages Non-Line-of-Sight (NLOS) sensing using single-photon LiDAR to improve visibility and enhance autonomous navigation.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Robust autonomous navigation in environments with limited visibility remains a critical challenge in robotics.</li><li>We present a novel approach that leverages Non-Line-of-Sight (NLOS) sensing using single-photon LiDAR to improve visibility and enhance autonomous navigation.</li><li>We evaluate our approach through simulations and real-world experiments on a mobile robot navigating an L-shaped corridor with hidden obstacles.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Robust autonomous navigation in environments with limited visibility remains a critical challenge in robotics.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We present a novel approach that leverages Non-Line-of-Sight (NLOS) sensing using single-photon LiDAR to improve visibility and enhance autonomous navigation.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Our method enables mobile robots to ``see around corners&quot; by utilizing multi-bounce light information, effectively expanding their perceptual range without additional infrastructure.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We evaluate our approach through simulations and real-world experiments on a mobile robot navigating an L-shaped corridor with hidden obstacles.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Deep Learning for Visual Perception</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-enhancing-autonomous-navigation-by-imaging-hidden-objects-using-single-p-fdffe9ca.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2410.03555">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-enhancing-autonomous-navigation-by-imaging-hidden-objects-using-single-p-fdffe9ca.png" alt="Enhancing Autonomous Navigation by Imaging Hidden Objects Using Single-Photon LiDAR representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We evaluate our approach through simulations and real-world experiments on a mobile robot navigating an L-shaped corridor with hidden obstacles.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112" data-index="16" data-group="Perception / Occupancy / Sensor Fusion / Adverse Conditions">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">16 / 24</span>
+                <span class="chip group-chip">Perception / Occupancy / Sensor Fusion / Adverse Conditions</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Calibration</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Low-Rank Adaptation-Based All-Weather Removal for Autonomous Navigation</h1>
+              <p class="hook">In this paper, we propose using Low-Rank Adaptation (LoRA) to efficiently adapt a pre-trained all-weather model to novel weather restoration tasks.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>In this paper, we propose using Low-Rank Adaptation (LoRA) to efficiently adapt a pre-trained all-weather model to novel weather restoration tasks.</li><li>To address this issue, we introduce a LoRA-based fine-tuning method called LoRA-Align (LoRA-A) which seeks to align the singular vectors of the fine-tuned and pre-trained weight matrices using Singular Value Decomposition (SVD).</li><li>We show that images restored with LoRA and LoRA-A can be effectively used for computer vision tasks in autonomous navigation, such as semantic segmentation and depth estimation.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>To overcome this issue, existing models must either be retrained or fine-tuned, both of which are inefficient and impractical, with retraining needing access to large datasets, and fine-tuning involving many parameters.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>In this paper, we propose using Low-Rank Adaptation (LoRA) to efficiently adapt a pre-trained all-weather model to novel weather restoration tasks.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>But this causes them to often struggle with out-of-distribution (OoD) samples or unseen degradations which limits their effectiveness for real-world autonomous navigation.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Perception 3</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Computer Vision for Automation / Autonomous Vehicle Navigation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2411.17814">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-low-rank-adaptation-based-all-weather-removal-for-autonomous-navigation-9a081112.png" alt="Low-Rank Adaptation-Based All-Weather Removal for Autonomous Navigation representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-curb-your-attention-causal-attention-gating-for-robust-trajectory-predic-c099c718" data-index="17" data-group="Prediction / Planning / Control">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">17 / 24</span>
+                <span class="chip group-chip">Prediction / Planning / Control</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Curb Your Attention: Causal Attention Gating for Robust Trajectory Prediction in Autonomous Driving</h1>
+              <p class="hook">Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</li><li>To incorporate discovered causal relationships, we propose a novel Causal Attention Gating mechanism to selectively filter information in the proposed Transformer-based architecture.</li><li>We conduct extensive experiments on two autonomous driving benchmark datasets to evaluate the robustness of our model against non-causal perturbations and its generalization capacity.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We conduct extensive experiments on two autonomous driving benchmark datasets to evaluate the robustness of our model against non-causal perturbations and its generalization capacity.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>直接の non-AI 論文ではないが、比較対象として「何を学習で置き換えているか」を把握する価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、比較対象として保持しつつ、非学習部分の設計だけでも回収したい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Tracking and Prediction 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>AI-heavy</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Intelligent Transportation Systems / Autonomous Vehicle Navigation / Autonomous Agents</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-curb-your-attention-causal-attention-gating-for-robust-trajectory-predic-c099c718.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2410.07191">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-curb-your-attention-causal-attention-gating-for-robust-trajectory-predic-c099c718.png" alt="Curb Your Attention: Causal Attention Gating for Robust Trajectory Prediction in Autonomous Driving representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We conduct extensive experiments on two autonomous driving benchmark datasets to evaluate the robustness of our model against non-causal perturbations and its generalization capacity.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-cafe-ad-cross-scenario-adaptive-feature-enhancement-for-trajectory-plann-f3b52abb" data-index="18" data-group="Prediction / Planning / Control">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">18 / 24</span>
+                <span class="chip group-chip">Prediction / Planning / Control</span>
+                <span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">CAFE-AD: Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving</h1>
+              <p class="hook">To tackle these problems, we introduce CAFE-AD, a Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving method, designed to enhance feature representation across various scenario types.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>These issues introduce challenges for imitation learning.</li><li>To tackle these problems, we introduce CAFE-AD, a Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving method, designed to enhance feature representation across various scenario types.</li><li>We evaluate our method CAFE-AD, on the challenging public nuPlan Test14-Hard closed-loop simulation benchmark.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>These issues introduce challenges for imitation learning.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To tackle these problems, we introduce CAFE-AD, a Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving method, designed to enhance feature representation across various scenario types.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>Imitation learning based planning tasks on the nuPlan dataset have gained great interest due to their potential to generate human-like driving behaviors.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We evaluate our method CAFE-AD, on the challenging public nuPlan Test14-Hard closed-loop simulation benchmark.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Navigation 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Autonomous Vehicle Navigation / Motion and Path Planning / Intelligent Transportation Systems</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-cafe-ad-cross-scenario-adaptive-feature-enhancement-for-trajectory-plann-f3b52abb.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2504.06584">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-cafe-ad-cross-scenario-adaptive-feature-enhancement-for-trajectory-plann-f3b52abb.png" alt="CAFE-AD: Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We evaluate our method CAFE-AD, on the challenging public nuPlan Test14-Hard closed-loop simulation benchmark.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-beyond-simulation-benchmarking-world-models-for-planning-and-causality-i-cfc5e0c1" data-index="19" data-group="Prediction / Planning / Control">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">19 / 24</span>
+                <span class="chip group-chip">Prediction / Planning / Control</span>
+                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Beyond Simulation: Benchmarking World Models for Planning and Causality in Autonomous Driving</h1>
+              <p class="hook">To address these cases, we propose new metrics to highlight the sensitivity of world models to uncontrollable objects and evaluate the performance of world models as pseudo-environments for policy training and analyze some state-of-the-art world models under these new metrics.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>Specifically, we analyze the metametric employed by the Waymo Open Sim-Agents Challenge (WOSAC) and compare world model predictions on standard scenarios where the agents are fully or partially controlled by the world model (partial replay).</li><li>To address these cases, we propose new metrics to highlight the sensitivity of world models to uncontrollable objects and evaluate the performance of world models as pseudo-environments for policy training and analyze some state-of-the-art world models under these new metrics.</li><li>World models have become increasingly popular in acting as learned traffic simulators.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>Specifically, we analyze the metametric employed by the Waymo Open Sim-Agents Challenge (WOSAC) and compare world model predictions on standard scenarios where the agents are fully or partially controlled by the world model (partial replay).</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>To address these cases, we propose new metrics to highlight the sensitivity of world models to uncontrollable objects and evaluate the performance of world models as pseudo-environments for policy training and analyze some state-of-the-art world models under these new metrics.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>World models have become increasingly popular in acting as learned traffic simulators.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Navigation 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Autonomous Vehicle Navigation / Autonomous Agents / Motion and Path Planning</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-beyond-simulation-benchmarking-world-models-for-planning-and-causality-i-cfc5e0c1.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2508.01922">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-beyond-simulation-benchmarking-world-models-for-planning-and-causality-i-cfc5e0c1.png" alt="Beyond Simulation: Benchmarking World Models for Planning and Causality in Autonomous Driving representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-actor-critic-cooperative-compensation-to-model-predictive-control-for-of-2466ad7f" data-index="20" data-group="Prediction / Planning / Control">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">20 / 24</span>
+                <span class="chip group-chip">Prediction / Planning / Control</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">Actor-Critic Cooperative Compensation to Model Predictive Control for Off-Road Autonomous Vehicles under Unknown Dynamics</h1>
+              <p class="hook">Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>This study presents an Actor-Critic Cooperative Compensated Model Predictive Controller (AC3MPC) designed to address unknown system dynamics.</li><li>To avoid the difficulty of modeling highly complex dynamics and ensuring real-time control feasibility and performance, this work uses deep reinforcement learning with a model predictive controller in a cooperative framework to handle unknown dynamics.</li><li>We evaluate this framework for off-road autonomous driving on unknown deformable terrains that represent sandy deformable soil, sandy and rocky soil, and cohesive clay-like deformable soil.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>This study presents an Actor-Critic Cooperative Compensated Model Predictive Controller (AC3MPC) designed to address unknown system dynamics.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>Abstract ベースでは、提案手法のコア設計を本文で要確認。</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>This study presents an Actor-Critic Cooperative Compensated Model Predictive Controller (AC3MPC) designed to address unknown system dynamics.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Our findings demonstrate that our controller statistically outperforms standalone model-based and learning-based controllers by upto 29.2% and 10.2%.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Reinforcement Learning 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Machine Learning for Robot Control / Motion Control / Autonomous Vehicle Navigation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-actor-critic-cooperative-compensation-to-model-predictive-control-for-of-2466ad7f.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2503.00577">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-actor-critic-cooperative-compensation-to-model-predictive-control-for-of-2466ad7f.png" alt="Actor-Critic Cooperative Compensation to Model Predictive Control for Off-Road Autonomous Vehicles under Unknown Dynamics representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Our findings demonstrate that our controller statistically outperforms standalone model-based and learning-based controllers by upto 29.2% and 10.2%.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914" data-index="21" data-group="Prediction / Planning / Control">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">21 / 24</span>
+                <span class="chip group-chip">Prediction / Planning / Control</span>
+                <span class="chip task-chip">Perception</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Intelligent Vehicles</span><span class="chip task-chip">Aerial Robotics</span>
+              </div>
+              <h1 class="paper-title">Decentralized Vehicle Coordination: The Berkeley DeepDrive Drone Dataset and Consensus-Based Models</h1>
+              <p class="hook">In this paper, we present a novel dataset and modeling framework designed to study motion planning in these understructured environments.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>These understructured roads pose substantial challenges for autonomous vehicle motion planning, where efficient and safe navigation relies on understanding decentralized human coordination for collision avoidance.</li><li>In this paper, we present a novel dataset and modeling framework designed to study motion planning in these understructured environments.</li><li>We demonstrate that a consensus-based modeling approach can effectively explain the emergence of priority orders observed in our dataset, and is therefore a viable framework for decentralized collision avoidance planning.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>These understructured roads pose substantial challenges for autonomous vehicle motion planning, where efficient and safe navigation relies on understanding decentralized human coordination for collision avoidance.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>In this paper, we present a novel dataset and modeling framework designed to study motion planning in these understructured environments.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>We demonstrate that a consensus-based modeling approach can effectively explain the emergence of priority orders observed in our dataset, and is therefore a viable framework for decentralized collision avoidance planning.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Navigation 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Autonomous Vehicle Navigation / Collision Avoidance / Distributed Robot Systems</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2209.08763">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-decentralized-vehicle-coordination-the-berkeley-deepdrive-drone-dataset-8a6bf914.png" alt="Decentralized Vehicle Coordination: The Berkeley DeepDrive Drone Dataset and Consensus-Based Models representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>We demonstrate that a consensus-based modeling approach can effectively explain the emergence of priority orders observed in our dataset, and is therefore a viable framework for decentralized collision avoidance planning.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-cadre-controllable-and-diverse-generation-of-safety-critical-driving-sce-ca41e39e" data-index="22" data-group="Safety / Security / Benchmarks">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">22 / 24</span>
+                <span class="chip group-chip">Safety / Security / Benchmarks</span>
+                <span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span>
+              </div>
+              <h1 class="paper-title">CaDRE: Controllable and Diverse Generation of Safety-Critical Driving Scenarios Using Real-World Trajectories</h1>
+              <p class="hook">This paper addresses this challenge by introducing a novel framework, CaDRE, to generate realistic, diverse, and controllable safety-critical scenarios.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>An outstanding challenge with simulation-based testing is the generation of safety-critical scenarios, which are essential to ensure that AVs can handle rare but potentially fatal situations.</li><li>Simulation is an indispensable tool in the development and testing of autonomous vehicles (AVs), offering an efficient and safe alternative to road testing.</li><li>The results demonstrate superior performance in generating diverse and high-quality scenarios with greater sample efficiency than existing reinforcement learning (RL) and sampling-based methods.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>An outstanding challenge with simulation-based testing is the generation of safety-critical scenarios, which are essential to ensure that AVs can handle rare but potentially fatal situations.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>This paper addresses this challenge by introducing a novel framework, CaDRE, to generate realistic, diverse, and controllable safety-critical scenarios.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>This paper addresses this challenge by introducing a novel framework, CaDRE, to generate realistic, diverse, and controllable safety-critical scenarios.</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>Simulation is an indispensable tool in the development and testing of autonomous vehicles (AVs), offering an efficient and safe alternative to road testing.</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Safe Control 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Robot Safety / Intelligent Transportation Systems / Autonomous Vehicle Navigation</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-cadre-controllable-and-diverse-generation-of-safety-critical-driving-sce-ca41e39e.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2403.13208">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-cadre-controllable-and-diverse-generation-of-safety-critical-driving-sce-ca41e39e.png" alt="CaDRE: Controllable and Diverse Generation of Safety-Critical Driving Scenarios Using Real-World Trajectories representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>Simulation is an indispensable tool in the development and testing of autonomous vehicles (AVs), offering an efficient and safe alternative to road testing.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-betty-dataset-a-multi-modal-dataset-for-full-stack-autonomy-b5170da8" data-index="23" data-group="Safety / Security / Benchmarks">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">23 / 24</span>
+                <span class="chip group-chip">Safety / Security / Benchmarks</span>
+                <span class="chip task-chip">GNSS Fusion</span><span class="chip task-chip">Perception</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">State Estimation</span>
+              </div>
+              <h1 class="paper-title">BETTY Dataset: A Multi-Modal Dataset for Full-Stack Autonomy</h1>
+              <p class="hook">We present the BETTY dataset, a large-scale, multi-modal dataset collected on several autonomous racing vehicles, targeting supervised and self-supervised state estimation, dynamics modeling, motion forecasting, perception, and more.</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>We present the BETTY dataset, a large-scale, multi-modal dataset collected on several autonomous racing vehicles, targeting supervised and self-supervised state estimation, dynamics modeling, motion forecasting, perception, and more.</li><li>Existing large-scale datasets, especially autonomous vehicle datasets, focus primarily on supervised perception, planning, and motion forecasting tasks.</li><li>Our work enables multi-modal, data-driven methods by including all sensor inputs and the outputs from the software stack, along with semantic metadata and ground truth information.</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>We present the BETTY dataset, a large-scale, multi-modal dataset collected on several autonomous racing vehicles, targeting supervised and self-supervised state estimation, dynamics modeling, motion forecasting, perception, and more.</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>We present the BETTY dataset, a large-scale, multi-modal dataset collected on several autonomous racing vehicles, targeting supervised and self-supervised state estimation, dynamics modeling, motion forecasting, perception, and more.</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>手法詳細は本文確認前のため、現時点では abstract 由来の把握に留まる。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Autonomous Vehicle Navigation 2</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Autonomous Vehicle Navigation / Data Sets for Robot Learning / Dynamics</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-betty-dataset-a-multi-modal-dataset-for-full-stack-autonomy-b5170da8.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2505.07266">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-betty-dataset-a-multi-modal-dataset-for-full-stack-autonomy-b5170da8.png" alt="BETTY Dataset: A Multi-Modal Dataset for Full-Stack Autonomy representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+      <section class="slide" id="2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745" data-index="24" data-group="Safety / Security / Benchmarks">
+        <div class="card">
+          <div class="slide-grid">
+            <div class="main-column">
+              <div class="meta-row">
+                <span class="rank-pill">24 / 24</span>
+                <span class="chip group-chip">Safety / Security / Benchmarks</span>
+                <span class="chip task-chip">Security</span><span class="chip task-chip">Localization</span><span class="chip task-chip">LiDAR</span><span class="chip task-chip">Robustness Analysis</span>
+              </div>
+              <h1 class="paper-title">SLAMSpoof: Practical LiDAR Spoofing Attacks on Localization Systems Guided by Scan Matching Vulnerability Analysis</h1>
+              <p class="hook">scan matching の Hessian / 感度解析から、点群のどの部分が pose estimation に強く効くかを測る vulnerability score。</p>
+              <div class="summary-grid">
+                <section class="panel">
+                  <h2>TL;DR</h2>
+                  <ul class="bullet-list"><li>LiDAR-based localization に対する spoofing を、scan matching の脆弱部位解析に基づいて評価した **security paper**。</li><li>論文の芯は、どの点群領域が registration を強く支配するかを測る **vulnerability score** の考え方にある。</li><li>重要なのは攻撃テクニックそのものより、**LiDAR 単独 localization は思ったより攻撃面がある**と示した点。</li></ul>
+                </section>
+                <section class="panel">
+                  <h2>何を解決？</h2>
+                  <p>これまでの LiDAR spoofing 研究は、点群を乱すだけでは localization を大きく崩せないことも多かった。</p>
+                </section>
+                <section class="panel">
+                  <h2>何が新しい？</h2>
+                  <p>scan matching の Hessian / 感度解析から、点群のどの部分が pose estimation に強く効くかを測る vulnerability score。</p>
+                </section>
+                <section class="panel">
+                  <h2>どうやってる？</h2>
+                  <p>ICP / NDT 系の registration がどの点群構造に強く依存しているかを、最適化感度の観点から解析する。</p>
+                </section>
+              </div>
+              <div class="detail-grid">
+                <section class="panel">
+                  <h2>どこが強い？</h2>
+                  <p>security 論文として、単なる脅しでなく **scan matching の構造理解**に踏み込んでいる。</p>
+                </section>
+                <section class="panel">
+                  <h2>non-AI として見る価値</h2>
+                  <p>classical localization は高精度でも、**明示的な脆弱性解析なしでは安全でない**ことがよく分かる。</p>
+                </section>
+                <section class="panel">
+                  <h2>自分の理解 / 感想</h2>
+                  <p>攻撃論文として読むより、LiDAR localization の failure / vulnerability analysis 論文として読むと価値が高い。</p>
+                </section>
+              </div>
+              <div class="facts">
+                <div class="fact"><span>Session</span><strong>Resiliency and Security 1</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
+                <div class="fact"><span>AI依存度</span><strong>Non-AI</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Localization Security / Scan Matching / Vulnerability Analysis / LiDAR / Robustness</strong></div>
+              </div>
+              <div class="links">
+                <a href="2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745.md">Detail note</a>
+                <a href="http://arxiv.org/abs/2502.13641">arXiv</a>
+              </div>
+            </div>
+            <aside class="visual-column">
+              <div class="figure-card">
+                <img src="../../assets/figures/icra2025-iv/2025-icra-slamspoof-practical-lidar-spoofing-attacks-on-localization-systems-guided-by-scan-matching-vulnerability-analysis-6aa8e745.png" alt="SLAMSpoof: Practical LiDAR Spoofing Attacks on Localization Systems Guided by Scan Matching Vulnerability Analysis representative figure" loading="lazy">
+              </div>
+              <div class="visual-meta panel">
+                <h2>読むときの観点</h2>
+                <p>security 論文として、単なる脅しでなく **scan matching の構造理解**に踏み込んでいる。</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const slides = [...document.querySelectorAll('.slide[data-index]')];
+      const counter = document.getElementById('counter');
+      const counterGroup = document.getElementById('counter-group');
+      const observer = new IntersectionObserver((entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const index = Number(visible.target.dataset.index || 0);
+        const group = visible.target.dataset.group || 'cover';
+        counter.textContent = index === 0 ? '00 / 24' : `${String(index).padStart(2, '0')} / 24`;
+        counterGroup.textContent = group;
+      }, { threshold: [0.35, 0.6, 0.85] });
+      slides.forEach((slide) => observer.observe(slide));
+    </script>
+  </body>
+</html>
