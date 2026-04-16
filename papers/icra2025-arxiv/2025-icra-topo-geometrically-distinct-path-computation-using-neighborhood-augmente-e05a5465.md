@@ -1,6 +1,6 @@
 # Topo-Geometrically Distinct Path Computation Using Neighborhood-Augmented Graph, and Its Application to Path Planning for a Tethered Robot in 3D
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv/OpenAlex metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,18 +11,20 @@
 
 ## TL;DR
 
-- In this paper, we propose an approach to compute k geodesic paths using the concept of a novel neighborhood-augmented graph, on which graph search algorithms can compute multiple optimal paths that are topo-geometrically distinct.
-- Many robotics applications benefit from being able to compute multiple geodesic paths in a given configuration space.
-- We demonstrate the application of our algorithm to planning shortest traversible paths for a tethered robot in 3D with cable-length constraint.
+- **Neighborhood-Augmented Graph** を使って、topologically だけでなく geometrically も異なる複数経路を計算する手法。
+- 明示的な homotopy invariant や複雑な 3D 幾何構造を前計算せず、**経路近傍集合の重なり具合**で経路の違いを判定するのが核。
+- tethered robot in 3D への応用まで見せていて、複数の有意味な path を出したい場面にかなり向く。
 
 ## Task
 
-* Motion Planning
-* Control
+* Multi-Path Planning
+* Topological Motion Planning
+* Tethered Robot Planning
+* 3D Path Computation
 
 ## Keywords
 
-* Motion and Path Planning / Optimization and Optimal Control / Foundations of Automation / Multi Path Planning
+* Neighborhood-Augmented Graph / Homotopy / Geodesic Path / Tether Constraint / Graph Search
 
 ## AI依存度
 
@@ -30,36 +32,54 @@
 
 ## 何を解決？
 
-* Our approach does not require complex geometric constructions, and the resulting paths are not restricted to distinct topological classes, making the algorithm suitable for problems where finding and distinguishing between geodesic paths are of interest.
+* 従来の topological path planning は、異なる homotopy class を区別するのは得意だが、同一 class の中の幾何的に違う良い経路を落としやすい。
+* しかも 3D では、homotopy invariant や skeleton をちゃんと作るのが重くて実装障壁が高い。
+* tethered robot では cable の回り込み方も効くので、「別の path が欲しい」がより切実になる。
 
 ## 何が新しい？
 
-* In this paper, we propose an approach to compute k geodesic paths using the concept of a novel neighborhood-augmented graph, on which graph search algorithms can compute multiple optimal paths that are topo-geometrically distinct.
+* 各 graph vertex に単なる位置だけでなく **path neighborhood set** を持たせる発想。
+* これにより、「同じ点に来たが別の経路として残すべきか」を、近傍集合の重なりで判定できる。
+* 低曲率領域で path の分岐が消えやすい問題に対して、**cut-point 的な補助処理**で分化を促している。
+* tether length constraint を扱う 2 段階探索へ自然につなげている。
 
 ## どうやってる？
 
-* Existing paradigm is to use topological path planning, which can compute optimal paths in distinct topological classes.
+* ベースは通常の graph search だが、探索中の各頂点に「そこへ来るまでの path neighborhood」を持たせる。
+* 新しい経路が同じ空間点へ到達しても、近傍集合が十分に違えば **別頂点コピーとして残す**。
+* 逆に近傍が重なるなら merge し、不要な重複 path を抑える。
+* tethered robot 応用では、まず cable length 内で到達可能な graph を作り、その上で goal への長さ制約つき経路を引く。
 
 ## どこが強い？
 
-* We demonstrate the application of our algorithm to planning shortest traversible paths for a tethered robot in 3D with cable-length constraint.
+* topology をガチガチに記述しなくても、**複数の意味ある経路**を取り出せるのが強い。
+* 3D で explicit homotopy machinery を避けているので、実装の心理的ハードルが下がる。
+* tethered robot という「複数経路を区別する意味が大きい」応用で価値が見えやすい。
+* 既存の graph search を拡張する設計なので、発想の再利用先が多い。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* neighborhood radius などのパラメータに依存し、設定で出る経路が変わりそう。
+* 計算時間は軽くなく、リアルタイムにガンガン回すより offline / deliberative 寄り。
+* 低曲率領域向けの補助処理はやや heuristic で、理論的に完全にきれいな話ではない。
 
 ## 関連研究との違い
 
-* 既存手法との差分は abstract だけでは粒度不足。比較設定を本文で確認したい。
+* 典型的な homotopy-based planning より、**経路の違いを invariant でなく neighborhood で見る**のが新しい。
+* PRM で複数 path をサンプリングして後から分類する方法より、探索そのものの中で path distinction を扱っている。
+* tether planning 文脈では、ケーブル長制約と経路多様性を 1 つの graph 的枠組みへ持ち込んでいるのが特徴。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* graph search と topology の間を、かなり実装しやすい形でつないでいる。
+* 「複数 path が欲しい」ときに learned diversity へ行かず、構造側で解く好例。
+* tethered robot のような niche 応用でも、コアは汎用的な planning design として読める。
 
 ## 難易度
 
-★★★（abstract 初見ベース）
+★★★★☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* かなり知的に面白い論文で、トポロジーの重さをうまく graph search 側へ寄せて吸収している。
+* path diversity をちゃんと扱いたい人には刺さるし、3D でそこまで大仰な前計算をしたくない現場には特に合いそう。

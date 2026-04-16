@@ -1,6 +1,6 @@
 # Robot Navigation in Unknown and Cluttered Workspace with Dynamical System Modulation in Starshaped Roadmap
 
-> **Draft note**: This page was auto-generated from the ICRA 2025 paper list abstract and public arXiv metadata. Human review is still needed.
+> **Updated note**: arXiv PDF をざっと読んで、auto-generated draft を手で補強したメモ。まだ完全精読ではない。
 
 | Item | Value |
 | --- | --- |
@@ -11,21 +11,20 @@
 
 ## TL;DR
 
-- Compared to conventional decomposition methods that use ellipses or polygons to represent free space, starshaped representation can better capture the natural distribution of sensor data, thereby exploiting a larger portion of traversable space.
-- This paper introduces a novel motion planning and control framework for navigating robots in unknown and cluttered environments using a dynamically constructed starshaped roadmap.
-- Our approach generates a starshaped representation of the surrounding free space from real-time sensor data using piece-wise polynomials.
+- 未知・混雑環境に対して、LiDAR 点群から **starshaped free-space roadmap** を逐次作り、DSM ベースで反応的に走る手法。
+- 楕円や凸 corridor より広い自由空間を取りやすく、**未知環境でも star-shaped region を直接つくる**のが売り。
+- frontier 管理と stuck 判定も入っていて、reactive control だけでは詰まりやすい場面に少し deliberative 要素を足している。
 
 ## Task
 
-* Visual-Inertial
-* Motion Planning
-* Control
+* Robot Navigation
+* Unknown Environment Exploration
+* Reactive Planning and Control
+* LiDAR-Based Navigation
 
 ## Keywords
 
-* Integrated Planning and Control
-* Autonomous Vehicle Navigation
-* Sensor-based Control
+* Starshaped Region / Dynamical System Modulation / Frontier Point / Roadmap / Reactive Control
 
 ## AI依存度
 
@@ -33,36 +32,53 @@
 
 ## 何を解決？
 
-* Compared to conventional decomposition methods that use ellipses or polygons to represent free space, starshaped representation can better capture the natural distribution of sensor data, thereby exploiting a larger portion of traversable space.
+* cluttered unknown environment では、free space を保守的に切る corridor 型手法だと通れる空間を狭めすぎる。
+* 一方で purely reactive な避障だけでは dead end や局所最小に弱い。
+* 本論文は、**環境をその場で starshaped region として記述しつつ、reactive control と roadmap を結ぶ**ことでこの中間を狙っている。
 
 ## 何が新しい？
 
-* To ensure safe and efficient movement within the starshaped roadmap, we propose a reactive controller based on Dynamic System Modulation (DSM).
+* LiDAR 点群から区分多項式で境界を近似し、**starshaped free-space region** をその場で構成する。
+* 複数の starshaped region を roadmap 化し、frontier point を使って未知空間へ伸ばしていく。
+* 実際の制御は DSM で行い、重なり領域の扱いや stuck 判定を含めてオンラインで更新する。
 
 ## どうやってる？
 
-* Compared to conventional decomposition methods that use ellipses or polygons to represent free space, starshaped representation can better capture the natural distribution of sensor data, thereby exploiting a larger portion of traversable space.
+* センサ点群を極座標で扱い、角度方向に piecewise polynomial を当てて free-space boundary を近似する。
+* その boundary から、中心点に対して star-shaped な領域を作り、局所 roadmap node とみなす。
+* frontier candidate を見つけて次の node を伸ばし、goal へ向かう系列を作る。
+* ロボットは DSM controller で短期目標へ向かうが、行き詰まりやすい node は捨てて別 frontier を使う。
 
 ## どこが強い？
 
-* Comprehensive evaluations in both simulations and real-world experiments show that the proposed method achieves higher success rates and reduced travel times compared to other methods.
+* star-shaped 表現のおかげで、凸 corridor より **空間を無駄なく使える**。
+* 完全な global planner ではないが、frontier / roadmap を足すことで reactive method の弱さをかなり補っている。
+* 点群処理から制御までが軽量で、実時間動作をかなり意識している。
+* 未知環境 navigation の論文として、幾何表現と controller の接続が素直。
 
 ## 弱そうなところ
 
-* abstract ベースの初稿。前提モデル、計算量、失敗ケース、パラメータ感度は本文確認が必要。
+* point cloud が疎だったり occlusion が強いと、starshaped fit 自体が不安定になりそう。
+* 2D LiDAR ベースの話なので、3D 複雑環境や高低差つき空間へはそのままでは行きにくい。
+* stuck 判定や frontier 更新は heuristic な部分もあり、難しい迷路では詰め切れていない可能性がある。
 
 ## 関連研究との違い
 
-* To ensure safe and efficient movement within the starshaped roadmap, we propose a reactive controller based on Dynamic System Modulation (DSM).
+* convex safe corridor より、**空間形状に沿いやすい free-space representation** を使っている。
+* 既存 DSM 系のように障害物形状既知前提ではなく、未知環境から online に region を作る点が違う。
+* potential field のみで抜けるのでなく、roadmap 的な離散構造を少し持ち込んでいるのが特徴。
 
 ## non-AIとして見る価値
 
-* 幾何 / 最適化 / 推定 / 制御の設計をそのまま追いやすく、実装や再利用の観点で学びが大きい。
+* point cloud から自由空間表現を作って、そのまま controller へ食わせる classical pipeline として非常に読みやすい。
+* unknown navigation を learned policy でなく、幾何 + reactive control でどこまで押せるかが見える。
+* 安全 corridor の表現設計そのものを見直すヒントになる。
 
 ## 難易度
 
-★★★☆☆（abstract 初見ベース）
+★★★☆☆
 
 ## 自分の理解/感想
 
-* 初見では、古典的な数理設計や推定器の構成を学ぶ材料としてかなり良さそう。
+* 反応型と roadmap の中間を狙った実装で、派手ではないが実機寄りの工夫が多い。
+* starshaped region を前面に出しているぶん、free-space modeling の視点で読むと面白い論文。
