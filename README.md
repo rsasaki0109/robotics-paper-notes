@@ -49,8 +49,10 @@
 ├── assets/
 │   └── figures/
 │       ├── icra2025-non-ai/
+│       ├── icra2025-iv/
 │       └── icra2025-top12/
 ├── build_icra2025_arxiv_dataset.py
+├── build_iv_selection.py
 ├── build_non_ai_selection.py
 ├── build_non_ai_feed.py
 ├── data/
@@ -58,6 +60,7 @@
 │       ├── ICRA2025_Paper_List_with_Abstract.csv
 │       ├── icra2025_arxiv_matches.csv
 │       ├── icra2025_arxiv_matches.json
+│       ├── icra2025_iv24_selection.json
 │       └── icra2025_non_ai60_selection.json
 ├── extract_paper_figures.py
 ├── extract_top12_figures.py
@@ -67,6 +70,10 @@
 │   ├── .gitkeep
 │   ├── icra2025-arxiv/
 │   │   ├── index.md
+│   │   ├── iv-feed.html
+│   │   ├── iv-top-feed.html
+│   │   ├── iv-top.md
+│   │   ├── iv.md
 │   │   ├── non-ai-feed.html
 │   │   ├── non-ai-top.md
 │   │   └── non-ai.md
@@ -77,15 +84,21 @@
 ```
 
 - `assets/figures/icra2025-non-ai/`: Non-AI 60 用に arXiv source から自動抽出した図
+- `assets/figures/icra2025-iv/`: IV 24 / IV Top 10 用に arXiv source から自動抽出した図
 - `assets/figures/icra2025-top12/`: Top 12 用に arXiv source から自動抽出した図
 - `build_icra2025_arxiv_dataset.py`: ICRA 2025 CSV と arXiv ICRA query corpus から note / index / match data を再構築するスクリプト
+- `build_iv_selection.py`: expanded 521 corpus から IV 24 / IV Top 10 を再選定するスクリプト
 - `build_non_ai_selection.py`: expanded 521 corpus から Non-AI 60 / Top 12 を再選定するスクリプト
 - `build_non_ai_feed.py`: Non-AI 60 の note と manifest から feed HTML を生成するスクリプト
-- `data/icra2025/`: 元 CSV と再構築した arXiv match data
+- `data/icra2025/`: 元 CSV と再構築した arXiv match data、および curated subset の selection JSON
 - `extract_paper_figures.py`: 任意の論文セットから代表図を自動抽出して PNG 化するスクリプト
 - `extract_top12_figures.py`: Top 12 向けの互換ラッパー
 - `papers/`: 論文ごとのまとめを1ファイルずつ追加する場所
 - `papers/icra2025-arxiv/`: ICRA 2025 の arXiv 公開済み論文の自動下書き
+- `papers/icra2025-arxiv/iv.md`: Intelligent Vehicles / Autonomous Driving の curated 24 本
+- `papers/icra2025-arxiv/iv-top.md`: IV / autonomous driving の最初に読む 10 本
+- `papers/icra2025-arxiv/iv-feed.html`: IV 24 を figure 付き縦 feed で眺めるページ
+- `papers/icra2025-arxiv/iv-top-feed.html`: IV Top 10 を figure 付き縦 feed で眺めるページ
 - `papers/icra2025-arxiv/non-ai-feed.html`: Non-AI 60 を figure 付き縦 feed で眺めるページ
 - `templates/paper.md`: 論文メモの共通テンプレート
 - `README.md`: このリポジトリの目的と運用ルール
@@ -95,6 +108,10 @@
 ## 現在の入口
 
 - `papers/icra2025-arxiv/index.md`: ICRA 2025 arXiv 下書き 521本の一覧
+- `papers/icra2025-arxiv/iv.md`: IV / autonomous driving の curated 24 本
+- `papers/icra2025-arxiv/iv-top.md`: 最初に読むべき IV Top 10
+- `papers/icra2025-arxiv/iv-feed.html`: IV 24 全体を figure 付きで眺める feed
+- `papers/icra2025-arxiv/iv-top-feed.html`: IV Top 10 を figure 付きで眺める feed
 - `papers/icra2025-arxiv/non-ai.md`: expanded 521 corpus から再選定した Non-AI 60 本の優先読みリスト
 - `papers/icra2025-arxiv/non-ai-top.md`: 最初に読むべき Top 12
 - `papers/icra2025-arxiv/non-ai-feed.html`: Non-AI 60 全体を figure 付きで眺める feed
