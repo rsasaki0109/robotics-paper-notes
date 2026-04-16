@@ -1265,47 +1265,47 @@
               <div class="meta-row">
                 <span class="rank-pill">17 / 24</span>
                 <span class="chip group-chip">Prediction / Planning / Control</span>
-                <span class="chip task-chip">Perception</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Intelligent Vehicles</span>
+                <span class="chip task-chip">Multi-Agent Trajectory Prediction</span><span class="chip task-chip">Autonomous Driving Forecasting</span><span class="chip task-chip">Causal Representation Learning</span><span class="chip task-chip">Robust Prediction under Distribution Shift</span>
               </div>
               <h1 class="paper-title">Curb Your Attention: Causal Attention Gating for Robust Trajectory Prediction in Autonomous Driving</h1>
-              <p class="hook">Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+              <p class="hook">**causal discovery network (CDN)** を入れて、過去軌跡から agent 間の causal graph を推定している。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</li><li>To incorporate discovered causal relationships, we propose a novel Causal Attention Gating mechanism to selectively filter information in the proposed Transformer-based architecture.</li><li>We conduct extensive experiments on two autonomous driving benchmark datasets to evaluate the robustness of our model against non-causal perturbations and its generalization capacity.</li></ul>
+                  <ul class="bullet-list"><li>trajectory prediction が **非因果的エージェントへの注意**に引きずられて壊れる、という問題を正面から扱う論文。</li><li>提案する **CRiTIC** は causal discovery network で agent 間因果関係を推定し、Transformer の attention を **Causal Attention Gating** で制約する。</li><li>Waymo 系評価と cross-domain 実験で、通常精度を大きく落とさずに robustness と generalization をかなり改善している。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+                  <p>既存の trajectory predictor は、未来軌跡を当てても **本当に効いている相手** と **たまたま相関しているだけの相手** を区別しない。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+                  <p>**causal discovery network (CDN)** を入れて、過去軌跡から agent 間の causal graph を推定している。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Motivated by this challenge, we propose Causal tRajecTory predICtion (CRiTIC), a novel model that utilizes a causal discovery network to identify inter-agent causal relations over a window of past time steps.</p>
+                  <p>まず AgentNet で各 agent の過去軌跡や map context を埋め込み表現へ変える。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We conduct extensive experiments on two autonomous driving benchmark datasets to evaluate the robustness of our model against non-causal perturbations and its generalization capacity.</p>
+                  <p>「prediction が何を見ているか」を causal graph として切り出せるので、**ロバスト性の理由を説明しやすい**。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>直接の non-AI 論文ではないが、比較対象として「何を学習で置き換えているか」を把握する価値がある。</p>
+                  <p>AI-heavy だが、課題設定はかなり本質的で、「prediction stack の何が危ないか」をうまく言語化している。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、比較対象として保持しつつ、非学習部分の設計だけでも回収したい。</p>
+                  <p>trajectory prediction 論文としてかなり筋が良くて、単なる精度競争より一歩深い。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Tracking and Prediction 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>AI-heavy</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Intelligent Transportation Systems / Autonomous Vehicle Navigation / Autonomous Agents</strong></div>
+                <div class="fact"><span>Keywords</span><strong>Causal Discovery Network / Causal Attention Gating / Granger Causality / Waymo / Domain Generalization</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-curb-your-attention-causal-attention-gating-for-robust-trajectory-predic-c099c718.md">Detail note</a>
@@ -1318,7 +1318,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We conduct extensive experiments on two autonomous driving benchmark datasets to evaluate the robustness of our model against non-causal perturbations and its generalization capacity.</p>
+                <p>「prediction が何を見ているか」を causal graph として切り出せるので、**ロバスト性の理由を説明しやすい**。</p>
               </div>
             </aside>
           </div>
@@ -1331,47 +1331,47 @@
               <div class="meta-row">
                 <span class="rank-pill">18 / 24</span>
                 <span class="chip group-chip">Prediction / Planning / Control</span>
-                <span class="chip task-chip">Sensor Fusion</span><span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Intelligent Vehicles</span>
+                <span class="chip task-chip">Trajectory Planning</span><span class="chip task-chip">Imitation Learning for Autonomous Driving</span><span class="chip task-chip">Closed-Loop Evaluation</span><span class="chip task-chip">Scenario Generalization</span>
               </div>
               <h1 class="paper-title">CAFE-AD: Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving</h1>
-              <p class="hook">To tackle these problems, we introduce CAFE-AD, a Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving method, designed to enhance feature representation across various scenario types.</p>
+              <p class="hook">Transformer encoder 内で、ego の attention を使って **重要 token だけを残す adaptive pruning** を行う。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>These issues introduce challenges for imitation learning.</li><li>To tackle these problems, we introduce CAFE-AD, a Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving method, designed to enhance feature representation across various scenario types.</li><li>We evaluate our method CAFE-AD, on the challenging public nuPlan Test14-Hard closed-loop simulation benchmark.</li></ul>
+                  <ul class="bullet-list"><li>imitation learning ベースの planning が抱える **causal confusion** と **long-tail scenario bias** を、feature 操作で緩和しようとする論文。</li><li>提案法 **CAFE-AD** は、Adaptive Pruning Transformer と Cross-Scenario Feature Interpolation の 2 本柱で、重要でない情報を削りつつ dominant scenario への過学習を抑える。</li><li>nuPlan Test14-Hard の closed-loop 評価で、PLUTO 系より良い R-Score を出しており、学習ベース planner の open-loop / closed-loop gap をかなり意識した設計。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>These issues introduce challenges for imitation learning.</p>
+                  <p>imitation learning で学習した planner は、open-loop ではよく見えても closed-loop にすると壊れやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To tackle these problems, we introduce CAFE-AD, a Cross-Scenario Adaptive Feature Enhancement for Trajectory Planning in Autonomous Driving method, designed to enhance feature representation across various scenario types.</p>
+                  <p>Transformer encoder 内で、ego の attention を使って **重要 token だけを残す adaptive pruning** を行う。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>Imitation learning based planning tasks on the nuPlan dataset have gained great interest due to their potential to generate human-like driving behaviors.</p>
+                  <p>scene token を Transformer へ入れ、ego vehicle の attention score から token importance を測る。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>We evaluate our method CAFE-AD, on the challenging public nuPlan Test14-Hard closed-loop simulation benchmark.</p>
+                  <p>自動運転 planner が失敗する理由を、**causal confusion** と **long-tail bias** に切り分けて処理しているのが良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                  <p>学習ベース論文だが、planner failure を **どの特徴が悪さしているか** で整理しているのが読みやすい。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                  <p>かなり実務寄りの改善で、SOTA を大きく塗り替えるというより **壊れ方を減らすための feature surgery** という印象。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Autonomous Vehicle Navigation 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★★☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Autonomous Vehicle Navigation / Motion and Path Planning / Intelligent Transportation Systems</strong></div>
+                <div class="fact"><span>Keywords</span><strong>nuPlan / PLUTO / Adaptive Pruning / Feature Interpolation / Causal Confusion / Long-Tail Distribution</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-cafe-ad-cross-scenario-adaptive-feature-enhancement-for-trajectory-plann-f3b52abb.md">Detail note</a>
@@ -1384,7 +1384,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>We evaluate our method CAFE-AD, on the challenging public nuPlan Test14-Hard closed-loop simulation benchmark.</p>
+                <p>自動運転 planner が失敗する理由を、**causal confusion** と **long-tail bias** に切り分けて処理しているのが良い。</p>
               </div>
             </aside>
           </div>
@@ -1397,47 +1397,47 @@
               <div class="meta-row">
                 <span class="rank-pill">19 / 24</span>
                 <span class="chip group-chip">Prediction / Planning / Control</span>
-                <span class="chip task-chip">Motion Planning</span><span class="chip task-chip">Control</span><span class="chip task-chip">Intelligent Vehicles</span>
+                <span class="chip task-chip">World Model Evaluation</span><span class="chip task-chip">Autonomous Driving Simulation</span><span class="chip task-chip">Planning-Oriented Benchmarking</span><span class="chip task-chip">Causality-Aware Traffic Modeling</span>
               </div>
               <h1 class="paper-title">Beyond Simulation: Benchmarking World Models for Planning and Causality in Autonomous Driving</h1>
-              <p class="hook">To address these cases, we propose new metrics to highlight the sensitivity of world models to uncontrollable objects and evaluate the performance of world models as pseudo-environments for policy training and analyze some state-of-the-art world models under these new metrics.</p>
+              <p class="hook">ego replay あり / なしを比較する **ΔM, ΔMsim** 系のメトリクスを作り、partial-control 感度を測る。</p>
               <div class="summary-grid">
                 <section class="panel">
                   <h2>TL;DR</h2>
-                  <ul class="bullet-list"><li>Specifically, we analyze the metametric employed by the Waymo Open Sim-Agents Challenge (WOSAC) and compare world model predictions on standard scenarios where the agents are fully or partially controlled by the world model (partial replay).</li><li>To address these cases, we propose new metrics to highlight the sensitivity of world models to uncontrollable objects and evaluate the performance of world models as pseudo-environments for policy training and analyze some state-of-the-art world models under these new metrics.</li><li>World models have become increasingly popular in acting as learned traffic simulators.</li></ul>
+                  <ul class="bullet-list"><li>learned world model を「traffic prediction 精度」でなく、**planning の訓練環境として本当に使えるか** で評価し直す論文。</li><li>WOSAC 的な標準評価だけでは見えない問題として、ego を replay 固定した partial-control 条件での性能崩れを測る **新しい評価指標** を提案している。</li><li>さらに **Control Dropout** を導入し、autoregressive world model が uncontrollable object に過敏になる問題を和らげている。</li></ul>
                 </section>
                 <section class="panel">
                   <h2>何を解決？</h2>
-                  <p>Specifically, we analyze the metametric employed by the Waymo Open Sim-Agents Challenge (WOSAC) and compare world model predictions on standard scenarios where the agents are fully or partially controlled by the world model (partial replay).</p>
+                  <p>最近の world model は learned traffic simulator として使われ始めているが、標準ベンチで高スコアでも **policy training environment として健全か** は別問題。</p>
                 </section>
                 <section class="panel">
                   <h2>何が新しい？</h2>
-                  <p>To address these cases, we propose new metrics to highlight the sensitivity of world models to uncontrollable objects and evaluate the performance of world models as pseudo-environments for policy training and analyze some state-of-the-art world models under these new metrics.</p>
+                  <p>ego replay あり / なしを比較する **ΔM, ΔMsim** 系のメトリクスを作り、partial-control 感度を測る。</p>
                 </section>
                 <section class="panel">
                   <h2>どうやってる？</h2>
-                  <p>World models have become increasingly popular in acting as learned traffic simulators.</p>
+                  <p>Waymo Open Motion Dataset / WOSAC 系 world model を対象に、通常 rollout と ego replay 固定 rollout の両方を回す。</p>
                 </section>
               </div>
               <div class="detail-grid">
                 <section class="panel">
                   <h2>どこが強い？</h2>
-                  <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                  <p>world model を prediction benchmark から切り離し、**planner の学習環境として再評価する**観点が非常に良い。</p>
                 </section>
                 <section class="panel">
                   <h2>non-AI として見る価値</h2>
-                  <p>学習要素はあるが、どこまでが古典手法でどこからが学習依存かを切り分けて読む価値がある。</p>
+                  <p>学習ベースの論文だが、価値の中心は **benchmark design** と **evaluation methodology** にある。</p>
                 </section>
                 <section class="panel">
                   <h2>自分の理解 / 感想</h2>
-                  <p>初見では、学習と古典手法の分担がどこで効いているかを見極めたい。</p>
+                  <p>かなり好きなタイプの評価論文で、world model の hype に対してちゃんとブレーキをかけている。</p>
                 </section>
               </div>
               <div class="facts">
                 <div class="fact"><span>Session</span><strong>Autonomous Vehicle Navigation 1</strong></div>
-                <div class="fact"><span>Difficulty</span><strong>★★★（abstract 初見ベース）</strong></div>
+                <div class="fact"><span>Difficulty</span><strong>★★★☆☆</strong></div>
                 <div class="fact"><span>AI依存度</span><strong>Hybrid</strong></div>
-                <div class="fact"><span>Keywords</span><strong>Autonomous Vehicle Navigation / Autonomous Agents / Motion and Path Planning</strong></div>
+                <div class="fact"><span>Keywords</span><strong>WOSAC / WOMD / Partial Control / Control Dropout / Learned Simulator / Causal Agents</strong></div>
               </div>
               <div class="links">
                 <a href="2025-icra-beyond-simulation-benchmarking-world-models-for-planning-and-causality-i-cfc5e0c1.md">Detail note</a>
@@ -1450,7 +1450,7 @@
               </div>
               <div class="visual-meta panel">
                 <h2>読むときの観点</h2>
-                <p>評価条件や比較対象の強さは本文確認が必要。</p>
+                <p>world model を prediction benchmark から切り離し、**planner の学習環境として再評価する**観点が非常に良い。</p>
               </div>
             </aside>
           </div>
